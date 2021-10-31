@@ -193,7 +193,7 @@ targets:
     scheme:
       testTargets:
         - ApplicationModelTests
-  Samidare-iOSTestsTests:
+  Samidare-iOSTests:
     type: bundle.unit-test
     platform: iOS
     sources:
