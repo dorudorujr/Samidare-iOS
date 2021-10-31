@@ -1,0 +1,219 @@
+name: Samidare-iOS
+options:
+  deploymentTarget:
+    iOS: 14.0
+configs:
+  StubDebug: debug
+  Stub: release
+  DevelopDebug: debug
+  Develop: release
+  StagingDebug: debug
+  Staging: release
+  ReleaseDebug: debug
+  Release: release
+settings:
+  configs:
+    StubDebug:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - STUB
+    Stub:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - STUB
+      SWIFT_OPTIMIZATION_LEVEL:
+        - -Onone
+      GCC_OPTIMIZATION_LEVEL:
+        - 0
+    DevelopDebug:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - DEVELOP
+    Develop:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - DEVELOP
+      SWIFT_OPTIMIZATION_LEVEL:
+        - -Onone
+      GCC_OPTIMIZATION_LEVEL:
+        - 0
+    StagingDebug:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - STAGING
+    Staging:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - STAGING
+    ReleaseDebug:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - RELEASE
+    Release:
+      OTHER_SWIFT_FLAGS:
+        - -D
+        - RELEASE
+schemes:
+  Samidare-Stub:
+    build:
+      targets:
+        Samidare-iOS: all
+        Samidare-iOSTests: [test]
+        Samidare-iOSUITests: [test]
+    run:
+      config: StubDebug
+    test:
+      config: StubDebug
+      gatherCoverageData: true
+      coverageTargets:
+        - Samidare-iOS
+        - ApplicationModel
+      targets: [Samidare-iOSTests, ApplicationModelTests]
+      environmentVariables:
+        - variable: isUnitTest
+          value: "true"
+          isEnabled: true
+    profile:
+      config: Stub
+    analyze:
+      config: Stub
+    archive:
+      config: Stub
+  Samidare-Develop:
+    build:
+      targets:
+        Samidare-iOS: [analyze, run, archive]
+    run:
+      config: DevelopDebug
+    test:
+      config: DevelopDebug
+      gatherCoverageData: true
+      coverageTargets:
+        - Samidare-iOS
+        - ApplicationModel
+      targets: [Samidare-iOSTests, ApplicationModelTests]
+      environmentVariables:
+        - variable: isUnitTest
+          value: "true"
+          isEnabled: true
+    profile:
+      config: Develop
+    analyze:
+      config: Develop
+    archive:
+      config: Develop
+  Samidare-Staging:
+    build:
+      targets:
+        Samidare-iOS: [analyze, run, archive]
+    run:
+      config: StagingDebug
+    test:
+      config: StagingDebug
+      gatherCoverageData: true
+      coverageTargets:
+        - Samidare-iOS
+        - ApplicationModel
+      targets: [Samidare-iOSTests, ApplicationModelTests]
+      environmentVariables:
+        - variable: isUnitTest
+          value: "true"
+          isEnabled: true
+    profile:
+      config: Staging
+    analyze:
+      config: Staging
+    archive:
+      config: Staging
+  Samidare-Release:
+    build:
+      targets:
+        Samidare-iOS: [analyze, run, archive]
+    run:
+      config: ReleaseDebug
+    test:
+      config: ReleaseDebug
+      gatherCoverageData: true
+      coverageTargets:
+        - Samidare-iOS
+        - ApplicationModel
+      targets: [Samidare-iOSTests, ApplicationModelTests]
+      environmentVariables:
+        - variable: isUnitTest
+          value: "true"
+          isEnabled: true
+    profile:
+      config: Release
+    analyze:
+      config: Release
+    archive:
+      config: Release
+targets:
+  Samidare-iOS:
+    type: application
+    platform: iOS
+    sources:
+      - path: Samidare-iOS
+        excludes:
+          - "**/.gitkeep"
+          - README.md
+      - path: Samidare-iOS/README.md
+        buildPhase: none
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: 1
+      configs:
+        StubDebug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        Stub:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        DevelopDebug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        Develop:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        StagingDebug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        Staging:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        ReleaseDebug:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+  ApplicationModel:
+    type: framework
+    platform: iOS
+    sources:
+      - path: ApplicationModel
+        excludes:
+          - README.md
+      - path: ApplicationModel/README.md
+        buildPhase: none
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+    scheme:
+      testTargets:
+        - ApplicationModelTests
+  Samidare-iOSTestsTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: UnitTest/Samidare-iOSTests
+        createIntermediateGroups: true
+    dependencies:
+      - target: Samidare-iOS
+  Samidare-iOSUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - path: UITest/Samidare-iOSUITests
+        createIntermediateGroups: true
+    dependencies:
+      - target: Samidare-iOS
+  ApplicationModelTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: UnitTest/ApplicationModelTests
+        createIntermediateGroups: true
+    dependencies:
+      - target: ApplicationModel
