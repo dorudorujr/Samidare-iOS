@@ -3,194 +3,196 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		152E4AA82723C56100572E18 /* Samidare_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AA72723C56100572E18 /* Samidare_iOSApp.swift */; };
-		152E4AAA2723C56100572E18 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AA92723C56100572E18 /* ContentView.swift */; };
-		152E4AAC2723C56200572E18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152E4AAB2723C56200572E18 /* Assets.xcassets */; };
-		152E4AAF2723C56200572E18 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 152E4AAE2723C56200572E18 /* Preview Assets.xcassets */; };
-		152E4AB92723C56200572E18 /* Samidare_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AB82723C56200572E18 /* Samidare_iOSTests.swift */; };
-		152E4AC32723C56200572E18 /* Samidare_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */; };
-		152E4AC52723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */; };
-		1593A328272E906B001EC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1593A327272E906B001EC5C3 /* README.md */; };
-		1593A32A272E908B001EC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1593A329272E908B001EC5C3 /* README.md */; };
+		5C4D3766AA25D7C19AC1E5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */; };
+		7BA2FAACDB71855CAAA6E5F8 /* Samidare_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */; };
+		7D453AB84A728FD7163EEEC9 /* ApplicationModel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6A6A813681841114697E09 /* ApplicationModel.framework */; };
+		865C5327530B7B187F4B5409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CB38735A9D67F8F25CAC7F /* Assets.xcassets */; };
+		A6D5255D3A1D212E0B82313F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E14DFEE9A7D2B26B66BF997 /* ContentView.swift */; };
+		DFFFC39CA60369704893A244 /* ApplicationModel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E6A6A813681841114697E09 /* ApplicationModel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		152E4AB52723C56200572E18 /* PBXContainerItemProxy */ = {
+		4836F85756DCA781BD578524 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 152E4A9C2723C56100572E18 /* Project object */;
+			containerPortal = DBB5B1BA455527110846BD8A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 152E4AA32723C56100572E18;
+			remoteGlobalIDString = 46B078B40F3AE90C265FE517;
 			remoteInfo = "Samidare-iOS";
 		};
-		152E4ABF2723C56200572E18 /* PBXContainerItemProxy */ = {
+		6C3DC08BFBBB6EEC4B96C624 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 152E4A9C2723C56100572E18 /* Project object */;
+			containerPortal = DBB5B1BA455527110846BD8A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 152E4AA32723C56100572E18;
+			remoteGlobalIDString = FFFA626574BB9EA5BD720998;
+			remoteInfo = ApplicationModel;
+		};
+		ABD1A4058E24A7DE02071349 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBB5B1BA455527110846BD8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46B078B40F3AE90C265FE517;
 			remoteInfo = "Samidare-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2DFEF84E25CC30ACA89C1069 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DFFFC39CA60369704893A244 /* ApplicationModel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		152E4AA42723C56100572E18 /* Samidare-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Samidare-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		152E4AA72723C56100572E18 /* Samidare_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSApp.swift; sourceTree = "<group>"; };
-		152E4AA92723C56100572E18 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		152E4AAB2723C56200572E18 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		152E4AAE2723C56200572E18 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		152E4AB42723C56200572E18 /* Samidare-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samidare-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		152E4AB82723C56200572E18 /* Samidare_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSTests.swift; sourceTree = "<group>"; };
-		152E4ABE2723C56200572E18 /* Samidare-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samidare-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITests.swift; sourceTree = "<group>"; };
-		152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		1593A327272E906B001EC5C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1593A329272E908B001EC5C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1E14DFEE9A7D2B26B66BF997 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1E6A6A813681841114697E09 /* ApplicationModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ApplicationModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Samidare-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8697A3DE318A003D2F1589A6 /* ApplicationModelTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = ApplicationModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97CB38735A9D67F8F25CAC7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Samidare-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSApp.swift; sourceTree = "<group>"; };
+		D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Samidare-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDAAE5386547C14A2887CD75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F6D21F55742EE8535186C3A2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		152E4AA12723C56100572E18 /* Frameworks */ = {
+		5BBAF918C10F1F4E1302AF59 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		152E4AB12723C56200572E18 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		152E4ABB2723C56200572E18 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				7D453AB84A728FD7163EEEC9 /* ApplicationModel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		152E4A9B2723C56100572E18 = {
+		28CA2FBF9B2E026BB35DCDD4 /* Samidare-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				1593A32E272E9300001EC5C3 /* UITest */,
-				1593A32B272E90A8001EC5C3 /* UnitTest */,
-				1593A326272E8F4A001EC5C3 /* ApplicationModel */,
-				152E4AA62723C56100572E18 /* Samidare-iOS */,
-				152E4AB72723C56200572E18 /* Samidare-iOSTests */,
-				152E4AC12723C56200572E18 /* Samidare-iOSUITests */,
-				152E4AA52723C56100572E18 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		152E4AA52723C56100572E18 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				152E4AA42723C56100572E18 /* Samidare-iOS.app */,
-				152E4AB42723C56200572E18 /* Samidare-iOSTests.xctest */,
-				152E4ABE2723C56200572E18 /* Samidare-iOSUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		152E4AA62723C56100572E18 /* Samidare-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				152E4AA72723C56100572E18 /* Samidare_iOSApp.swift */,
-				152E4AA92723C56100572E18 /* ContentView.swift */,
-				152E4AAB2723C56200572E18 /* Assets.xcassets */,
-				152E4AAD2723C56200572E18 /* Preview Content */,
-				1593A329272E908B001EC5C3 /* README.md */,
-			);
-			path = "Samidare-iOS";
-			sourceTree = "<group>";
-		};
-		152E4AAD2723C56200572E18 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				152E4AAE2723C56200572E18 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		152E4AB72723C56200572E18 /* Samidare-iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				152E4AB82723C56200572E18 /* Samidare_iOSTests.swift */,
 			);
 			path = "Samidare-iOSTests";
 			sourceTree = "<group>";
 		};
-		152E4AC12723C56200572E18 /* Samidare-iOSUITests */ = {
+		3257061C0F5C73C07190D311 /* UnitTest */ = {
 			isa = PBXGroup;
 			children = (
-				152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */,
-				152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */,
-			);
-			path = "Samidare-iOSUITests";
-			sourceTree = "<group>";
-		};
-		1593A326272E8F4A001EC5C3 /* ApplicationModel */ = {
-			isa = PBXGroup;
-			children = (
-				1593A327272E906B001EC5C3 /* README.md */,
-			);
-			path = ApplicationModel;
-			sourceTree = "<group>";
-		};
-		1593A32B272E90A8001EC5C3 /* UnitTest */ = {
-			isa = PBXGroup;
-			children = (
-				1593A32D272E90C6001EC5C3 /* Samidare-iOSTests */,
-				1593A32C272E90B5001EC5C3 /* ApplicationModelTests */,
+				FF5419649DDD270ABEF1AACA /* ApplicationModelTests */,
+				28CA2FBF9B2E026BB35DCDD4 /* Samidare-iOSTests */,
 			);
 			path = UnitTest;
 			sourceTree = "<group>";
 		};
-		1593A32C272E90B5001EC5C3 /* ApplicationModelTests */ = {
+		38843170AFC212F12429A7F6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4AF2FE69F424CEA956352F6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E6A6A813681841114697E09 /* ApplicationModel.framework */,
+				8697A3DE318A003D2F1589A6 /* ApplicationModelTests.xctest */,
+				63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */,
+				D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */,
+				ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E823378B681FB69B2B69328 = {
+			isa = PBXGroup;
+			children = (
+				59461D89D329BF37FFA54A58 /* ApplicationModel */,
+				75871A98150AA37B116F850C /* Samidare-iOS */,
+				EC0DD27B12839B11082B95AD /* UITest */,
+				3257061C0F5C73C07190D311 /* UnitTest */,
+				4AF2FE69F424CEA956352F6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		59461D89D329BF37FFA54A58 /* ApplicationModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6D21F55742EE8535186C3A2 /* README.md */,
+			);
+			path = ApplicationModel;
+			sourceTree = "<group>";
+		};
+		75871A98150AA37B116F850C /* Samidare-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				97CB38735A9D67F8F25CAC7F /* Assets.xcassets */,
+				1E14DFEE9A7D2B26B66BF997 /* ContentView.swift */,
+				DDAAE5386547C14A2887CD75 /* README.md */,
+				CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */,
+				38843170AFC212F12429A7F6 /* Preview Content */,
+			);
+			path = "Samidare-iOS";
+			sourceTree = "<group>";
+		};
+		E6D7D2FD1CEA8EEE988D7A47 /* Samidare-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Samidare-iOSUITests";
+			sourceTree = "<group>";
+		};
+		EC0DD27B12839B11082B95AD /* UITest */ = {
+			isa = PBXGroup;
+			children = (
+				E6D7D2FD1CEA8EEE988D7A47 /* Samidare-iOSUITests */,
+			);
+			path = UITest;
+			sourceTree = "<group>";
+		};
+		FF5419649DDD270ABEF1AACA /* ApplicationModelTests */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = ApplicationModelTests;
 			sourceTree = "<group>";
 		};
-		1593A32D272E90C6001EC5C3 /* Samidare-iOSTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Samidare-iOSTests";
-			sourceTree = "<group>";
-		};
-		1593A32E272E9300001EC5C3 /* UITest */ = {
-			isa = PBXGroup;
-			children = (
-				1593A32F272E930F001EC5C3 /* Samidare-iOSUITests */,
-			);
-			path = UITest;
-			sourceTree = "<group>";
-		};
-		1593A32F272E930F001EC5C3 /* Samidare-iOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Samidare-iOSUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		152E4AA32723C56100572E18 /* Samidare-iOS */ = {
+		0DA9C245E28E0B2DB17C895A /* Samidare-iOSUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 152E4AC82723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */;
+			buildConfigurationList = 02118C1F2F7DC7BFD0CF8920 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */;
 			buildPhases = (
-				152E4AA02723C56100572E18 /* Sources */,
-				152E4AA12723C56100572E18 /* Frameworks */,
-				152E4AA22723C56100572E18 /* Resources */,
+				D3462E44B4A3A4B0DDE7F54D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				272DDFE5DFAC30385E54A128 /* PBXTargetDependency */,
+			);
+			name = "Samidare-iOSUITests";
+			productName = "Samidare-iOSUITests";
+			productReference = ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		46B078B40F3AE90C265FE517 /* Samidare-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4360D8082B9BAA9C8A7F53B4 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */;
+			buildPhases = (
+				93761D7112EA886B381981F8 /* Sources */,
+				D6E3F9441243730E4EC99909 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -198,227 +200,279 @@
 			);
 			name = "Samidare-iOS";
 			productName = "Samidare-iOS";
-			productReference = 152E4AA42723C56100572E18 /* Samidare-iOS.app */;
+			productReference = 63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		152E4AB32723C56200572E18 /* Samidare-iOSTests */ = {
+		5E98910E5B9E46C749000343 /* Samidare-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 152E4ACB2723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */;
+			buildConfigurationList = 149BFC494651AEB281F742A8 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */;
 			buildPhases = (
-				152E4AB02723C56200572E18 /* Sources */,
-				152E4AB12723C56200572E18 /* Frameworks */,
-				152E4AB22723C56200572E18 /* Resources */,
+				8C4B916F7545EFE40D9C894D /* Sources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				152E4AB62723C56200572E18 /* PBXTargetDependency */,
+				FAAEE2C05179ADA3A9BA9165 /* PBXTargetDependency */,
 			);
 			name = "Samidare-iOSTests";
 			productName = "Samidare-iOSTests";
-			productReference = 152E4AB42723C56200572E18 /* Samidare-iOSTests.xctest */;
+			productReference = D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		152E4ABD2723C56200572E18 /* Samidare-iOSUITests */ = {
+		EBA9DD530AB305F7FDFB660C /* ApplicationModelTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 152E4ACE2723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */;
+			buildConfigurationList = D6A58404291C4E46FCE547FA /* Build configuration list for PBXNativeTarget "ApplicationModelTests" */;
 			buildPhases = (
-				152E4ABA2723C56200572E18 /* Sources */,
-				152E4ABB2723C56200572E18 /* Frameworks */,
-				152E4ABC2723C56200572E18 /* Resources */,
+				8965F3A82617C8EF5D743F7D /* Sources */,
+				5BBAF918C10F1F4E1302AF59 /* Frameworks */,
+				2DFEF84E25CC30ACA89C1069 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				152E4AC02723C56200572E18 /* PBXTargetDependency */,
+				CE19ED529457DC1FA0839CB6 /* PBXTargetDependency */,
 			);
-			name = "Samidare-iOSUITests";
-			productName = "Samidare-iOSUITests";
-			productReference = 152E4ABE2723C56200572E18 /* Samidare-iOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
+			name = ApplicationModelTests;
+			productName = ApplicationModelTests;
+			productReference = 8697A3DE318A003D2F1589A6 /* ApplicationModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FFFA626574BB9EA5BD720998 /* ApplicationModel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E163373E1ABA709D9A0F1E45 /* Build configuration list for PBXNativeTarget "ApplicationModel" */;
+			buildPhases = (
+				9459C0BC86DD5C64F789081C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ApplicationModel;
+			productName = ApplicationModel;
+			productReference = 1E6A6A813681841114697E09 /* ApplicationModel.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		152E4A9C2723C56100572E18 /* Project object */ = {
+		DBB5B1BA455527110846BD8A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1200;
 				TargetAttributes = {
-					152E4AA32723C56100572E18 = {
-						CreatedOnToolsVersion = 13.0;
-					};
-					152E4AB32723C56200572E18 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 152E4AA32723C56100572E18;
-					};
-					152E4ABD2723C56200572E18 = {
-						CreatedOnToolsVersion = 13.0;
-						TestTargetID = 152E4AA32723C56100572E18;
+					0DA9C245E28E0B2DB17C895A = {
+						TestTargetID = 46B078B40F3AE90C265FE517;
 					};
 				};
 			};
-			buildConfigurationList = 152E4A9F2723C56100572E18 /* Build configuration list for PBXProject "Samidare-iOS" */;
-			compatibilityVersion = "Xcode 13.0";
+			buildConfigurationList = EF47CAB4D803D5C2EE987444 /* Build configuration list for PBXProject "Samidare-iOS" */;
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
+				en,
 			);
-			mainGroup = 152E4A9B2723C56100572E18;
-			productRefGroup = 152E4AA52723C56100572E18 /* Products */;
+			mainGroup = 4E823378B681FB69B2B69328;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				152E4AA32723C56100572E18 /* Samidare-iOS */,
-				152E4AB32723C56200572E18 /* Samidare-iOSTests */,
-				152E4ABD2723C56200572E18 /* Samidare-iOSUITests */,
+				FFFA626574BB9EA5BD720998 /* ApplicationModel */,
+				EBA9DD530AB305F7FDFB660C /* ApplicationModelTests */,
+				46B078B40F3AE90C265FE517 /* Samidare-iOS */,
+				5E98910E5B9E46C749000343 /* Samidare-iOSTests */,
+				0DA9C245E28E0B2DB17C895A /* Samidare-iOSUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		152E4AA22723C56100572E18 /* Resources */ = {
+		D6E3F9441243730E4EC99909 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1593A328272E906B001EC5C3 /* README.md in Resources */,
-				152E4AAF2723C56200572E18 /* Preview Assets.xcassets in Resources */,
-				1593A32A272E908B001EC5C3 /* README.md in Resources */,
-				152E4AAC2723C56200572E18 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		152E4AB22723C56200572E18 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		152E4ABC2723C56200572E18 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				865C5327530B7B187F4B5409 /* Assets.xcassets in Resources */,
+				5C4D3766AA25D7C19AC1E5AC /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		152E4AA02723C56100572E18 /* Sources */ = {
+		8965F3A82617C8EF5D743F7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152E4AAA2723C56100572E18 /* ContentView.swift in Sources */,
-				152E4AA82723C56100572E18 /* Samidare_iOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		152E4AB02723C56200572E18 /* Sources */ = {
+		8C4B916F7545EFE40D9C894D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152E4AB92723C56200572E18 /* Samidare_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		152E4ABA2723C56200572E18 /* Sources */ = {
+		93761D7112EA886B381981F8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152E4AC52723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift in Sources */,
-				152E4AC32723C56200572E18 /* Samidare_iOSUITests.swift in Sources */,
+				A6D5255D3A1D212E0B82313F /* ContentView.swift in Sources */,
+				7BA2FAACDB71855CAAA6E5F8 /* Samidare_iOSApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9459C0BC86DD5C64F789081C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3462E44B4A3A4B0DDE7F54D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		152E4AB62723C56200572E18 /* PBXTargetDependency */ = {
+		272DDFE5DFAC30385E54A128 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 152E4AA32723C56100572E18 /* Samidare-iOS */;
-			targetProxy = 152E4AB52723C56200572E18 /* PBXContainerItemProxy */;
+			target = 46B078B40F3AE90C265FE517 /* Samidare-iOS */;
+			targetProxy = ABD1A4058E24A7DE02071349 /* PBXContainerItemProxy */;
 		};
-		152E4AC02723C56200572E18 /* PBXTargetDependency */ = {
+		CE19ED529457DC1FA0839CB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 152E4AA32723C56100572E18 /* Samidare-iOS */;
-			targetProxy = 152E4ABF2723C56200572E18 /* PBXContainerItemProxy */;
+			target = FFFA626574BB9EA5BD720998 /* ApplicationModel */;
+			targetProxy = 6C3DC08BFBBB6EEC4B96C624 /* PBXContainerItemProxy */;
+		};
+		FAAEE2C05179ADA3A9BA9165 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46B078B40F3AE90C265FE517 /* Samidare-iOS */;
+			targetProxy = 4836F85756DCA781BD578524 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		152E4AC62723C56200572E18 /* Debug */ = {
+		120537D2CF84E70368239BC2 /* Develop */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Develop;
 		};
-		152E4AC72723C56200572E18 /* Release */ = {
+		12A071D0C95E0A6317E27183 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = ReleaseDebug;
+		};
+		14093A1CA1FECBD099567DFC /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = StagingDebug;
+		};
+		1A6FE462CB0C2744EFD49DE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		1CF8B3429BDD183C6262277E /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = StagingDebug;
+		};
+		1EE4C598B554C32DF09B1301 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = StubDebug;
+		};
+		21315F0D1C349E39C5C29074 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -457,216 +511,1112 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					RELEASE,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
-		152E4AC92723C56200572E18 /* Debug */ = {
+		2E9F983043AABDC8EF4620C4 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Samidare-iOS/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = Staging;
 		};
-		152E4ACA2723C56200572E18 /* Release */ = {
+		396934034A2A21CB09B9A823 /* Stub */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Samidare-iOS/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		152E4ACC2723C56200572E18 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
 			};
-			name = Debug;
+			name = Stub;
 		};
-		152E4ACD2723C56200572E18 /* Release */ = {
+		4A83F1AC6E3ECE5D25F28383 /* StagingDebug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				GENERATE_INFOPLIST_FILE = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STAGING,
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
 			};
-			name = Release;
+			name = StagingDebug;
 		};
-		152E4ACF2723C56200572E18 /* Debug */ = {
+		4A880EF37C9606C5467DDDC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Samidare-iOS";
-			};
-			name = Debug;
-		};
-		152E4AD02723C56200572E18 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Samidare-iOS";
 			};
 			name = Release;
+		};
+		4D42B3EFA34F7840EB2F8C77 /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Develop;
+		};
+		52D10C90957C6D6CC571B0EC /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = StubDebug;
+		};
+		54818102768EA2AA441A57AF /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = DevelopDebug;
+		};
+		5731F52017A57C1453CD6641 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STAGING,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Staging;
+		};
+		5995B60B279F16DB400EFF73 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					RELEASE,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = ReleaseDebug;
+		};
+		60E08E06B6AA3264D1321DBC /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = ReleaseDebug;
+		};
+		6DC5C6F81BF3659D455718B1 /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = StagingDebug;
+		};
+		6EC8907D5B57A869C1CA1714 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = ReleaseDebug;
+		};
+		7320478801B3E2A4D02C64C4 /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = DevelopDebug;
+		};
+		793723537EFDF7B29C3506EA /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Develop;
+		};
+		87987D88AF20A4B21E7F32C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8CE098AA2B2E8A8DB1D0E1CD /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = (
+					0,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STUB,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = (
+					"-Onone",
+				);
+				SWIFT_VERSION = 5.0;
+			};
+			name = Stub;
+		};
+		8E50995A85E40921DF885B6F /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Stub;
+		};
+		9BC86F7AB99772162634F31E /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = DevelopDebug;
+		};
+		A1B68C891391483547BD4DA3 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = StubDebug;
+		};
+		A43AF2926862688CFDCA3AC1 /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = DevelopDebug;
+		};
+		A465E8D43F7534C14BA2F4EE /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = StubDebug;
+		};
+		A5484F52D2F0A697943C9E92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Release;
+		};
+		A7921B9515A390FC637239B6 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = ReleaseDebug;
+		};
+		A7CE76DE3F7F9E1E4F576EB1 /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Stub;
+		};
+		A83CB422748116579E3B1CA0 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STUB,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = StubDebug;
+		};
+		A8E2E41EB0D065B24E0574F4 /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Develop;
+		};
+		A91E5B8C698CF2326DFB3408 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Staging;
+		};
+		B5F845B8524F7F3D18AB95C6 /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = DevelopDebug;
+		};
+		B7C05E69D7F38D72FFE0528F /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					DEVELOP,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = DevelopDebug;
+		};
+		C18C41F8B7BE09EEAB7474AD /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = StagingDebug;
+		};
+		C972A2B8373FD5FA65A42453 /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = (
+					0,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					DEVELOP,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = (
+					"-Onone",
+				);
+				SWIFT_VERSION = 5.0;
+			};
+			name = Develop;
+		};
+		D0896593592170AD115B60B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E0560BF9D52BA5B73555813C /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		E74E11CDA969E78A8DC455DE /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = ReleaseDebug;
+		};
+		ECDE95E9B7A0E1E7C75E687B /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Stub;
+		};
+		EEE1BE7ADF693B895D409C4F /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Develop;
+		};
+		F2A32AFFD1A487591B8C34E5 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Staging;
+		};
+		F2E07A9E64B22B75827B4443 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = StubDebug;
+		};
+		F37B8D3443D0696AD72F7FDD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Staging;
+		};
+		F70EA8A1270821AD647377DD /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = StagingDebug;
+		};
+		FACADC4C60D6358D15B92F6C /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Stub;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		152E4A9F2723C56100572E18 /* Build configuration list for PBXProject "Samidare-iOS" */ = {
+		02118C1F2F7DC7BFD0CF8920 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				152E4AC62723C56200572E18 /* Debug */,
-				152E4AC72723C56200572E18 /* Release */,
+				EEE1BE7ADF693B895D409C4F /* Develop */,
+				9BC86F7AB99772162634F31E /* DevelopDebug */,
+				4A880EF37C9606C5467DDDC4 /* Release */,
+				60E08E06B6AA3264D1321DBC /* ReleaseDebug */,
+				F37B8D3443D0696AD72F7FDD /* Staging */,
+				14093A1CA1FECBD099567DFC /* StagingDebug */,
+				FACADC4C60D6358D15B92F6C /* Stub */,
+				52D10C90957C6D6CC571B0EC /* StubDebug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Develop;
 		};
-		152E4AC82723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */ = {
+		149BFC494651AEB281F742A8 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				152E4AC92723C56200572E18 /* Debug */,
-				152E4ACA2723C56200572E18 /* Release */,
+				793723537EFDF7B29C3506EA /* Develop */,
+				B5F845B8524F7F3D18AB95C6 /* DevelopDebug */,
+				A5484F52D2F0A697943C9E92 /* Release */,
+				6EC8907D5B57A869C1CA1714 /* ReleaseDebug */,
+				A91E5B8C698CF2326DFB3408 /* Staging */,
+				6DC5C6F81BF3659D455718B1 /* StagingDebug */,
+				396934034A2A21CB09B9A823 /* Stub */,
+				F2E07A9E64B22B75827B4443 /* StubDebug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Develop;
 		};
-		152E4ACB2723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */ = {
+		4360D8082B9BAA9C8A7F53B4 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				152E4ACC2723C56200572E18 /* Debug */,
-				152E4ACD2723C56200572E18 /* Release */,
+				A8E2E41EB0D065B24E0574F4 /* Develop */,
+				7320478801B3E2A4D02C64C4 /* DevelopDebug */,
+				87987D88AF20A4B21E7F32C5 /* Release */,
+				E74E11CDA969E78A8DC455DE /* ReleaseDebug */,
+				2E9F983043AABDC8EF4620C4 /* Staging */,
+				C18C41F8B7BE09EEAB7474AD /* StagingDebug */,
+				8E50995A85E40921DF885B6F /* Stub */,
+				A1B68C891391483547BD4DA3 /* StubDebug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Develop;
 		};
-		152E4ACE2723C56200572E18 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */ = {
+		D6A58404291C4E46FCE547FA /* Build configuration list for PBXNativeTarget "ApplicationModelTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				152E4ACF2723C56200572E18 /* Debug */,
-				152E4AD02723C56200572E18 /* Release */,
+				120537D2CF84E70368239BC2 /* Develop */,
+				54818102768EA2AA441A57AF /* DevelopDebug */,
+				D0896593592170AD115B60B8 /* Release */,
+				12A071D0C95E0A6317E27183 /* ReleaseDebug */,
+				E0560BF9D52BA5B73555813C /* Staging */,
+				F70EA8A1270821AD647377DD /* StagingDebug */,
+				ECDE95E9B7A0E1E7C75E687B /* Stub */,
+				A465E8D43F7534C14BA2F4EE /* StubDebug */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Develop;
+		};
+		E163373E1ABA709D9A0F1E45 /* Build configuration list for PBXNativeTarget "ApplicationModel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4D42B3EFA34F7840EB2F8C77 /* Develop */,
+				A43AF2926862688CFDCA3AC1 /* DevelopDebug */,
+				1A6FE462CB0C2744EFD49DE1 /* Release */,
+				A7921B9515A390FC637239B6 /* ReleaseDebug */,
+				F2A32AFFD1A487591B8C34E5 /* Staging */,
+				1CF8B3429BDD183C6262277E /* StagingDebug */,
+				A7CE76DE3F7F9E1E4F576EB1 /* Stub */,
+				1EE4C598B554C32DF09B1301 /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
+		};
+		EF47CAB4D803D5C2EE987444 /* Build configuration list for PBXProject "Samidare-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C972A2B8373FD5FA65A42453 /* Develop */,
+				B7C05E69D7F38D72FFE0528F /* DevelopDebug */,
+				21315F0D1C349E39C5C29074 /* Release */,
+				5995B60B279F16DB400EFF73 /* ReleaseDebug */,
+				5731F52017A57C1453CD6641 /* Staging */,
+				4A83F1AC6E3ECE5D25F28383 /* StagingDebug */,
+				8CE098AA2B2E8A8DB1D0E1CD /* Stub */,
+				A83CB422748116579E3B1CA0 /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 152E4A9C2723C56100572E18 /* Project object */;
+	rootObject = DBB5B1BA455527110846BD8A /* Project object */;
 }
