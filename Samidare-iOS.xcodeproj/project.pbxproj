@@ -14,6 +14,8 @@
 		152E4AB92723C56200572E18 /* Samidare_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AB82723C56200572E18 /* Samidare_iOSTests.swift */; };
 		152E4AC32723C56200572E18 /* Samidare_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */; };
 		152E4AC52723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */; };
+		1593A328272E906B001EC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1593A327272E906B001EC5C3 /* README.md */; };
+		1593A32A272E908B001EC5C3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1593A329272E908B001EC5C3 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		152E4ABE2723C56200572E18 /* Samidare-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Samidare-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITests.swift; sourceTree = "<group>"; };
 		152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1593A327272E906B001EC5C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1593A329272E908B001EC5C3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,9 @@
 		152E4A9B2723C56100572E18 = {
 			isa = PBXGroup;
 			children = (
+				1593A32E272E9300001EC5C3 /* UITest */,
+				1593A32B272E90A8001EC5C3 /* UnitTest */,
+				1593A326272E8F4A001EC5C3 /* ApplicationModel */,
 				152E4AA62723C56100572E18 /* Samidare-iOS */,
 				152E4AB72723C56200572E18 /* Samidare-iOSTests */,
 				152E4AC12723C56200572E18 /* Samidare-iOSUITests */,
@@ -98,6 +105,7 @@
 				152E4AA92723C56100572E18 /* ContentView.swift */,
 				152E4AAB2723C56200572E18 /* Assets.xcassets */,
 				152E4AAD2723C56200572E18 /* Preview Content */,
+				1593A329272E908B001EC5C3 /* README.md */,
 			);
 			path = "Samidare-iOS";
 			sourceTree = "<group>";
@@ -123,6 +131,52 @@
 			children = (
 				152E4AC22723C56200572E18 /* Samidare_iOSUITests.swift */,
 				152E4AC42723C56200572E18 /* Samidare_iOSUITestsLaunchTests.swift */,
+			);
+			path = "Samidare-iOSUITests";
+			sourceTree = "<group>";
+		};
+		1593A326272E8F4A001EC5C3 /* ApplicationModel */ = {
+			isa = PBXGroup;
+			children = (
+				1593A327272E906B001EC5C3 /* README.md */,
+			);
+			path = ApplicationModel;
+			sourceTree = "<group>";
+		};
+		1593A32B272E90A8001EC5C3 /* UnitTest */ = {
+			isa = PBXGroup;
+			children = (
+				1593A32D272E90C6001EC5C3 /* Samidare-iOSTests */,
+				1593A32C272E90B5001EC5C3 /* ApplicationModelTests */,
+			);
+			path = UnitTest;
+			sourceTree = "<group>";
+		};
+		1593A32C272E90B5001EC5C3 /* ApplicationModelTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApplicationModelTests;
+			sourceTree = "<group>";
+		};
+		1593A32D272E90C6001EC5C3 /* Samidare-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Samidare-iOSTests";
+			sourceTree = "<group>";
+		};
+		1593A32E272E9300001EC5C3 /* UITest */ = {
+			isa = PBXGroup;
+			children = (
+				1593A32F272E930F001EC5C3 /* Samidare-iOSUITests */,
+			);
+			path = UITest;
+			sourceTree = "<group>";
+		};
+		1593A32F272E930F001EC5C3 /* Samidare-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = "Samidare-iOSUITests";
 			sourceTree = "<group>";
@@ -231,7 +285,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1593A328272E906B001EC5C3 /* README.md in Resources */,
 				152E4AAF2723C56200572E18 /* Preview Assets.xcassets in Resources */,
+				1593A32A272E908B001EC5C3 /* README.md in Resources */,
 				152E4AAC2723C56200572E18 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,8 +530,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -486,6 +545,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -498,8 +559,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -510,6 +574,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
