@@ -128,6 +128,9 @@ Samidare-iOS/Generated/*.swift
 # ignore project
 Samidare-iOS.xcodeproj
 
+Samidare-iOS/Info.plist
+
+
 # ignore auto generated fastlane readme
 Fastlane/README.md
 UIComponent/Generated/*.swift
