@@ -129,6 +129,8 @@ Samidare-iOS/Generated/*.swift
 Samidare-iOS.xcodeproj
 
 Samidare-iOS/Info.plist
+Samidare-iOSTests/Info.plist
+Samidare-iOSUITests/Info.plist
 
 
 # ignore auto generated fastlane readme

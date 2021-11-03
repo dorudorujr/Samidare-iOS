@@ -151,7 +151,11 @@ targets:
       properties:
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
         UIApplicationSupportsIndirectInputEvents: true
-        
+        LSRequiresIPhoneOS: true
+        UILaunchScreens: 
+          UILaunchScreen:
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
     type: application
     platform: iOS
     sources:
@@ -182,6 +186,8 @@ targets:
         Release:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
   Samidare-iOSTests:
+    info:
+      path: Samidare-iOSTests/Info.plist
     type: bundle.unit-test
     platform: iOS
     sources:
@@ -190,6 +196,8 @@ targets:
     dependencies:
       - target: Samidare-iOS
   Samidare-iOSUITests:
+    info:
+      path: Samidare-iOSUITests/Info.plist
     type: bundle.ui-testing
     platform: iOS
     sources:
