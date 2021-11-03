@@ -153,7 +153,7 @@ targets:
         UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
         UIApplicationSupportsIndirectInputEvents: true
         LSRequiresIPhoneOS: true
-        UILaunchScreens: 
+        UILaunchScreen: 
           UILaunchScreen:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
