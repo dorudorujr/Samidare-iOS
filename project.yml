@@ -67,8 +67,7 @@ schemes:
       gatherCoverageData: true
       coverageTargets:
         - Samidare-iOS
-        - ApplicationModel
-      targets: [Samidare-iOSTests, ApplicationModelTests]
+      targets: [Samidare-iOSTests]
       environmentVariables:
         - variable: isUnitTest
           value: "true"
@@ -90,8 +89,7 @@ schemes:
       gatherCoverageData: true
       coverageTargets:
         - Samidare-iOS
-        - ApplicationModel
-      targets: [Samidare-iOSTests, ApplicationModelTests]
+      targets: [Samidare-iOSTests]
       environmentVariables:
         - variable: isUnitTest
           value: "true"
@@ -113,8 +111,7 @@ schemes:
       gatherCoverageData: true
       coverageTargets:
         - Samidare-iOS
-        - ApplicationModel
-      targets: [Samidare-iOSTests, ApplicationModelTests]
+      targets: [Samidare-iOSTests]
       environmentVariables:
         - variable: isUnitTest
           value: "true"
@@ -136,8 +133,7 @@ schemes:
       gatherCoverageData: true
       coverageTargets:
         - Samidare-iOS
-        - ApplicationModel
-      targets: [Samidare-iOSTests, ApplicationModelTests]
+      targets: [Samidare-iOSTests]
       environmentVariables:
         - variable: isUnitTest
           value: "true"
@@ -179,25 +175,11 @@ targets:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
         Release:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-  ApplicationModel:
-    type: framework
-    platform: iOS
-    sources:
-      - path: ApplicationModel
-        excludes:
-          - README.md
-      - path: ApplicationModel/README.md
-        buildPhase: none
-    settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-    scheme:
-      testTargets:
-        - ApplicationModelTests
-  Samidare-iOSTestsTests:
+  Samidare-iOSTests:
     type: bundle.unit-test
     platform: iOS
     sources:
-      - path: UnitTest/Samidare-iOSTests
+      - path: Samidare-iOSTests
         createIntermediateGroups: true
     dependencies:
       - target: Samidare-iOS
@@ -205,15 +187,7 @@ targets:
     type: bundle.ui-testing
     platform: iOS
     sources:
-      - path: UITest/Samidare-iOSUITests
+      - path: Samidare-iOSUITests
         createIntermediateGroups: true
     dependencies:
       - target: Samidare-iOS
-  ApplicationModelTests:
-    type: bundle.unit-test
-    platform: iOS
-    sources:
-      - path: UnitTest/ApplicationModelTests
-        createIntermediateGroups: true
-    dependencies:
-      - target: ApplicationModel
