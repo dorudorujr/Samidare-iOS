@@ -1,4 +1,8 @@
 name: Samidare-iOS
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    minorVersion: 8.9.1
 options:
   deploymentTarget:
     iOS: 14.0
@@ -166,6 +170,11 @@ targets:
           - README.md
       - path: Samidare-iOS/README.md
         buildPhase: none
+    dependencies:
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseFirestore
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
