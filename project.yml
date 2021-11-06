@@ -1,4 +1,8 @@
 name: Samidare-iOS
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    minorVersion: 8.9.1
 options:
   deploymentTarget:
     iOS: 14.0
@@ -166,6 +170,13 @@ targets:
           - README.md
       - path: Samidare-iOS/README.md
         buildPhase: none
+    dependencies:
+      - package: Firebase
+        product: FirebaseAnalytics
+      - package: Firebase
+        product: FirebaseFirestore
+      - package: Firebase
+        product: FirebaseCrashlytics
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
@@ -186,6 +197,14 @@ targets:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
         Release:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+    postCompileScripts:
+      - name: Firebase
+        script: |
+          if [ "${CONFIGURATION}" == "Release" ]; then
+            cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Release.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+          else
+            cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+          fi
   Samidare-iOSTests:
     info:
       path: Samidare-iOSTests/Info.plist

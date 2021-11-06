@@ -132,6 +132,8 @@ Samidare-iOS/Info.plist
 Samidare-iOSTests/Info.plist
 Samidare-iOSUITests/Info.plist
 
+Samidare-iOS/GoogleService-Info.plist
+Samidare-iOS/Resource/Firebase/*
 
 # ignore auto generated fastlane readme
 Fastlane/README.md
