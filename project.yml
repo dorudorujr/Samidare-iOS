@@ -5,7 +5,7 @@ packages:
     minorVersion: 8.9.1
 options:
   deploymentTarget:
-    iOS: 14.0
+    iOS: 15.0
 configs:
   StubDebug: debug
   Stub: release
@@ -177,6 +177,8 @@ targets:
         product: FirebaseFirestore
       - package: Firebase
         product: FirebaseCrashlytics
+      - package: Firebase
+        product: FirebaseFirestoreSwift-Beta
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
