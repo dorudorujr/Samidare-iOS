@@ -9,7 +9,7 @@ import Foundation
 
 public struct ForcedUpdateEntity: Codable {
     public let canCancel: Bool
-    public let enabledAt: Date
+    public let enabledAt: String
     public let requiredVersion: String
 
     private enum CodingKeys: String, CodingKey {
