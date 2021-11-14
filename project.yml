@@ -183,6 +183,9 @@ targets:
       - package: Firebase
         product: FirebaseFirestoreSwift-Beta
       - package: Realm
+        product: Realm
+      - package: Realm
+        product: RealmSwift
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
