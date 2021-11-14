@@ -3,6 +3,9 @@ packages:
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
     minorVersion: 8.9.1
+  Realm:
+    url: https://github.com/realm/realm-cocoa.git
+    minorVersion: 10.19.0
 options:
   deploymentTarget:
     iOS: 15.0
@@ -179,6 +182,7 @@ targets:
         product: FirebaseCrashlytics
       - package: Firebase
         product: FirebaseFirestoreSwift-Beta
+      - package: Realm
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
