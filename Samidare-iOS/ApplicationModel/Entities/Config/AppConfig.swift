@@ -8,7 +8,7 @@
 import Foundation
 
 struct AppConfig {
-    let gameType: [GameType]
+    let gameType: GameType
     let questionGroup: QuestionGroup
     let time: Int
 }
