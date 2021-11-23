@@ -6,9 +6,10 @@
 //
 
 import RealmSwift
+import Foundation
 
 class AppConfigRealmObject: Object {
-    dynamic var gameType = ""
-    dynamic var questionGroup = ""
-    dynamic var time = 0
+    @objc dynamic var gameType = ""
+    @objc dynamic var questionGroup = ""
+    @objc dynamic var time = 0
 }
