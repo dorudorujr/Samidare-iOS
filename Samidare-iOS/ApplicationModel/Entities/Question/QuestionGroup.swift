@@ -8,5 +8,6 @@
 import Foundation
 
 struct QuestionGroup {
+    let id = UUID()
     let name: String
 }

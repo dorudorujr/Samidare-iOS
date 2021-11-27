@@ -9,5 +9,10 @@ import Foundation
 import RealmSwift
 
 class QuestionGroupRealmObject: Object {
+    @objc dynamic var id = ""
     @objc dynamic var name = ""
+    
+    override static func primaryKey() -> String? {
+        "id"
+    }
 }
