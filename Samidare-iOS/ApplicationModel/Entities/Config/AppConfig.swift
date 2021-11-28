@@ -8,6 +8,7 @@
 import Foundation
 
 struct AppConfig {
+    let id = UUID()
     let gameType: GameType
     let questionGroup: QuestionGroup
     let time: Int
