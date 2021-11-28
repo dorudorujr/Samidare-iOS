@@ -214,6 +214,13 @@ targets:
           else
             cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           fi
+      - name: SwiftLint
+        script: |
+          if mint list | grep -q 'SwiftLint'; then
+            mint run swiftlint
+          else
+            echo "SwiftLint does not exist, download from https://github.com/realm/SwiftLint"
+          fi
   Samidare-iOSTests:
     info:
       path: Samidare-iOSTests/Info.plist
