@@ -29,7 +29,7 @@ class AppConfigRepositoryImpl: AppConfigRepository {
     
     func update(_ appConfig: AppConfig) throws {
         let realm = try Realm()
-        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id,
+        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString,
                                                            "gameType": appConfig.gameType.name,
                                                            "questionGroup": appConfig.questionGroup.name,
                                                            "time": appConfig.time])
