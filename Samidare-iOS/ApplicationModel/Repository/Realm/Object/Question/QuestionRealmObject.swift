@@ -5,9 +5,15 @@
 //  Created by 杉岡成哉 on 2021/11/14.
 //
 
+import Foundation
 import RealmSwift
 
 class QuestionRealmObject: Object {
-    dynamic var body = ""
-    dynamic var group = ""
+    @objc dynamic var id = ""
+    @objc dynamic var body = ""
+    @objc dynamic var group = ""
+    
+    override static func primaryKey() -> String? {
+        "id"
+    }
 }

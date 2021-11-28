@@ -8,5 +8,5 @@
 import Foundation
 
 struct Questions {
-    let list: [String: [Question]]
+    let list: [Question]
 }

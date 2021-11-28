@@ -6,7 +6,13 @@
 //
 
 import RealmSwift
+import Foundation
 
 class QuestionListRealmObject: Object {
+    @objc dynamic var groupName = ""
     let list = List<QuestionRealmObject>()
+    
+    override static func primaryKey() -> String? {
+        "groupName"
+    }
 }
