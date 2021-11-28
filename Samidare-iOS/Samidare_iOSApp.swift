@@ -12,6 +12,7 @@ import Firebase
 struct Samidare_iOSApp: App {
     init() {
         FirebaseApp.configure()
+        RealmConfig.configure()
     }
     var body: some Scene {
         WindowGroup {
