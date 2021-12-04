@@ -31,9 +31,7 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
     }
     
     func delete(_ questionGroup: QuestionGroup) throws {
-        //TODO: 実装
+        // TODO: 実装
         assert(true)
     }
-    
-    
 }
