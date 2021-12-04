@@ -16,7 +16,7 @@ protocol AppConfigRepository {
 class AppConfigRepositoryImpl: AppConfigRepository {
     func get() throws -> AppConfig {
         let realm = try Realm()
-        //TODO: 文言管理を行う
+        // TODO: 文言管理を行う
         guard let results = realm.objects(AppConfigRealmObject.self).first else {
             return AppConfig(gameType: .init(name: "インタビュー"),
                              questionGroup: .init(name: "デフォルト"),
@@ -29,10 +29,7 @@ class AppConfigRepositoryImpl: AppConfigRepository {
     
     func update(_ appConfig: AppConfig) throws {
         let realm = try Realm()
-        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString,
-                                                           "gameType": appConfig.gameType.name,
-                                                           "questionGroup": appConfig.questionGroup.name,
-                                                           "time": appConfig.time])
+        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "gameType": appConfig.gameType.name, "questionGroup": appConfig.questionGroup.name, "time": appConfig.time])
         try realm.write {
             realm.add(appConfigObject, update: .modified)
         }
