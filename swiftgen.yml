@@ -1,0 +1,10 @@
+xcassets:
+  inputs:
+    - "$PROJECT_NAME"/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: "$PROJECT_NAME"/Generated/Images.swift
+strings:
+  paths: "$PROJECT_NAME"/SupportingFiles/ja.lproj/Localizable.strings
+  templateName: structured-swift5
+  output: "$PROJECT_NAME"/Generated/Localized.swift

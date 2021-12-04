@@ -206,6 +206,10 @@ targets:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
         Release:
           PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
+    preBuildScripts:
+      - name: SwiftGen
+        script: |
+          mint run swiftgen config run --config ${PROJECT_DIR}/swiftgen.yml
     postCompileScripts:
       - name: Firebase
         script: |
