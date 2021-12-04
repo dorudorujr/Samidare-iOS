@@ -216,10 +216,15 @@ targets:
           fi
       - name: SwiftLint
         script: |
-          if mint list | grep -q 'SwiftLint'; then
+          if test -d /opt/homebrew/bin; then
+            PATH=/opt/homebrew/bin/:$PATH
+            echo "if通過"
+          fi
+
+          if which mint >/dev/null; then
             mint run swiftlint
           else
-            echo "SwiftLint does not exist, download from https://github.com/realm/SwiftLint"
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
   Samidare-iOSTests:
     info:
