@@ -218,7 +218,6 @@ targets:
         script: |
           if test -d /opt/homebrew/bin; then
             PATH=/opt/homebrew/bin/:$PATH
-            echo "if通過"
           fi
 
           if which mint >/dev/null; then
