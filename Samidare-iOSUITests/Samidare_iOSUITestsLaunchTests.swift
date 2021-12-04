@@ -14,6 +14,7 @@ class Samidare_iOSUITestsLaunchTests: XCTestCase {
     }
 
     override func setUpWithError() throws {
+        super.setUpWithError()
         continueAfterFailure = false
     }
 

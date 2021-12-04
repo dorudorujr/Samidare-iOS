@@ -14,6 +14,7 @@ struct Samidare_iOSApp: App {
         FirebaseApp.configure()
         RealmConfig.configure()
     }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
