@@ -1,0 +1,11 @@
+xcassets:
+  inputs: 
+    - Samidare-iOS/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      output: Samidare-iOS/Generated/Images.swift
+strings:
+  inputs: Samidare-iOS/SupportingFiles/ja.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: Samidare-iOS/Generated/Localized.swift
