@@ -16,10 +16,9 @@ protocol AppConfigRepository {
 class AppConfigRepositoryImpl: AppConfigRepository {
     func get() throws -> AppConfig {
         let realm = try Realm()
-        // TODO: 文言管理を行う
         guard let results = realm.objects(AppConfigRealmObject.self).first else {
-            return AppConfig(gameType: .init(name: "インタビュー"),
-                             questionGroup: .init(name: "デフォルト"),
+            return AppConfig(gameType: .init(name: L10n.Common.AppConfig.gameType),
+                             questionGroup: .init(name: L10n.Common.AppConfig.questionGroup),
                              time: 10)
         }
         return AppConfig(gameType: .init(name: results.gameType),
