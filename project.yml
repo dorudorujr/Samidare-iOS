@@ -209,7 +209,18 @@ targets:
     preBuildScripts:
       - name: SwiftGen
         script: |
-          mint run swiftgen config run --config ${PROJECT_DIR}/swiftgen.yml
+          if test -d /opt/homebrew/bin; then
+            PATH=/opt/homebrew/bin/:$PATH
+          fi
+
+          if which mint >/dev/null; then
+            mint run swiftgen config run --config ${PROJECT_DIR}/swiftgen.yml
+          else
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+          fi
+        outputFiles:
+          - $(SRCROOT)/Samidare-iOS/Generated/Localized.swift
+          - $(SRCROOT)/Samidare-iOS/Generated/Images.swift
     postCompileScripts:
       - name: Firebase
         script: |
