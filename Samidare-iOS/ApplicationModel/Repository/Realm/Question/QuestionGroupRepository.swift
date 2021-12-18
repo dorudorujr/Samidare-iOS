@@ -23,7 +23,7 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
     
     func add(_ questionGroup: QuestionGroup) throws {
         let realm = try Realm()
-        let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id, "name": questionGroup.name])
+        let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
         
         try realm.write {
             realm.add(groupRealmObject, update: .modified)
