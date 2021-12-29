@@ -8,3 +8,10 @@
 
 "Common.AppConfig.GameType" = "インタビュー";
 "Common.AppConfig.QuestionGroup" = "デフォルト";
+
+// 質問画面
+"Question.End.Text" = "終了";
+"Question.Start.Text" = "開始";
+"Question.Stop.Text" = "一時停止";
+"Question.Next.Text" = "次へ";
+"Question.List.Text" = "一覧へ";

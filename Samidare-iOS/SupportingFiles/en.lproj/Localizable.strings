@@ -8,3 +8,10 @@
 
 "Common.AppConfig.GameType" = "Interview";
 "Common.AppConfig.QuestionGroup" = "Default";
+
+// Question View
+"Question.End.Text" = "End";
+"Question.Start.Text" = "Start";
+"Question.Stop.Text" = "Pause";
+"Question.Next.Text" = "Next";
+"Question.List.Text" = "List";
