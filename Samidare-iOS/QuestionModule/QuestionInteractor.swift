@@ -19,11 +19,11 @@ class QuestionInteractor {
         group = try appConfigRepository.get().questionGroup.name
     }
 
-    func getQuestion(from index: Int) throws -> Question {
+    func getQuestion(from index: Int) throws -> Question? {
         let questions = try questionRepository.getQuestions(of: group)
         if questions.count <= index {
             assert(true)
-            return .init(body: "", group: .init(name: group))
+            return nil
         } else {
             return questions[index]
         }
