@@ -32,6 +32,7 @@ class QuestionPresenter: ObservableObject {
             }
         }
     }
+    
     private static let countDownTime = 3
     
     private let interactor: QuestionInteractor
