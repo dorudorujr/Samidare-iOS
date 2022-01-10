@@ -29,6 +29,9 @@ struct QuestionView: View {
             }
         }
         .padding(.horizontal, 16)
+        .onAppear {
+            presenter.viewWillApper()
+        }
     }
 }
 
