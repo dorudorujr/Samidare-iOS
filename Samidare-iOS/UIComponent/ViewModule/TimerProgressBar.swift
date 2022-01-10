@@ -11,7 +11,6 @@ struct TimerProgressBar: View {
     var duration: Binding<CGFloat>
     var body: some View {
         ZStack(alignment: .center) {
-            //TODO: 色変える
             Circle()
                 .stroke(Color.whitesmoke, style: StrokeStyle(lineWidth: 10))
                 .scaledToFit()
