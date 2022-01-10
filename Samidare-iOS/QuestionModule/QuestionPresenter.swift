@@ -39,15 +39,19 @@ class QuestionPresenter: ObservableObject {
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
+    private var playTime: Int = 0
 
     @Published var question: Question?
     @Published var error: Error?
     @Published var selectIndex = 0
     // ゲームの状態
     @Published var status: Status = .standBy
+    // プログレスバーの位置
+    @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
     @Published var nowCountDownTime = countDownTime
     // 開始中のカウントダウン
+    // TODO: もしかしたらこれPublishedじゃなくてもいいかも
     @Published var nowPlayTime = 0
     // 質問の総数
     @Published var totalQuestionCount = 0
@@ -97,7 +101,9 @@ class QuestionPresenter: ObservableObject {
     
     private func setConfigTime() {
         do {
-            nowPlayTime = try interactor.getTime()
+            let time = try interactor.getTime()
+            nowPlayTime = time
+            playTime = time
         } catch {
             self.error = error
         }
@@ -140,6 +146,7 @@ class QuestionPresenter: ObservableObject {
             guard let self = self else { return }
             if self.totalQuestionCount > self.selectIndex {
                 self.nowPlayTime -= 1
+                self.duration = CGFloat((self.nowPlayTime / self.playTime))
                 if self.nowPlayTime == 0 {
                     self.selectIndex += 1
                     self.setQuestion()
@@ -198,6 +205,7 @@ class QuestionPresenter: ObservableObject {
     
     private func resetPlayConfig() {
         self.selectIndex = 0
+        self.duration = 1.0
         self.playTimer?.invalidate()
         self.playTimer = nil
     }
