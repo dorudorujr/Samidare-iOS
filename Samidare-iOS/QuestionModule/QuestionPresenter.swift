@@ -39,7 +39,10 @@ class QuestionPresenter: ObservableObject {
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
+    // ゲーム時間
     private var playTime: Int = 0
+    // 開始中のカウントダウン
+    private var nowPlayTime = 0.0
 
     @Published var question: Question?
     @Published var error: Error?
@@ -50,9 +53,6 @@ class QuestionPresenter: ObservableObject {
     @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
     @Published var nowCountDownTime = countDownTime
-    // 開始中のカウントダウン
-    // TODO: もしかしたらこれPublishedじゃなくてもいいかも
-    @Published var nowPlayTime = 0.0
     // 質問の総数
     @Published var totalQuestionCount = 0
     
