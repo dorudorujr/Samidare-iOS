@@ -42,7 +42,7 @@ struct QuestionView: View {
 }
 
 private struct ReadyTexts: View {
-    var countDownTimeText: Binding<Int>
+    let countDownTimeText: Binding<Int>
     var body: some View {
         VStack(alignment: .center) {
             Text(String(countDownTimeText.wrappedValue))

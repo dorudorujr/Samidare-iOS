@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct TimerProgressBar: View {
-    var duration: Binding<CGFloat>
-    var color: Color
+    let duration: Binding<CGFloat>
+    let color: Color
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
