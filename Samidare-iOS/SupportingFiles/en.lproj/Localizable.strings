@@ -10,6 +10,7 @@
 "Common.AppConfig.QuestionGroup" = "Default";
 
 // Question View
+"Question.Ready.Text" = "Ready";
 "Question.End.Text" = "End";
 "Question.Start.Text" = "Start";
 "Question.Stop.Text" = "Pause";

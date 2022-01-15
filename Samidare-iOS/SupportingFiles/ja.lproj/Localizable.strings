@@ -10,6 +10,7 @@
 "Common.AppConfig.QuestionGroup" = "デフォルト";
 
 // 質問画面
+"Question.Ready.Text" = "準備中";
 "Question.End.Text" = "終了";
 "Question.Start.Text" = "開始";
 "Question.Stop.Text" = "一時停止";
