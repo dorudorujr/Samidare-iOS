@@ -17,6 +17,9 @@ struct QuestionView: View {
                 if presenter.status == .ready {
                     ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
                 }
+                if presenter.status == .play || presenter.status == .stop || presenter.status == .done {
+                    QuestionCardView(questionBody: "好きな色は")
+                }
             }
             HStack(alignment: .center) {
                 CircleButton(
