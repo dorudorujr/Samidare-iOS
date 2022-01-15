@@ -32,4 +32,8 @@ extension Color {
     static var questionGray: Color {
         Color.rgba(146, 147, 147)
     }
+
+    static var orangered: Color {
+        Color.rgba(255, 69, 0)
+    }
 }
