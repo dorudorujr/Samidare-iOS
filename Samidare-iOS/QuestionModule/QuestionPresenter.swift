@@ -157,13 +157,16 @@ class QuestionPresenter: ObservableObject {
         playTimer?.invalidate()
         playTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
+            // 最後の質問かどうか
             if self.totalQuestionCount > self.selectIndex {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
+                // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime == 0 {
                     self.selectIndex += 1
                     self.setNowPlayTime()
                 }
+            // 全ての質問を表示し終わった
             } else {
                 self.resetPlayConfig()
                 self.done()
