@@ -132,6 +132,7 @@ class QuestionPresenter: ObservableObject {
     
     private func start() {
         guard status == .standBy || status == .stop else {
+            assert(true)
             return
         }
         status = .ready
@@ -149,6 +150,7 @@ class QuestionPresenter: ObservableObject {
 
     private func play() {
         guard status == .ready || status == .stop else {
+            assert(true)
             return
         }
         status = .play
@@ -179,6 +181,7 @@ class QuestionPresenter: ObservableObject {
     
     private func stop() {
         guard status == .ready || status == .play else {
+            assert(true)
             return
         }
         status = .stop
@@ -193,6 +196,7 @@ class QuestionPresenter: ObservableObject {
     
     private func end() {
         guard status == .stop || status == .done else {
+            assert(true)
             return
         }
         status = .standBy
@@ -202,6 +206,7 @@ class QuestionPresenter: ObservableObject {
     
     private func next() {
         guard status == .play else {
+            assert(true)
             return
         }
         selectIndex += 1
