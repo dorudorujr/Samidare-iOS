@@ -63,7 +63,8 @@ class QuestionPresenter: ObservableObject {
     // MARK: - Life Cycle
     
     func viewWillApper() {
-        setConfigTime()
+        setNowPlayTime()
+        setPlayTime()
         setTotalQuestionCount()
     }
     
@@ -99,11 +100,17 @@ class QuestionPresenter: ObservableObject {
         }
     }
     
-    private func setConfigTime() {
+    private func setNowPlayTime() {
         do {
-            let time = try interactor.getTime()
-            nowPlayTime = Double(time)
-            playTime = time
+            nowPlayTime = Double(try interactor.getTime())
+        } catch {
+            self.error = error
+        }
+    }
+
+    private func setPlayTime() {
+        do {
+            playTime = try interactor.getTime()
         } catch {
             self.error = error
         }
@@ -150,7 +157,7 @@ class QuestionPresenter: ObservableObject {
                 if self.nowPlayTime == 0 {
                     self.selectIndex += 1
                     self.setQuestion()
-                    self.setConfigTime()
+                    self.setNowPlayTime()
                 }
             } else {
                 self.resetPlayConfig()
@@ -196,7 +203,7 @@ class QuestionPresenter: ObservableObject {
         }
         selectIndex += 1
         setQuestion()
-        setConfigTime()
+        setNowPlayTime()
     }
     
     private func goToListView() {
@@ -204,10 +211,11 @@ class QuestionPresenter: ObservableObject {
     }
     
     private func resetPlayConfig() {
-        self.selectIndex = 0
-        self.duration = 1.0
-        self.playTimer?.invalidate()
-        self.playTimer = nil
+        selectIndex = 0
+        duration = 1.0
+        playTimer?.invalidate()
+        playTimer = nil
+        setNowPlayTime()
     }
     
     private func resetStandByConfig() {
