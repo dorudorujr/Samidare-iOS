@@ -10,8 +10,14 @@ import SwiftUI
 struct QuestionView: View {
     @ObservedObject var presenter: QuestionPresenter
     var body: some View {
+        // swiftlint:disable closure_body_length
         VStack(alignment: .center) {
-            TimerProgressBar(duration: $presenter.duration)
+            ZStack(alignment: .center) {
+                TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready ? .orangered : .bassBlue)
+                if presenter.status == .ready {
+                    ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+                }
+            }
             HStack(alignment: .center) {
                 CircleButton(
                     action: {
@@ -31,6 +37,22 @@ struct QuestionView: View {
         .padding(.horizontal, 16)
         .onAppear {
             presenter.viewWillApper()
+        }
+    }
+}
+
+private struct ReadyTexts: View {
+    var countDownTimeText: Binding<Int>
+    var body: some View {
+        VStack(alignment: .center) {
+            Text(String(countDownTimeText.wrappedValue))
+                .font(.system(size: 150))
+                .fontWeight(.bold)
+                .foregroundColor(Color.orangered)
+            Text(L10n.Question.Ready.text)
+                .font(.system(size: 30))
+                .fontWeight(.bold)
+                .foregroundColor(Color.orangered)
         }
     }
 }

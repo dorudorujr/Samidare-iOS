@@ -140,6 +140,7 @@ class QuestionPresenter: ObservableObject {
         countDownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.nowCountDownTime -= 1
+            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.countDownTime)
             
             if self.nowCountDownTime == 0 {
                 self.resetStandByConfig()
