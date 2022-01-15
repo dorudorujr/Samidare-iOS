@@ -49,10 +49,12 @@ private struct ReadyTexts: View {
                 .font(.system(size: 150))
                 .fontWeight(.bold)
                 .foregroundColor(Color.orangered)
+                .minimumScaleFactor(0.1)
             Text(L10n.Question.Ready.text)
                 .font(.system(size: 30))
                 .fontWeight(.bold)
                 .foregroundColor(Color.orangered)
+                .minimumScaleFactor(0.1)
         }
     }
 }
