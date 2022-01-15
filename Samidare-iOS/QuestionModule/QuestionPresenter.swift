@@ -46,7 +46,11 @@ class QuestionPresenter: ObservableObject {
 
     @Published var question: Question?
     @Published var error: Error?
-    @Published var selectIndex = 0
+    @Published var selectIndex = 0 {
+        didSet {
+            setQuestion()
+        }
+    }
     // ゲームの状態
     @Published var status: Status = .standBy
     // プログレスバーの位置
@@ -156,7 +160,6 @@ class QuestionPresenter: ObservableObject {
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
                 if self.nowPlayTime == 0 {
                     self.selectIndex += 1
-                    self.setQuestion()
                     self.setNowPlayTime()
                 }
             } else {
@@ -202,7 +205,6 @@ class QuestionPresenter: ObservableObject {
             return
         }
         selectIndex += 1
-        setQuestion()
         setNowPlayTime()
     }
     
