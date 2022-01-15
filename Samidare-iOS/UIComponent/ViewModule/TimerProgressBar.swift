@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TimerProgressBar: View {
     var duration: Binding<CGFloat>
+    var color: Color
     var body: some View {
         ZStack(alignment: .center) {
             Circle()
@@ -16,7 +17,7 @@ struct TimerProgressBar: View {
                 .scaledToFit()
             Circle()
                 .trim(from: 0.0, to: duration.wrappedValue)
-                .stroke(Color.bassBlue, style: StrokeStyle(lineWidth: 10, lineCap: .round))
+                .stroke(color, style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .scaledToFit()
                 .rotationEffect(.degrees(-90))
         }
@@ -25,6 +26,6 @@ struct TimerProgressBar: View {
 
 struct TimerProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        TimerProgressBar(duration: .constant(1.0))
+        TimerProgressBar(duration: .constant(1.0), color: .bassBlue)
     }
 }
