@@ -41,7 +41,7 @@ class QuestionPresenter: ObservableObject {
     private var countDownTimer: Timer?
     // ゲーム時間
     private var playTime: Int = 0
-    // 開始中のカウントダウン
+    // ゲーム中のカウントダウン
     private var nowPlayTime = 0.0
 
     @Published var question: Question?
