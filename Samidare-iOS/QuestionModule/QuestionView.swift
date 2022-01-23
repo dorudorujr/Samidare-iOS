@@ -11,31 +11,35 @@ struct QuestionView: View {
     @ObservedObject var presenter: QuestionPresenter
     var body: some View {
         // swiftlint:disable closure_body_length
-        VStack(alignment: .center) {
-            ZStack(alignment: .center) {
-                TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready ? .orangered : .bassBlue)
-                if presenter.status == .ready {
-                    ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+        GeometryReader { geometry in
+            VStack(spacing: 40) {
+                ZStack {
+                    TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready ? .orangered : .bassBlue)
+                    if presenter.status == .ready {
+                        ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+                    }
+                    if presenter.status == .play || presenter.status == .stop || presenter.status == .done {
+                        QuestionCardView(questionBody: presenter.question?.body ?? "")
+                    }
                 }
-                if presenter.status == .play || presenter.status == .stop || presenter.status == .done {
-                    QuestionCardView(questionBody: "好きな色は")
+                .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).width, alignment: .center)
+                HStack {
+                    CircleButton(
+                        action: {
+                            presenter.secondaryButtonAction()
+                        },
+                        title: presenter.status.secondaryText,
+                        color: Color.questionGray)
+                    Spacer()
+                    CircleButton(
+                        action: {
+                            presenter.primaryButtonAction()
+                        },
+                        title: presenter.status.primaryText,
+                        color: Color.bassBlue)
                 }
             }
-            HStack(alignment: .center) {
-                CircleButton(
-                    action: {
-                        presenter.secondaryButtonAction()
-                    },
-                    title: presenter.status.secondaryText,
-                    color: Color.questionGray)
-                Spacer()
-                CircleButton(
-                    action: {
-                        presenter.primaryButtonAction()
-                    },
-                    title: presenter.status.primaryText,
-                    color: Color.bassBlue)
-            }
+            .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).height, alignment: .center)
         }
         .padding(.horizontal, 16)
         .onAppear {
