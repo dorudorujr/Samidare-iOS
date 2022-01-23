@@ -77,8 +77,10 @@ class QuestionPresenter: ObservableObject {
     
     func primaryButtonAction() {
         switch status {
-        case .standBy, .stop:
+        case .standBy:
             start()
+        case .stop:
+            play()
         case .ready, .play:
             next()
         case .done:
