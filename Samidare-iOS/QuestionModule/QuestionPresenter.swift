@@ -62,6 +62,7 @@ class QuestionPresenter: ObservableObject {
     
     init(interactor: QuestionInteractor) {
         self.interactor = interactor
+        setQuestion()
     }
 
     // MARK: - Life Cycle
