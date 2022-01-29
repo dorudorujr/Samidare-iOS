@@ -10,11 +10,11 @@ import SwiftUI
 
 class QuestionPresenter: ObservableObject {
     enum Status {
-        case standBy, ready, play, stop, done
+        case standBy, ready, play, stopPlaying, stopReadying, done
         
         var primaryText: String {
             switch self {
-            case .standBy, .stop:
+            case .standBy, .stopPlaying, .stopReadying:
                 return L10n.Question.Start.text
             case .ready, .play:
                 return L10n.Question.Next.text
@@ -25,40 +25,51 @@ class QuestionPresenter: ObservableObject {
         
         var secondaryText: String {
             switch self {
-            case .standBy, .stop, .done:
+            case .standBy, .stopPlaying, .stopReadying, .done:
                 return L10n.Question.End.text
             case .ready, .play:
                 return L10n.Question.Stop.text
             }
         }
     }
+    
     private static let countDownTime = 3
     
     private let interactor: QuestionInteractor
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
+    // ゲーム時間
+    private var playTime: Int = 0
+    // ゲーム中のカウントダウン
+    private var nowPlayTime = 0.0
 
     @Published var question: Question?
     @Published var error: Error?
-    @Published var selectIndex = 0
+    @Published var selectIndex = 0 {
+        didSet {
+            setQuestion()
+        }
+    }
     // ゲームの状態
     @Published var status: Status = .standBy
+    // プログレスバーの位置
+    @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
     @Published var nowCountDownTime = countDownTime
-    // 開始中のカウントダウン
-    @Published var nowPlayTime = 0
     // 質問の総数
     @Published var totalQuestionCount = 0
     
     init(interactor: QuestionInteractor) {
         self.interactor = interactor
+        setQuestion()
     }
 
     // MARK: - Life Cycle
     
     func viewWillApper() {
-        setConfigTime()
+        setNowPlayTime()
+        setPlayTime()
         setTotalQuestionCount()
     }
     
@@ -66,8 +77,10 @@ class QuestionPresenter: ObservableObject {
     
     func primaryButtonAction() {
         switch status {
-        case .standBy, .stop:
+        case .standBy, .stopReadying:
             start()
+        case .stopPlaying:
+            play()
         case .ready, .play:
             next()
         case .done:
@@ -77,7 +90,7 @@ class QuestionPresenter: ObservableObject {
     
     func secondaryButtonAction() {
         switch status {
-        case .standBy, .stop, .done:
+        case .standBy, .stopPlaying, .stopReadying, .done:
             end()
         case .ready, .play:
             stop()
@@ -94,9 +107,17 @@ class QuestionPresenter: ObservableObject {
         }
     }
     
-    private func setConfigTime() {
+    private func setNowPlayTime() {
         do {
-            nowPlayTime = try interactor.getTime()
+            nowPlayTime = Double(try interactor.getTime())
+        } catch {
+            self.error = error
+        }
+    }
+
+    private func setPlayTime() {
+        do {
+            playTime = try interactor.getTime()
         } catch {
             self.error = error
         }
@@ -113,7 +134,8 @@ class QuestionPresenter: ObservableObject {
     // MARK: - Status Function
     
     private func start() {
-        guard status == .standBy || status == .stop else {
+        guard status == .standBy || status == .stopReadying else {
+            assert(true)
             return
         }
         status = .ready
@@ -121,6 +143,7 @@ class QuestionPresenter: ObservableObject {
         countDownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.nowCountDownTime -= 1
+            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.countDownTime)
             
             if self.nowCountDownTime == 0 {
                 self.resetStandByConfig()
@@ -129,52 +152,65 @@ class QuestionPresenter: ObservableObject {
         }
     }
 
+    // ゲーム中
     private func play() {
-        guard status == .ready || status == .stop else {
+        guard status == .ready || status == .stopPlaying else {
+            assert(true)
             return
         }
         status = .play
         playTimer?.invalidate()
-        playTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+        playTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
+            // 最後の質問かどうか
             if self.totalQuestionCount > self.selectIndex {
-                self.nowPlayTime -= 1
+                self.nowPlayTime -= 0.1
+                self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
+                // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime == 0 {
                     self.selectIndex += 1
-                    self.setQuestion()
-                    self.setConfigTime()
+                    self.setNowPlayTime()
                 }
+            // 全ての質問を表示し終わった
             } else {
-                self.resetPlayConfig()
+                self.duration = 1.0
+                self.playTimer?.invalidate()
+                self.playTimer = nil
                 self.done()
             }
         }
     }
     
+    // ゲーム完了
     private func done() {
         guard status == .play else {
             assert(true)
             return
         }
+        // 最後に表示していた質問を表示させる
+        selectIndex -= 1
         status = .done
     }
     
+    // 一時停止
     private func stop() {
         guard status == .ready || status == .play else {
+            assert(true)
             return
         }
-        status = .stop
         if status == .ready {
             countDownTimer?.invalidate()
         } else {
             playTimer?.invalidate()
         }
+        status = status == .play ? .stopPlaying : .stopReadying
     }
     
     // MARK: - helper
     
     private func end() {
-        guard status == .stop || status == .done else {
+        guard status == .stopPlaying || status == .stopReadying || status == .done else {
+            assert(true)
             return
         }
         status = .standBy
@@ -184,11 +220,11 @@ class QuestionPresenter: ObservableObject {
     
     private func next() {
         guard status == .play else {
+            assert(true)
             return
         }
         selectIndex += 1
-        setQuestion()
-        setConfigTime()
+        setNowPlayTime()
     }
     
     private func goToListView() {
@@ -196,9 +232,11 @@ class QuestionPresenter: ObservableObject {
     }
     
     private func resetPlayConfig() {
-        self.selectIndex = 0
-        self.playTimer?.invalidate()
-        self.playTimer = nil
+        selectIndex = 0
+        duration = 1.0
+        playTimer?.invalidate()
+        playTimer = nil
+        setNowPlayTime()
     }
     
     private func resetStandByConfig() {
