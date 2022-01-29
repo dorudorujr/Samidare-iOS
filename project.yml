@@ -240,6 +240,20 @@ targets:
           else
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
+      - name: Generate Mocks with Mockolo
+        script: |
+          if test -d /opt/homebrew/bin; then
+            PATH=/opt/homebrew/bin/:$PATH
+          fi
+
+          if which mint >/dev/null; then
+            rm -f $SRCROOT/MockResults.swift
+            mint run mockolo mockolo --sourcedirs ${PROJECT_DIR} --destination ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift
+          else
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+          fi
+        outputFiles:
+          - ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift
   Samidare-iOSTests:
     info:
       path: Samidare-iOSTests/Info.plist
@@ -248,6 +262,8 @@ targets:
     sources:
       - path: Samidare-iOSTests
         createIntermediateGroups: true
+      - path: Samidare-iOSTests/MockResults.swift
+        optional: true
     dependencies:
       - target: Samidare-iOS
   Samidare-iOSUITests:
