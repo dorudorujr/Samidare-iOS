@@ -172,7 +172,9 @@ class QuestionPresenter: ObservableObject {
                 }
             // 全ての質問を表示し終わった
             } else {
-                self.resetPlayConfig()
+                self.duration = 1.0
+                self.playTimer?.invalidate()
+                self.playTimer = nil
                 self.done()
             }
         }
@@ -183,6 +185,8 @@ class QuestionPresenter: ObservableObject {
             assert(true)
             return
         }
+        // 最後に表示していた質問を表示させる
+        selectIndex -= 1
         status = .done
     }
     
