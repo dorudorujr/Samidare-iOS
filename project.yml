@@ -247,7 +247,7 @@ targets:
           fi
 
           if which mint >/dev/null; then
-            rm -f $SRCROOT/MockResults.swift
+            rm -f ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift
             mint run mockolo mockolo --sourcedirs ${PROJECT_DIR} --destination ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift
           else
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
