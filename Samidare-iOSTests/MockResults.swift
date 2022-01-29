@@ -8,4 +8,108 @@ import Foundation
 import RealmSwift
 
 
+class QuestionRepositoryMock: QuestionRepository {
+    init() { }
+
+
+    private(set) var getQuestionsCallCount = 0
+    var getQuestionsHandler: ((String) throws -> ([Question]))?
+    func getQuestions(of group: String) throws -> [Question] {
+        getQuestionsCallCount += 1
+        if let getQuestionsHandler = getQuestionsHandler {
+            return try getQuestionsHandler(group)
+        }
+        return [Question]()
+    }
+
+    private(set) var addCallCount = 0
+    var addHandler: ((Question) throws -> ())?
+    func add(_ question: Question) throws  {
+        addCallCount += 1
+        if let addHandler = addHandler {
+            try addHandler(question)
+        }
+        
+    }
+
+    private(set) var updateCallCount = 0
+    var updateHandler: ((Question) throws -> ())?
+    func update(_ question: Question) throws  {
+        updateCallCount += 1
+        if let updateHandler = updateHandler {
+            try updateHandler(question)
+        }
+        
+    }
+
+    private(set) var deleteCallCount = 0
+    var deleteHandler: ((Question, String) throws -> ())?
+    func delete(_ question: Question, of group: String) throws  {
+        deleteCallCount += 1
+        if let deleteHandler = deleteHandler {
+            try deleteHandler(question, group)
+        }
+        
+    }
+}
+
+class AppConfigRepositoryMock: AppConfigRepository {
+    init() { }
+
+
+    private(set) var getCallCount = 0
+    var getHandler: (() throws -> (AppConfig))?
+    func get() throws -> AppConfig {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            return try getHandler()
+        }
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
+    }
+
+    private(set) var updateCallCount = 0
+    var updateHandler: ((AppConfig) throws -> ())?
+    func update(_ appConfig: AppConfig) throws  {
+        updateCallCount += 1
+        if let updateHandler = updateHandler {
+            try updateHandler(appConfig)
+        }
+        
+    }
+}
+
+class QuestionGroupRepositoryMock: QuestionGroupRepository {
+    init() { }
+
+
+    private(set) var getCallCount = 0
+    var getHandler: (() throws -> ([QuestionGroup]))?
+    func get() throws -> [QuestionGroup] {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            return try getHandler()
+        }
+        return [QuestionGroup]()
+    }
+
+    private(set) var addCallCount = 0
+    var addHandler: ((QuestionGroup) throws -> ())?
+    func add(_ questionGroup: QuestionGroup) throws  {
+        addCallCount += 1
+        if let addHandler = addHandler {
+            try addHandler(questionGroup)
+        }
+        
+    }
+
+    private(set) var deleteCallCount = 0
+    var deleteHandler: ((QuestionGroup) throws -> ())?
+    func delete(_ questionGroup: QuestionGroup) throws  {
+        deleteCallCount += 1
+        if let deleteHandler = deleteHandler {
+            try deleteHandler(questionGroup)
+        }
+        
+    }
+}
 
