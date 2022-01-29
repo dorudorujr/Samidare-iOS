@@ -14,13 +14,14 @@ struct QuestionCardView: View {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                 .stroke(lineWidth: 2)
                 .fill(Color.textBlack)
-                .scaleEffect(x: 0.7, y: 0.6, anchor: .center)
             Text(questionBody)
                 .foregroundColor(.textBlack)
-                .font(.system(size: 24))
+                .font(.system(size: 30))
                 .fontWeight(.bold)
+                .padding(8)
                 .minimumScaleFactor(0.5)
         }
+        .scaleEffect(x: 0.7, y: 0.6, anchor: .center)
     }
 }
 
