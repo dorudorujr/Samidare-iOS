@@ -13,6 +13,12 @@ struct QuestionView: View {
         // swiftlint:disable closure_body_length
         GeometryReader { geometry in
             VStack(spacing: 40) {
+                if presenter.status != .standBy && presenter.status != .ready {
+                    Text("\(presenter.selectIndex + 1)/\(presenter.totalQuestionCount)")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.textBlack)
+                }
                 ZStack {
                     TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready || presenter.status == .stopReadying ? .orangered : .bassBlue)
                     if presenter.status == .ready || presenter.status == .stopReadying {
