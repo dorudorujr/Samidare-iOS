@@ -2,6 +2,7 @@ excluded:
   - Carthage
   - Pods
   - .bundle
+  - Samidare-iOSTests/
 
 disabled_rules:
   - line_length

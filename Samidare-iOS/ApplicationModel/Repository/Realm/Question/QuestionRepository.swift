@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+/// @mockable
 protocol QuestionRepository {
     func getQuestions(of group: String) throws -> [Question]
     func add(_ question: Question) throws

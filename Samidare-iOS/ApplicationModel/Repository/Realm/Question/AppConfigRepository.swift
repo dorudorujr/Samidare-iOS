@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 
+/// @mockable
 protocol AppConfigRepository {
     func get() throws -> AppConfig
     func update(_ appConfig: AppConfig) throws
