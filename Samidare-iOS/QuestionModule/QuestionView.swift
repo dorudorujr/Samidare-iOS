@@ -14,11 +14,11 @@ struct QuestionView: View {
         GeometryReader { geometry in
             VStack(spacing: 40) {
                 ZStack {
-                    TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready ? .orangered : .bassBlue)
-                    if presenter.status == .ready {
+                    TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready || presenter.status == .stopReadying ? .orangered : .bassBlue)
+                    if presenter.status == .ready || presenter.status == .stopReadying {
                         ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
                     }
-                    if presenter.status == .play || presenter.status == .stop || presenter.status == .done {
+                    if presenter.status == .play || presenter.status == .stopPlaying || presenter.status == .done {
                         QuestionCardView(questionBody: presenter.question?.body ?? "")
                     }
                 }

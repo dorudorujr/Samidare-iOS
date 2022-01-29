@@ -10,11 +10,11 @@ import SwiftUI
 
 class QuestionPresenter: ObservableObject {
     enum Status {
-        case standBy, ready, play, stop, done
+        case standBy, ready, play, stopPlaying, stopReadying, done
         
         var primaryText: String {
             switch self {
-            case .standBy, .stop:
+            case .standBy, .stopPlaying, .stopReadying:
                 return L10n.Question.Start.text
             case .ready, .play:
                 return L10n.Question.Next.text
@@ -25,7 +25,7 @@ class QuestionPresenter: ObservableObject {
         
         var secondaryText: String {
             switch self {
-            case .standBy, .stop, .done:
+            case .standBy, .stopPlaying, .stopReadying, .done:
                 return L10n.Question.End.text
             case .ready, .play:
                 return L10n.Question.Stop.text
@@ -77,9 +77,9 @@ class QuestionPresenter: ObservableObject {
     
     func primaryButtonAction() {
         switch status {
-        case .standBy:
+        case .standBy, .stopReadying:
             start()
-        case .stop:
+        case .stopPlaying:
             play()
         case .ready, .play:
             next()
@@ -90,7 +90,7 @@ class QuestionPresenter: ObservableObject {
     
     func secondaryButtonAction() {
         switch status {
-        case .standBy, .stop, .done:
+        case .standBy, .stopPlaying, .stopReadying, .done:
             end()
         case .ready, .play:
             stop()
@@ -134,7 +134,7 @@ class QuestionPresenter: ObservableObject {
     // MARK: - Status Function
     
     private func start() {
-        guard status == .standBy || status == .stop else {
+        guard status == .standBy || status == .stopReadying else {
             assert(true)
             return
         }
@@ -153,7 +153,7 @@ class QuestionPresenter: ObservableObject {
     }
 
     private func play() {
-        guard status == .ready || status == .stop else {
+        guard status == .ready || status == .stopPlaying else {
             assert(true)
             return
         }
@@ -191,18 +191,18 @@ class QuestionPresenter: ObservableObject {
             assert(true)
             return
         }
-        status = .stop
         if status == .ready {
             countDownTimer?.invalidate()
         } else {
             playTimer?.invalidate()
         }
+        status = status == .play ? .stopPlaying : .stopReadying
     }
     
     // MARK: - helper
     
     private func end() {
-        guard status == .stop || status == .done else {
+        guard status == .stopPlaying || status == .stopReadying || status == .done else {
             assert(true)
             return
         }
