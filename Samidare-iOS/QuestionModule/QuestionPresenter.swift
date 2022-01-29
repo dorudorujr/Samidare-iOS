@@ -152,6 +152,7 @@ class QuestionPresenter: ObservableObject {
         }
     }
 
+    // ゲーム中
     private func play() {
         guard status == .ready || status == .stopPlaying else {
             assert(true)
@@ -180,6 +181,7 @@ class QuestionPresenter: ObservableObject {
         }
     }
     
+    // ゲーム完了
     private func done() {
         guard status == .play else {
             assert(true)
@@ -190,6 +192,7 @@ class QuestionPresenter: ObservableObject {
         status = .done
     }
     
+    // 一時停止
     private func stop() {
         guard status == .ready || status == .play else {
             assert(true)
