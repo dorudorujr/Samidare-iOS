@@ -167,7 +167,7 @@ class QuestionPresenter: ObservableObject {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
                 // 1つの質問を表示する時間を過ぎたかどうか
-                if self.nowPlayTime == 0 {
+                if self.nowPlayTime < 0 {
                     self.selectIndex += 1
                     self.setNowPlayTime()
                 }
