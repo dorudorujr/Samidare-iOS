@@ -46,7 +46,9 @@ class QuestionPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.status, .standBy)
         /// 現在のカウントダウンタイムが初期表示であるか確認
         XCTAssertEqual(presenter.nowCountDownTime, 3)
+        
         presenter.primaryButtonAction()
+        
         /// ステータス確認
         XCTAssertEqual(presenter.status, .ready)
         let expCountDown = expectation(description: "カウントダウン中")
@@ -119,6 +121,52 @@ class QuestionPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.status, .done)
         /// ゲーム完了後は一番最後に表示した質問を表示
         XCTAssertEqual(presenter.selectIndex, 0)
+    }
+    
+    func testNext() {
+        questionRepositoryMock.getQuestionsHandler = { _ in
+            [
+                .init(body: "好きな色は", group: .init(name: "default")),
+                .init(body: "将来の夢は", group: .init(name: "default"))
+            ]
+        }
+        setPresenter()
+        
+        // 初期化
+        presenter.viewWillApper()
+        
+        presenter.primaryButtonAction()
+        let expNextBefore = expectation(description: "ゲーム中まで進める")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            expNextBefore.fulfill()
+        }
+        wait(for: [expNextBefore], timeout: 0.1)
+        
+        /// 質問の総数確認
+        XCTAssertEqual(presenter.totalQuestionCount, 2)
+        /// indexが初期値かどうか確認
+        XCTAssertEqual(presenter.selectIndex, 0)
+        /// プログレスバーの範囲が進んでいるかどうか
+        XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.2) / CGFloat(1.0))
+        
+        presenter.primaryButtonAction()
+        
+        let expNextAfter = expectation(description: "Next後のTimer")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            MockTimer.timer?.fire()
+            expNextAfter.fulfill()
+        }
+        wait(for: [expNextAfter], timeout: 0.1)
+        
+        /// indexが次に進んでいるか確認
+        XCTAssertEqual(presenter.selectIndex, 1)
+        /// プログレスバーの範囲が初回表示時の範囲かどうか
+        XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.1) / CGFloat(1.0))
     }
     
     // MARK: - Set Data
