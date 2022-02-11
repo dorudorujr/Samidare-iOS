@@ -169,6 +169,89 @@ class QuestionPresenterTests: XCTestCase {
         XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.1) / CGFloat(1.0))
     }
     
+    func testSecondaryButtonAction() {
+        // 初期化
+        presenter.viewWillApper()
+        
+        presenter.primaryButtonAction()
+        let expCountDown = expectation(description: "カウントダウン中")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            MockTimer.timer?.fire()
+            expCountDown.fulfill()
+        }
+        wait(for: [expCountDown], timeout: 0.1)
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .ready)
+        /// invalidate実行確認
+        XCTAssertEqual(MockTimer.callCountInvalidate, 0)
+        
+        presenter.secondaryButtonAction()
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .stopReadying)
+        /// invalidate実行確認
+        XCTAssertEqual(MockTimer.callCountInvalidate, 1)
+        
+        presenter.primaryButtonAction()
+        
+        let expGoToPlay = expectation(description: "ゲーム中へ遷移")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            expGoToPlay.fulfill()
+        }
+        wait(for: [expGoToPlay], timeout: 0.1)
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .play)
+        /// invalidate実行確認
+        XCTAssertEqual(MockTimer.callCountInvalidate, 3)
+        
+        presenter.secondaryButtonAction()
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .stopPlaying)
+        /// invalidate実行確認
+        XCTAssertEqual(MockTimer.callCountInvalidate, 4)
+        
+        presenter.primaryButtonAction()
+        
+        // ゲーム完了
+        let expDone = expectation(description: "ゲーム完了")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            MockTimer.timer?.fire()
+            expDone.fulfill()
+        }
+        wait(for: [expDone], timeout: 0.1)
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .done)
+        
+        presenter.secondaryButtonAction()
+        
+        /// ステータス確認
+        XCTAssertEqual(presenter.status, .standBy)
+        
+        // TODO: 初期化確認
+        /// 初期化確認
+        XCTAssertEqual(presenter.selectIndex, 0)
+        XCTAssertEqual(presenter.duration, 1.0)
+        XCTAssertEqual(presenter.nowCountDownTime, 3)
+        XCTAssertEqual(MockTimer.callCountInvalidate, 6)
+    }
+    
     // MARK: - Set Data
     
     private func makeInteractory() -> QuestionInteractor {
