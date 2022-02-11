@@ -36,6 +36,7 @@ class QuestionPresenter: ObservableObject {
     private static let countDownTime = 3
     
     private let interactor: QuestionInteractor
+    private let timerProvider: Timer.Type
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
@@ -60,8 +61,9 @@ class QuestionPresenter: ObservableObject {
     // 質問の総数
     @Published var totalQuestionCount = 0
     
-    init(interactor: QuestionInteractor) {
+    init(interactor: QuestionInteractor, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
+        self.timerProvider = timerProvider
         setQuestion()
     }
 
@@ -140,7 +142,7 @@ class QuestionPresenter: ObservableObject {
         }
         status = .ready
         countDownTimer?.invalidate()
-        countDownTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+        countDownTimer = timerProvider.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.nowCountDownTime -= 1
             self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.countDownTime)
@@ -160,7 +162,7 @@ class QuestionPresenter: ObservableObject {
         }
         status = .play
         playTimer?.invalidate()
-        playTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             // 最後の質問かどうか
             if self.totalQuestionCount > self.selectIndex {

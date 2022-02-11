@@ -6,6 +6,7 @@
 
 import Foundation
 import RealmSwift
+@testable import Samidare_iOS
 
 
 class QuestionRepositoryMock: QuestionRepository {
