@@ -269,6 +269,8 @@ targets:
         optional: true
     dependencies:
       - target: Samidare-iOS
+      - package: swift-snapshot-testing
+        product: SnapshotTesting
   Samidare-iOSUITests:
     info:
       path: Samidare-iOSUITests/Info.plist
@@ -279,5 +281,3 @@ targets:
         createIntermediateGroups: true
     dependencies:
       - target: Samidare-iOS
-      - package: swift-snapshot-testing
-        product: SnapshotTesting
