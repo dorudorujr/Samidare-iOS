@@ -6,6 +6,9 @@ packages:
   Realm:
     url: https://github.com/realm/realm-cocoa.git
     minorVersion: 10.20.0
+  swift-snapshot-testing:
+    url: https://github.com/pointfreeco/swift-snapshot-testing.git
+    minorVersion: 1.9.0
 options:
   deploymentTarget:
     iOS: 15.0
@@ -266,6 +269,8 @@ targets:
         optional: true
     dependencies:
       - target: Samidare-iOS
+      - package: swift-snapshot-testing
+        product: SnapshotTesting
   Samidare-iOSUITests:
     info:
       path: Samidare-iOSUITests/Info.plist
