@@ -44,14 +44,6 @@ jobs:
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
       
-      # ビルド
-      - name: Xcode build
-        run: xcodebuild
-          -sdk iphonesimulator
-          -configuration Debug
-          -scheme Samidare-Develop
-          build
-      
       # 単体テスト
       - name: Xcode test
         run: xcodebuild
