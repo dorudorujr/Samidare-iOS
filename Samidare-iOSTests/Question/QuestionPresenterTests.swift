@@ -15,6 +15,7 @@ class QuestionPresenterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        MockTimer.clearData()
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
         appConfigRepositoryMock.getHandler = {

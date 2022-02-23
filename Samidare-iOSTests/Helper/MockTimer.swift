@@ -30,6 +30,11 @@ class MockTimer: Timer {
 
         return mockTimer
     }
+    
+    class func clearData() {
+        MockTimer.callCountInvalidate = 0
+        MockTimer.callCountScheduledTimer = 0
+    }
 
     override open func invalidate() {
         MockTimer.callCountInvalidate += 1
