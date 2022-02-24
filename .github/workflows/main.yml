@@ -44,7 +44,7 @@ jobs:
         run: xcodebuild
           -sdk iphonesimulator
           -configuration Debug
-          -scheme Samidare-Release
+          -scheme Samidare-Develop
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
           -skip-testing:Samidare-iOSUITests
           clean test
