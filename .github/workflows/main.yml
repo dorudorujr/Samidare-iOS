@@ -27,12 +27,22 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       
+      # Mintのキャッシュ取得
+      - name: Cache Mint packages
+        id: mint-cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/lib/mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: ${{ runner.os }}-mint-
+      
       # Mintのインストール
       - name: Install Mint
         run: brew install mint
       
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
+        if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
       # プロジェクトファイルの生成
