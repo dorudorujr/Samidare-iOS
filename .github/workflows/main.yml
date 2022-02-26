@@ -45,6 +45,9 @@ jobs:
         if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
+      - name: Run SwiftGen
+        run: mint run swiftgen config run --config ${PROJECT_DIR}/swiftgen.yml
+      
       # プロジェクトファイルの生成
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
