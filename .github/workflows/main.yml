@@ -47,6 +47,10 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/project.xcworkspace/ xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: ${{ runner.os }}-spm-
       
+      # 単体テスト(確認)
+      - name: Xcode Test(Test)
+        run: swift test -v
+      
       # 単体テスト
       - name: Xcode test
         run: xcodebuild
