@@ -47,18 +47,14 @@ jobs:
           key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/project.xcworkspace/ xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: ${{ runner.os }}-spm-
       
-      # 単体テスト(確認)
-      - name: Xcode Test(Test)
-        run: swift test -v
-      
       # 単体テスト
       - name: Xcode test
         run: xcodebuild
-          -sdk iphonesimulator
-          -configuration Debug
+          -sdk iphonesimulator15.0
+          -configuration DevelopDebug
           -clonedSourcePackagesDirPath SourcePackages
           -scheme Samidare-Develop
-          -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
+          -destination 'platform=iOS Simulator,name=iPhone 13 Pro'
           -skip-testing:Samidare-iOSUITests
           clean test
 
