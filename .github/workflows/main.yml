@@ -32,12 +32,29 @@ jobs:
         run: brew install mint
       
       # Mintで管理しているライブラリのキャッシュ
+      - name: Cache Mint packages
+        uses: actions/cache@v2
+        with:
+          path: mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: |
+            ${{ runner.os }}-mint-
+      
+      # Mintで管理しているライブラリをインストール
       - name: Install Mint library
         run: mint bootstrap
       
       # プロジェクトファイルの生成
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
+      
+      # SPMのライブラリーをキャッシュ
+      - name: Cache Swift Packages
+        uses: actions/cache@v1
+        with:
+          path: SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/project.xcworkspace/ xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: ${{ runner.os }}-spm-
       
       # 単体テスト
       - name: Xcode test
