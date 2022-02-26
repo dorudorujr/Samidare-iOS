@@ -13,7 +13,7 @@ env:
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macOS-11.5
 
     steps:
       # チェックアウト
@@ -30,15 +30,6 @@ jobs:
       # Mintのインストール
       - name: Install Mint
         run: brew install mint
-      
-      # Mintで管理しているライブラリのキャッシュ
-      - name: Cache Mint packages
-        uses: actions/cache@v2
-        with:
-          path: mint
-          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
-          restore-keys: |
-            ${{ runner.os }}-mint-
       
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
