@@ -26,9 +26,6 @@ jobs:
       # 現在使われているXcodeのバージョン出力
       - name: Show Xcode version
         run: xcodebuild -version
-
-      - name: Check ls
-        run: ls
       
       # Mintのキャッシュ取得
       - name: Cache Mint packages
@@ -48,6 +45,10 @@ jobs:
         if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
+      # SwiftGenを走らせる
+      - name: Run SwiftGen
+        run: mint run swiftgen config run --config swiftgen.yml
+      
       # プロジェクトファイルの生成
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
@@ -59,17 +60,6 @@ jobs:
           path: SourcePackages
           key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/project.xcworkspace/ xcshareddata/swiftpm/Package.resolved') }}
           restore-keys: ${{ runner.os }}-spm-
-      
-      # ビルド
-      - name: Build
-        run: xcodebuild
-          -sdk iphonesimulator15.0
-          -configuration DevelopDebug
-          -clonedSourcePackagesDirPath SourcePackages
-          -scheme Samidare-Develop
-          -destination 'platform=iOS Simulator,name=iPhone 13 Pro'
-          -skip-testing:Samidare-iOSUITests
-          build
       
       # 単体テスト
       - name: Xcode test
