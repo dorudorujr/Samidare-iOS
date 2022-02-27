@@ -66,6 +66,12 @@ jobs:
       - name: Run SwiftGen
         run: mint run swiftgen config run --config swiftgen.yml
       
+      # Mockoloを走らせる
+      - name: delete MockResults
+        run: rm -f Samidare-iOSTests/MockResults.swift
+      - name: run Mockolo
+        run: mint run mockolo mockolo --testable-imports Samidare_iOS --sourcedirs ./ --destination Samidare-iOSTests/MockResults.swift
+      
       # プロジェクトファイルの生成
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
