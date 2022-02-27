@@ -27,6 +27,10 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       
+      # TODO: 削除
+      - name: check ls
+        run: ls
+      
       # Mintのキャッシュ取得
       - name: Cache Mint packages
         id: mint-cache
@@ -44,6 +48,10 @@ jobs:
       - name: Install Mint library
         if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
+      
+      # Generatedディレクトリー作成
+      - name: make Generated
+        run: mkdir Samidare-iOS/Generated
       
       # SwiftGenを走らせる
       - name: Run SwiftGen
