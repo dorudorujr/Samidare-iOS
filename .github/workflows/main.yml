@@ -84,7 +84,7 @@ jobs:
           -sdk iphonesimulator15.0
           -configuration DevelopDebug
           -scheme Samidare-Develop
-          -destination 'platform=iOS Simulator,name=iPhone 12 Pro'
+          -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
           -skip-testing:Samidare-iOSUITests
           clean test
 
