@@ -70,10 +70,6 @@ jobs:
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
       
-      # 確認(後で必ず消す)
-      - name: cat MockResults.swift
-        run: cat /Users/runner/work/Samidare-iOS/Samidare-iOS/Samidare-iOSTests/MockResults.swift
-      
       # SPMのライブラリーをキャッシュ
       - name: Cache Swift Packages
         uses: actions/cache@v1
