@@ -72,7 +72,7 @@ jobs:
       
       # 確認(後で必ず消す)
       - name: cat MockResults.swift
-        run: cat Samidare-iOSTests/MockResults.swift
+        run: cat /Users/runner/work/Samidare-iOS/Samidare-iOS/Samidare-iOSTests/MockResults.swift
       
       # SPMのライブラリーをキャッシュ
       - name: Cache Swift Packages
