@@ -50,6 +50,7 @@ jobs:
         run: mint bootstrap
       
       # Generatedディレクトリー作成
+      # TODO: 少し強引な感じがするのでどうにかしたい
       - name: make Generated
         run: mkdir Samidare-iOS/Generated
       
