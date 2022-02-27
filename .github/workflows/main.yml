@@ -27,6 +27,12 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       
+      # 消す
+      - name: test1
+        run: ls Samidare-iOS
+      - name: test2
+        run: ls Samidare-iOS/Resource
+      
       # GoogleService-info.plistを生成
       - name: Translate secrets of base64 into json
         env:
