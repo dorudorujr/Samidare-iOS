@@ -27,9 +27,15 @@ jobs:
       - name: Show Xcode version
         run: xcodebuild -version
       
-      # TODO: 削除
-      - name: check ls
-        run: ls
+      # GoogleService-info.plistを生成
+      - name: Translate secrets of base64 into json
+        env:
+          GOOGLE_SERVICE: ${{ secrets.GOOGLE_SERVICE_PLIST }}
+        run: echo $GOOGLE_SERVICE | base64 --decode > ./output.json
+      - name: Translate json into plist and generate GoogleService-info.plist
+        run: plutil -convert xml1 ./output.json -o ./Samidare-iOS/Resource/Firebase/GoogleService-Info-Debug.plist
+      - name: Remove json file
+        run: rm ./output.json
       
       # Mintのキャッシュ取得
       - name: Cache Mint packages
