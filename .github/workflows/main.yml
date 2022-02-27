@@ -57,6 +57,10 @@ jobs:
         if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
+      # TODO: 消す
+      - name: Test
+        run: mint run swiftlint
+      
       # Generatedディレクトリー作成
       # TODO: 少し強引な感じがするのでどうにかしたい
       - name: make Generated
