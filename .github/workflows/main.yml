@@ -86,5 +86,7 @@ jobs:
           -scheme Samidare-Develop
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
           -skip-testing:Samidare-iOSUITests
+          -testLanguage ja
+          -testRegion ja_JP
           clean test
 
