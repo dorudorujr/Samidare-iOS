@@ -39,6 +39,10 @@ jobs:
       - name: Remove json file
         run: rm ./output.json
       
+      # Mintのインストール
+      - name: Install Mint
+        run: brew install mint
+
       # Mintのキャッシュ取得
       - name: Cache Mint packages
         id: mint-cache
@@ -48,12 +52,9 @@ jobs:
           key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
           restore-keys: ${{ runner.os }}-mint-
       
-      # Mintのインストール
-      - name: Install Mint
-        run: brew install mint
-      
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
+        if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
       # Generatedディレクトリー作成
