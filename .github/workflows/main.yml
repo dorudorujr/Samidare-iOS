@@ -42,19 +42,9 @@ jobs:
       # Mintのインストール
       - name: Install Mint
         run: brew install mint
-
-      # Mintのキャッシュ取得
-      - name: Cache Mint packages
-        id: mint-cache
-        uses: actions/cache@v2
-        with:
-          path: /usr/local/lib/mint
-          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
-          restore-keys: ${{ runner.os }}-mint-
       
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
-        if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
       # Generatedディレクトリー作成
@@ -69,14 +59,6 @@ jobs:
       # プロジェクトファイルの生成
       - name: Generate Xcode project with XcodeGen
         run: mint run xcodegen xcodegen generate
-      
-      # SPMのライブラリーをキャッシュ
-      - name: Cache Swift Packages
-        uses: actions/cache@v1
-        with:
-          path: SourcePackages
-          key: ${{ runner.os }}-spm-${{ hashFiles('*.xcodeproj/project.xcworkspace/ xcshareddata/swiftpm/Package.resolved') }}
-          restore-keys: ${{ runner.os }}-spm-
       
       # 単体テスト
       - name: Xcode test
