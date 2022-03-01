@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_13.0.app/Contents/Developer
+
+jobs:
+  build:
+    runs-on: macOS-11
+
+    steps:
+      # チェックアウト
+      - uses: actions/checkout@v2
+
+      # Actionsで使用できるXcodeの一覧出力
+      - name: Show Xcode list
+        run: ls /Applications | grep 'Xcode'
+      
+      # 現在使われているXcodeのバージョン出力
+      - name: Show Xcode version
+        run: xcodebuild -version
+      
+      # GoogleService-info.plistを生成
+      - name: make dir
+        run: mkdir Samidare-iOS/Resource/Firebase
+      - name: Translate secrets of base64 into json
+        env:
+          GOOGLE_SERVICE: ${{ secrets.GOOGLE_SERVICE_PLIST }}
+        run: echo $GOOGLE_SERVICE | base64 --decode > ./output.json
+      - name: Translate json into plist and generate GoogleService-info.plist
+        run: plutil -convert xml1 ./output.json -o ./Samidare-iOS/Resource/Firebase/GoogleService-Info-Debug.plist
+      - name: Remove json file
+        run: rm ./output.json
+      
+      # Mintのインストール
+      - name: Install Mint
+        run: brew install mint
+      
+      # Mintで管理しているライブラリをインストール
+      - name: Install Mint library
+        run: mint bootstrap
+      
+      # Generatedディレクトリー作成
+      # TODO: 少し強引な感じがするのでどうにかしたい
+      - name: make Generated
+        run: mkdir Samidare-iOS/Generated
+      
+      # SwiftGenを走らせる
+      - name: Run SwiftGen
+        run: mint run swiftgen config run --config swiftgen.yml
+      
+      # プロジェクトファイルの生成
+      - name: Generate Xcode project with XcodeGen
+        run: mint run xcodegen xcodegen generate
+      
+      # 単体テスト
+      - name: Xcode test
+        run: xcodebuild
+          -sdk iphonesimulator15.0
+          -configuration DevelopDebug
+          -scheme Samidare-Develop
+          -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
+          -skip-testing:Samidare-iOSUITests
+          -testLanguage ja
+          -testRegion ja_JP
+          clean test
+

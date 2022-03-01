@@ -19,6 +19,7 @@ class QuestionViewTests: XCTestCase {
         super.setUp()
         isRecording = false
 
+        MockTimer.clearData()
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
         appConfigRepositoryMock.getHandler = {
