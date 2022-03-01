@@ -54,7 +54,6 @@ jobs:
       
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
-        if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
       # Generatedディレクトリー作成
