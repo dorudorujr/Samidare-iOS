@@ -16,3 +16,16 @@
 "Question.Stop.Text" = "Pause";
 "Question.Next.Text" = "Next";
 "Question.List.Text" = "List";
+
+// TODO: 英語を正しく直す
+// 設定画面
+"Config.NavigationBar.Title" = "設定";
+"Config.Add.Question" = "質問追加";
+"Config.Display.Group" = "表示グループ設定";
+"Config.Answer.Seconds" = "回答秒数";
+"Config.Mode" = "モード選択";
+"Config.Use.App" = "アプリの使い方";
+"Config.Inquiry" = "お問い合わせ・不具合のご連絡";
+"Config.PrivacyPolicy" = "プライバシーポリシー";
+"Config.Terms.Of.Service" = "利用規約";
+"Config.Version" = "バージョン";
