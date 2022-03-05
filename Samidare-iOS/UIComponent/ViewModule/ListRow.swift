@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ListRow: View {
     let title: String
-    let description: String?
+    let description: Binding<String?>?
     var body: some View {
         HStack {
             Text(title)
                 .font(.system(size: 17))
                 .foregroundColor(Color.textBlack)
             Spacer()
-            if let description = description {
-                Text(description)
+            if let description = description, let text = description.wrappedValue {
+                Text(text)
                     .font(.system(size: 17))
                     .foregroundColor(Color.textGray)
             }
@@ -27,6 +27,6 @@ struct ListRow: View {
 
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {
-        ListRow(title: "title", description: "description")
+        ListRow(title: "title", description: .constant("description"))
     }
 }
