@@ -14,18 +14,7 @@ class ConfigInteractor {
         self.appConfigRepository = appConfigRepository
     }
     
-    func getQuestionGroup() throws -> QuestionGroup {
-        let appConfig = try appConfigRepository.get()
-        return appConfig.questionGroup
-    }
-    
-    func getPlayTime() throws -> Int {
-        let appConfig = try appConfigRepository.get()
-        return appConfig.time
-    }
-    
-    func getGameType() throws -> GameType {
-        let appConfig = try appConfigRepository.get()
-        return appConfig.gameType
+    func getAppConfig() throws -> AppConfig {
+        try appConfigRepository.get()
     }
 }
