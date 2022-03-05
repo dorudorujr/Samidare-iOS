@@ -17,6 +17,10 @@ extension Color {
         Color.rgba(90, 93, 93)
     }
     
+    static var textGray: Color {
+        Color.rgba(60, 60, 67, 0.6)
+    }
+    
     static var bassBlue: Color {
         Color.rgba(1, 115, 213)
     }

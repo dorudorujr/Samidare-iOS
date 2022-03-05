@@ -17,9 +17,10 @@ struct Samidare_iOSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            // TODO: 正しく直す
-            let interactor = try! QuestionInteractor()
-            QuestionView(presenter: .init(interactor: interactor))
+//            // TODO: 正しく直す
+//            let interactor = try! QuestionInteractor()
+//            QuestionView(presenter: .init(interactor: interactor))
+            ConfigView(presenter: .init(interactor: .init()))
         }
     }
 }
