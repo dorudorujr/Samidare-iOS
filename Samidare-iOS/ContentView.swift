@@ -8,9 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    init() {
+        UITabBar.appearance().backgroundColor = .tabGray
+    }
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            // TODO: エラーのハンドリング行う
+            let interactor = try! QuestionInteractor()
+            QuestionView(presenter: .init(interactor: interactor))
+                .tabItem {
+                    Image(systemName: "person.circle")
+                    Text(L10n.Tab.question)
+                }
+            ConfigView(presenter: .init(interactor: .init()))
+                .tabItem {
+                    Image(systemName: "gearshape")
+                    Text(L10n.Tab.config)
+                }
+        }
     }
 }
 
