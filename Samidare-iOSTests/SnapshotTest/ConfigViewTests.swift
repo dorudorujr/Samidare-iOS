@@ -16,7 +16,7 @@ class ConfigViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        isRecording = false
+        isRecording = true
         
         appConfigRepositoryMock = .init()
         appConfigRepositoryMock.getHandler = {
