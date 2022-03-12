@@ -14,7 +14,7 @@ class ConfigInteractor {
         self.appConfigRepository = appConfigRepository
     }
     
-    func getAppConfig() throws -> AppConfig {
-        try appConfigRepository.get()
+    func getAppConfig() -> AppConfig {
+        appConfigRepository.get()
     }
 }

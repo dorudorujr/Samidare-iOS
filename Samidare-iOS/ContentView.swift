@@ -15,9 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            // TODO: エラーのハンドリング行う
-            let interactor = try! QuestionInteractor()
-            QuestionView(presenter: .init(interactor: interactor))
+            QuestionView(presenter: .init(interactor: .init()))
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text(L10n.Tab.question)

@@ -10,20 +10,20 @@ import RealmSwift
 
 /// @mockable
 protocol QuestionGroupRepository {
-    func get() throws -> [QuestionGroup]
+    func get() -> [QuestionGroup]
     func add(_ questionGroup: QuestionGroup) throws
     func delete(_ questionGroup: QuestionGroup) throws
 }
 
 class QuestionGroupRepositoryImpl: QuestionGroupRepository {
-    func get() throws -> [QuestionGroup] {
-        let realm = try Realm()
+    func get() -> [QuestionGroup] {
+        let realm = try! Realm()
         let results = realm.objects(QuestionGroupRealmObject.self)
         return results.map { QuestionGroup(name: $0.name) }
     }
     
     func add(_ questionGroup: QuestionGroup) throws {
-        let realm = try Realm()
+        let realm = try! Realm()
         let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
         
         try realm.write {

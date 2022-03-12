@@ -14,11 +14,11 @@ class QuestionRepositoryMock: QuestionRepository {
 
 
     private(set) var getQuestionsCallCount = 0
-    var getQuestionsHandler: ((String) throws -> ([Question]))?
-    func getQuestions(of group: String) throws -> [Question] {
+    var getQuestionsHandler: ((String) -> ([Question]))?
+    func getQuestions(of group: String) -> [Question] {
         getQuestionsCallCount += 1
         if let getQuestionsHandler = getQuestionsHandler {
-            return try getQuestionsHandler(group)
+            return getQuestionsHandler(group)
         }
         return [Question]()
     }
@@ -59,11 +59,11 @@ class AppConfigRepositoryMock: AppConfigRepository {
 
 
     private(set) var getCallCount = 0
-    var getHandler: (() throws -> (AppConfig))?
-    func get() throws -> AppConfig {
+    var getHandler: (() -> (AppConfig))?
+    func get() -> AppConfig {
         getCallCount += 1
         if let getHandler = getHandler {
-            return try getHandler()
+            return getHandler()
         }
         fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
@@ -84,11 +84,11 @@ class QuestionGroupRepositoryMock: QuestionGroupRepository {
 
 
     private(set) var getCallCount = 0
-    var getHandler: (() throws -> ([QuestionGroup]))?
-    func get() throws -> [QuestionGroup] {
+    var getHandler: (() -> ([QuestionGroup]))?
+    func get() -> [QuestionGroup] {
         getCallCount += 1
         if let getHandler = getHandler {
-            return try getHandler()
+            return getHandler()
         }
         return [QuestionGroup]()
     }

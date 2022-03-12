@@ -10,13 +10,13 @@ import RealmSwift
 
 /// @mockable
 protocol AppConfigRepository {
-    func get() throws -> AppConfig
+    func get() -> AppConfig
     func update(_ appConfig: AppConfig) throws
 }
 
 class AppConfigRepositoryImpl: AppConfigRepository {
-    func get() throws -> AppConfig {
-        let realm = try Realm()
+    func get() -> AppConfig {
+        let realm = try! Realm()
         guard let results = realm.objects(AppConfigRealmObject.self).first else {
             return AppConfig(gameType: .init(name: L10n.Common.AppConfig.gameType),
                              questionGroup: .init(name: L10n.Common.AppConfig.questionGroup),
@@ -28,7 +28,7 @@ class AppConfigRepositoryImpl: AppConfigRepository {
     }
     
     func update(_ appConfig: AppConfig) throws {
-        let realm = try Realm()
+        let realm = try! Realm()
         let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "gameType": appConfig.gameType.name, "questionGroup": appConfig.questionGroup.name, "time": appConfig.time])
         try realm.write {
             realm.add(appConfigObject, update: .modified)

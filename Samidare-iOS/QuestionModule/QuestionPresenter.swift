@@ -46,7 +46,6 @@ class QuestionPresenter: ObservableObject {
     private var nowPlayTime = 0.0
 
     @Published var question: Question?
-    @Published var error: Error?
     @Published var selectIndex = 0 {
         didSet {
             setQuestion()
@@ -102,35 +101,19 @@ class QuestionPresenter: ObservableObject {
     // MARK: - Set
     
     private func setQuestion() {
-        do {
-            question = try interactor.getQuestion(from: selectIndex)
-        } catch {
-            self.error = error
-        }
+        question = interactor.getQuestion(from: selectIndex)
     }
     
     private func setNowPlayTime() {
-        do {
-            nowPlayTime = Double(try interactor.getTime())
-        } catch {
-            self.error = error
-        }
+        nowPlayTime = Double(interactor.getTime())
     }
 
     private func setPlayTime() {
-        do {
-            playTime = try interactor.getTime()
-        } catch {
-            self.error = error
-        }
+        playTime = interactor.getTime()
     }
 
     private func setTotalQuestionCount() {
-        do {
-            totalQuestionCount = try interactor.getTotalQuestionCount()
-        } catch {
-            self.error = error
-        }
+        totalQuestionCount = interactor.getTotalQuestionCount()
     }
 
     // MARK: - Status Function

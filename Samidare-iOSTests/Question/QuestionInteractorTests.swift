@@ -22,24 +22,24 @@ class QuestionInteractorTests: XCTestCase {
                   questionGroup: .init(name: "questionGroup"),
                   time: 10)
         }
-        interactor = try! .init(appConfigRepository: appConfigRepositoryMock,
-                                questionRepository: questionRepositoryMock)
+        interactor = .init(appConfigRepository: appConfigRepositoryMock,
+                           questionRepository: questionRepositoryMock)
     }
     
     func testGetQuestion() {
         // 取得成功
         setGetQuestionsHandler()
-        XCTAssertEqual(try! interactor.getQuestion(from: 0)!.body, "好きな色は")
-        XCTAssertEqual(try! interactor.getQuestion(from: 0)!.group.name, "default")
+        XCTAssertEqual(interactor.getQuestion(from: 0)!.body, "好きな色は")
+        XCTAssertEqual(interactor.getQuestion(from: 0)!.group.name, "default")
     }
     
     func testGetTotalQuestionCount() {
         setGetQuestionsHandler()
-        XCTAssertEqual(try! interactor.getTotalQuestionCount(), 2)
+        XCTAssertEqual(interactor.getTotalQuestionCount(), 2)
     }
     
     func testGetTime() {
-        XCTAssertEqual(try! interactor.getTime(), 10)
+        XCTAssertEqual(interactor.getTime(), 10)
     }
     
     private func setGetQuestionsHandler() {
