@@ -9,6 +9,10 @@
 "Common.AppConfig.GameType" = "インタビュー";
 "Common.AppConfig.QuestionGroup" = "デフォルト";
 
+// Tab画面
+"Tab.Question" = "質問";
+"Tab.Config" = "設定";
+
 // 質問画面
 "Question.Ready.Text" = "準備中";
 "Question.End.Text" = "終了";

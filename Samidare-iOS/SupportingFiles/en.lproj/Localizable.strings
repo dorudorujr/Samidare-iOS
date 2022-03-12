@@ -9,6 +9,10 @@
 "Common.AppConfig.GameType" = "Interview";
 "Common.AppConfig.QuestionGroup" = "Default";
 
+// Tab画面
+"Tab.Question" = "Question";
+"Tab.Config" = "Config";
+
 // Question View
 "Question.Ready.Text" = "Ready";
 "Question.End.Text" = "End";
