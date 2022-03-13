@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TabTopView: View {
     
     init() {
         UITabBar.appearance().backgroundColor = .tabGray
@@ -31,6 +31,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TabTopView()
     }
 }
