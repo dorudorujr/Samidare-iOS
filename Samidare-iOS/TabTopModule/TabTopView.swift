@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct TabTopView: View {
+    @ObservedObject var presenter: TabTopPresenter
+    @Environment(\.openURL) var openURL
     
-    init() {
+    init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray
+        self.presenter = presenter
     }
     
     var body: some View {
@@ -26,11 +29,24 @@ struct TabTopView: View {
                     Text(L10n.Tab.config)
                 }
         }
+        .onAppear {
+            Task {
+                await presenter.viewDidAppear()
+            }
+        }
+        .alert(L10n.ForcedUpdate.title, isPresented: $presenter.shouldForcedUpdate) {
+            Button(L10n.Common.ok) {
+                guard let url = URL(string: presenter.getURLString()) else { return }
+                openURL(url)
+            }
+        } message: {
+            Text(L10n.ForcedUpdate.description)
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        TabTopView()
+        TabTopView(presenter: .init(interactor: .init()))
     }
 }
