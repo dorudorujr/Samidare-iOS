@@ -10,6 +10,7 @@ import SwiftUI
 struct TabTopView: View {
     @ObservedObject var presenter: TabTopPresenter
     @Environment(\.openURL) var openURL
+    @Environment(\.scenePhase) private var scenePhase
     
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray
@@ -29,9 +30,11 @@ struct TabTopView: View {
                     Text(L10n.Tab.config)
                 }
         }
-        .onAppear {
-            Task {
-                await presenter.viewDidAppear()
+        .onChange(of: scenePhase) { phase in
+            if phase == .active {
+                Task {
+                    await presenter.checkForcedUpdate()
+                }
             }
         }
         .alert(L10n.ForcedUpdate.title, isPresented: $presenter.shouldForcedUpdate) {
