@@ -16,6 +16,6 @@ class ForcedUpdate {
         let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
         let data = try await document.getDocument().data(as: ForcedUpdateEntity.self)
         guard let data = data, let appVersion = appVersion else { return true }
-        return appVersion >= data.requiredVersion
+        return appVersion < data.requiredVersion
     }
 }
