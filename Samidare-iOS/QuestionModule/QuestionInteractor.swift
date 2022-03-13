@@ -13,14 +13,14 @@ class QuestionInteractor {
     private let group: String
     
     init(appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl(),
-         questionRepository: QuestionRepository = QuestionRepositoryImpl()) throws {
+         questionRepository: QuestionRepository = QuestionRepositoryImpl()) {
         self.appConfigRepository = appConfigRepository
         self.questionRepository = questionRepository
-        group = try appConfigRepository.get().questionGroup.name
+        group = appConfigRepository.get().questionGroup.name
     }
 
-    func getQuestion(from index: Int) throws -> Question? {
-        let questions = try questionRepository.getQuestions(of: group)
+    func getQuestion(from index: Int) -> Question? {
+        let questions = questionRepository.getQuestions(of: group)
         if questions.count <= index {
             assert(true)
             return nil
@@ -29,11 +29,11 @@ class QuestionInteractor {
         }
     }
     
-    func getTotalQuestionCount() throws -> Int {
-        return try questionRepository.getQuestions(of: group).count
+    func getTotalQuestionCount() -> Int {
+        return questionRepository.getQuestions(of: group).count
     }
 
-    func getTime() throws -> Int {
-        return try appConfigRepository.get().time
+    func getTime() -> Int {
+        return appConfigRepository.get().time
     }
 }

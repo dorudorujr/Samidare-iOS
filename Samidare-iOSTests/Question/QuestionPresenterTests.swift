@@ -256,7 +256,7 @@ class QuestionPresenterTests: XCTestCase {
     // MARK: - Set Data
     
     private func makeInteractory() -> QuestionInteractor {
-        try! .init(appConfigRepository: appConfigRepositoryMock, questionRepository: questionRepositoryMock)
+        .init(appConfigRepository: appConfigRepositoryMock, questionRepository: questionRepositoryMock)
     }
     
     private func setPresenter() {

@@ -15,7 +15,6 @@ class ConfigPresenter: ObservableObject {
     @Published var playTime: String?
     @Published var gameType: String?
     @Published var appVersion: String?
-    @Published var error: Error?
     
     init(interactor: ConfigInteractor) {
         self.interactor = interactor
@@ -23,14 +22,10 @@ class ConfigPresenter: ObservableObject {
     }
     
     func getAppConfig() {
-        do {
-            let appConfig = try interactor.getAppConfig()
-            questionGroup = appConfig.questionGroup.name
-            playTime = appConfig.time.description
-            gameType = appConfig.gameType.name
-        } catch {
-            self.error = error
-        }
+        let appConfig = interactor.getAppConfig()
+        questionGroup = appConfig.questionGroup.name
+        playTime = appConfig.time.description
+        gameType = appConfig.gameType.name
     }
     
     private func getAppVersion() {

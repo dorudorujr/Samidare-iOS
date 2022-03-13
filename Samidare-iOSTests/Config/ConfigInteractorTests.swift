@@ -24,8 +24,8 @@ class ConfigInteractorTests: XCTestCase {
     }
     
     func testGetAppConfig() {
-        XCTAssertEqual(try! interactor.getAppConfig().gameType.name, "gameType")
-        XCTAssertEqual(try! interactor.getAppConfig().questionGroup.name, "questionGroup")
-        XCTAssertEqual(try! interactor.getAppConfig().time, 10)
+        XCTAssertEqual(interactor.getAppConfig().gameType.name, "gameType")
+        XCTAssertEqual(interactor.getAppConfig().questionGroup.name, "questionGroup")
+        XCTAssertEqual(interactor.getAppConfig().time, 10)
     }
 }

@@ -74,7 +74,6 @@ private struct ReadyTexts: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        let interactor = try! QuestionInteractor()
-        QuestionView(presenter: .init(interactor: interactor))
+        QuestionView(presenter: .init(interactor: .init()))
     }
 }
