@@ -9,7 +9,6 @@ import SwiftUI
 
 struct TabTopView: View {
     @ObservedObject var presenter: TabTopPresenter
-    @Environment(\.openURL) var openURL
     @Environment(\.scenePhase) private var scenePhase
     
     init(presenter: TabTopPresenter) {
@@ -39,8 +38,7 @@ struct TabTopView: View {
         }
         .alert(L10n.ForcedUpdate.title, isPresented: $presenter.shouldForcedUpdate) {
             Button(L10n.Common.ok) {
-                guard let url = URL(string: presenter.getURLString()) else { return }
-                openURL(url)
+                presenter.openAppStore()
             }
         } message: {
             Text(L10n.ForcedUpdate.description)
