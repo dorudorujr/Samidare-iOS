@@ -22,7 +22,6 @@ class TabTopPresenter: ObservableObject {
     func viewDidAppear() async {
         do {
             shouldForcedUpdate = try await interactor.shouldForcedUpdate()
-            print(try await interactor.shouldForcedUpdate())
         } catch {
             self.shouldForcedUpdate = true
         }
