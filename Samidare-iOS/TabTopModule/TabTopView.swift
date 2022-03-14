@@ -10,6 +10,9 @@ import SwiftUI
 struct TabTopView: View {
     @ObservedObject var presenter: TabTopPresenter
     @Environment(\.scenePhase) private var scenePhase
+
+    private let questionView = QuestionView(presenter: .init(interactor: .init()))
+    private let configView = ConfigView(presenter: .init(interactor: .init()))
     
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray
@@ -18,12 +21,12 @@ struct TabTopView: View {
     
     var body: some View {
         TabView {
-            QuestionView(presenter: .init(interactor: .init()))
+            questionView
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text(L10n.Tab.question)
                 }
-            ConfigView(presenter: .init(interactor: .init()))
+            configView
                 .tabItem {
                     Image(systemName: "gearshape")
                     Text(L10n.Tab.config)
