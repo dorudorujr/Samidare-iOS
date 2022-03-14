@@ -173,7 +173,7 @@ class QuestionPresenter: ObservableObject {
             return
         }
         // 最後に表示していた質問を表示させる
-        selectIndex -= 1
+        selectIndex = totalQuestionCount - 1
         status = .done
     }
     
