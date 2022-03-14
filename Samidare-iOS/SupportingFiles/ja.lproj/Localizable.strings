@@ -8,6 +8,8 @@
 
 "Common.AppConfig.GameType" = "インタビュー";
 "Common.AppConfig.QuestionGroup" = "デフォルト";
+"Common.OK" = "OK";
+"Common.cancel" = "Cancel";
 
 // Tab画面
 "Tab.Question" = "質問";
@@ -33,6 +35,6 @@
 "Config.Terms.Of.Service" = "利用規約";
 "Config.Version" = "バージョン";
 
-// Error
-"Error.Title" = "予期しないエラーです。";
-"Error.message" = "";
+// 強制アップデート
+"ForcedUpdate.Title" = "アップデート";
+"ForcedUpdate.Description" = "新しいバージョンのアプリにアップデートしてください。";
