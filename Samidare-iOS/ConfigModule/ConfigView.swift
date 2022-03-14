@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct ConfigView: View {
-    @ObservedObject var presenter: ConfigPresenter
+    @ObservedObject private var presenter: ConfigPresenter
+    
+    init(presenter: ConfigPresenter) {
+        self.presenter = presenter
+    }
+    
     var body: some View {
         NavigationView {
             List {
