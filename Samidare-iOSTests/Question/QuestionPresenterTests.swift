@@ -187,12 +187,20 @@ class QuestionPresenterTests: XCTestCase {
         /// invalidate実行確認
         XCTAssertEqual(MockTimer.callCountInvalidate, 0)
         
+        XCTAssertFalse(presenter.shouldShowQuestionCount)
+        XCTAssertTrue(presenter.isReady)
+        XCTAssertFalse(presenter.shouldShowQuestionCardView)
+        
         presenter.secondaryButtonAction()
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .stopReadying)
         /// invalidate実行確認
         XCTAssertEqual(MockTimer.callCountInvalidate, 1)
+        
+        XCTAssertFalse(presenter.shouldShowQuestionCount)
+        XCTAssertTrue(presenter.isReady)
+        XCTAssertFalse(presenter.shouldShowQuestionCardView)
         
         presenter.primaryButtonAction()
         
@@ -210,12 +218,20 @@ class QuestionPresenterTests: XCTestCase {
         /// invalidate実行確認
         XCTAssertEqual(MockTimer.callCountInvalidate, 3)
         
+        XCTAssertTrue(presenter.shouldShowQuestionCount)
+        XCTAssertFalse(presenter.isReady)
+        XCTAssertTrue(presenter.shouldShowQuestionCardView)
+        
         presenter.secondaryButtonAction()
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .stopPlaying)
         /// invalidate実行確認
         XCTAssertEqual(MockTimer.callCountInvalidate, 4)
+        
+        XCTAssertTrue(presenter.shouldShowQuestionCount)
+        XCTAssertFalse(presenter.isReady)
+        XCTAssertTrue(presenter.shouldShowQuestionCardView)
         
         presenter.primaryButtonAction()
         
@@ -240,10 +256,18 @@ class QuestionPresenterTests: XCTestCase {
         /// ステータス確認
         XCTAssertEqual(presenter.status, .done)
         
+        XCTAssertTrue(presenter.shouldShowQuestionCount)
+        XCTAssertFalse(presenter.isReady)
+        XCTAssertTrue(presenter.shouldShowQuestionCardView)
+        
         presenter.secondaryButtonAction()
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .standBy)
+        
+        XCTAssertFalse(presenter.shouldShowQuestionCount)
+        XCTAssertFalse(presenter.isReady)
+        XCTAssertFalse(presenter.shouldShowQuestionCardView)
         
         // TODO: 初期化確認
         /// 初期化確認
