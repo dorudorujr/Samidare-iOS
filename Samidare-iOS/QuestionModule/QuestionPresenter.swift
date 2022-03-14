@@ -45,6 +45,16 @@ class QuestionPresenter: ObservableObject {
     // ゲーム中のカウントダウン
     private var nowPlayTime = 0.0
 
+    var shouldShowQuestionCount: Bool {
+        status != .standBy && status != .ready && status != .stopReadying
+    }
+    var isReady: Bool {
+        status == .ready || status == .stopReadying
+    }
+    var shouldShowQuestionCardView: Bool {
+        status == .play || status == .stopPlaying || status == .done
+    }
+
     @Published var question: Question?
     @Published var selectIndex = 0 {
         didSet {

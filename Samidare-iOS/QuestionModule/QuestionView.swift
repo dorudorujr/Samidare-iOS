@@ -13,18 +13,18 @@ struct QuestionView: View {
         // swiftlint:disable closure_body_length
         GeometryReader { geometry in
             VStack(spacing: 40) {
-                if presenter.status != .standBy && presenter.status != .ready {
+                if presenter.shouldShowQuestionCount {
                     Text("\(presenter.selectIndex + 1)/\(presenter.totalQuestionCount)")
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(Color.textBlack)
                 }
                 ZStack {
-                    TimerProgressBar(duration: $presenter.duration, color: presenter.status == .ready || presenter.status == .stopReadying ? .orangered : .bassBlue)
-                    if presenter.status == .ready || presenter.status == .stopReadying {
+                    TimerProgressBar(duration: $presenter.duration, color: presenter.isReady ? .orangered : .bassBlue)
+                    if presenter.isReady {
                         ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
                     }
-                    if presenter.status == .play || presenter.status == .stopPlaying || presenter.status == .done {
+                    if presenter.shouldShowQuestionCardView {
                         QuestionCardView(questionBody: presenter.question?.body ?? "")
                     }
                 }
