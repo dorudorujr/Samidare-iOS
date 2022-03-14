@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TabTopView: View {
-    @ObservedObject var presenter: TabTopPresenter
+    @ObservedObject private var presenter: TabTopPresenter
     @Environment(\.scenePhase) private var scenePhase
 
     private let questionView = QuestionView(presenter: .init(interactor: .init()))

@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct QuestionView: View {
-    @ObservedObject var presenter: QuestionPresenter
+    @ObservedObject private var presenter: QuestionPresenter
+    
+    init(presenter: QuestionPresenter) {
+        self.presenter = presenter
+    }
+    
     var body: some View {
         // swiftlint:disable closure_body_length
         GeometryReader { geometry in
