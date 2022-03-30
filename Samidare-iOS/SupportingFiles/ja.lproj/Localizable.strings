@@ -38,3 +38,6 @@
 // 強制アップデート
 "ForcedUpdate.Title" = "アップデート";
 "ForcedUpdate.Description" = "新しいバージョンのアプリにアップデートしてください。";
+
+// 質問グループ追加
+"Group.Addition.Title" = "質問グループ";
