@@ -29,7 +29,15 @@ struct GroupAdditionView: View {
             }
             .navigationTitle(L10n.Group.Addition.title)
             .navigationBarTitleDisplayMode(.inline)
-            //TODO: グループ追加ボタンの動作&UI実装
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {}) {
+                        Image(systemName: "plus")
+                            .renderingMode(.template)
+                            .foregroundColor(Color.textBlack)
+                    }
+                }
+            }
         }
     }
 }
