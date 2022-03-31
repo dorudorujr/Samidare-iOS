@@ -13,10 +13,11 @@ struct GroupAdditionView: View {
     init(presenter: GroupAdditionPresenter) {
         self.presenter = presenter
     }
+    
     var body: some View {
         NavigationView {
             List {
-                Section(header: Text(L10n.Group.Addition.title)) {
+                Section {
                     if let groups = self.presenter.groups {
                         ForEach(groups) { group in
                             Text(group.name)
@@ -27,6 +28,8 @@ struct GroupAdditionView: View {
                 }
             }
             .navigationTitle(L10n.Group.Addition.title)
+            .navigationBarTitleDisplayMode(.inline)
+            //TODO: グループ追加ボタンの動作&UI実装
         }
     }
 }
