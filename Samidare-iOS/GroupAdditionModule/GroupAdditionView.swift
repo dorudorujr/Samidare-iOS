@@ -14,6 +14,7 @@ struct GroupAdditionView: View {
         self.presenter = presenter
     }
     
+    // swiftlint:disable closure_body_length
     var body: some View {
         NavigationView {
             List {
@@ -31,13 +32,23 @@ struct GroupAdditionView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {}) {
+                    Button(action: { presenter.didTapNavBarButton() }, label: {
                         Image(systemName: "plus")
                             .renderingMode(.template)
                             .foregroundColor(Color.textBlack)
-                    }
+                    })
                 }
             }
+            TextFieldAlertView(text: $presenter.alertText,
+                               isShowingAlert: $presenter.isShowingAddAlert,
+                               placeholder: "",
+                               isSecureTextEntry: false,
+                               title: L10n.Group.Addition.Alert.title,
+                               message: L10n.Group.Addition.Alert.message,
+                               leftButtonTitle: L10n.Common.cancel,
+                               rightButtonTitle: L10n.Common.ok,
+                               leftButtonAction: nil,
+                               rightButtonAction: { presenter.addQuestionGroup() })
         }
     }
 }

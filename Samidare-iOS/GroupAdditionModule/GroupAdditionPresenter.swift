@@ -12,6 +12,8 @@ import SwiftUI
 class GroupAdditionPresenter: ObservableObject {
     private let interactor: GroupAdditionInteractor
     
+    @Published var isShowingAddAlert = false
+    @Published var alertText = ""
     @Published var groups: [QuestionGroup]?
     @Published var error: Error?
     
@@ -20,12 +22,17 @@ class GroupAdditionPresenter: ObservableObject {
         groups = interactor.getQuestionGroup()
     }
     
-    func add(_ questionGroup: QuestionGroup) {
+    func addQuestionGroup() {
         do {
+            let questionGroup = QuestionGroup(name: alertText)
             try interactor.add(questionGroup)
             groups = interactor.getQuestionGroup()
         } catch {
             self.error = error
         }
+    }
+    
+    func didTapNavBarButton() {
+        isShowingAddAlert = true
     }
 }
