@@ -70,17 +70,4 @@ jobs:
           -testLanguage ja
           -testRegion ja_JP
           clean test
-      
-      # 絶対消す
-      # 差分を探すために実施
-      - name: 差分を push
-        run: |
-          git remote set-url origin https://github-actions:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
-          git config --global user.name "${GITHUB_ACTOR}"
-          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          if (git diff --shortstat | grep '[0-9]'); then \
-            git add .; \
-            git commit -m "GitHub Actions から差分を Push"; \
-            git push origin HEAD:${GITHUB_REF}; \
-          fi
 

@@ -39,3 +39,8 @@
 // 強制アップデート
 "ForcedUpdate.Title" = "Update";
 "ForcedUpdate.Description" = "新しいバージョンのアプリにアップデートしてください。";
+
+// 質問グループ追加
+"Group.Addition.Title" = "質問グループ";
+"Group.Addition.Alert.Title" = "質問グループ名";
+"Group.Addition.Alert.Message" = "追加する質問グループ名を入力してください";
