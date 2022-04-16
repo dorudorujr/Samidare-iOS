@@ -18,7 +18,9 @@ struct ConfigView: View {
         NavigationView {
             List {
                 Section {
-                    ListRow(title: L10n.Config.Add.question, description: nil)
+                    presenter.groupAdditionLinkBuilder {
+                        ListRow(title: L10n.Config.Add.question, description: nil)
+                    }
                     ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
                     ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
                     ListRow(title: L10n.Config.mode, description: $presenter.gameType)
@@ -43,6 +45,6 @@ struct ConfigView: View {
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView(presenter: .init(interactor: .init()))
+        ConfigView(presenter: .init(interactor: .init(), router: .init()))
     }
 }
