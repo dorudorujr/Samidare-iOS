@@ -35,4 +35,14 @@ class GroupAdditionPresenter: ObservableObject {
     func didTapNavBarButton() {
         isShowingAddAlert = true
     }
+
+    func deleteGroup(on index: IndexSet) {
+        guard let group = groups?[safe: index.first ?? 0] else { return }
+        groups?.remove(atOffsets: index)
+        do {
+            try interactor.delete(group)
+        } catch {
+            self.error = error
+        }
+    }
 }

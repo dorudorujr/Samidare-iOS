@@ -21,4 +21,8 @@ class GroupAdditionInteractor {
     func add(_ questionGroup: QuestionGroup) throws {
         try questionGroupRepository.add(questionGroup)
     }
+
+    func delete(_ questionGroup: QuestionGroup) throws {
+        try questionGroupRepository.delete(questionGroup)
+    }
 }
