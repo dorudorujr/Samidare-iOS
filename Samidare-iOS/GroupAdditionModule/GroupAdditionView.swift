@@ -48,7 +48,7 @@ struct GroupAdditionView: View {
                     Button(action: { presenter.didTapNavBarButton() }, label: {
                         Image(systemName: "plus")
                             .renderingMode(.template)
-                            .foregroundColor(Color.textBlack)
+                            .foregroundColor(.blue)
                     })
                 }
             }
