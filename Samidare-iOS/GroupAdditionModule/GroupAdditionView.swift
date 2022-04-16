@@ -36,6 +36,9 @@ struct GroupAdditionView: View {
                                     .font(.system(size: 17))
                                     .foregroundColor(Color.textBlack)
                             }
+                            .onDelete(perform: { indexSet in
+                                Task { presenter.deleteGroup(on: indexSet) }
+                            })
                         }
                     }
                 }
