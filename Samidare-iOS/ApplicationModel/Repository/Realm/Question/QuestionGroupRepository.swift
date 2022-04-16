@@ -36,11 +36,9 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
         let realm = try! Realm()
         guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).first else { return }
         guard let questionListResult = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", questionGroup.name).first else { return }
-        let questionResults = realm.objects(QuestionRealmObject.self).filter("group == %@", questionGroup.name)
         try realm.write {
             realm.delete(groupResult)
             realm.delete(questionListResult)
-            realm.delete(questionResults)
         }
     }
 }
