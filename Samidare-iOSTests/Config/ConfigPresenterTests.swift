@@ -20,16 +20,24 @@ class ConfigPresenterTests: XCTestCase {
                   questionGroup: .init(name: "questionGroup"),
                   time: 1)
         }
-        presenter = .init(interactor: .init(appConfigRepository: appConfigRepositoryMock))
     }
     
     func testGetAppConfig() {
-        XCTAssertNil(presenter.questionGroup)
-        XCTAssertNil(presenter.playTime)
-        XCTAssertNil(presenter.gameType)
-        presenter.getAppConfig()
-        XCTAssertEqual(presenter.questionGroup, "questionGroup")
-        XCTAssertEqual(presenter.gameType, "gameType")
-        XCTAssertEqual(presenter.playTime, "1")
+        Task {
+            presenter = await .init(interactor: .init(appConfigRepository: appConfigRepositoryMock), router: .init())
+            var questionGroup = await presenter.questionGroup
+            XCTAssertNil(questionGroup)
+            var playTime = await presenter.playTime
+            XCTAssertNil(playTime)
+            var gameType = await presenter.gameType
+            XCTAssertNil(gameType)
+            await presenter.getAppConfig()
+            questionGroup = await presenter.questionGroup
+            XCTAssertEqual(questionGroup, "questionGroup")
+            gameType = await presenter.gameType
+            XCTAssertEqual(gameType, "gameType")
+            playTime = await presenter.playTime
+            XCTAssertEqual(playTime, "1")
+        }
     }
 }
