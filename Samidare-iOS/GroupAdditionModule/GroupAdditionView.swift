@@ -27,31 +27,29 @@ struct GroupAdditionView: View {
                                rightButtonTitle: L10n.Common.ok,
                                leftButtonAction: nil,
                                rightButtonAction: { presenter.addQuestionGroup() })
-            NavigationView {
-                List {
-                    Section {
-                        if let groups = self.presenter.groups {
-                            ForEach(groups) { group in
-                                Text(group.name)
-                                    .font(.system(size: 17))
-                                    .foregroundColor(Color.textBlack)
-                            }
-                            .onDelete(perform: { indexSet in
-                                Task { presenter.deleteGroup(on: indexSet) }
-                            })
-                        }
-                    }
-                }
-                .navigationTitle(L10n.Group.Addition.title)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { presenter.didTapNavBarButton() }, label: {
-                            Image(systemName: "plus")
-                                .renderingMode(.template)
+            List {
+                Section {
+                    if let groups = self.presenter.groups {
+                        ForEach(groups) { group in
+                            Text(group.name)
+                                .font(.system(size: 17))
                                 .foregroundColor(Color.textBlack)
+                        }
+                        .onDelete(perform: { indexSet in
+                            Task { presenter.deleteGroup(on: indexSet) }
                         })
                     }
+                }
+            }
+            .navigationTitle(L10n.Group.Addition.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { presenter.didTapNavBarButton() }, label: {
+                        Image(systemName: "plus")
+                            .renderingMode(.template)
+                            .foregroundColor(.blue)
+                    })
                 }
             }
         }

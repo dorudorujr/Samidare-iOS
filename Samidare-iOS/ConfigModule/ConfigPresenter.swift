@@ -8,16 +8,19 @@
 import Combine
 import SwiftUI
 
+@MainActor
 class ConfigPresenter: ObservableObject {
     private let interactor: ConfigInteractor
+    private let router: ConfigRouter
     
     @Published var questionGroup: String?
     @Published var playTime: String?
     @Published var gameType: String?
     @Published var appVersion: String?
     
-    init(interactor: ConfigInteractor) {
+    init(interactor: ConfigInteractor, router: ConfigRouter) {
         self.interactor = interactor
+        self.router = router
         getAppVersion()
     }
     
@@ -26,6 +29,12 @@ class ConfigPresenter: ObservableObject {
         questionGroup = appConfig.questionGroup.name
         playTime = appConfig.time.description
         gameType = appConfig.gameType.name
+    }
+    
+    func groupAdditionLinkBuilder<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeGroupAdditionView()) {
+            content()
+        }
     }
     
     private func getAppVersion() {
