@@ -28,8 +28,6 @@ class GroupAdditionTests: XCTestCase {
     
     func testStandard() {
         let view = GroupAdditionView(presenter: presenter)
-        let test = ""
-        print(test)
         assertSnapshot(matching: view.referenceFrame(), as: .image)
     }
 }
