@@ -31,6 +31,6 @@ class ConfigViewTests: XCTestCase {
     func testStandard() {
         let view = ConfigView(presenter: presenter)
         assertSnapshot(matching: view.referenceFrame(),
-                       as: .image(precision: 0.9))
+                       as: .image(precision: 0.8))
     }
 }
