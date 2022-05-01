@@ -16,7 +16,7 @@ class GroupAdditionTests: XCTestCase {
     
     override func setUp() async throws {
         try await super.setUp()
-        isRecording = true
+        isRecording = false
         questionGroupRepositoryMock = .init()
         questionGroupRepositoryMock.getHandler = {
             [
