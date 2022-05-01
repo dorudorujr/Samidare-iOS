@@ -5,10 +5,10 @@
 //  Created by 杉岡成哉 on 2022/03/07.
 //
 
-import XCTest
-import SnapshotTesting
-import SwiftUI
-@testable import Samidare_iOS
+//import XCTest
+//import SnapshotTesting
+//import SwiftUI
+//@testable import Samidare_iOS
 
 //class ConfigViewTests: XCTestCase {
 //    private var appConfigRepositoryMock: AppConfigRepositoryMock!
