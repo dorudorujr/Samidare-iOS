@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Question {
+struct Question: Identifiable {
     let id = UUID()
     let body: String
     let group: QuestionGroup
