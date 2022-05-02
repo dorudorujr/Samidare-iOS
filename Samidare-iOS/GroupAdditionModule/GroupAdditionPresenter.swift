@@ -11,14 +11,16 @@ import SwiftUI
 @MainActor
 class GroupAdditionPresenter: ObservableObject {
     private let interactor: GroupAdditionInteractor
+    private let router: GroupAdditionRouter
     
     @Published var isShowingAddAlert = false
     @Published var alertText = ""
     @Published var groups: [QuestionGroup]?
     @Published var error: Error?
     
-    init(interactor: GroupAdditionInteractor) {
+    init(interactor: GroupAdditionInteractor, router: GroupAdditionRouter) {
         self.interactor = interactor
+        self.router = router
         groups = interactor.getQuestionGroup()
     }
     
@@ -43,6 +45,13 @@ class GroupAdditionPresenter: ObservableObject {
             try interactor.delete(group)
         } catch {
             self.error = error
+        }
+    }
+    
+    func questionAdditionLinkBuilder<Content: View>(group: String,
+                                                    @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeQuestionAdditionView(group: group)) {
+            content()
         }
     }
 }

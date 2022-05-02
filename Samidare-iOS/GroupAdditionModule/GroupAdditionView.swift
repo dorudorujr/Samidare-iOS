@@ -31,9 +31,11 @@ struct GroupAdditionView: View {
                 Section {
                     if let groups = self.presenter.groups {
                         ForEach(groups) { group in
-                            Text(group.name)
-                                .font(.system(size: 17))
-                                .foregroundColor(Color.textBlack)
+                            presenter.questionAdditionLinkBuilder(group: group.name) {
+                                Text(group.name)
+                                    .font(.system(size: 17))
+                                    .foregroundColor(Color.textBlack)
+                            }
                         }
                         .onDelete(perform: { indexSet in
                             Task { presenter.deleteGroup(on: indexSet) }
@@ -58,6 +60,6 @@ struct GroupAdditionView: View {
 
 struct GroupAdditionView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupAdditionView(presenter: .init(interactor: .init()))
+        GroupAdditionView(presenter: .init(interactor: .init(), router: .init()))
     }
 }
