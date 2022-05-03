@@ -10,15 +10,11 @@ import SwiftUI
 struct QuestionListCardView: View {
     let questionBody: String
     var body: some View {
-        Capsule()
-            .inset(by: 10)
-            .stroke(Color.textBlack, lineWidth: 2)
-            .overlay(
-                Text(questionBody)
-                    .foregroundColor(.textBlack)
-                    .font(.system(size: 30))
-                    .fontWeight(.bold)
-            )
+        Text(questionBody)
+            .foregroundColor(.textBlack)
+            .font(.system(size: 15))
+            .fontWeight(.bold)
+            .padding()
     }
 }
 

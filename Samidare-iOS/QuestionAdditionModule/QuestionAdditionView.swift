@@ -32,11 +32,9 @@ struct QuestionAdditionView: View {
                     ForEach(questions) { question in
                         QuestionListCardView(questionBody: question.body)
                     }
-                    .listRowSeparator(.hidden)
                 }
             }
-            .listStyle(.plain)
-            .navigationTitle(L10n.Group.Addition.title)
+            .navigationTitle(L10n.Question.Addition.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
