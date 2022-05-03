@@ -27,10 +27,23 @@ struct QuestionAdditionView: View {
                                rightButtonTitle: L10n.Common.add,
                                leftButtonAction: nil,
                                rightButtonAction: { presenter.addQuestion() })
+            TextFieldAlertView(text: $presenter.updateQuestionBody,
+                               isShowingAlert: $presenter.isShowingUpdateAlert,
+                               placeholder: "",
+                               isSecureTextEntry: false,
+                               title: L10n.Question.Addition.Alert.title,
+                               message: L10n.Question.Addition.Alert.message,
+                               leftButtonTitle: L10n.Common.cancel,
+                               rightButtonTitle: L10n.Common.add,
+                               leftButtonAction: nil,
+                               rightButtonAction: { presenter.updateQuestion() })
             List {
                 if let questions = self.presenter.questions {
                     ForEach(questions) { question in
                         QuestionListCardView(questionBody: question.body)
+                            .onTapGesture {
+                                presenter.didTapList(question: question)
+                            }
                     }
                 }
             }
