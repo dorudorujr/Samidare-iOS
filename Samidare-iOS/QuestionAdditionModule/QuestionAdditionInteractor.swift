@@ -9,6 +9,7 @@ import Foundation
 
 class QuestionAdditionInteractor {
     private let questionRepository: QuestionRepository
+    
     init(questionRepository: QuestionRepository = QuestionRepositoryImpl()) {
         self.questionRepository = questionRepository
     }
