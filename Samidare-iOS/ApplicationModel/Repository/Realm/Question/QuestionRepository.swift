@@ -13,7 +13,7 @@ protocol QuestionRepository {
     func getQuestions(of group: String) -> [Question]
     func add(_ question: Question) throws
     func update(_ question: Question) throws
-    func delete(_ question: Question, of group: String) throws
+    func delete(_ question: Question) throws
 }
 
 class QuestionRepositoryImpl: QuestionRepository {
@@ -56,8 +56,15 @@ class QuestionRepositoryImpl: QuestionRepository {
         }
     }
     
-    func delete(_ question: Question, of group: String) throws {
-        // TODO: 実装
-        assert(true)
+    func delete(_ question: Question) throws {
+        let realm = try! Realm()
+        guard let storeQuestionListRealmObject = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", question.group.name).first else {
+            return
+        }
+        guard let index = storeQuestionListRealmObject.list.firstIndex(where: { $0.id == question.id.uuidString }) else { return }
+        try realm.write {
+            storeQuestionListRealmObject.list.remove(at: index)
+            realm.add(storeQuestionListRealmObject, update: .modified)
+        }
     }
 }

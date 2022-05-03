@@ -44,11 +44,11 @@ class QuestionRepositoryMock: QuestionRepository {
     }
 
     private(set) var deleteCallCount = 0
-    var deleteHandler: ((Question, String) throws -> ())?
-    func delete(_ question: Question, of group: String) throws  {
+    var deleteHandler: ((Question) throws -> ())?
+    func delete(_ question: Question) throws  {
         deleteCallCount += 1
         if let deleteHandler = deleteHandler {
-            try deleteHandler(question, group)
+            try deleteHandler(question)
         }
         
     }

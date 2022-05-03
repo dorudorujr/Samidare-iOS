@@ -45,6 +45,9 @@ struct QuestionAdditionView: View {
                                 presenter.didTapList(question: question)
                             }
                     }
+                    .onDelete(perform: { indexSet in
+                        presenter.deleteQuestion(on: indexSet)
+                    })
                 }
             }
             .navigationTitle(L10n.Question.Addition.title)

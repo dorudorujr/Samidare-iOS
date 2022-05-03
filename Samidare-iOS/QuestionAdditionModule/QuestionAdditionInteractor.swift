@@ -26,7 +26,7 @@ class QuestionAdditionInteractor {
         try questionRepository.update(question)
     }
     
-    func delete(_ question: Question, of group: String) throws {
-        try questionRepository.delete(question, of: group)
+    func delete(_ question: Question) throws {
+        try questionRepository.delete(question)
     }
 }

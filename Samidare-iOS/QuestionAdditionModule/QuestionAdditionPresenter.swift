@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 @MainActor
 class QuestionAdditionPresenter: ObservableObject {
@@ -49,6 +50,16 @@ class QuestionAdditionPresenter: ObservableObject {
             questions = interactor.getQuestions(of: group)
             // 不整合が起きないように更新が完了したら初期化しておく
             self.questionToUpdate = nil
+        } catch {
+            self.error = error
+        }
+    }
+    
+    func deleteQuestion(on index: IndexSet) {
+        guard let index = index.first, let question = questions?[safe: index] else { return }
+        questions?.remove(at: index)
+        do {
+            try interactor.delete(question)
         } catch {
             self.error = error
         }
