@@ -46,6 +46,7 @@
 "Group.Addition.Alert.Message" = "追加する質問グループ名を入力してください。";
 
 // 質問追加画面
+"Question.Addition.Title" = "質問";
 "Question.Addition.Alert.Title" = "質問追加";
 "Question.Addition.Alert.Message" = "追加する質問を入力してください。";
 "Question.Addition.Update.Alert.Title" = "質問更新";
