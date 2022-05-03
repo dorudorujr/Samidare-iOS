@@ -28,14 +28,14 @@ struct QuestionAdditionView: View {
                                leftButtonAction: nil,
                                rightButtonAction: { presenter.addQuestion() })
             List {
-                Section {
-                    if let questions = self.presenter.questions {
-                        ForEach(questions) { question in
-                            QuestionListCardView(questionBody: question.body)
-                        }
+                if let questions = self.presenter.questions {
+                    ForEach(questions) { question in
+                        QuestionListCardView(questionBody: question.body)
                     }
+                    .listRowSeparator(.hidden)
                 }
             }
+            .listStyle(.plain)
             .navigationTitle(L10n.Group.Addition.title)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
