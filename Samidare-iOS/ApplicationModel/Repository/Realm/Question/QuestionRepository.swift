@@ -41,7 +41,7 @@ class QuestionRepositoryImpl: QuestionRepository {
     
     func update(_ question: Question) throws {
         let realm = try! Realm()
-        let questionRealmObject = QuestionRealmObject(value: ["id": question.id, "body": question.body, "group": question.group.name])
+        let questionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body, "group": question.group.name])
         
         try realm.write {
             realm.add(questionRealmObject, update: .modified)
