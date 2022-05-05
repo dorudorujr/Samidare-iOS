@@ -23,7 +23,7 @@ class GroupAdditionTests: XCTestCase {
                 .init(name: "デフォルト（テスト）")
             ]
         }
-        presenter = await .init(interactor: .init(questionGroupRepository: questionGroupRepositoryMock))
+        presenter = await .init(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
     }
     
     func testStandard() {

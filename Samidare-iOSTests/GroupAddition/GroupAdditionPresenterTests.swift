@@ -22,13 +22,13 @@ class GroupAdditionPresenterTests: XCTestCase {
     }
     
     func testInit() async {
-        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock))
+        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
         let group = await presenter.groups!.first!
         XCTAssertEqual(group.name, "デフォルト（テスト）")
     }
     
     func testAddQuestionGroup() async {
-        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock))
+        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
         questionGroupRepositoryMock.addHandler = { questionGroup in
             XCTAssertEqual(questionGroup.name, "")
         }
@@ -37,7 +37,7 @@ class GroupAdditionPresenterTests: XCTestCase {
     }
     
     func testDidTapNavBarButton() async {
-        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock))
+        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
         var isShowingAddAlert = await presenter.isShowingAddAlert
         XCTAssertFalse(isShowingAddAlert)
         await presenter.didTapNavBarButton()
@@ -46,7 +46,7 @@ class GroupAdditionPresenterTests: XCTestCase {
     }
     
     func testDeleteGroup() async {
-        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock))
+        let presenter = await GroupAdditionPresenter(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
         questionGroupRepositoryMock.deleteHandler = { questionGroup in
             XCTAssertEqual(questionGroup.name, "デフォルト（テスト）")
         }
