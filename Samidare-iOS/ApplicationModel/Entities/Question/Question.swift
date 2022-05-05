@@ -7,8 +7,16 @@
 
 import Foundation
 
-struct Question {
-    let id = UUID()
+struct Question: Identifiable {
+    let id: UUID
     let body: String
     let group: QuestionGroup
+}
+
+extension Question {
+    init(body: String, group: QuestionGroup) {
+        self.id = UUID()
+        self.body = body
+        self.group = group
+    }
 }
