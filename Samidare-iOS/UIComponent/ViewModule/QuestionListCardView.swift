@@ -10,11 +10,15 @@ import SwiftUI
 struct QuestionListCardView: View {
     let questionBody: String
     var body: some View {
-        Text(questionBody)
-            .foregroundColor(.textBlack)
-            .font(.system(size: 15))
-            .fontWeight(.bold)
-            .padding()
+        HStack {
+            Text(questionBody)
+                .foregroundColor(.textBlack)
+                .font(.system(size: 15))
+                .fontWeight(.bold)
+                .padding()
+            Spacer()
+        }
+        .contentShape(Rectangle())  // 文字列以外もTapできるようにする
     }
 }
 
