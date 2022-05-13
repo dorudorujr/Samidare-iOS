@@ -52,3 +52,6 @@
 "Question.Addition.Alert.Message" = "追加する質問を入力してください。";
 "Question.Addition.Update.Alert.Title" = "質問更新";
 "Question.Addition.Update.Alert.Message" = "更新する質問を入力してください。";
+
+// 質問一覧画面
+"Question.List.Title" = "質問一覧";
