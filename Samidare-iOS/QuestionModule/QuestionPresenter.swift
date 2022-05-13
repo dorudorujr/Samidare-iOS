@@ -54,6 +54,9 @@ class QuestionPresenter: ObservableObject {
     var shouldShowQuestionCardView: Bool {
         status == .play || status == .stopPlaying || status == .done
     }
+    var questionGroup: String? {
+        question?.group.name
+    }
 
     @Published var question: Question?
     @Published var selectIndex = 0 {
@@ -61,6 +64,7 @@ class QuestionPresenter: ObservableObject {
             setQuestion()
         }
     }
+    @Published var shouldShowQuestionList = false
     // ゲームの状態
     @Published var status: Status = .standBy
     // プログレスバーの位置
@@ -223,7 +227,7 @@ class QuestionPresenter: ObservableObject {
     }
     
     private func goToListView() {
-        //TODO: 一覧画面への遷移実装
+        shouldShowQuestionList = true
     }
     
     private func resetPlayConfig() {
