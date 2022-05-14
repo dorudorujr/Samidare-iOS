@@ -16,7 +16,7 @@ class QuestionListViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        isRecording = true
+        isRecording = false
         questionRepositoryMock = .init()
         questionRepositoryMock.getQuestionsHandler = { _ in
             [
