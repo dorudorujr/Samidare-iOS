@@ -32,7 +32,7 @@ class QuestionListViewTests: XCTestCase {
         let questionListView = QuestionListView(presenter: questionListPresenter)
         let vc = UIHostingController(rootView: questionListView)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
-        assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.7))
+        assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.9))
     }
 
 }
