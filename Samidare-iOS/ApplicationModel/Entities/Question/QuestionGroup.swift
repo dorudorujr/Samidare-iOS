@@ -8,6 +8,13 @@
 import Foundation
 
 struct QuestionGroup: Identifiable {
-    let id = UUID()
+    let id: UUID
     let name: String
+}
+
+extension QuestionGroup {
+    init(name: String) {
+        self.id = UUID()
+        self.name = name
+    }
 }

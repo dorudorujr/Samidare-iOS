@@ -19,7 +19,8 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
     func get() -> [QuestionGroup] {
         let realm = try! Realm()
         let results = realm.objects(QuestionGroupRealmObject.self)
-        return results.map { QuestionGroup(name: $0.name) }
+        return results.map { QuestionGroup(id: UUID(uuidString: $0.id) ?? UUID(),
+                                           name: $0.name)}
     }
     
     func add(_ questionGroup: QuestionGroup) throws {
