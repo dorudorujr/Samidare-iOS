@@ -19,7 +19,8 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
     func get() -> [QuestionGroup] {
         let realm = try! Realm()
         let results = realm.objects(QuestionGroupRealmObject.self)
-        return results.map { QuestionGroup(name: $0.name) }
+        return results.map { QuestionGroup(id: UUID(uuidString: $0.id) ?? UUID(),
+                                           name: $0.name)}
     }
     
     func add(_ questionGroup: QuestionGroup) throws {
@@ -34,8 +35,10 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
     
     func delete(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
-        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).first else { return }
-        guard let questionListResult = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", questionGroup.name).first else { return }
+        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).first else {
+            return
+        }
+        let questionListResult = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", questionGroup.name)
         let questionResults = realm.objects(QuestionRealmObject.self).filter("group == %@", questionGroup.name)
         try realm.write {
             realm.delete(groupResult)

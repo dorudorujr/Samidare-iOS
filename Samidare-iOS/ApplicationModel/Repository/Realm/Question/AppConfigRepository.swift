@@ -22,7 +22,8 @@ class AppConfigRepositoryImpl: AppConfigRepository {
                              questionGroup: .init(name: L10n.Common.AppConfig.questionGroup),
                              time: 10)
         }
-        return AppConfig(gameType: .init(name: results.gameType),
+        return AppConfig(id: UUID(uuidString: results.id) ?? UUID(),
+                         gameType: .init(name: results.gameType),
                          questionGroup: .init(name: results.questionGroup),
                          time: results.time)
     }
