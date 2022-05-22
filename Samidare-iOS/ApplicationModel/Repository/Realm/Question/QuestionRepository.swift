@@ -9,21 +9,21 @@ import Foundation
 import RealmSwift
 
 /// @mockable
-protocol QuestionRepository {
-    func getQuestions(of group: String) -> [Question]
-    func add(_ question: Question) throws
-    func update(_ question: Question) throws
-    func delete(_ question: Question) throws
+protocol QuestionRepositoryProtocol {
+    static func getQuestions(of group: String) -> [Question]
+    static func add(_ question: Question) throws
+    static func update(_ question: Question) throws
+    static func delete(_ question: Question) throws
 }
 
-class QuestionRepositoryImpl: QuestionRepository {
-    func getQuestions(of group: String) -> [Question] {
+class QuestionRepositoryImpl: QuestionRepositoryProtocol {
+    static func getQuestions(of group: String) -> [Question] {
         let realm = try! Realm()
         guard let results = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", group).first else { return [] }
         return results.list.map { Question(id: UUID(uuidString: $0.id) ?? UUID(), body: $0.body, group: QuestionGroup(name: $0.group)) }
     }
     
-    func add(_ question: Question) throws {
+    static func add(_ question: Question) throws {
         let realm = try! Realm()
         let questionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body, "group": question.group.name])
         var addQuestionListRealmObject = QuestionListRealmObject()
@@ -39,7 +39,7 @@ class QuestionRepositoryImpl: QuestionRepository {
         }
     }
     
-    func update(_ question: Question) throws {
+    static func update(_ question: Question) throws {
         let realm = try! Realm()
         let updateQuestionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body, "group": question.group.name])
         
@@ -56,7 +56,7 @@ class QuestionRepositoryImpl: QuestionRepository {
         }
     }
     
-    func delete(_ question: Question) throws {
+    static func delete(_ question: Question) throws {
         let realm = try! Realm()
         guard let storeQuestionListRealmObject = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", question.group.name).first else {
             return

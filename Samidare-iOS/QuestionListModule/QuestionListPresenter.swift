@@ -7,10 +7,10 @@
 
 import Foundation
 
-class QuestionListPresenter {
+class QuestionListPresenter<Repository: QuestionRepositoryProtocol> {
     let questions: [Question]?
     
-    init(interactor: QuestionAdditionInteractor, group: String?) {
+    init(interactor: QuestionAdditionInteractor<Repository>, group: String?) {
         if let group = group {
             questions = interactor.getQuestions(of: group)
         } else {

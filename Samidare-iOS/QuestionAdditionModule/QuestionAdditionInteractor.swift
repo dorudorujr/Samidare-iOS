@@ -7,26 +7,20 @@
 
 import Foundation
 
-class QuestionAdditionInteractor {
-    private let questionRepository: QuestionRepository
-    
-    init(questionRepository: QuestionRepository = QuestionRepositoryImpl()) {
-        self.questionRepository = questionRepository
-    }
-    
+class QuestionAdditionInteractor<Repository: QuestionRepositoryProtocol> {
     func getQuestions(of group: String) -> [Question] {
-        questionRepository.getQuestions(of: group)
+        Repository.getQuestions(of: group)
     }
     
     func add(_ question: Question) throws {
-        try questionRepository.add(question)
+        try Repository.add(question)
     }
     
     func update(_ question: Question) throws {
-        try questionRepository.update(question)
+        try Repository.update(question)
     }
     
     func delete(_ question: Question) throws {
-        try questionRepository.delete(question)
+        try Repository.delete(question)
     }
 }

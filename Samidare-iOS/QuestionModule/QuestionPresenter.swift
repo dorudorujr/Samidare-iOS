@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-class QuestionPresenter: ObservableObject {
+class QuestionPresenter<Repository: QuestionRepositoryProtocol>: ObservableObject {
     enum Status {
         case standBy, ready, play, stopPlaying, stopReadying, done
         
@@ -33,9 +33,11 @@ class QuestionPresenter: ObservableObject {
         }
     }
     
-    private static let countDownTime = 3
+    private static var countDownTime: Int {
+        return 3
+    }
     
-    private let interactor: QuestionInteractor
+    private let interactor: QuestionInteractor<Repository>
     private let timerProvider: Timer.Type
 
     private var playTimer: Timer?
@@ -74,7 +76,7 @@ class QuestionPresenter: ObservableObject {
     // 質問の総数
     @Published var totalQuestionCount = 0
     
-    init(interactor: QuestionInteractor, timerProvider: Timer.Type = Timer.self) {
+    init(interactor: QuestionInteractor<Repository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
         self.timerProvider = timerProvider
         setQuestion()

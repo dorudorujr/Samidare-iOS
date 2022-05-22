@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct QuestionListView: View {
+struct QuestionListView<Repository: QuestionRepositoryProtocol>: View {
     @Environment(\.dismiss) var dismiss
-    private let presenter: QuestionListPresenter
+    private let presenter: QuestionListPresenter<Repository>
     
-    init(presenter: QuestionListPresenter) {
+    init(presenter: QuestionListPresenter<Repository>) {
         self.presenter = presenter
     }
     
@@ -41,6 +41,6 @@ struct QuestionListView: View {
 
 struct QuestionListView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionListView(presenter: .init(interactor: .init(), group: "デフォルト"))
+        QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: "デフォルト"))
     }
 }

@@ -10,8 +10,8 @@ import XCTest
 
 class QuestionPresenterTests: XCTestCase {
     private var appConfigRepositoryMock: AppConfigRepositoryMock!
-    private var questionRepositoryMock: QuestionRepositoryMock!
-    private var presenter: QuestionPresenter!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
+    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
@@ -23,7 +23,7 @@ class QuestionPresenterTests: XCTestCase {
                   questionGroup: .init(name: "questionGroup"),
                   time: 1)
         }
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default"))
             ]
@@ -125,7 +125,7 @@ class QuestionPresenterTests: XCTestCase {
     }
     
     func testNext() {
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default")),
                 .init(body: "将来の夢は", group: .init(name: "default"))
@@ -279,8 +279,8 @@ class QuestionPresenterTests: XCTestCase {
     
     // MARK: - Set Data
     
-    private func makeInteractory() -> QuestionInteractor {
-        .init(appConfigRepository: appConfigRepositoryMock, questionRepository: questionRepositoryMock)
+    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock> {
+        .init(appConfigRepository: appConfigRepositoryMock)
     }
     
     private func setPresenter() {

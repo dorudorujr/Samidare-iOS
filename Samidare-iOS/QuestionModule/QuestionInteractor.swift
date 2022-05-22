@@ -7,20 +7,17 @@
 
 import Foundation
 
-class QuestionInteractor {
+class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol> {
     private let appConfigRepository: AppConfigRepository
-    private let questionRepository: QuestionRepository
     private let group: String
     
-    init(appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl(),
-         questionRepository: QuestionRepository = QuestionRepositoryImpl()) {
+    init(appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl()) {
         self.appConfigRepository = appConfigRepository
-        self.questionRepository = questionRepository
         group = appConfigRepository.get().questionGroup.name
     }
 
     func getQuestion(from index: Int) -> Question? {
-        let questions = questionRepository.getQuestions(of: group)
+        let questions = QuestionRepository.getQuestions(of: group)
         if questions.count <= index {
             assert(true)
             return nil
@@ -30,7 +27,7 @@ class QuestionInteractor {
     }
     
     func getTotalQuestionCount() -> Int {
-        return questionRepository.getQuestions(of: group).count
+        return QuestionRepository.getQuestions(of: group).count
     }
 
     func getTime() -> Int {

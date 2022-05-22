@@ -9,18 +9,18 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionListInteractorTests: XCTestCase {
-    private var questionRepositoryMock: QuestionRepositoryMock!
-    private var interactor: QuestionListInteractor!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
+    private var interactor: QuestionListInteractor<QuestionRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         questionRepositoryMock = .init()
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default"))
             ]
         }
-        interactor = .init(questionRepository: questionRepositoryMock)
+        interactor = .init()
     }
     
     func testGetQuestion() {

@@ -11,7 +11,6 @@ import RealmSwift
 
 class QuestionGroupRepositoryTests: XCTestCase {
     private let questionGroupRepository = QuestionGroupRepositoryImpl()
-    private let questionRepository = QuestionRepositoryImpl()
     override func setUp() {
         super.setUp()
         Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
@@ -58,9 +57,9 @@ class QuestionGroupRepositoryTests: XCTestCase {
         XCTAssertEqual(groups.first!.name, deleteGroup.name)
         // 質問追加
         let question = Question(body: "テスト中だよ", group: .init(name: "テスト"))
-        try! questionRepository.add(question)
+        try! QuestionRepositoryImpl.add(question)
         // 質問取得
-        var questions = questionRepository.getQuestions(of: "テスト")
+        var questions = QuestionRepositoryImpl.getQuestions(of: "テスト")
         XCTAssertEqual(questions.first!.id, question.id)
         XCTAssertEqual(questions.first!.body, question.body)
         XCTAssertEqual(questions.first!.group.name, question.group.name)
@@ -68,7 +67,7 @@ class QuestionGroupRepositoryTests: XCTestCase {
         try! questionGroupRepository.delete(deleteGroup)
         groups = questionGroupRepository.get()
         XCTAssertTrue(groups.isEmpty)
-        questions = questionRepository.getQuestions(of: "テスト")
+        questions = QuestionRepositoryImpl.getQuestions(of: "テスト")
         XCTAssertTrue(questions.isEmpty)
     }
 }
