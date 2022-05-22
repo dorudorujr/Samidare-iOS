@@ -28,7 +28,7 @@ class ConfigViewTests: XCTestCase {
         presenter = await .init(interactor: .init(appConfigRepository: appConfigRepositoryMock), router: .init())
     }
 
-    func testStandard() {
+    func testConfigViewTestStandard() {
         let view = ConfigView(presenter: presenter)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
