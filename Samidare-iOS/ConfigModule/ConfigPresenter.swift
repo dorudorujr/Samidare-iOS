@@ -9,8 +9,8 @@ import Combine
 import SwiftUI
 
 @MainActor
-class ConfigPresenter: ObservableObject {
-    private let interactor: ConfigInteractor
+class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject {
+    private let interactor: ConfigInteractor<Repository>
     private let router: ConfigRouter
     
     @Published var questionGroup: String?
@@ -18,7 +18,7 @@ class ConfigPresenter: ObservableObject {
     @Published var gameType: String?
     @Published var appVersion: String?
     
-    init(interactor: ConfigInteractor, router: ConfigRouter) {
+    init(interactor: ConfigInteractor<Repository>, router: ConfigRouter) {
         self.interactor = interactor
         self.router = router
         getAppVersion()

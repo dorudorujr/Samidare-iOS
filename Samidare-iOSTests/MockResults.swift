@@ -54,13 +54,13 @@ class QuestionRepositoryProtocolMock: QuestionRepositoryProtocol {
     }
 }
 
-class AppConfigRepositoryMock: AppConfigRepository {
+class AppConfigRepositoryProtocolMock: AppConfigRepositoryProtocol {
     init() { }
 
 
-    private(set) var getCallCount = 0
-    var getHandler: (() -> (AppConfig))?
-    func get() -> AppConfig {
+    static private(set) var getCallCount = 0
+    static var getHandler: (() -> (AppConfig))?
+    static func get() -> AppConfig {
         getCallCount += 1
         if let getHandler = getHandler {
             return getHandler()
@@ -68,9 +68,9 @@ class AppConfigRepositoryMock: AppConfigRepository {
         fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 
-    private(set) var updateCallCount = 0
-    var updateHandler: ((AppConfig) throws -> ())?
-    func update(_ appConfig: AppConfig) throws  {
+    static private(set) var updateCallCount = 0
+    static var updateHandler: ((AppConfig) throws -> ())?
+    static func update(_ appConfig: AppConfig) throws  {
         updateCallCount += 1
         if let updateHandler = updateHandler {
             try updateHandler(appConfig)

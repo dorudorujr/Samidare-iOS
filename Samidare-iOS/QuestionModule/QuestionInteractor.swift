@@ -7,13 +7,11 @@
 
 import Foundation
 
-class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol> {
-    private let appConfigRepository: AppConfigRepository
+class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol> {
     private let group: String
     
-    init(appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl()) {
-        self.appConfigRepository = appConfigRepository
-        group = appConfigRepository.get().questionGroup.name
+    init() {
+        group = AppConfigRepository.get().questionGroup.name
     }
 
     func getQuestion(from index: Int) -> Question? {
@@ -31,6 +29,6 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol> {
     }
 
     func getTime() -> Int {
-        return appConfigRepository.get().time
+        return AppConfigRepository.get().time
     }
 }

@@ -7,14 +7,10 @@
 
 import Foundation
 
-class ConfigInteractor {
-    private let appConfigRepository: AppConfigRepository
-
-    init(appConfigRepository: AppConfigRepository = AppConfigRepositoryImpl()) {
-        self.appConfigRepository = appConfigRepository
-    }
+class ConfigInteractor<Repository: AppConfigRepositoryProtocol> {
+    init() {}
     
     func getAppConfig() -> AppConfig {
-        appConfigRepository.get()
+        Repository.get()
     }
 }

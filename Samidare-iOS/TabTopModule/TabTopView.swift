@@ -11,8 +11,8 @@ struct TabTopView: View {
     @ObservedObject private var presenter: TabTopPresenter
     @Environment(\.scenePhase) private var scenePhase
 
-    private let questionView = QuestionView<QuestionRepositoryImpl>(presenter: .init(interactor: .init()))
-    private let configView = ConfigView(presenter: .init(interactor: .init(), router: .init()))
+    private let questionView = QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
+    private let configView = ConfigView<AppConfigRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray

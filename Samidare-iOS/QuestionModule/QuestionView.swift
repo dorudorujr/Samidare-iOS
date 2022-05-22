@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct QuestionView<Repository: QuestionRepositoryProtocol>: View {
-    @ObservedObject private var presenter: QuestionPresenter<Repository>
+struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol>: View {
+    @ObservedObject private var presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>
     
-    init(presenter: QuestionPresenter<Repository>) {
+    init(presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>) {
         self.presenter = presenter
     }
     
@@ -82,6 +82,6 @@ private struct ReadyTexts: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView<QuestionRepositoryImpl>(presenter: .init(interactor: .init()))
+        QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
     }
 }
