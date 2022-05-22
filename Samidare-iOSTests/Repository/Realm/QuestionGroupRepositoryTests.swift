@@ -17,18 +17,18 @@ class QuestionGroupRepositoryTests: XCTestCase {
     }
     
     func testGetAndAdd() {
-        XCTAssertTrue(questionGroupRepository.get().isEmpty)
+        XCTAssertTrue(QuestionGroupRepositoryImpl.get().isEmpty)
         let group = QuestionGroup(name: "テスト")
-        try! questionGroupRepository.add(group)
-        let groups = questionGroupRepository.get()
+        try! QuestionGroupRepositoryImpl.add(group)
+        let groups = QuestionGroupRepositoryImpl.get()
         XCTAssertFalse(groups.isEmpty)
         XCTAssertEqual(groups.first!.id, group.id)
         XCTAssertEqual(groups.first!.name, group.name)
         
         // 同じグループ名のグループは登録できない
         let sameNameGroup = QuestionGroup(name: "テスト")
-        try! questionGroupRepository.add(sameNameGroup)
-        let sameNameGroups = questionGroupRepository.get()
+        try! QuestionGroupRepositoryImpl.add(sameNameGroup)
+        let sameNameGroups = QuestionGroupRepositoryImpl.get()
         XCTAssertEqual(sameNameGroups.count, 1)
         XCTAssertEqual(sameNameGroups.first!.id, group.id)
         XCTAssertEqual(sameNameGroups.first!.name, group.name)
@@ -37,22 +37,22 @@ class QuestionGroupRepositoryTests: XCTestCase {
     func testDelete() {
         // グループの追加
         let group = QuestionGroup(name: "テスト")
-        try! questionGroupRepository.add(group)
-        var groups = questionGroupRepository.get()
+        try! QuestionGroupRepositoryImpl.add(group)
+        var groups = QuestionGroupRepositoryImpl.get()
         XCTAssertFalse(groups.isEmpty)
         XCTAssertEqual(groups.first!.id, group.id)
         XCTAssertEqual(groups.first!.name, group.name)
         // グループの削除
-        try! questionGroupRepository.delete(group)
-        groups = questionGroupRepository.get()
+        try! QuestionGroupRepositoryImpl.delete(group)
+        groups = QuestionGroupRepositoryImpl.get()
         XCTAssertTrue(groups.isEmpty)
         
         /* グループに紐づいている質問の削除確認*/
         // 質問グループ追加
         let deleteGroup = QuestionGroup(name: "テスト")
-        try! questionGroupRepository.add(deleteGroup)
+        try! QuestionGroupRepositoryImpl.add(deleteGroup)
         // 質問グループ取得
-        groups = questionGroupRepository.get()
+        groups = QuestionGroupRepositoryImpl.get()
         XCTAssertEqual(groups.first!.id, deleteGroup.id)
         XCTAssertEqual(groups.first!.name, deleteGroup.name)
         // 質問追加
@@ -64,8 +64,8 @@ class QuestionGroupRepositoryTests: XCTestCase {
         XCTAssertEqual(questions.first!.body, question.body)
         XCTAssertEqual(questions.first!.group.name, question.group.name)
         // 質問グループ削除
-        try! questionGroupRepository.delete(deleteGroup)
-        groups = questionGroupRepository.get()
+        try! QuestionGroupRepositoryImpl.delete(deleteGroup)
+        groups = QuestionGroupRepositoryImpl.get()
         XCTAssertTrue(groups.isEmpty)
         questions = QuestionRepositoryImpl.getQuestions(of: "テスト")
         XCTAssertTrue(questions.isEmpty)

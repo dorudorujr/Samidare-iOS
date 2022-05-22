@@ -11,23 +11,23 @@ import SwiftUI
 @testable import Samidare_iOS
 
 class GroupAdditionTests: XCTestCase {
-    private var questionGroupRepositoryMock: QuestionGroupRepositoryMock!
-    private var presenter: GroupAdditionPresenter!
+    private var questionGroupRepositoryMock: QuestionGroupRepositoryProtocolMock!
+    private var presenter: GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>!
 
     override func setUp() async throws {
         try await super.setUp()
         isRecording = false
         questionGroupRepositoryMock = .init()
-        questionGroupRepositoryMock.getHandler = {
+        QuestionGroupRepositoryProtocolMock.getHandler = {
             [
                 .init(name: "デフォルト（テスト）")
             ]
         }
-        presenter = await .init(interactor: .init(questionGroupRepository: questionGroupRepositoryMock), router: .init())
+        presenter = await .init(interactor: .init(), router: .init())
     }
 
     func testStandard() {
-        let view = GroupAdditionView(presenter: presenter)
+        let view = GroupAdditionView<QuestionGroupRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
         assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.95))
