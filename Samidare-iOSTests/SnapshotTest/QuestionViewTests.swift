@@ -11,9 +11,9 @@ import SwiftUI
 @testable import Samidare_iOS
 
 class QuestionViewTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryMock!
+    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
     private var questionRepositoryMock: QuestionRepositoryProtocolMock!
-    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock>!
+    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!
 
     override func setUp() {
         super.setUp()
@@ -22,7 +22,7 @@ class QuestionViewTests: XCTestCase {
         MockTimer.clearData()
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
-        appConfigRepositoryMock.getHandler = {
+        AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "gameType"),
                   questionGroup: .init(name: "questionGroup"),
                   time: 1)
@@ -36,13 +36,13 @@ class QuestionViewTests: XCTestCase {
     }
 
     func testStandBy() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         assertSnapshot(matching: view.referenceFrame(),
                        as: .image)
     }
 
     func testReady() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         assertSnapshot(matching: view.referenceFrame(),
@@ -50,7 +50,7 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testStopReadying() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         presenter.secondaryButtonAction()
@@ -59,7 +59,7 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testPlay() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -76,7 +76,7 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testStopPlaying() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -94,7 +94,7 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testDone() {
-        let view = QuestionView<QuestionRepositoryProtocolMock>(presenter: presenter)
+        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "完了")
@@ -123,8 +123,8 @@ class QuestionViewTests: XCTestCase {
 
     // MARK: - Set Data
 
-    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock> {
-        .init(appConfigRepository: appConfigRepositoryMock)
+    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock> {
+        .init()
     }
 
     private func setPresenter() {

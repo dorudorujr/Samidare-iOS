@@ -9,13 +9,13 @@ import XCTest
 @testable import Samidare_iOS
 
 class ConfigPresenterTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryMock!
-    private var presenter: ConfigPresenter!
+    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
+    private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         appConfigRepositoryMock = .init()
-        appConfigRepositoryMock.getHandler = {
+        AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "gameType"),
                   questionGroup: .init(name: "questionGroup"),
                   time: 1)
@@ -24,7 +24,7 @@ class ConfigPresenterTests: XCTestCase {
     
     func testGetAppConfig() {
         Task {
-            presenter = await .init(interactor: .init(appConfigRepository: appConfigRepositoryMock), router: .init())
+            presenter = await .init(interactor: .init(), router: .init())
             var questionGroup = await presenter.questionGroup
             XCTAssertNil(questionGroup)
             var playTime = await presenter.playTime

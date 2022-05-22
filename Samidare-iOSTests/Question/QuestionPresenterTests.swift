@@ -9,16 +9,16 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionPresenterTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryMock!
+    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
     private var questionRepositoryMock: QuestionRepositoryProtocolMock!
-    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock>!
+    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         MockTimer.clearData()
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
-        appConfigRepositoryMock.getHandler = {
+        AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "gameType"),
                   questionGroup: .init(name: "questionGroup"),
                   time: 1)
@@ -279,8 +279,8 @@ class QuestionPresenterTests: XCTestCase {
     
     // MARK: - Set Data
     
-    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock> {
-        .init(appConfigRepository: appConfigRepositoryMock)
+    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock> {
+        .init()
     }
     
     private func setPresenter() {

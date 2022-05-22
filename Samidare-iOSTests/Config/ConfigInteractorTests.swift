@@ -9,18 +9,18 @@ import XCTest
 @testable import Samidare_iOS
 
 class ConfigInteractorTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryMock!
-    private var interactor: ConfigInteractor!
+    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
+    private var interactor: ConfigInteractor<AppConfigRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         appConfigRepositoryMock = .init()
-        appConfigRepositoryMock.getHandler = {
+        AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "gameType"),
                   questionGroup: .init(name: "questionGroup"),
                   time: 10)
         }
-        interactor = .init(appConfigRepository: appConfigRepositoryMock)
+        interactor = .init()
     }
     
     func testGetAppConfig() {
