@@ -79,13 +79,13 @@ class AppConfigRepositoryMock: AppConfigRepository {
     }
 }
 
-class QuestionGroupRepositoryMock: QuestionGroupRepository {
+class QuestionGroupRepositoryProtocolMock: QuestionGroupRepositoryProtocol {
     init() { }
 
 
-    private(set) var getCallCount = 0
-    var getHandler: (() -> ([QuestionGroup]))?
-    func get() -> [QuestionGroup] {
+    static private(set) var getCallCount = 0
+    static var getHandler: (() -> ([QuestionGroup]))?
+    static func get() -> [QuestionGroup] {
         getCallCount += 1
         if let getHandler = getHandler {
             return getHandler()
@@ -93,9 +93,9 @@ class QuestionGroupRepositoryMock: QuestionGroupRepository {
         return [QuestionGroup]()
     }
 
-    private(set) var addCallCount = 0
-    var addHandler: ((QuestionGroup) throws -> ())?
-    func add(_ questionGroup: QuestionGroup) throws  {
+    static private(set) var addCallCount = 0
+    static var addHandler: ((QuestionGroup) throws -> ())?
+    static func add(_ questionGroup: QuestionGroup) throws  {
         addCallCount += 1
         if let addHandler = addHandler {
             try addHandler(questionGroup)
@@ -103,9 +103,9 @@ class QuestionGroupRepositoryMock: QuestionGroupRepository {
         
     }
 
-    private(set) var deleteCallCount = 0
-    var deleteHandler: ((QuestionGroup) throws -> ())?
-    func delete(_ questionGroup: QuestionGroup) throws  {
+    static private(set) var deleteCallCount = 0
+    static var deleteHandler: ((QuestionGroup) throws -> ())?
+    static func delete(_ questionGroup: QuestionGroup) throws  {
         deleteCallCount += 1
         if let deleteHandler = deleteHandler {
             try deleteHandler(questionGroup)

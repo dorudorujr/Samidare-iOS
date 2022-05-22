@@ -9,21 +9,21 @@ import Foundation
 import RealmSwift
 
 /// @mockable
-protocol QuestionGroupRepository {
-    func get() -> [QuestionGroup]
-    func add(_ questionGroup: QuestionGroup) throws
-    func delete(_ questionGroup: QuestionGroup) throws
+protocol QuestionGroupRepositoryProtocol {
+    static func get() -> [QuestionGroup]
+    static func add(_ questionGroup: QuestionGroup) throws
+    static func delete(_ questionGroup: QuestionGroup) throws
 }
 
-class QuestionGroupRepositoryImpl: QuestionGroupRepository {
-    func get() -> [QuestionGroup] {
+class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
+    static func get() -> [QuestionGroup] {
         let realm = try! Realm()
         let results = realm.objects(QuestionGroupRealmObject.self)
         return results.map { QuestionGroup(id: UUID(uuidString: $0.id) ?? UUID(),
                                            name: $0.name)}
     }
     
-    func add(_ questionGroup: QuestionGroup) throws {
+    static func add(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
         guard realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).isEmpty else { return }
         let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
@@ -33,7 +33,7 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepository {
         }
     }
     
-    func delete(_ questionGroup: QuestionGroup) throws {
+    static func delete(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
         guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).first else {
             return

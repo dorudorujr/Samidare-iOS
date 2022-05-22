@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct GroupAdditionView: View {
-    @ObservedObject private var presenter: GroupAdditionPresenter
+struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
+    @ObservedObject private var presenter: GroupAdditionPresenter<Repository>
     
-    init(presenter: GroupAdditionPresenter) {
+    init(presenter: GroupAdditionPresenter<Repository>) {
         self.presenter = presenter
     }
     
@@ -60,6 +60,6 @@ struct GroupAdditionView: View {
 
 struct GroupAdditionView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupAdditionView(presenter: .init(interactor: .init(), router: .init()))
+        GroupAdditionView<QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     }
 }
