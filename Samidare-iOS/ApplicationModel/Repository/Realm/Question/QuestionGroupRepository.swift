@@ -25,6 +25,7 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
     
     static func add(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
+        // TODO: 同一名のグループ名も登録できるようにする
         guard realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).isEmpty else { return }
         let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
         
@@ -35,15 +36,11 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
     
     static func delete(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
-        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).first else {
+        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", questionGroup.id).first else {
             return
         }
-        let questionListResult = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", questionGroup.name)
-        let questionResults = realm.objects(QuestionRealmObject.self).filter("group == %@", questionGroup.name)
         try realm.write {
             realm.delete(groupResult)
-            realm.delete(questionListResult)
-            realm.delete(questionResults)
         }
     }
 }
