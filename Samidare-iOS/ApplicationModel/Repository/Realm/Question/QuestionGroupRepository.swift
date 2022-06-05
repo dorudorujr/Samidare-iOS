@@ -25,7 +25,6 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
     
     static func add(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
-        // TODO: 同一名のグループ名も登録できるようにする
         guard realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).isEmpty else { return }
         let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
         
