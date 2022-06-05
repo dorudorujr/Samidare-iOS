@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct QuestionView: View {
-    @ObservedObject private var presenter: QuestionPresenter
+struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol>: View {
+    @ObservedObject private var presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>
     
-    init(presenter: QuestionPresenter) {
+    init(presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>) {
         self.presenter = presenter
     }
     
@@ -57,7 +57,7 @@ struct QuestionView: View {
             presenter.viewWillApper()
         }
         .sheet(isPresented: $presenter.shouldShowQuestionList) {
-            QuestionListView(presenter: .init(interactor: .init(), group: presenter.questionGroup))
+            QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: presenter.questionGroup))
         }
     }
 }
@@ -82,6 +82,6 @@ private struct ReadyTexts: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView(presenter: .init(interactor: .init()))
+        QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
     }
 }

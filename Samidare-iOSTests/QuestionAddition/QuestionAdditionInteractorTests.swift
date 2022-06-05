@@ -9,18 +9,18 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionAdditionInteractorTests: XCTestCase {
-    private var questionRepositoryMock: QuestionRepositoryMock!
-    private var interactor: QuestionAdditionInteractor!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
+    private var interactor: QuestionAdditionInteractor<QuestionRepositoryProtocolMock>!
 
     override func setUp() {
         super.setUp()
         questionRepositoryMock = .init()
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default"))
             ]
         }
-        interactor = .init(questionRepository: questionRepositoryMock)
+        interactor = .init()
     }
     
     func testGetQuestions() {
@@ -29,20 +29,20 @@ class QuestionAdditionInteractorTests: XCTestCase {
     }
     
     func testAdd() {
-        XCTAssertEqual(questionRepositoryMock.addCallCount, 0)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, 0)
         try! interactor.add(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(questionRepositoryMock.addCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, 1)
     }
     
     func testUpdate() {
-        XCTAssertEqual(questionRepositoryMock.updateCallCount, 0)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, 0)
         try! interactor.update(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(questionRepositoryMock.updateCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, 1)
     }
     
     func testDelete() {
-        XCTAssertEqual(questionRepositoryMock.deleteCallCount, 0)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, 0)
         try! interactor.delete(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(questionRepositoryMock.deleteCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, 1)
     }
 }

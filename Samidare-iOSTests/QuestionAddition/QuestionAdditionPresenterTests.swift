@@ -9,12 +9,12 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionAdditionPresenterTests: XCTestCase {
-    private var questionRepositoryMock: QuestionRepositoryMock!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
     
     override func setUp() {
         super.setUp()
         questionRepositoryMock = .init()
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default"))
             ]
@@ -22,44 +22,44 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testInit() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
         let question = await presenter.questions![0]
         XCTAssertEqual(question.body, "好きな色は")
         XCTAssertEqual(question.group.name, "default")
     }
     
     func testAddQuestion() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
-        questionRepositoryMock.addHandler = { question in
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        QuestionRepositoryProtocolMock.addHandler = { question in
             XCTAssertEqual(question.body, "")
         }
-        XCTAssertEqual(questionRepositoryMock.addCallCount, 0)
-        XCTAssertEqual(questionRepositoryMock.getQuestionsCallCount, 1)
+        let addCallCountBefore = QuestionRepositoryProtocolMock.addCallCount
+        let getQuestionsCallCountBefore = QuestionRepositoryProtocolMock.getQuestionsCallCount
         await presenter.addQuestion()
-        XCTAssertEqual(questionRepositoryMock.addCallCount, 1)
-        XCTAssertEqual(questionRepositoryMock.getQuestionsCallCount, 2)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, addCallCountBefore + 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.getQuestionsCallCount, getQuestionsCallCountBefore + 1)
     }
     
     func testUpdateQuestion() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
         let questionToUpdate = Question(body: "Update", group: .init(name: "default"))
         await presenter.didTapList(question: questionToUpdate)
-        questionRepositoryMock.updateHandler = { question in
+        QuestionRepositoryProtocolMock.updateHandler = { question in
             XCTAssertEqual(question.id, questionToUpdate.id)
             XCTAssertEqual(question.body, questionToUpdate.body)
             XCTAssertEqual(question.group.name, questionToUpdate.group.name)
         }
-        XCTAssertEqual(questionRepositoryMock.updateCallCount, 0)
-        XCTAssertEqual(questionRepositoryMock.getQuestionsCallCount, 1)
+        let updateCallCountBefore = QuestionRepositoryProtocolMock.updateCallCount
+        let getQuestionsCallCount = QuestionRepositoryProtocolMock.getQuestionsCallCount
         await presenter.updateQuestion()
-        XCTAssertEqual(questionRepositoryMock.updateCallCount, 1)
-        XCTAssertEqual(questionRepositoryMock.getQuestionsCallCount, 2)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, updateCallCountBefore + 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.getQuestionsCallCount, getQuestionsCallCount + 1)
     }
     
     func testDeleteQuestion() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
         let deleteQuestion = await presenter.questions![0]
-        questionRepositoryMock.deleteHandler = { question in
+        QuestionRepositoryProtocolMock.deleteHandler = { question in
             XCTAssertEqual(question.id, deleteQuestion.id)
             XCTAssertEqual(question.body, deleteQuestion.body)
             XCTAssertEqual(question.group.name, deleteQuestion.group.name)
@@ -68,7 +68,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testDidTapNavBarButton() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
         var isShowingAddAlert = await presenter.isShowingAddAlert
         XCTAssertFalse(isShowingAddAlert)
         await presenter.didTapNavBarButton()
@@ -77,7 +77,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testDidTapList() async {
-        let presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
         var isShowingUpdateAlert = await presenter.isShowingUpdateAlert
         var updateQuestionBody = await presenter.updateQuestionBody
         XCTAssertFalse(isShowingUpdateAlert)

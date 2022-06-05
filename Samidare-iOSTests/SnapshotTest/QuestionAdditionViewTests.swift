@@ -11,25 +11,25 @@ import SnapshotTesting
 import SwiftUI
 
 class QuestionAdditionViewTests: XCTestCase {
-    private var questionRepositoryMock: QuestionRepositoryMock!
-    private var presenter: QuestionAdditionPresenter!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
+    private var presenter: QuestionAdditionPresenter<QuestionRepositoryProtocolMock>!
     
     override func setUp() async throws {
         try await super.setUp()
         isRecording = false
         questionRepositoryMock = .init()
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default")),
                 .init(body: "好きな食べ物は", group: .init(name: "default")),
                 .init(body: "誕生日は", group: .init(name: "default"))
             ]
         }
-        presenter = await QuestionAdditionPresenter(interactor: .init(questionRepository: questionRepositoryMock), group: "default")
+        presenter = await QuestionAdditionPresenter(interactor: .init(), group: "default")
     }
     
     func testQuestionAdditionViewStandard() {
-        let view = QuestionAdditionView(presenter: presenter)
+        let view = QuestionAdditionView<QuestionRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
         assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.95))

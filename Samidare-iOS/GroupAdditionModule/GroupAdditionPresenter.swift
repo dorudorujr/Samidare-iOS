@@ -9,8 +9,8 @@ import Combine
 import SwiftUI
 
 @MainActor
-class GroupAdditionPresenter: ObservableObject {
-    private let interactor: GroupAdditionInteractor
+class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: ObservableObject {
+    private let interactor: GroupAdditionInteractor<Repository>
     private let router: GroupAdditionRouter
     
     @Published var isShowingAddAlert = false
@@ -18,7 +18,7 @@ class GroupAdditionPresenter: ObservableObject {
     @Published var groups: [QuestionGroup]?
     @Published var error: Error?
     
-    init(interactor: GroupAdditionInteractor, router: GroupAdditionRouter) {
+    init(interactor: GroupAdditionInteractor<Repository>, router: GroupAdditionRouter) {
         self.interactor = interactor
         self.router = router
         groups = interactor.getQuestionGroup()

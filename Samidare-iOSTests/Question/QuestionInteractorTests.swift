@@ -9,21 +9,20 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionInteractorTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryMock!
-    private var questionRepositoryMock: QuestionRepositoryMock!
-    private var interactor: QuestionInteractor!
+    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
+    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
+    private var interactor: QuestionInteractor<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
-        appConfigRepositoryMock.getHandler = {
+        AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "gameType"),
                   questionGroup: .init(name: "questionGroup"),
                   time: 10)
         }
-        interactor = .init(appConfigRepository: appConfigRepositoryMock,
-                           questionRepository: questionRepositoryMock)
+        interactor = .init()
     }
     
     func testGetQuestion() {
@@ -43,7 +42,7 @@ class QuestionInteractorTests: XCTestCase {
     }
     
     private func setGetQuestionsHandler() {
-        questionRepositoryMock.getQuestionsHandler = { _ in
+        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
             [
                 .init(body: "好きな色は", group: .init(name: "default")),
                 .init(body: "将来の夢は", group: .init(name: "default"))

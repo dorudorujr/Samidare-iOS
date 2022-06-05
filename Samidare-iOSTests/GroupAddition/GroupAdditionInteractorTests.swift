@@ -9,18 +9,18 @@ import XCTest
 @testable import Samidare_iOS
 
 class GroupAdditionInteractorTests: XCTestCase {
-    private var questionGroupRepositoryMock: QuestionGroupRepositoryMock!
-    private var interactor: GroupAdditionInteractor!
+    private var questionGroupRepositoryMock: QuestionGroupRepositoryProtocolMock!
+    private var interactor: GroupAdditionInteractor<QuestionGroupRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
         questionGroupRepositoryMock = .init()
-        questionGroupRepositoryMock.getHandler = {
+        QuestionGroupRepositoryProtocolMock.getHandler = {
             [
                 .init(name: "デフォルト（テスト）")
             ]
         }
-        interactor = .init(questionGroupRepository: questionGroupRepositoryMock)
+        interactor = .init()
     }
     
     func testGetQuestionGroup() {
@@ -30,11 +30,11 @@ class GroupAdditionInteractorTests: XCTestCase {
     
     func testAdd() {
         try! interactor.add(.init(name: "test"))
-        XCTAssertEqual(questionGroupRepositoryMock.addCallCount, 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.addCallCount, 1)
     }
     
     func testDelete() {
         try! interactor.delete(.init(name: "test"))
-        XCTAssertEqual(questionGroupRepositoryMock.deleteCallCount, 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, 1)
     }
 }

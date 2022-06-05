@@ -9,8 +9,8 @@ import Combine
 import Foundation
 
 @MainActor
-class QuestionAdditionPresenter: ObservableObject {
-    private let interactor: QuestionAdditionInteractor
+class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: ObservableObject {
+    private let interactor: QuestionAdditionInteractor<Repository>
     private let group: String
     
     private var questionToUpdate: Question?
@@ -22,7 +22,7 @@ class QuestionAdditionPresenter: ObservableObject {
     @Published var updateQuestionBody = ""
     @Published var error: Error?
     
-    init(interactor: QuestionAdditionInteractor, group: String) {
+    init(interactor: QuestionAdditionInteractor<Repository>, group: String) {
         self.interactor = interactor
         self.group = group
         questions = interactor.getQuestions(of: group)

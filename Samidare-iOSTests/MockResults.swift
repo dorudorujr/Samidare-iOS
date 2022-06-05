@@ -9,13 +9,13 @@ import RealmSwift
 @testable import Samidare_iOS
 
 
-class QuestionRepositoryMock: QuestionRepository {
+class QuestionRepositoryProtocolMock: QuestionRepositoryProtocol {
     init() { }
 
 
-    private(set) var getQuestionsCallCount = 0
-    var getQuestionsHandler: ((String) -> ([Question]))?
-    func getQuestions(of group: String) -> [Question] {
+    static private(set) var getQuestionsCallCount = 0
+    static var getQuestionsHandler: ((String) -> ([Question]))?
+    static func getQuestions(of group: String) -> [Question] {
         getQuestionsCallCount += 1
         if let getQuestionsHandler = getQuestionsHandler {
             return getQuestionsHandler(group)
@@ -23,9 +23,9 @@ class QuestionRepositoryMock: QuestionRepository {
         return [Question]()
     }
 
-    private(set) var addCallCount = 0
-    var addHandler: ((Question) throws -> ())?
-    func add(_ question: Question) throws  {
+    static private(set) var addCallCount = 0
+    static var addHandler: ((Question) throws -> ())?
+    static func add(_ question: Question) throws  {
         addCallCount += 1
         if let addHandler = addHandler {
             try addHandler(question)
@@ -33,9 +33,9 @@ class QuestionRepositoryMock: QuestionRepository {
         
     }
 
-    private(set) var updateCallCount = 0
-    var updateHandler: ((Question) throws -> ())?
-    func update(_ question: Question) throws  {
+    static private(set) var updateCallCount = 0
+    static var updateHandler: ((Question) throws -> ())?
+    static func update(_ question: Question) throws  {
         updateCallCount += 1
         if let updateHandler = updateHandler {
             try updateHandler(question)
@@ -43,9 +43,9 @@ class QuestionRepositoryMock: QuestionRepository {
         
     }
 
-    private(set) var deleteCallCount = 0
-    var deleteHandler: ((Question) throws -> ())?
-    func delete(_ question: Question) throws  {
+    static private(set) var deleteCallCount = 0
+    static var deleteHandler: ((Question) throws -> ())?
+    static func delete(_ question: Question) throws  {
         deleteCallCount += 1
         if let deleteHandler = deleteHandler {
             try deleteHandler(question)
@@ -54,13 +54,13 @@ class QuestionRepositoryMock: QuestionRepository {
     }
 }
 
-class AppConfigRepositoryMock: AppConfigRepository {
+class AppConfigRepositoryProtocolMock: AppConfigRepositoryProtocol {
     init() { }
 
 
-    private(set) var getCallCount = 0
-    var getHandler: (() -> (AppConfig))?
-    func get() -> AppConfig {
+    static private(set) var getCallCount = 0
+    static var getHandler: (() -> (AppConfig))?
+    static func get() -> AppConfig {
         getCallCount += 1
         if let getHandler = getHandler {
             return getHandler()
@@ -68,9 +68,9 @@ class AppConfigRepositoryMock: AppConfigRepository {
         fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 
-    private(set) var updateCallCount = 0
-    var updateHandler: ((AppConfig) throws -> ())?
-    func update(_ appConfig: AppConfig) throws  {
+    static private(set) var updateCallCount = 0
+    static var updateHandler: ((AppConfig) throws -> ())?
+    static func update(_ appConfig: AppConfig) throws  {
         updateCallCount += 1
         if let updateHandler = updateHandler {
             try updateHandler(appConfig)
@@ -79,13 +79,13 @@ class AppConfigRepositoryMock: AppConfigRepository {
     }
 }
 
-class QuestionGroupRepositoryMock: QuestionGroupRepository {
+class QuestionGroupRepositoryProtocolMock: QuestionGroupRepositoryProtocol {
     init() { }
 
 
-    private(set) var getCallCount = 0
-    var getHandler: (() -> ([QuestionGroup]))?
-    func get() -> [QuestionGroup] {
+    static private(set) var getCallCount = 0
+    static var getHandler: (() -> ([QuestionGroup]))?
+    static func get() -> [QuestionGroup] {
         getCallCount += 1
         if let getHandler = getHandler {
             return getHandler()
@@ -93,9 +93,9 @@ class QuestionGroupRepositoryMock: QuestionGroupRepository {
         return [QuestionGroup]()
     }
 
-    private(set) var addCallCount = 0
-    var addHandler: ((QuestionGroup) throws -> ())?
-    func add(_ questionGroup: QuestionGroup) throws  {
+    static private(set) var addCallCount = 0
+    static var addHandler: ((QuestionGroup) throws -> ())?
+    static func add(_ questionGroup: QuestionGroup) throws  {
         addCallCount += 1
         if let addHandler = addHandler {
             try addHandler(questionGroup)
@@ -103,9 +103,9 @@ class QuestionGroupRepositoryMock: QuestionGroupRepository {
         
     }
 
-    private(set) var deleteCallCount = 0
-    var deleteHandler: ((QuestionGroup) throws -> ())?
-    func delete(_ questionGroup: QuestionGroup) throws  {
+    static private(set) var deleteCallCount = 0
+    static var deleteHandler: ((QuestionGroup) throws -> ())?
+    static func delete(_ questionGroup: QuestionGroup) throws  {
         deleteCallCount += 1
         if let deleteHandler = deleteHandler {
             try deleteHandler(questionGroup)

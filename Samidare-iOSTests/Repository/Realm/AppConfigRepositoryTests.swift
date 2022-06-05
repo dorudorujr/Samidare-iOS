@@ -10,7 +10,6 @@ import RealmSwift
 @testable import Samidare_iOS
 
 class AppConfigRepositoryTests: XCTestCase {
-    private let repository = AppConfigRepositoryImpl()
     override func setUp() {
         super.setUp()
         Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
@@ -20,8 +19,8 @@ class AppConfigRepositoryTests: XCTestCase {
         let updateAppConfig = AppConfig(gameType: .init(name: "gameType"),
                                         questionGroup: .init(name: "questionGroup"),
                                         time: 10)
-        try! repository.update(updateAppConfig)
-        let getAppConfig = repository.get()
+        try! AppConfigRepositoryImpl.update(updateAppConfig)
+        let getAppConfig = AppConfigRepositoryImpl.get()
         XCTAssertEqual(getAppConfig.id, updateAppConfig.id)
         XCTAssertEqual(getAppConfig.gameType.name, updateAppConfig.gameType.name)
         XCTAssertEqual(getAppConfig.questionGroup.name, updateAppConfig.questionGroup.name)

@@ -7,14 +7,8 @@
 
 import Foundation
 
-class QuestionListInteractor {
-    private let questionRepository: QuestionRepository
-    
-    init(questionRepository: QuestionRepository = QuestionRepositoryImpl()) {
-        self.questionRepository = questionRepository
-    }
-    
+class QuestionListInteractor<Repository: QuestionRepositoryProtocol> {
     func getQuestions(of group: String) -> [Question] {
-        questionRepository.getQuestions(of: group)
+        Repository.getQuestions(of: group)
     }
 }
