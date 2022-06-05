@@ -19,52 +19,55 @@ protocol QuestionRepositoryProtocol {
 class QuestionRepositoryImpl: QuestionRepositoryProtocol {
     static func getQuestions(of group: String) -> [Question] {
         let realm = try! Realm()
-        guard let results = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", group).first else { return [] }
-        return results.list.map { Question(id: UUID(uuidString: $0.id) ?? UUID(), body: $0.body, group: QuestionGroup(name: $0.group)) }
+        guard let group = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", group).first else { return [] }
+        return group.questions.map { Question(id: UUID(uuidString: $0.id) ?? UUID(), body: $0.body, group: .init(id: UUID(uuidString: group.id) ?? UUID(), name: group.name)) }
     }
     
     static func add(_ question: Question) throws {
         let realm = try! Realm()
-        let questionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body, "group": question.group.name])
-        var addQuestionListRealmObject = QuestionListRealmObject()
+        let questionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body])
+        guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
+            // TODO: 存在しないgroupの時の動作定義
+            throw NSError()
+        }
         try realm.write {
-            if let storeQuestionListRealmObject = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", question.group.name).first {
-                storeQuestionListRealmObject.list.append(questionRealmObject)
-                addQuestionListRealmObject = storeQuestionListRealmObject
-            } else {
-                addQuestionListRealmObject.list.append(questionRealmObject)
-                addQuestionListRealmObject.groupName = question.group.name
-            }
-            realm.add(addQuestionListRealmObject, update: .modified)
+            questionGroupRealmObject.questions.append(questionRealmObject)
+            realm.add(questionGroupRealmObject, update: .modified)
         }
     }
     
     static func update(_ question: Question) throws {
         let realm = try! Realm()
-        let updateQuestionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body, "group": question.group.name])
+        guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
+            // TODO: 存在しないgroupの時の動作定義
+            throw NSError()
+        }
+        guard let questionRealmObject = questionGroupRealmObject.questions.first(where: { $0.id == question.id.uuidString }) else {
+            throw NSError()
+        }
         
         try realm.write {
-            guard let storeQuestionListRealmObject = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", question.group.name).first else {
-                return
+            let updateQuestionRealmObject = QuestionRealmObject(value: ["id": questionRealmObject.id, "body": question.body])
+            if let index = questionGroupRealmObject.questions.firstIndex(where: { $0.id == updateQuestionRealmObject.id }) {
+                questionGroupRealmObject.questions.remove(at: index)
             }
-            if let storeQuestion = storeQuestionListRealmObject.list.first(where: { $0.id == updateQuestionRealmObject.id }) {
-                storeQuestion.body = updateQuestionRealmObject.body
-            } else {
-                storeQuestionListRealmObject.list.append(updateQuestionRealmObject)
-            }
-            realm.add(storeQuestionListRealmObject, update: .modified)
+            questionGroupRealmObject.questions.append(updateQuestionRealmObject)
+            realm.add(questionGroupRealmObject, update: .modified)
         }
     }
     
     static func delete(_ question: Question) throws {
         let realm = try! Realm()
-        guard let storeQuestionListRealmObject = realm.objects(QuestionListRealmObject.self).filter("groupName == %@", question.group.name).first else {
+        guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
+            // TODO: 存在しないgroupの時の動作定義
+            throw NSError()
+        }
+        guard let deleteQuestionIndex = questionGroupRealmObject.questions.firstIndex(where: { $0.id == question.id.uuidString }) else {
             return
         }
-        guard let index = storeQuestionListRealmObject.list.firstIndex(where: { $0.id == question.id.uuidString }) else { return }
         try realm.write {
-            storeQuestionListRealmObject.list.remove(at: index)
-            realm.add(storeQuestionListRealmObject, update: .modified)
+            questionGroupRealmObject.questions.remove(at: deleteQuestionIndex)
+            realm.add(questionGroupRealmObject, update: .modified)
         }
     }
 }
