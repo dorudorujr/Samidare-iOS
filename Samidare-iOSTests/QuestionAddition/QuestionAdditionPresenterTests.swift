@@ -22,14 +22,14 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testInit() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         let question = await presenter.questions![0]
         XCTAssertEqual(question.body, "好きな色は")
         XCTAssertEqual(question.group.name, "default")
     }
     
     func testAddQuestion() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         QuestionRepositoryProtocolMock.addHandler = { question in
             XCTAssertEqual(question.body, "")
         }
@@ -41,7 +41,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testUpdateQuestion() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         let questionToUpdate = Question(body: "Update", group: .init(name: "default"))
         await presenter.didTapList(question: questionToUpdate)
         QuestionRepositoryProtocolMock.updateHandler = { question in
@@ -57,7 +57,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testDeleteQuestion() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         let deleteQuestion = await presenter.questions![0]
         QuestionRepositoryProtocolMock.deleteHandler = { question in
             XCTAssertEqual(question.id, deleteQuestion.id)
@@ -68,7 +68,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testDidTapNavBarButton() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         var isShowingAddAlert = await presenter.isShowingAddAlert
         XCTAssertFalse(isShowingAddAlert)
         await presenter.didTapNavBarButton()
@@ -77,7 +77,7 @@ class QuestionAdditionPresenterTests: XCTestCase {
     }
     
     func testDidTapList() async {
-        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: "default")
+        let presenter = await QuestionAdditionPresenter<QuestionRepositoryProtocolMock>(interactor: .init(), group: .init(name: "default"))
         var isShowingUpdateAlert = await presenter.isShowingUpdateAlert
         var updateQuestionBody = await presenter.updateQuestionBody
         XCTAssertFalse(isShowingUpdateAlert)
