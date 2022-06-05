@@ -20,7 +20,7 @@ class QuestionRepositoryTests: XCTestCase {
         var defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
         XCTAssertTrue(defaultQuestions.isEmpty)
         // 存在しないグループに質問追加
-        try! QuestionRepositoryImpl.add(.init(body: "テスト中だよ", group: .init(name: "デフォルト")))
+        XCTAssertThrowsError(try QuestionRepositoryImpl.add(.init(body: "テスト中だよ", group: .init(name: "デフォルト"))))
         // 存在するグループから質問を取得
         defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
         XCTAssertEqual(defaultQuestions.count, 1)
