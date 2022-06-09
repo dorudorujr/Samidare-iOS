@@ -43,7 +43,7 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
             throw NSError(domain: "存在しないGroup", code: -1, userInfo: nil)
         }
         guard let questionRealmObject = questionGroupRealmObject.questions.first(where: { $0.id == question.id.uuidString }) else {
-            throw NSError()
+            throw NSError(domain: "存在しない質問", code: -2, userInfo: nil)
         }
         
         try realm.write {
