@@ -28,7 +28,7 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
         let questionRealmObject = QuestionRealmObject(value: ["id": question.id.uuidString, "body": question.body])
         guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
             // TODO: 存在しないgroupの時の動作定義
-            throw NSError()
+            throw NSError(domain: "存在しないGroup", code: -1, userInfo: nil)
         }
         try realm.write {
             questionGroupRealmObject.questions.append(questionRealmObject)
@@ -40,7 +40,7 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
         let realm = try! Realm()
         guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
             // TODO: 存在しないgroupの時の動作定義
-            throw NSError()
+            throw NSError(domain: "存在しないGroup", code: -1, userInfo: nil)
         }
         guard let questionRealmObject = questionGroupRealmObject.questions.first(where: { $0.id == question.id.uuidString }) else {
             throw NSError()
@@ -60,7 +60,7 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
         let realm = try! Realm()
         guard let questionGroupRealmObject = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", question.group.id.uuidString).first else {
             // TODO: 存在しないgroupの時の動作定義
-            throw NSError()
+            throw NSError(domain: "存在しないGroup", code: -1, userInfo: nil)
         }
         guard let deleteQuestionIndex = questionGroupRealmObject.questions.firstIndex(where: { $0.id == question.id.uuidString }) else {
             return
