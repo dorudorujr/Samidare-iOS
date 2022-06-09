@@ -35,7 +35,7 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
     
     static func delete(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
-        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", questionGroup.id).first else {
+        guard let groupResult = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", questionGroup.id.uuidString).first else {
             return
         }
         try realm.write {
