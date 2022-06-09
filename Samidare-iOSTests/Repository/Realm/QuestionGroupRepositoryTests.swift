@@ -56,7 +56,7 @@ class QuestionGroupRepositoryTests: XCTestCase {
         XCTAssertEqual(groups.first!.id, deleteGroup.id)
         XCTAssertEqual(groups.first!.name, deleteGroup.name)
         // 質問追加
-        let question = Question(body: "テスト中だよ", group: .init(name: "テスト"))
+        let question = Question(body: "テスト中だよ", group: deleteGroup)
         try! QuestionRepositoryImpl.add(question)
         // 質問取得
         var questions = QuestionRepositoryImpl.getQuestions(of: "テスト")
