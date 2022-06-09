@@ -47,11 +47,7 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
         }
         
         try realm.write {
-            let updateQuestionRealmObject = QuestionRealmObject(value: ["id": questionRealmObject.id, "body": question.body])
-            if let index = questionGroupRealmObject.questions.firstIndex(where: { $0.id == updateQuestionRealmObject.id }) {
-                questionGroupRealmObject.questions.remove(at: index)
-            }
-            questionGroupRealmObject.questions.append(updateQuestionRealmObject)
+            questionRealmObject.body = question.body
             realm.add(questionGroupRealmObject, update: .modified)
         }
     }
