@@ -23,7 +23,6 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                     }
                     ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
                     ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
-                    ListRow(title: L10n.Config.mode, description: $presenter.gameType)
                 }
                 Section {
                     ListRow(title: L10n.Config.Use.app, description: nil)
