@@ -10,6 +10,12 @@ import SwiftUI
 struct ListRow: View {
     let title: String
     let description: Binding<String?>?
+    
+    init(title: String, description: Binding<String?>? = nil) {
+        self.title = title
+        self.description = description
+    }
+    
     var body: some View {
         HStack {
             Text(title)
