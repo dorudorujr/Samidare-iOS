@@ -57,7 +57,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
             presenter.viewWillApper()
         }
         .sheet(isPresented: $presenter.shouldShowQuestionList) {
-            QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: presenter.questionGroup))
+            QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: presenter.questionGroupName))
         }
     }
 }
