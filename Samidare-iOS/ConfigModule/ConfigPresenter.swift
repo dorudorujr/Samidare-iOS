@@ -37,6 +37,12 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
         }
     }
     
+    func appConfigSelectionLinkBuilder<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeAppConfigSelectionView()) {
+            content()
+        }
+    }
+    
     private func getAppVersion() {
         if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             appVersion = version

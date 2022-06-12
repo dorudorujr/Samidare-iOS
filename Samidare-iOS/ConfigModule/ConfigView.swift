@@ -21,7 +21,9 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                     presenter.groupAdditionLinkBuilder {
                         ListRow(title: L10n.Config.Add.question, description: nil)
                     }
-                    ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
+                    presenter.appConfigSelectionLinkBuilder {
+                        ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
+                    }
                     ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
                 }
                 Section {
