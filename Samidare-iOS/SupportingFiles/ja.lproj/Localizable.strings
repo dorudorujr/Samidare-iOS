@@ -54,3 +54,6 @@
 
 // 質問一覧画面
 "Question.List.Title" = "質問一覧";
+
+// 設定変更画面
+"App.Config.Selection.Question.Group.Description" = "出題される質問グループを設定";
