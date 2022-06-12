@@ -58,3 +58,4 @@
 // 設定変更画面
 "App.Config.Selection.Question.Group.Title" = "質問グループ設定";
 "App.Config.Selection.Question.Group.Description" = "出題される質問グループを設定";
+"App.Config.Selection.Game.Time.Description" = "質問の表示時間を設定";
