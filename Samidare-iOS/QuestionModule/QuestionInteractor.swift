@@ -16,8 +16,7 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConf
 
     func getQuestion(from index: Int) -> Question? {
         let questions = QuestionRepository.getQuestions(of: group)
-        if questions.count <= index {
-            assert(true)
+        if questions.count <= index || index < 0 {
             return nil
         } else {
             return questions[index]
@@ -30,5 +29,9 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConf
 
     func getTime() -> Int {
         return AppConfigRepository.get().time
+    }
+    
+    func questionGroup() -> QuestionGroup {
+        AppConfigRepository.get().questionGroup
     }
 }
