@@ -6,7 +6,7 @@ final class ConfigRouter {
         GroupAdditionView<QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     }
     
-    func makeAppConfigSelectionView() -> some View {
-        AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init()), description: L10n.App.Config.Selection.Question.Group.description)
+    func makeAppConfigSelectionView(for type: AppConfigSelectionType) -> some View {
+        AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), type: type), description: type.description)
     }
 }

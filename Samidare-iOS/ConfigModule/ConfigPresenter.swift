@@ -37,8 +37,8 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
         }
     }
     
-    func appConfigSelectionLinkBuilder<Content: View>(@ViewBuilder content: () -> Content) -> some View {
-        NavigationLink(destination: router.makeAppConfigSelectionView()) {
+    func appConfigSelectionLinkBuilder<Content: View>(for type: AppConfigSelectionType, @ViewBuilder content: () -> Content) -> some View {
+        NavigationLink(destination: router.makeAppConfigSelectionView(for: type)) {
             content()
         }
     }
