@@ -11,6 +11,7 @@ import RealmSwift
 class QuestionGroupRealmObject: Object {
     @objc dynamic var id = ""
     @objc dynamic var name = ""
+    let questions = List<QuestionRealmObject>()
     
     override static func primaryKey() -> String? {
         "id"

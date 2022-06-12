@@ -11,7 +11,7 @@ import Foundation
 @MainActor
 class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: ObservableObject {
     private let interactor: QuestionAdditionInteractor<Repository>
-    private let group: String
+    private let group: QuestionGroup
     
     private var questionToUpdate: Question?
     
@@ -22,17 +22,17 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     @Published var updateQuestionBody = ""
     @Published var error: Error?
     
-    init(interactor: QuestionAdditionInteractor<Repository>, group: String) {
+    init(interactor: QuestionAdditionInteractor<Repository>, group: QuestionGroup) {
         self.interactor = interactor
         self.group = group
-        questions = interactor.getQuestions(of: group)
+        questions = interactor.getQuestions(of: group.name)
     }
     
     func addQuestion() {
         do {
-            let question = Question(body: addQuestionBody, group: .init(name: group))
+            let question = Question(body: addQuestionBody, group: group)
             try interactor.add(question)
-            questions = interactor.getQuestions(of: group)
+            questions = interactor.getQuestions(of: group.name)
         } catch {
             self.error = error
         }
@@ -47,7 +47,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
                                     body: updateQuestionBody,
                                     group: questionToUpdate.group)
             try interactor.update(question)
-            questions = interactor.getQuestions(of: group)
+            questions = interactor.getQuestions(of: group.name)
             // 不整合が起きないように更新が完了したら初期化しておく
             self.questionToUpdate = nil
         } catch {

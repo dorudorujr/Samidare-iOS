@@ -48,7 +48,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
         }
     }
     
-    func questionAdditionLinkBuilder<Content: View>(group: String,
+    func questionAdditionLinkBuilder<Content: View>(group: QuestionGroup,
                                                     @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(destination: router.makeQuestionAdditionView(group: group)) {
             content()

@@ -25,7 +25,7 @@ class QuestionAdditionViewTests: XCTestCase {
                 .init(body: "誕生日は", group: .init(name: "default"))
             ]
         }
-        presenter = await QuestionAdditionPresenter(interactor: .init(), group: "default")
+        presenter = await QuestionAdditionPresenter(interactor: .init(), group: .init(name: "default"))
     }
     
     func testQuestionAdditionViewStandard() {

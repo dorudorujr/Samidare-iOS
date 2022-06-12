@@ -11,7 +11,6 @@ import RealmSwift
 class QuestionRealmObject: Object {
     @objc dynamic var id = ""
     @objc dynamic var body = ""
-    @objc dynamic var group = ""
     
     override static func primaryKey() -> String? {
         "id"

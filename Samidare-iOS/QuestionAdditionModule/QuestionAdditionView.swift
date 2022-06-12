@@ -67,6 +67,6 @@ struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
 
 struct QuestionAdditionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionAdditionView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: "デフォルト"))
+        QuestionAdditionView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: .init(name: "デフォルト")))
     }
 }

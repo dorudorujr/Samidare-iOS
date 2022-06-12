@@ -31,7 +31,7 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                 Section {
                     if let groups = self.presenter.groups {
                         ForEach(groups) { group in
-                            presenter.questionAdditionLinkBuilder(group: group.name) {
+                            presenter.questionAdditionLinkBuilder(group: group) {
                                 Text(group.name)
                                     .font(.system(size: 17))
                                     .foregroundColor(Color.textBlack)
