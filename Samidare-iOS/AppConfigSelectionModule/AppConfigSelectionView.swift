@@ -21,11 +21,21 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
         VStack {
             List {
                 Section {
-                    ForEach(self.presenter.questionGroups) { group in
-                        ListRow(title: group.name, isSelected: presenter.isSelectedQuestionGroup(questionGroup: group))
-                            .onTapGesture {
-                                presenter.update(group.name)
-                            }
+                    if let questionGroups = self.presenter.questionGroups {
+                        ForEach(questionGroups) { group in
+                            ListRow(title: group.name, isSelected: presenter.isSelectedQuestionGroup(questionGroup: group))
+                                .onTapGesture {
+                                    presenter.update(questionGroup: group.name)
+                                }
+                        }
+                    }
+                    if let appConfigGameTime = presenter.appConfigGameTime {
+                        ForEach(GameTime.allCases) { gameTime in
+                            ListRow(title: gameTime.rawValue.description, isSelected: appConfigGameTime == gameTime.rawValue)
+                                .onTapGesture {
+                                    presenter.update(gameTime: gameTime.rawValue)
+                                }
+                        }
                     }
                 } header: {
                     Text(description)
@@ -45,6 +55,6 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
 
 struct AppConfigSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init()), description: "AppConfigSelectionView")
+        AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), type: .questionGroup), description: "AppConfigSelectionView")
     }
 }

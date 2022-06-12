@@ -11,23 +11,43 @@ import SwiftUI
 @MainActor
 class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtocol, GroupRepository: QuestionGroupRepositoryProtocol>: ObservableObject {
     private let interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>
+    private let type: AppConfigSelectionType
     
-    @Published var questionGroups: [QuestionGroup]
+    @Published var questionGroups: [QuestionGroup]?
+    @Published var appConfigGameTime: Int?
     @Published var error: Error?
     
-    init(interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>) {
+    init(interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>,
+         type: AppConfigSelectionType) {
         self.interactor = interactor
-        questionGroups = interactor.questionGroups()
+        self.type = type
+        if type == .questionGroup {
+            questionGroups = interactor.questionGroups()
+        } else {
+            appConfigGameTime = interactor.gameTime()
+        }
     }
     
     func fetchQuestionGroups() {
+        guard type == .questionGroup else { return }
         questionGroups = interactor.questionGroups()
     }
     
-    func update(_ questionGroup: String) {
+    func update(questionGroup: String) {
+        guard type == .questionGroup else { return }
         do {
-            try interactor.update(questionGroup)
+            try interactor.update(questionGroup: questionGroup)
             fetchQuestionGroups()
+        } catch {
+            self.error = error
+        }
+    }
+    
+    func update(gameTime: Int) {
+        guard type == .gameTime else { return }
+        do {
+            try interactor.update(gameTime: gameTime)
+            appConfigGameTime = interactor.gameTime()
         } catch {
             self.error = error
         }
