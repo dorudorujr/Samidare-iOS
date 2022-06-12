@@ -46,6 +46,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     private var playTime: Int = 0
     // ゲーム中のカウントダウン
     private var nowPlayTime = 0.0
+    private var questionGroup: QuestionGroup
 
     var shouldShowQuestionCount: Bool {
         status != .standBy && status != .ready && status != .stopReadying
@@ -56,8 +57,8 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     var shouldShowQuestionCardView: Bool {
         status == .play || status == .stopPlaying || status == .done
     }
-    var questionGroup: String? {
-        question?.group.name
+    var questionGroupName: String? {
+        questionGroup.name
     }
 
     @Published var question: Question?
@@ -79,6 +80,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
         self.timerProvider = timerProvider
+        self.questionGroup = interactor.questionGroup()
         setQuestion()
     }
 
@@ -88,6 +90,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         setNowPlayTime()
         setPlayTime()
         setTotalQuestionCount()
+        setQuestionGroup()
     }
     
     // MARK: - Button Action
@@ -130,6 +133,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
 
     private func setTotalQuestionCount() {
         totalQuestionCount = interactor.getTotalQuestionCount()
+    }
+    
+    private func setQuestionGroup() {
+        questionGroup = interactor.questionGroup()
     }
 
     // MARK: - Status Function
