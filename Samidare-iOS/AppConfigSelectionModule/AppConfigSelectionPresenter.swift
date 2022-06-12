@@ -20,11 +20,20 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
         questionGroups = interactor.questionGroups()
     }
     
+    func fetchQuestionGroups() {
+        questionGroups = interactor.questionGroups()
+    }
+    
     func update(_ questionGroup: String) {
         do {
             try interactor.update(questionGroup)
+            fetchQuestionGroups()
         } catch {
             self.error = error
         }
+    }
+    
+    func isSelectedQuestionGroup(questionGroup: QuestionGroup) -> Bool {
+        interactor.selectQuestionGroup().name == questionGroup.name
     }
 }

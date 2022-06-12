@@ -10,10 +10,14 @@ import SwiftUI
 struct ListRow: View {
     let title: String
     let description: Binding<String?>?
+    let isSelected: Bool?
     
-    init(title: String, description: Binding<String?>? = nil) {
+    init(title: String,
+         description: Binding<String?>? = nil,
+         isSelected: Bool? = nil) {
         self.title = title
         self.description = description
+        self.isSelected = isSelected
     }
     
     var body: some View {
@@ -27,7 +31,13 @@ struct ListRow: View {
                     .font(.system(size: 17))
                     .foregroundColor(Color.textGray)
             }
+            if let isSelected = isSelected, isSelected {
+                Image(systemName: "checkmark")
+                    .renderingMode(.template)
+                    .foregroundColor(.blue)
+            }
         }
+        .contentShape(Rectangle())  // 文字列以外もTapできるようにする
     }
 }
 

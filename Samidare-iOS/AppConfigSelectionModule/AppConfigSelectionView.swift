@@ -18,12 +18,15 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
         List {
             Section {
                 ForEach(self.presenter.questionGroups) { group in
-                    ListRow(title: group.name)
+                    ListRow(title: group.name, isSelected: presenter.isSelectedQuestionGroup(questionGroup: group))
                         .onTapGesture {
                             presenter.update(group.name)
                         }
                 }
             }
+        }
+        .onAppear {
+            presenter.fetchQuestionGroups()
         }
         .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
         .navigationBarTitleDisplayMode(.inline)
