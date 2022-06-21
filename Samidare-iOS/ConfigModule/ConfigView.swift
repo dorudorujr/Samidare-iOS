@@ -19,19 +19,22 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
             List {
                 Section {
                     presenter.groupAdditionLinkBuilder {
-                        ListRow(title: L10n.Config.Add.question, description: nil)
+                        ListRow(title: L10n.Config.Add.question)
                     }
-                    ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
-                    ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
-                    ListRow(title: L10n.Config.mode, description: $presenter.gameType)
+                    presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {
+                        ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
+                    }
+                    presenter.appConfigSelectionLinkBuilder(for: .gameTime) {
+                        ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
+                    }
                 }
                 Section {
-                    ListRow(title: L10n.Config.Use.app, description: nil)
-                    ListRow(title: L10n.Config.inquiry, description: nil)
+                    ListRow(title: L10n.Config.Use.app)
+                    ListRow(title: L10n.Config.inquiry)
                 }
                 Section {
-                    ListRow(title: L10n.Config.privacyPolicy, description: nil)
-                    ListRow(title: L10n.Config.Terms.Of.service, description: nil)
+                    ListRow(title: L10n.Config.privacyPolicy)
+                    ListRow(title: L10n.Config.Terms.Of.service)
                     ListRow(title: L10n.Config.version, description: $presenter.appVersion)
                 }
             }
