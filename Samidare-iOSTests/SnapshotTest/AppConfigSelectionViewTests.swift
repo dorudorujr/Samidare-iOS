@@ -27,7 +27,7 @@ class AppConfigSelectionViewTests: XCTestCase {
     }
     
     @MainActor
-    func testQuestionGroupType() async {
+    func testQuestionGroupType() {
         let presenter = AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .questionGroup)
         let view = AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(presenter: presenter, description: AppConfigSelectionType.questionGroup.description)
         let vc = UIHostingController(rootView: view)
@@ -36,7 +36,7 @@ class AppConfigSelectionViewTests: XCTestCase {
     }
     
     @MainActor
-    func testGameTimeType() async {
+    func testGameTimeType() {
         let presenter = AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .gameTime)
         let view = AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(presenter: presenter, description: AppConfigSelectionType.gameTime.description)
         let vc = UIHostingController(rootView: view)
