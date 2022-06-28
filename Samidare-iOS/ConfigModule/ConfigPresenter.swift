@@ -15,7 +15,6 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
     
     @Published var questionGroup: String?
     @Published var playTime: String?
-    @Published var gameType: String?
     @Published var appVersion: String?
     
     init(interactor: ConfigInteractor<Repository>, router: ConfigRouter) {
@@ -28,7 +27,6 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
         let appConfig = interactor.getAppConfig()
         questionGroup = appConfig.questionGroup.name
         playTime = appConfig.time.description
-        gameType = appConfig.gameType.name
     }
     
     func groupAdditionLinkBuilder<Content: View>(@ViewBuilder content: () -> Content) -> some View {
