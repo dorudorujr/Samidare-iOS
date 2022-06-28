@@ -9,8 +9,7 @@ import XCTest
 @testable import Samidare_iOS
 
 class AppConfigSelectionInteractorTests: XCTestCase {
-    private let appConfig: AppConfig = .init(gameType: .init(name: "デフォルト"),
-                                             questionGroup: .init(name: "デフォルト"),
+    private let appConfig: AppConfig = .init(questionGroup: .init(name: "デフォルト"),
                                              time: 10)
     
     private var interactor: AppConfigSelectionInteractor<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>!

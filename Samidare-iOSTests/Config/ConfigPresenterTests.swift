@@ -16,8 +16,7 @@ class ConfigPresenterTests: XCTestCase {
         super.setUp()
         appConfigRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(gameType: .init(name: "gameType"),
-                  questionGroup: .init(name: "questionGroup"),
+            .init(questionGroup: .init(name: "questionGroup"),
                   time: 1)
         }
     }
@@ -29,13 +28,9 @@ class ConfigPresenterTests: XCTestCase {
             XCTAssertNil(questionGroup)
             var playTime = await presenter.playTime
             XCTAssertNil(playTime)
-            var gameType = await presenter.gameType
-            XCTAssertNil(gameType)
             await presenter.getAppConfig()
             questionGroup = await presenter.questionGroup
             XCTAssertEqual(questionGroup, "questionGroup")
-            gameType = await presenter.gameType
-            XCTAssertEqual(gameType, "gameType")
             playTime = await presenter.playTime
             XCTAssertEqual(playTime, "1")
         }
