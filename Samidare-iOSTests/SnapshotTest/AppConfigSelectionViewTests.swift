@@ -13,6 +13,7 @@ import SwiftUI
 class AppConfigSelectionViewTests: XCTestCase {
     override func setUp() {
         super.setUp()
+        isRecording = false
         AppConfigRepositoryProtocolMock.getHandler = {
             .init(gameType: .init(name: "デフォルト"),
                   questionGroup: .init(name: "デフォルト"),
