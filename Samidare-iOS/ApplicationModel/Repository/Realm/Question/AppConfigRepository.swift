@@ -28,7 +28,7 @@ class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
     
     static func update(_ appConfig: AppConfig) throws {
         let realm = try! Realm()
-        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "gameType": "", "questionGroup": appConfig.questionGroup.name, "time": appConfig.time])
+        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "questionGroup": appConfig.questionGroup.name, "time": appConfig.time])
         try realm.write {
             realm.add(appConfigObject, update: .modified)
         }

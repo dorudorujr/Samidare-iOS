@@ -10,7 +10,6 @@ import Foundation
 
 class AppConfigRealmObject: Object {
     @objc dynamic var id = ""
-    @objc dynamic var gameType = ""
     @objc dynamic var questionGroup = ""
     @objc dynamic var time = 0
     
