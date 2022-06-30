@@ -11,14 +11,12 @@ import SwiftUI
 @testable import Samidare_iOS
 
 class ConfigViewTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
     private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock>!
 
     override func setUp() async throws {
         try await super.setUp()
         isRecording = false
 
-        appConfigRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
             .init(questionGroup: .init(name: "questionGroup"),
                   time: 1)
