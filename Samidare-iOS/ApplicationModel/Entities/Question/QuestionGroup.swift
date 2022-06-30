@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct QuestionGroup: Identifiable {
+struct QuestionGroup: Identifiable, Equatable {
     let id: UUID
     let name: String
 }
