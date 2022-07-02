@@ -16,7 +16,11 @@ class AppConfigRepositoryTests: XCTestCase {
     }
     
     func testGetAndUpdate() {
-        let updateAppConfig = AppConfig(questionGroup: .init(name: "questionGroup"),
+        // ないグループだと何もしないのでグループを追加
+        let group = QuestionGroup(name: "questionGroup")
+        try! QuestionGroupRepositoryImpl.add(group)
+        
+        let updateAppConfig = AppConfig(questionGroup: group,
                                         time: 10)
         try! AppConfigRepositoryImpl.update(updateAppConfig)
         let getAppConfig = AppConfigRepositoryImpl.get()
