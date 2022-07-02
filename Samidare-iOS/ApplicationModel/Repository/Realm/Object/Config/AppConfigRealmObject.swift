@@ -10,7 +10,7 @@ import Foundation
 
 class AppConfigRealmObject: Object {
     @objc dynamic var id = ""
-    @objc dynamic var questionGroup = ""
+    @objc dynamic var questionGroup: QuestionGroupRealmObject?
     @objc dynamic var time = 0
     
     override static func primaryKey() -> String? {
