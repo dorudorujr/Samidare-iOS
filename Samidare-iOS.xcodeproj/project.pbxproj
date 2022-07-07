@@ -1,0 +1,2182 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00DC9C5FB926821A62D4D746 /* TabTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B19CBC2E55A7E091A1C6CF /* TabTopView.swift */; };
+		023CFCC7A5CCB0DC61BAB3C6 /* testConfigViewTestStandard.1.png in Resources */ = {isa = PBXBuildFile; fileRef = D2612811FA8A53BD3CF4955D /* testConfigViewTestStandard.1.png */; };
+		03FD5DD86A547F851CEF0877 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB228D97BE65AE37DA1A8797 /* ConfigView.swift */; };
+		0647C35D673ABA749E331734 /* AppConfigSelectionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FDEAFE4DF2F3577DA50C169 /* AppConfigSelectionPresenterTests.swift */; };
+		068E81371AB0F0942578701C /* TabTopPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78423F109E1BE07312A179B /* TabTopPresenter.swift */; };
+		06A03077D5AB5847719F6907 /* ConfigPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F158F056A7D641137F7169 /* ConfigPresenterTests.swift */; };
+		07D77BD2DF27655ACCAA520E /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBAF2F2CA4093FDAB0840205 /* Localized.swift */; };
+		0A1F30BCDD9F240C31FD72DE /* QuestionListCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34C14FF556B6B5F60AAA69EC /* QuestionListCardView.swift */; };
+		0B1A36E6C6A39BC64ABA978C /* QuestionAdditionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35F463A1BE7F25A0001839F /* QuestionAdditionPresenter.swift */; };
+		0C0443EA285C0F1A666240BB /* QuestionRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C309E7578EF186F05E5745C /* QuestionRealmObject.swift */; };
+		0E99554694D33B6474CEBA77 /* testGameTimeType.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F904D9B0CEE0A5A325072D4 /* testGameTimeType.1.png */; };
+		141FAF47DEF570F3E6486136 /* default.realm in Resources */ = {isa = PBXBuildFile; fileRef = 5D4E0B9D5DE78BCBA94C61EF /* default.realm */; };
+		1B48750484C2BAF8D2CEAB48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 537E33AEF92148D77514D98B /* GoogleService-Info.plist */; };
+		22C13A9171A7F8BDBAB5C53B /* QuestionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98FD08524FBC694ECFAA1822 /* QuestionCardView.swift */; };
+		27D4C9709B15CF0CF64E289E /* testStopReadying.1.png in Resources */ = {isa = PBXBuildFile; fileRef = A7C4E235B8B7F9D3C679A10B /* testStopReadying.1.png */; };
+		2A7248C7CD65644A2A15EE0F /* Samidare_iOSUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677EA4E3886F6922C35EC6AC /* Samidare_iOSUITestsLaunchTests.swift */; };
+		2B8536C87EBBD43ED42393B7 /* GameTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21111290E7B1FC5850F3C490 /* GameTypes.swift */; };
+		2D57D9558A8C9F55D8559F1C /* GroupAdditionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF495BCDBC2F7F73849330C /* GroupAdditionPresenter.swift */; };
+		2F72AF3C62802691306E7265 /* QuestionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE017D14965ED578772E2628 /* QuestionInteractorTests.swift */; };
+		3445DE0D766F8D5DFE4847AA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FCD43F215C36F5B201B2BF7F /* RealmSwift */; };
+		389CD56A715E1A47816C4059 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E19640943E705BD1A13507 /* RealmConfig.swift */; };
+		391159E40880730BC57F356C /* ConfigInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF45DDED90AB15D8D20689 /* ConfigInteractorTests.swift */; };
+		3BB59FA1AC90E90CD99018D2 /* QuestionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079BFEA4AF9827B058DBEDE1 /* QuestionRepository.swift */; };
+		3C9B9C2F38B3ACBD2F58B893 /* QuestionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB79FE115BBFFF3C63B6AEA8 /* QuestionPresenter.swift */; };
+		40B91CDAA97084FAADFB9E2A /* ListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF01B4D0FA0E85B388426B33 /* ListRow.swift */; };
+		4160B8B71DD9622BFF299264 /* AppConfigRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA417060FA1E4047E449F8DB /* AppConfigRepositoryTests.swift */; };
+		44A97D2C150923844D34DC21 /* QuestionAdditionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2C52C36D0689755A5C20EC /* QuestionAdditionViewTests.swift */; };
+		44D6A45564C97178347E7B35 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E63C6E3110C92FA3059D9D /* AppConfig.swift */; };
+		4834B13A29CD9574EF96DA59 /* QuestionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D42595313ED7A14FFEB1EAE /* QuestionPresenterTests.swift */; };
+		48FEBEDA4627D29FAC98FDF6 /* QuestionAdditionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EDF758DFC29DF43A9150680 /* QuestionAdditionInteractor.swift */; };
+		4B4EB2735EBBCF52B72182F6 /* QuestionAdditionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E147EDE3C928D2EBA77307F0 /* QuestionAdditionPresenterTests.swift */; };
+		536D899B2BDD8B5A433C66C4 /* testStandBy.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CC480851472B3A9C115FEE9 /* testStandBy.1.png */; };
+		57F4DF3CB6B11114A98F95EE /* GroupAdditionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE36881A60A6977C666FD78 /* GroupAdditionRouter.swift */; };
+		59A409A154EF8B3BB9727535 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A6547AE6EF9928E1ADC3B8 /* UIColor+RGB.swift */; };
+		59B8170B5452BD2E343033CB /* QuestionListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1398B0BF08D34671D4BDE1D6 /* QuestionListInteractor.swift */; };
+		5B132AEE1E0825C59461F74A /* QuestionGroupRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA76B8CF9824816A812C8672 /* QuestionGroupRealmObject.swift */; };
+		5C4D3766AA25D7C19AC1E5AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */; };
+		5FBAEC17D0E02D11DCDA99B1 /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF09FC33F4481BB5862879D /* QuestionGroup.swift */; };
+		60404E3417FC843472B5058C /* ConfigInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EFC0DC3F1B3A56D9E9FC24A /* ConfigInteractor.swift */; };
+		6445B1300BDDC0EC6979BECA /* TextFieldAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1609F464F1536D068E579326 /* TextFieldAlertView.swift */; };
+		65E8344B48E3C1C59BD16EC4 /* testReady.1.png in Resources */ = {isa = PBXBuildFile; fileRef = BAEBCF55BDC5D8469EC2960D /* testReady.1.png */; };
+		67B0F972148A598392220CA6 /* GroupAdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B4F4B74036763AA0FA2DF3 /* GroupAdditionView.swift */; };
+		68395F795CD06D9A067D74E7 /* GroupAdditionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBCEB2230689004FDA32224 /* GroupAdditionInteractor.swift */; };
+		6B6CCF9D1D451E1D683F0CF4 /* GroupAdditionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B366EE280CDAB7140FE254C /* GroupAdditionInteractorTests.swift */; };
+		6B8D641C02D4AC4C690B090C /* QuestionListViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F46AD52A5F26898ECBDD7E /* QuestionListViewTests.swift */; };
+		6D91B714AAB9000649976B6B /* testStopPlaying.1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E8B2477BA45D14F0AA49DBD /* testStopPlaying.1.png */; };
+		6EBF093935CA4C2910E06337 /* GroupAdditionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A41BFCCBB9ED1693791A41 /* GroupAdditionTests.swift */; };
+		73C414B4293818F56E88A398 /* AppConfigSelectionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 441DA38331949C77F440E5B3 /* AppConfigSelectionInteractorTests.swift */; };
+		780EC95D3B3F283F5255CCF2 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 63BD7FCDBFFFD3AD9E778605 /* Realm */; };
+		7BA2FAACDB71855CAAA6E5F8 /* Samidare_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */; };
+		7C3CC1164B04BAE1070654D8 /* QuestionAdditionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667E13EF40CBA2ACBFCC6E9 /* QuestionAdditionInteractorTests.swift */; };
+		7D16E02E166C4A87D3F126AA /* AppConfigSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFB4C6684039D426E500386 /* AppConfigSelectionType.swift */; };
+		7E4F4B90FF03D1F63D3E6B08 /* MockResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C1426E963BDF9649004E0C /* MockResults.swift */; };
+		7ECDB5FDBCEB958AF7B562BE /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6086A65736F9B4A5D3A36B /* CircleButton.swift */; };
+		801A1AE794565C2442303322 /* QuestionListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B79B9AF12DE561E3A6B4DA /* QuestionListPresenterTests.swift */; };
+		82774C75832FD0D793AC6D09 /* AppConfigSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3618491433A15DAA6754392 /* AppConfigSelectionView.swift */; };
+		865C5327530B7B187F4B5409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97CB38735A9D67F8F25CAC7F /* Assets.xcassets */; };
+		879B1FC407A2AAF9979DB884 /* testQuestionAdditionViewStandard.1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB619398AF6C17BA997A84C8 /* testQuestionAdditionViewStandard.1.png */; };
+		92A7CE17CD1BE866563E45CF /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EDED0CEEBE610BE091D7E7C2 /* FirebaseCrashlytics */; };
+		95808A4AA122DAB4CBBED5BD /* Collection+safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF013CA08423F4C875BDCC0 /* Collection+safe.swift */; };
+		95F9894C4B5F012A5EF92E3D /* ConfigViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E212042010A6B0DE9A61C7 /* ConfigViewTests.swift */; };
+		97689F0957D7578F7C026C2C /* Color+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7431DC6D2982FCCDF69D92 /* Color+RGB.swift */; };
+		97A23623D55394B41F6A6BA9 /* ForcedUpdateEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6F684212D6401D30495CC9 /* ForcedUpdateEntity.swift */; };
+		987D6AA671F04F951B9EFD26 /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B5E643B2F185FD7C204FA06 /* TimerProgressBar.swift */; };
+		9A96C7DE84F01EC2FEC167B6 /* testQuestionGroupType.1.png in Resources */ = {isa = PBXBuildFile; fileRef = DB42E378C5F2AC1F32A73632 /* testQuestionGroupType.1.png */; };
+		9D244984DCD14CFCB5A00848 /* QuestionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A205648561236C4B8282DF /* QuestionInteractor.swift */; };
+		9F29577A3E3C3F911880A247 /* testDone.1.png in Resources */ = {isa = PBXBuildFile; fileRef = E95BBC4A1C4A4CB747E605E6 /* testDone.1.png */; };
+		A2F3DBCA4908861407DBD666 /* QuestionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E42B262BE033349BB76D764 /* QuestionViewTests.swift */; };
+		A2FE7447FADDE7D7B9B229D5 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A3A220D6C65C344BF85BC3 /* Question.swift */; };
+		A81C24E44AC0F747E1814344 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD84C2F7CFF21DCE5AD486F1 /* QuestionView.swift */; };
+		AE53EE5195F612E421B63D6D /* TabTopInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B83B1628B43EA7E538D7CFC /* TabTopInteractor.swift */; };
+		B58BB6CD5BAC192E57052D5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = DBD0E3E08BA60AFEE1B1E6D8 /* FirebaseFirestore */; };
+		B7D632C63F4344E3E521E2A0 /* SwiftUI-View+referenceFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9E92E6C40263A85A50E401 /* SwiftUI-View+referenceFrame.swift */; };
+		B80F4674D62C91CF715909D7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 501D489E79799729E3FE58EB /* FirebaseAnalytics */; };
+		B8FCA8672A397D234FED07DE /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = BED2C1CDD0F7E80BEB8278D4 /* GoogleService-Info-Debug.plist */; };
+		BC45792C53E961F464542DF2 /* QuestionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216795AD1D8CDEAE60F93792 /* QuestionListPresenter.swift */; };
+		BD06E745AAC65137C6B3DD3C /* Samidare_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088BFB132843372696BB7E79 /* Samidare_iOSUITests.swift */; };
+		C4ADF070657DBE66F52C79E7 /* QuestionGroupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F43238000E315B6AFB66EE /* QuestionGroupRepository.swift */; };
+		C5C1991AE80279939EA78F81 /* GameTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995FB491CD1C51409AAE419D /* GameTime.swift */; };
+		C5E3273FB96562E09EFC4BB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA76AC5F72ECF74FA9A55BCF /* Localizable.strings */; };
+		C747DBBC4664F6C989618DD8 /* AppConfigSelectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7FFD493C8A1899A9DB28D2 /* AppConfigSelectionViewTests.swift */; };
+		C9096E2D7B277590CAE1D5FB /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 5D04D1C53DAC3752953DE512 /* SnapshotTesting */; };
+		CEBE385B2771F129B1B6ABA5 /* MockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E492C609EC8FA12DE68A58 /* MockTimer.swift */; };
+		CEE0D6A9D72496E2E469A689 /* QuestionListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FF6F4626E0DA89F749F44A /* QuestionListInteractorTests.swift */; };
+		CF9B09730D49371831A007B4 /* AppConfigSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E7D07875D5E17E9F7B3C4B6 /* AppConfigSelectionPresenter.swift */; };
+		D0FC92B19625D4848899AE41 /* testPlay.1.png in Resources */ = {isa = PBXBuildFile; fileRef = E051F5B0009D5ECEAF6842A4 /* testPlay.1.png */; };
+		D1109A0FB7EA7BF6B3544567 /* AppConfigSelectionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F1CA98016BAE4BA19E4964 /* AppConfigSelectionInteractor.swift */; };
+		D73D3D061A32F4854018F4EA /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3C16A5B171070E95EB763C9E /* FirebaseFirestoreSwift-Beta */; };
+		DD2B91CF216D3CCD86D01710 /* ConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B4A35C0AAFA4036EA7A34A /* ConfigPresenter.swift */; };
+		DE342DD05B029081610102B8 /* testQuestionListViewStandard.1.png in Resources */ = {isa = PBXBuildFile; fileRef = A2115C4AB653EADAEF410C95 /* testQuestionListViewStandard.1.png */; };
+		DE8E0742382E3312673B05E4 /* QuestionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87A40D97618A4F8A4FF3AED /* QuestionRepositoryTests.swift */; };
+		E15127B2519A07E5EB56CF79 /* testStandard.1.png in Resources */ = {isa = PBXBuildFile; fileRef = B5CED1EB5817CF394404B71E /* testStandard.1.png */; };
+		E1BA5986EFF1D94174522563 /* QuestionGroupRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90F68FDF7332BD5260B22B3 /* QuestionGroupRepositoryTests.swift */; };
+		E79E86344FFD0E74DB00C714 /* ForcedUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77D5CF020F0EDB18B1B4787 /* ForcedUpdate.swift */; };
+		E7B6ECB56C62ED066D7199A9 /* QuestionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 881426E58398EBCAD7F6D824 /* QuestionListView.swift */; };
+		E8306CD1A80EA4BFF1BA7BE8 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBF8E2F67BE9E8D0D14F9ED /* Images.swift */; };
+		F12B9D988B3E52B28F8085ED /* GroupAdditionPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4976EA8C1E8C81AC2E817430 /* GroupAdditionPresenterTests.swift */; };
+		F1681498117D5C1768EA5C4D /* QuestionAdditionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5E80F00CB5AA300E4BD6EF /* QuestionAdditionView.swift */; };
+		F81FB93C5E9E960D60717276 /* AppConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69A74209890E7351565814 /* AppConfigRepository.swift */; };
+		F8D3D78C12923486EF700D4F /* AppConfigRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8869CF3C1A18FCD9A872348 /* AppConfigRealmObject.swift */; };
+		FA07C795CDB762DD7D7AAB8C /* GameType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646EF03F3C8F3A3E20EF2DB0 /* GameType.swift */; };
+		FBF22A71698FD691991A37A9 /* ConfigRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FA4EBD2452C05B8972ED09 /* ConfigRouter.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4836F85756DCA781BD578524 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBB5B1BA455527110846BD8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46B078B40F3AE90C265FE517;
+			remoteInfo = "Samidare-iOS";
+		};
+		ABD1A4058E24A7DE02071349 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DBB5B1BA455527110846BD8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46B078B40F3AE90C265FE517;
+			remoteInfo = "Samidare-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		079BFEA4AF9827B058DBEDE1 /* QuestionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepository.swift; sourceTree = "<group>"; };
+		088BFB132843372696BB7E79 /* Samidare_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITests.swift; sourceTree = "<group>"; };
+		0B366EE280CDAB7140FE254C /* GroupAdditionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionInteractorTests.swift; sourceTree = "<group>"; };
+		0B5E643B2F185FD7C204FA06 /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
+		0E42B262BE033349BB76D764 /* QuestionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewTests.swift; sourceTree = "<group>"; };
+		1398B0BF08D34671D4BDE1D6 /* QuestionListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListInteractor.swift; sourceTree = "<group>"; };
+		15A3A220D6C65C344BF85BC3 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		1609F464F1536D068E579326 /* TextFieldAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertView.swift; sourceTree = "<group>"; };
+		1E7FFD493C8A1899A9DB28D2 /* AppConfigSelectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionViewTests.swift; sourceTree = "<group>"; };
+		21111290E7B1FC5850F3C490 /* GameTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypes.swift; sourceTree = "<group>"; };
+		216795AD1D8CDEAE60F93792 /* QuestionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListPresenter.swift; sourceTree = "<group>"; };
+		2BF495BCDBC2F7F73849330C /* GroupAdditionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionPresenter.swift; sourceTree = "<group>"; };
+		2DFB4C6684039D426E500386 /* AppConfigSelectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionType.swift; sourceTree = "<group>"; };
+		34C14FF556B6B5F60AAA69EC /* QuestionListCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListCardView.swift; sourceTree = "<group>"; };
+		3B83B1628B43EA7E538D7CFC /* TabTopInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTopInteractor.swift; sourceTree = "<group>"; };
+		3FDEAFE4DF2F3577DA50C169 /* AppConfigSelectionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionPresenterTests.swift; sourceTree = "<group>"; };
+		409EDC1BDFA4D6DC2096A4BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		41C1426E963BDF9649004E0C /* MockResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockResults.swift; sourceTree = "<group>"; };
+		441DA38331949C77F440E5B3 /* AppConfigSelectionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionInteractorTests.swift; sourceTree = "<group>"; };
+		4976EA8C1E8C81AC2E817430 /* GroupAdditionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionPresenterTests.swift; sourceTree = "<group>"; };
+		4C309E7578EF186F05E5745C /* QuestionRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRealmObject.swift; sourceTree = "<group>"; };
+		4CC480851472B3A9C115FEE9 /* testStandBy.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testStandBy.1.png; sourceTree = "<group>"; };
+		50E212042010A6B0DE9A61C7 /* ConfigViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewTests.swift; sourceTree = "<group>"; };
+		51D3FF2118BA353799330113 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		537E33AEF92148D77514D98B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5D4E0B9D5DE78BCBA94C61EF /* default.realm */ = {isa = PBXFileReference; path = default.realm; sourceTree = "<group>"; };
+		5D7431DC6D2982FCCDF69D92 /* Color+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+RGB.swift"; sourceTree = "<group>"; };
+		63034B02AD644C1B7F67E571 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Samidare-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		646EF03F3C8F3A3E20EF2DB0 /* GameType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameType.swift; sourceTree = "<group>"; };
+		65F46AD52A5F26898ECBDD7E /* QuestionListViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListViewTests.swift; sourceTree = "<group>"; };
+		677EA4E3886F6922C35EC6AC /* Samidare_iOSUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		6E8B2477BA45D14F0AA49DBD /* testStopPlaying.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testStopPlaying.1.png; sourceTree = "<group>"; };
+		6E9E92E6C40263A85A50E401 /* SwiftUI-View+referenceFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftUI-View+referenceFrame.swift"; sourceTree = "<group>"; };
+		6F6086A65736F9B4A5D3A36B /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
+		70A41BFCCBB9ED1693791A41 /* GroupAdditionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionTests.swift; sourceTree = "<group>"; };
+		75E63C6E3110C92FA3059D9D /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		76F43238000E315B6AFB66EE /* QuestionGroupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupRepository.swift; sourceTree = "<group>"; };
+		7CBF8E2F67BE9E8D0D14F9ED /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
+		7E7D07875D5E17E9F7B3C4B6 /* AppConfigSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionPresenter.swift; sourceTree = "<group>"; };
+		7EFC0DC3F1B3A56D9E9FC24A /* ConfigInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInteractor.swift; sourceTree = "<group>"; };
+		80B4A35C0AAFA4036EA7A34A /* ConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigPresenter.swift; sourceTree = "<group>"; };
+		81B79B9AF12DE561E3A6B4DA /* QuestionListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListPresenterTests.swift; sourceTree = "<group>"; };
+		85A6547AE6EF9928E1ADC3B8 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		86A205648561236C4B8282DF /* QuestionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInteractor.swift; sourceTree = "<group>"; };
+		881426E58398EBCAD7F6D824 /* QuestionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListView.swift; sourceTree = "<group>"; };
+		8D42595313ED7A14FFEB1EAE /* QuestionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenterTests.swift; sourceTree = "<group>"; };
+		8F904D9B0CEE0A5A325072D4 /* testGameTimeType.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testGameTimeType.1.png; sourceTree = "<group>"; };
+		97CB38735A9D67F8F25CAC7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		98E492C609EC8FA12DE68A58 /* MockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTimer.swift; sourceTree = "<group>"; };
+		98FD08524FBC694ECFAA1822 /* QuestionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCardView.swift; sourceTree = "<group>"; };
+		995FB491CD1C51409AAE419D /* GameTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTime.swift; sourceTree = "<group>"; };
+		9E6F684212D6401D30495CC9 /* ForcedUpdateEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcedUpdateEntity.swift; sourceTree = "<group>"; };
+		9EDF758DFC29DF43A9150680 /* QuestionAdditionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionInteractor.swift; sourceTree = "<group>"; };
+		9FE36881A60A6977C666FD78 /* GroupAdditionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionRouter.swift; sourceTree = "<group>"; };
+		A2115C4AB653EADAEF410C95 /* testQuestionListViewStandard.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testQuestionListViewStandard.1.png; sourceTree = "<group>"; };
+		A78423F109E1BE07312A179B /* TabTopPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTopPresenter.swift; sourceTree = "<group>"; };
+		A7C4E235B8B7F9D3C679A10B /* testStopReadying.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testStopReadying.1.png; sourceTree = "<group>"; };
+		ACBCEB2230689004FDA32224 /* GroupAdditionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionInteractor.swift; sourceTree = "<group>"; };
+		ACF013CA08423F4C875BDCC0 /* Collection+safe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+safe.swift"; sourceTree = "<group>"; };
+		ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Samidare-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE017D14965ED578772E2628 /* QuestionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionInteractorTests.swift; sourceTree = "<group>"; };
+		AF01B4D0FA0E85B388426B33 /* ListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRow.swift; sourceTree = "<group>"; };
+		B35F463A1BE7F25A0001839F /* QuestionAdditionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionPresenter.swift; sourceTree = "<group>"; };
+		B3618491433A15DAA6754392 /* AppConfigSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionView.swift; sourceTree = "<group>"; };
+		B3B4F4B74036763AA0FA2DF3 /* GroupAdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupAdditionView.swift; sourceTree = "<group>"; };
+		B5CED1EB5817CF394404B71E /* testStandard.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testStandard.1.png; sourceTree = "<group>"; };
+		B87A40D97618A4F8A4FF3AED /* QuestionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionRepositoryTests.swift; sourceTree = "<group>"; };
+		B8869CF3C1A18FCD9A872348 /* AppConfigRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRealmObject.swift; sourceTree = "<group>"; };
+		BAEBCF55BDC5D8469EC2960D /* testReady.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testReady.1.png; sourceTree = "<group>"; };
+		BB619398AF6C17BA997A84C8 /* testQuestionAdditionViewStandard.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testQuestionAdditionViewStandard.1.png; sourceTree = "<group>"; };
+		BC69A74209890E7351565814 /* AppConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRepository.swift; sourceTree = "<group>"; };
+		BED2C1CDD0F7E80BEB8278D4 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
+		C2F158F056A7D641137F7169 /* ConfigPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigPresenterTests.swift; sourceTree = "<group>"; };
+		C4FA4EBD2452C05B8972ED09 /* ConfigRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigRouter.swift; sourceTree = "<group>"; };
+		CA417060FA1E4047E449F8DB /* AppConfigRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigRepositoryTests.swift; sourceTree = "<group>"; };
+		CA4486023A28CC2F487A4282 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Samidare_iOSApp.swift; sourceTree = "<group>"; };
+		D2612811FA8A53BD3CF4955D /* testConfigViewTestStandard.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testConfigViewTestStandard.1.png; sourceTree = "<group>"; };
+		D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Samidare-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D667E13EF40CBA2ACBFCC6E9 /* QuestionAdditionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionInteractorTests.swift; sourceTree = "<group>"; };
+		D77D5CF020F0EDB18B1B4787 /* ForcedUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForcedUpdate.swift; sourceTree = "<group>"; };
+		D9B19CBC2E55A7E091A1C6CF /* TabTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTopView.swift; sourceTree = "<group>"; };
+		DB42E378C5F2AC1F32A73632 /* testQuestionGroupType.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testQuestionGroupType.1.png; sourceTree = "<group>"; };
+		DDAAE5386547C14A2887CD75 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DEF09FC33F4481BB5862879D /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
+		DF2C52C36D0689755A5C20EC /* QuestionAdditionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionViewTests.swift; sourceTree = "<group>"; };
+		DF5E80F00CB5AA300E4BD6EF /* QuestionAdditionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionView.swift; sourceTree = "<group>"; };
+		E051F5B0009D5ECEAF6842A4 /* testPlay.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testPlay.1.png; sourceTree = "<group>"; };
+		E0AF45DDED90AB15D8D20689 /* ConfigInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigInteractorTests.swift; sourceTree = "<group>"; };
+		E147EDE3C928D2EBA77307F0 /* QuestionAdditionPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAdditionPresenterTests.swift; sourceTree = "<group>"; };
+		E4E7BC9A589E90BCF2955C15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E5F1CA98016BAE4BA19E4964 /* AppConfigSelectionInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigSelectionInteractor.swift; sourceTree = "<group>"; };
+		E8E19640943E705BD1A13507 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		E95BBC4A1C4A4CB747E605E6 /* testDone.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testDone.1.png; sourceTree = "<group>"; };
+		E9FF6F4626E0DA89F749F44A /* QuestionListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionListInteractorTests.swift; sourceTree = "<group>"; };
+		EA76B8CF9824816A812C8672 /* QuestionGroupRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupRealmObject.swift; sourceTree = "<group>"; };
+		EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F90F68FDF7332BD5260B22B3 /* QuestionGroupRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupRepositoryTests.swift; sourceTree = "<group>"; };
+		FB228D97BE65AE37DA1A8797 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
+		FB79FE115BBFFF3C63B6AEA8 /* QuestionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPresenter.swift; sourceTree = "<group>"; };
+		FBAF2F2CA4093FDAB0840205 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		FD84C2F7CFF21DCE5AD486F1 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C9C8DC6DC5393D212DBB2C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B80F4674D62C91CF715909D7 /* FirebaseAnalytics in Frameworks */,
+				B58BB6CD5BAC192E57052D5D /* FirebaseFirestore in Frameworks */,
+				92A7CE17CD1BE866563E45CF /* FirebaseCrashlytics in Frameworks */,
+				D73D3D061A32F4854018F4EA /* FirebaseFirestoreSwift-Beta in Frameworks */,
+				780EC95D3B3F283F5255CCF2 /* Realm in Frameworks */,
+				3445DE0D766F8D5DFE4847AA /* RealmSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78ADA05A4286EE06D6535352 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9096E2D7B277590CAE1D5FB /* SnapshotTesting in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		073E23A4A8AFB034AD4846AE /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				15A3A220D6C65C344BF85BC3 /* Question.swift */,
+				DEF09FC33F4481BB5862879D /* QuestionGroup.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		103FD70983AF32DD39E3F5A8 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				BC69A74209890E7351565814 /* AppConfigRepository.swift */,
+				76F43238000E315B6AFB66EE /* QuestionGroupRepository.swift */,
+				079BFEA4AF9827B058DBEDE1 /* QuestionRepository.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		1A917508877935AAAB223566 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				ACF013CA08423F4C875BDCC0 /* Collection+safe.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1DC192C942A9A7E7CB16AB23 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				298BA0B0C6CAE8854A33D12B /* Config */,
+				E07B8FAD64ECED501FC11866 /* ForcedUpdate */,
+				073E23A4A8AFB034AD4846AE /* Question */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		1DD129C6725C899ABAE4612D /* GroupAdditionTests */ = {
+			isa = PBXGroup;
+			children = (
+				B5CED1EB5817CF394404B71E /* testStandard.1.png */,
+			);
+			path = GroupAdditionTests;
+			sourceTree = "<group>";
+		};
+		1E28FCAD263FC46A33E8CB14 /* GroupAdditionModule */ = {
+			isa = PBXGroup;
+			children = (
+				ACBCEB2230689004FDA32224 /* GroupAdditionInteractor.swift */,
+				2BF495BCDBC2F7F73849330C /* GroupAdditionPresenter.swift */,
+				9FE36881A60A6977C666FD78 /* GroupAdditionRouter.swift */,
+				B3B4F4B74036763AA0FA2DF3 /* GroupAdditionView.swift */,
+			);
+			path = GroupAdditionModule;
+			sourceTree = "<group>";
+		};
+		232647B008511356F6218CF1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				63F608D7D5F35980CC4E0C28 /* Realm */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		288703C9C31C56D855062C03 /* ViewModule */ = {
+			isa = PBXGroup;
+			children = (
+				6F6086A65736F9B4A5D3A36B /* CircleButton.swift */,
+				AF01B4D0FA0E85B388426B33 /* ListRow.swift */,
+				98FD08524FBC694ECFAA1822 /* QuestionCardView.swift */,
+				34C14FF556B6B5F60AAA69EC /* QuestionListCardView.swift */,
+				1609F464F1536D068E579326 /* TextFieldAlertView.swift */,
+				0B5E643B2F185FD7C204FA06 /* TimerProgressBar.swift */,
+			);
+			path = ViewModule;
+			sourceTree = "<group>";
+		};
+		298BA0B0C6CAE8854A33D12B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				75E63C6E3110C92FA3059D9D /* AppConfig.swift */,
+				995FB491CD1C51409AAE419D /* GameTime.swift */,
+				646EF03F3C8F3A3E20EF2DB0 /* GameType.swift */,
+				21111290E7B1FC5850F3C490 /* GameTypes.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2D2AE9D73000AA0077C40C7A /* Samidare-iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				CA4486023A28CC2F487A4282 /* Info.plist */,
+				088BFB132843372696BB7E79 /* Samidare_iOSUITests.swift */,
+				677EA4E3886F6922C35EC6AC /* Samidare_iOSUITestsLaunchTests.swift */,
+			);
+			path = "Samidare-iOSUITests";
+			sourceTree = "<group>";
+		};
+		31CD5365ABE030921DEED97F /* ApplicationModel */ = {
+			isa = PBXGroup;
+			children = (
+				1DC192C942A9A7E7CB16AB23 /* Entities */,
+				232647B008511356F6218CF1 /* Model */,
+				48B8EC3D184830249AB92D3D /* Repository */,
+			);
+			path = ApplicationModel;
+			sourceTree = "<group>";
+		};
+		38843170AFC212F12429A7F6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EE8F78D9F314B6916A706A33 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3B53B24A4CC49C9C864626CF /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				BED2C1CDD0F7E80BEB8278D4 /* GoogleService-Info-Debug.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		3E4D97A6FACC9EBEF3C0D853 /* QuestionAdditionViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB619398AF6C17BA997A84C8 /* testQuestionAdditionViewStandard.1.png */,
+			);
+			path = QuestionAdditionViewTests;
+			sourceTree = "<group>";
+		};
+		3FD11F3ED9E9FAE7D12D2A45 /* AppConfigSelectionModule */ = {
+			isa = PBXGroup;
+			children = (
+				E5F1CA98016BAE4BA19E4964 /* AppConfigSelectionInteractor.swift */,
+				7E7D07875D5E17E9F7B3C4B6 /* AppConfigSelectionPresenter.swift */,
+				2DFB4C6684039D426E500386 /* AppConfigSelectionType.swift */,
+				B3618491433A15DAA6754392 /* AppConfigSelectionView.swift */,
+			);
+			path = AppConfigSelectionModule;
+			sourceTree = "<group>";
+		};
+		41219542EA309B87A83C3335 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				FC107AA39589087E83BDD9D8 /* ForcedUpdate */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+		48B8EC3D184830249AB92D3D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				41219542EA309B87A83C3335 /* Firestore */,
+				88CD8E0BE566551694F8C204 /* Realm */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		4AF2FE69F424CEA956352F6F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */,
+				D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */,
+				ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4E823378B681FB69B2B69328 = {
+			isa = PBXGroup;
+			children = (
+				75871A98150AA37B116F850C /* Samidare-iOS */,
+				CCD4B7C9E3B8F7A3B7C09C1B /* Samidare-iOSTests */,
+				2D2AE9D73000AA0077C40C7A /* Samidare-iOSUITests */,
+				4AF2FE69F424CEA956352F6F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4EB5835A6A60AE4EE9CBDAAE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				FA76AC5F72ECF74FA9A55BCF /* Localizable.strings */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		5E3559040D8C3A0925515EF1 /* QuestionModule */ = {
+			isa = PBXGroup;
+			children = (
+				86A205648561236C4B8282DF /* QuestionInteractor.swift */,
+				FB79FE115BBFFF3C63B6AEA8 /* QuestionPresenter.swift */,
+				FD84C2F7CFF21DCE5AD486F1 /* QuestionView.swift */,
+			);
+			path = QuestionModule;
+			sourceTree = "<group>";
+		};
+		63F608D7D5F35980CC4E0C28 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				E8E19640943E705BD1A13507 /* RealmConfig.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		67C949F81356AE25A0F41F10 /* TabTopModule */ = {
+			isa = PBXGroup;
+			children = (
+				3B83B1628B43EA7E538D7CFC /* TabTopInteractor.swift */,
+				A78423F109E1BE07312A179B /* TabTopPresenter.swift */,
+				D9B19CBC2E55A7E091A1C6CF /* TabTopView.swift */,
+			);
+			path = TabTopModule;
+			sourceTree = "<group>";
+		};
+		68F292B7BDB196F53C9318FF /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				7CBF8E2F67BE9E8D0D14F9ED /* Images.swift */,
+				FBAF2F2CA4093FDAB0840205 /* Localized.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		694231205B5A6DEFA826D155 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				EA76B8CF9824816A812C8672 /* QuestionGroupRealmObject.swift */,
+				4C309E7578EF186F05E5745C /* QuestionRealmObject.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		75871A98150AA37B116F850C /* Samidare-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				97CB38735A9D67F8F25CAC7F /* Assets.xcassets */,
+				537E33AEF92148D77514D98B /* GoogleService-Info.plist */,
+				63034B02AD644C1B7F67E571 /* Info.plist */,
+				DDAAE5386547C14A2887CD75 /* README.md */,
+				CE42CD33A42D49043DEC59D3 /* Samidare_iOSApp.swift */,
+				3FD11F3ED9E9FAE7D12D2A45 /* AppConfigSelectionModule */,
+				31CD5365ABE030921DEED97F /* ApplicationModel */,
+				D048A0AB26B346D55F33C5C5 /* ConfigModule */,
+				1A917508877935AAAB223566 /* Extension */,
+				68F292B7BDB196F53C9318FF /* Generated */,
+				1E28FCAD263FC46A33E8CB14 /* GroupAdditionModule */,
+				38843170AFC212F12429A7F6 /* Preview Content */,
+				B62B7AF1AA7E04C30D47C831 /* QuestionAdditionModule */,
+				DAE40D0ADF35C2AA26521BFC /* QuestionListModule */,
+				5E3559040D8C3A0925515EF1 /* QuestionModule */,
+				C2DD14EC27D090A877B148DD /* Resource */,
+				4EB5835A6A60AE4EE9CBDAAE /* SupportingFiles */,
+				67C949F81356AE25A0F41F10 /* TabTopModule */,
+				7B7F1A5F65986DD11FABF400 /* UIComponent */,
+			);
+			path = "Samidare-iOS";
+			sourceTree = "<group>";
+		};
+		76CFE91114B29587063D4B1C /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				B8869CF3C1A18FCD9A872348 /* AppConfigRealmObject.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		7B7F1A5F65986DD11FABF400 /* UIComponent */ = {
+			isa = PBXGroup;
+			children = (
+				854596EE510A6572DC6004E7 /* Extension */,
+				288703C9C31C56D855062C03 /* ViewModule */,
+			);
+			path = UIComponent;
+			sourceTree = "<group>";
+		};
+		8380CFDD017065662088AD2A /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				5D4E0B9D5DE78BCBA94C61EF /* default.realm */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		854596EE510A6572DC6004E7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5D7431DC6D2982FCCDF69D92 /* Color+RGB.swift */,
+				85A6547AE6EF9928E1ADC3B8 /* UIColor+RGB.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		86C383205FF424C7908E6818 /* AppConfigSelection */ = {
+			isa = PBXGroup;
+			children = (
+				441DA38331949C77F440E5B3 /* AppConfigSelectionInteractorTests.swift */,
+				3FDEAFE4DF2F3577DA50C169 /* AppConfigSelectionPresenterTests.swift */,
+			);
+			path = AppConfigSelection;
+			sourceTree = "<group>";
+		};
+		88CD8E0BE566551694F8C204 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CA53F6343D687F11A3E32DF6 /* Object */,
+				103FD70983AF32DD39E3F5A8 /* Question */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		8CD29722682182775B3B97E0 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				E0AF45DDED90AB15D8D20689 /* ConfigInteractorTests.swift */,
+				C2F158F056A7D641137F7169 /* ConfigPresenterTests.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		8D9FB66C4779EB5D53831CBF /* ConfigViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2612811FA8A53BD3CF4955D /* testConfigViewTestStandard.1.png */,
+			);
+			path = ConfigViewTests;
+			sourceTree = "<group>";
+		};
+		91B4844CE8A69480E834CDD2 /* QuestionList */ = {
+			isa = PBXGroup;
+			children = (
+				E9FF6F4626E0DA89F749F44A /* QuestionListInteractorTests.swift */,
+				81B79B9AF12DE561E3A6B4DA /* QuestionListPresenterTests.swift */,
+			);
+			path = QuestionList;
+			sourceTree = "<group>";
+		};
+		9CDAEFF65D26DDA141CA5685 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				6E9E92E6C40263A85A50E401 /* SwiftUI-View+referenceFrame.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		AAC1CB317BF638100B814D9A /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				EA7A346AA4E662F214EFD364 /* Realm */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		B62B7AF1AA7E04C30D47C831 /* QuestionAdditionModule */ = {
+			isa = PBXGroup;
+			children = (
+				9EDF758DFC29DF43A9150680 /* QuestionAdditionInteractor.swift */,
+				B35F463A1BE7F25A0001839F /* QuestionAdditionPresenter.swift */,
+				DF5E80F00CB5AA300E4BD6EF /* QuestionAdditionView.swift */,
+			);
+			path = QuestionAdditionModule;
+			sourceTree = "<group>";
+		};
+		B8A91A044A19508B74FB3739 /* __Snapshots__ */ = {
+			isa = PBXGroup;
+			children = (
+				FF412248A678DE577DEA67EB /* AppConfigSelectionViewTests */,
+				8D9FB66C4779EB5D53831CBF /* ConfigViewTests */,
+				1DD129C6725C899ABAE4612D /* GroupAdditionTests */,
+				3E4D97A6FACC9EBEF3C0D853 /* QuestionAdditionViewTests */,
+				C2A6EA357A354EDA889BFDDE /* QuestionListViewTests */,
+				C523D5D7EB8DFEE20B68D222 /* QuestionViewTests */,
+			);
+			path = __Snapshots__;
+			sourceTree = "<group>";
+		};
+		C162E5EF3C2D2AFBECE82427 /* QuestionAddition */ = {
+			isa = PBXGroup;
+			children = (
+				D667E13EF40CBA2ACBFCC6E9 /* QuestionAdditionInteractorTests.swift */,
+				E147EDE3C928D2EBA77307F0 /* QuestionAdditionPresenterTests.swift */,
+			);
+			path = QuestionAddition;
+			sourceTree = "<group>";
+		};
+		C2A6EA357A354EDA889BFDDE /* QuestionListViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				A2115C4AB653EADAEF410C95 /* testQuestionListViewStandard.1.png */,
+			);
+			path = QuestionListViewTests;
+			sourceTree = "<group>";
+		};
+		C2DD14EC27D090A877B148DD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				3B53B24A4CC49C9C864626CF /* Firebase */,
+				8380CFDD017065662088AD2A /* Realm */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C523D5D7EB8DFEE20B68D222 /* QuestionViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				E95BBC4A1C4A4CB747E605E6 /* testDone.1.png */,
+				E051F5B0009D5ECEAF6842A4 /* testPlay.1.png */,
+				BAEBCF55BDC5D8469EC2960D /* testReady.1.png */,
+				4CC480851472B3A9C115FEE9 /* testStandBy.1.png */,
+				6E8B2477BA45D14F0AA49DBD /* testStopPlaying.1.png */,
+				A7C4E235B8B7F9D3C679A10B /* testStopReadying.1.png */,
+			);
+			path = QuestionViewTests;
+			sourceTree = "<group>";
+		};
+		CA53F6343D687F11A3E32DF6 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				76CFE91114B29587063D4B1C /* Config */,
+				694231205B5A6DEFA826D155 /* Question */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		CCD4B7C9E3B8F7A3B7C09C1B /* Samidare-iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				E4E7BC9A589E90BCF2955C15 /* Info.plist */,
+				41C1426E963BDF9649004E0C /* MockResults.swift */,
+				86C383205FF424C7908E6818 /* AppConfigSelection */,
+				8CD29722682182775B3B97E0 /* Config */,
+				FBEAA10759557CA72BD7B0BD /* GroupAddition */,
+				ECEEBF97ACB9A71676EDCF9B /* Helper */,
+				D679B87A49DDC13FC7206076 /* Question */,
+				C162E5EF3C2D2AFBECE82427 /* QuestionAddition */,
+				91B4844CE8A69480E834CDD2 /* QuestionList */,
+				AAC1CB317BF638100B814D9A /* Repository */,
+				D608BC30B1BA7948C238293D /* SnapshotTest */,
+			);
+			path = "Samidare-iOSTests";
+			sourceTree = "<group>";
+		};
+		D048A0AB26B346D55F33C5C5 /* ConfigModule */ = {
+			isa = PBXGroup;
+			children = (
+				7EFC0DC3F1B3A56D9E9FC24A /* ConfigInteractor.swift */,
+				80B4A35C0AAFA4036EA7A34A /* ConfigPresenter.swift */,
+				C4FA4EBD2452C05B8972ED09 /* ConfigRouter.swift */,
+				FB228D97BE65AE37DA1A8797 /* ConfigView.swift */,
+			);
+			path = ConfigModule;
+			sourceTree = "<group>";
+		};
+		D608BC30B1BA7948C238293D /* SnapshotTest */ = {
+			isa = PBXGroup;
+			children = (
+				1E7FFD493C8A1899A9DB28D2 /* AppConfigSelectionViewTests.swift */,
+				50E212042010A6B0DE9A61C7 /* ConfigViewTests.swift */,
+				70A41BFCCBB9ED1693791A41 /* GroupAdditionTests.swift */,
+				DF2C52C36D0689755A5C20EC /* QuestionAdditionViewTests.swift */,
+				65F46AD52A5F26898ECBDD7E /* QuestionListViewTests.swift */,
+				0E42B262BE033349BB76D764 /* QuestionViewTests.swift */,
+				B8A91A044A19508B74FB3739 /* __Snapshots__ */,
+				9CDAEFF65D26DDA141CA5685 /* Helper */,
+			);
+			path = SnapshotTest;
+			sourceTree = "<group>";
+		};
+		D679B87A49DDC13FC7206076 /* Question */ = {
+			isa = PBXGroup;
+			children = (
+				AE017D14965ED578772E2628 /* QuestionInteractorTests.swift */,
+				8D42595313ED7A14FFEB1EAE /* QuestionPresenterTests.swift */,
+			);
+			path = Question;
+			sourceTree = "<group>";
+		};
+		DAE40D0ADF35C2AA26521BFC /* QuestionListModule */ = {
+			isa = PBXGroup;
+			children = (
+				1398B0BF08D34671D4BDE1D6 /* QuestionListInteractor.swift */,
+				216795AD1D8CDEAE60F93792 /* QuestionListPresenter.swift */,
+				881426E58398EBCAD7F6D824 /* QuestionListView.swift */,
+			);
+			path = QuestionListModule;
+			sourceTree = "<group>";
+		};
+		E07B8FAD64ECED501FC11866 /* ForcedUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				9E6F684212D6401D30495CC9 /* ForcedUpdateEntity.swift */,
+			);
+			path = ForcedUpdate;
+			sourceTree = "<group>";
+		};
+		EA7A346AA4E662F214EFD364 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				CA417060FA1E4047E449F8DB /* AppConfigRepositoryTests.swift */,
+				F90F68FDF7332BD5260B22B3 /* QuestionGroupRepositoryTests.swift */,
+				B87A40D97618A4F8A4FF3AED /* QuestionRepositoryTests.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		ECEEBF97ACB9A71676EDCF9B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				98E492C609EC8FA12DE68A58 /* MockTimer.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		FBEAA10759557CA72BD7B0BD /* GroupAddition */ = {
+			isa = PBXGroup;
+			children = (
+				0B366EE280CDAB7140FE254C /* GroupAdditionInteractorTests.swift */,
+				4976EA8C1E8C81AC2E817430 /* GroupAdditionPresenterTests.swift */,
+			);
+			path = GroupAddition;
+			sourceTree = "<group>";
+		};
+		FC107AA39589087E83BDD9D8 /* ForcedUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				D77D5CF020F0EDB18B1B4787 /* ForcedUpdate.swift */,
+			);
+			path = ForcedUpdate;
+			sourceTree = "<group>";
+		};
+		FF412248A678DE577DEA67EB /* AppConfigSelectionViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				8F904D9B0CEE0A5A325072D4 /* testGameTimeType.1.png */,
+				DB42E378C5F2AC1F32A73632 /* testQuestionGroupType.1.png */,
+			);
+			path = AppConfigSelectionViewTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0DA9C245E28E0B2DB17C895A /* Samidare-iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02118C1F2F7DC7BFD0CF8920 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */;
+			buildPhases = (
+				D3462E44B4A3A4B0DDE7F54D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				272DDFE5DFAC30385E54A128 /* PBXTargetDependency */,
+			);
+			name = "Samidare-iOSUITests";
+			productName = "Samidare-iOSUITests";
+			productReference = ADF3831ABB582533CF96A40F /* Samidare-iOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		46B078B40F3AE90C265FE517 /* Samidare-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4360D8082B9BAA9C8A7F53B4 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */;
+			buildPhases = (
+				8696910D3C92981815B83261 /* SwiftGen */,
+				93761D7112EA886B381981F8 /* Sources */,
+				173BA612DED480CA29B04847 /* Firebase */,
+				CEEB85FA24E30B81F524D35D /* SwiftLint */,
+				EB74D01834605C549A952109 /* Generate Mocks with Mockolo */,
+				D6E3F9441243730E4EC99909 /* Resources */,
+				3C9C8DC6DC5393D212DBB2C5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Samidare-iOS";
+			packageProductDependencies = (
+				501D489E79799729E3FE58EB /* FirebaseAnalytics */,
+				DBD0E3E08BA60AFEE1B1E6D8 /* FirebaseFirestore */,
+				EDED0CEEBE610BE091D7E7C2 /* FirebaseCrashlytics */,
+				3C16A5B171070E95EB763C9E /* FirebaseFirestoreSwift-Beta */,
+				63BD7FCDBFFFD3AD9E778605 /* Realm */,
+				FCD43F215C36F5B201B2BF7F /* RealmSwift */,
+			);
+			productName = "Samidare-iOS";
+			productReference = 63BF05237ED09BD56E028AD5 /* Samidare-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E98910E5B9E46C749000343 /* Samidare-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 149BFC494651AEB281F742A8 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */;
+			buildPhases = (
+				8C4B916F7545EFE40D9C894D /* Sources */,
+				496A304EFC1E03B92F580627 /* Resources */,
+				78ADA05A4286EE06D6535352 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAAEE2C05179ADA3A9BA9165 /* PBXTargetDependency */,
+			);
+			name = "Samidare-iOSTests";
+			packageProductDependencies = (
+				5D04D1C53DAC3752953DE512 /* SnapshotTesting */,
+			);
+			productName = "Samidare-iOSTests";
+			productReference = D62DBC5077D71943E57C4EE6 /* Samidare-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DBB5B1BA455527110846BD8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					0DA9C245E28E0B2DB17C895A = {
+						TestTargetID = 46B078B40F3AE90C265FE517;
+					};
+				};
+			};
+			buildConfigurationList = EF47CAB4D803D5C2EE987444 /* Build configuration list for PBXProject "Samidare-iOS" */;
+			compatibilityVersion = "Xcode 10.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				ja,
+			);
+			mainGroup = 4E823378B681FB69B2B69328;
+			packageReferences = (
+				B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B7B9895E56908989D0CC8C3D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				FE42201CBA61A8321B8A5EB9 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46B078B40F3AE90C265FE517 /* Samidare-iOS */,
+				5E98910E5B9E46C749000343 /* Samidare-iOSTests */,
+				0DA9C245E28E0B2DB17C895A /* Samidare-iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		496A304EFC1E03B92F580627 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				023CFCC7A5CCB0DC61BAB3C6 /* testConfigViewTestStandard.1.png in Resources */,
+				9F29577A3E3C3F911880A247 /* testDone.1.png in Resources */,
+				0E99554694D33B6474CEBA77 /* testGameTimeType.1.png in Resources */,
+				D0FC92B19625D4848899AE41 /* testPlay.1.png in Resources */,
+				879B1FC407A2AAF9979DB884 /* testQuestionAdditionViewStandard.1.png in Resources */,
+				9A96C7DE84F01EC2FEC167B6 /* testQuestionGroupType.1.png in Resources */,
+				DE342DD05B029081610102B8 /* testQuestionListViewStandard.1.png in Resources */,
+				65E8344B48E3C1C59BD16EC4 /* testReady.1.png in Resources */,
+				536D899B2BDD8B5A433C66C4 /* testStandBy.1.png in Resources */,
+				E15127B2519A07E5EB56CF79 /* testStandard.1.png in Resources */,
+				6D91B714AAB9000649976B6B /* testStopPlaying.1.png in Resources */,
+				27D4C9709B15CF0CF64E289E /* testStopReadying.1.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6E3F9441243730E4EC99909 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				865C5327530B7B187F4B5409 /* Assets.xcassets in Resources */,
+				B8FCA8672A397D234FED07DE /* GoogleService-Info-Debug.plist in Resources */,
+				1B48750484C2BAF8D2CEAB48 /* GoogleService-Info.plist in Resources */,
+				C5E3273FB96562E09EFC4BB3 /* Localizable.strings in Resources */,
+				5C4D3766AA25D7C19AC1E5AC /* Preview Assets.xcassets in Resources */,
+				141FAF47DEF570F3E6486136 /* default.realm in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		173BA612DED480CA29B04847 /* Firebase */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Firebase;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Release\" ]; then\n  cp \"${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Release.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nelse\n  cp \"${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\"\nfi\n";
+		};
+		8696910D3C92981815B83261 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Samidare-iOS/Generated/Localized.swift",
+				"$(SRCROOT)/Samidare-iOS/Generated/Images.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d /opt/homebrew/bin; then\n  PATH=/opt/homebrew/bin/:$PATH\nfi\n\nif which mint >/dev/null; then\n  mint run swiftgen config run --config ${PROJECT_DIR}/swiftgen.yml\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
+		};
+		CEEB85FA24E30B81F524D35D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d /opt/homebrew/bin; then\n  PATH=/opt/homebrew/bin/:$PATH\nfi\n\nif which mint >/dev/null; then\n  mint run swiftlint\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
+		};
+		EB74D01834605C549A952109 /* Generate Mocks with Mockolo */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Generate Mocks with Mockolo";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d /opt/homebrew/bin; then\n  PATH=/opt/homebrew/bin/:$PATH\nfi\n\nif which mint >/dev/null; then\n  rm -f ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift\n  xcrun --sdk macosx mint run mockolo mockolo --testable-imports Samidare_iOS --sourcedirs ${PROJECT_DIR} --destination ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift\nelse\n  echo \"warning: Mint not installed, download from https://github.com/yonaskolb/Mint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C4B916F7545EFE40D9C894D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4160B8B71DD9622BFF299264 /* AppConfigRepositoryTests.swift in Sources */,
+				73C414B4293818F56E88A398 /* AppConfigSelectionInteractorTests.swift in Sources */,
+				0647C35D673ABA749E331734 /* AppConfigSelectionPresenterTests.swift in Sources */,
+				C747DBBC4664F6C989618DD8 /* AppConfigSelectionViewTests.swift in Sources */,
+				391159E40880730BC57F356C /* ConfigInteractorTests.swift in Sources */,
+				06A03077D5AB5847719F6907 /* ConfigPresenterTests.swift in Sources */,
+				95F9894C4B5F012A5EF92E3D /* ConfigViewTests.swift in Sources */,
+				6B6CCF9D1D451E1D683F0CF4 /* GroupAdditionInteractorTests.swift in Sources */,
+				F12B9D988B3E52B28F8085ED /* GroupAdditionPresenterTests.swift in Sources */,
+				6EBF093935CA4C2910E06337 /* GroupAdditionTests.swift in Sources */,
+				7E4F4B90FF03D1F63D3E6B08 /* MockResults.swift in Sources */,
+				CEBE385B2771F129B1B6ABA5 /* MockTimer.swift in Sources */,
+				7C3CC1164B04BAE1070654D8 /* QuestionAdditionInteractorTests.swift in Sources */,
+				4B4EB2735EBBCF52B72182F6 /* QuestionAdditionPresenterTests.swift in Sources */,
+				44A97D2C150923844D34DC21 /* QuestionAdditionViewTests.swift in Sources */,
+				E1BA5986EFF1D94174522563 /* QuestionGroupRepositoryTests.swift in Sources */,
+				2F72AF3C62802691306E7265 /* QuestionInteractorTests.swift in Sources */,
+				CEE0D6A9D72496E2E469A689 /* QuestionListInteractorTests.swift in Sources */,
+				801A1AE794565C2442303322 /* QuestionListPresenterTests.swift in Sources */,
+				6B8D641C02D4AC4C690B090C /* QuestionListViewTests.swift in Sources */,
+				4834B13A29CD9574EF96DA59 /* QuestionPresenterTests.swift in Sources */,
+				DE8E0742382E3312673B05E4 /* QuestionRepositoryTests.swift in Sources */,
+				A2F3DBCA4908861407DBD666 /* QuestionViewTests.swift in Sources */,
+				B7D632C63F4344E3E521E2A0 /* SwiftUI-View+referenceFrame.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93761D7112EA886B381981F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44D6A45564C97178347E7B35 /* AppConfig.swift in Sources */,
+				F8D3D78C12923486EF700D4F /* AppConfigRealmObject.swift in Sources */,
+				F81FB93C5E9E960D60717276 /* AppConfigRepository.swift in Sources */,
+				D1109A0FB7EA7BF6B3544567 /* AppConfigSelectionInteractor.swift in Sources */,
+				CF9B09730D49371831A007B4 /* AppConfigSelectionPresenter.swift in Sources */,
+				7D16E02E166C4A87D3F126AA /* AppConfigSelectionType.swift in Sources */,
+				82774C75832FD0D793AC6D09 /* AppConfigSelectionView.swift in Sources */,
+				7ECDB5FDBCEB958AF7B562BE /* CircleButton.swift in Sources */,
+				95808A4AA122DAB4CBBED5BD /* Collection+safe.swift in Sources */,
+				97689F0957D7578F7C026C2C /* Color+RGB.swift in Sources */,
+				60404E3417FC843472B5058C /* ConfigInteractor.swift in Sources */,
+				DD2B91CF216D3CCD86D01710 /* ConfigPresenter.swift in Sources */,
+				FBF22A71698FD691991A37A9 /* ConfigRouter.swift in Sources */,
+				03FD5DD86A547F851CEF0877 /* ConfigView.swift in Sources */,
+				E79E86344FFD0E74DB00C714 /* ForcedUpdate.swift in Sources */,
+				97A23623D55394B41F6A6BA9 /* ForcedUpdateEntity.swift in Sources */,
+				C5C1991AE80279939EA78F81 /* GameTime.swift in Sources */,
+				FA07C795CDB762DD7D7AAB8C /* GameType.swift in Sources */,
+				2B8536C87EBBD43ED42393B7 /* GameTypes.swift in Sources */,
+				68395F795CD06D9A067D74E7 /* GroupAdditionInteractor.swift in Sources */,
+				2D57D9558A8C9F55D8559F1C /* GroupAdditionPresenter.swift in Sources */,
+				57F4DF3CB6B11114A98F95EE /* GroupAdditionRouter.swift in Sources */,
+				67B0F972148A598392220CA6 /* GroupAdditionView.swift in Sources */,
+				E8306CD1A80EA4BFF1BA7BE8 /* Images.swift in Sources */,
+				40B91CDAA97084FAADFB9E2A /* ListRow.swift in Sources */,
+				07D77BD2DF27655ACCAA520E /* Localized.swift in Sources */,
+				A2FE7447FADDE7D7B9B229D5 /* Question.swift in Sources */,
+				48FEBEDA4627D29FAC98FDF6 /* QuestionAdditionInteractor.swift in Sources */,
+				0B1A36E6C6A39BC64ABA978C /* QuestionAdditionPresenter.swift in Sources */,
+				F1681498117D5C1768EA5C4D /* QuestionAdditionView.swift in Sources */,
+				22C13A9171A7F8BDBAB5C53B /* QuestionCardView.swift in Sources */,
+				5FBAEC17D0E02D11DCDA99B1 /* QuestionGroup.swift in Sources */,
+				5B132AEE1E0825C59461F74A /* QuestionGroupRealmObject.swift in Sources */,
+				C4ADF070657DBE66F52C79E7 /* QuestionGroupRepository.swift in Sources */,
+				9D244984DCD14CFCB5A00848 /* QuestionInteractor.swift in Sources */,
+				0A1F30BCDD9F240C31FD72DE /* QuestionListCardView.swift in Sources */,
+				59B8170B5452BD2E343033CB /* QuestionListInteractor.swift in Sources */,
+				BC45792C53E961F464542DF2 /* QuestionListPresenter.swift in Sources */,
+				E7B6ECB56C62ED066D7199A9 /* QuestionListView.swift in Sources */,
+				3C9B9C2F38B3ACBD2F58B893 /* QuestionPresenter.swift in Sources */,
+				0C0443EA285C0F1A666240BB /* QuestionRealmObject.swift in Sources */,
+				3BB59FA1AC90E90CD99018D2 /* QuestionRepository.swift in Sources */,
+				A81C24E44AC0F747E1814344 /* QuestionView.swift in Sources */,
+				389CD56A715E1A47816C4059 /* RealmConfig.swift in Sources */,
+				7BA2FAACDB71855CAAA6E5F8 /* Samidare_iOSApp.swift in Sources */,
+				AE53EE5195F612E421B63D6D /* TabTopInteractor.swift in Sources */,
+				068E81371AB0F0942578701C /* TabTopPresenter.swift in Sources */,
+				00DC9C5FB926821A62D4D746 /* TabTopView.swift in Sources */,
+				6445B1300BDDC0EC6979BECA /* TextFieldAlertView.swift in Sources */,
+				987D6AA671F04F951B9EFD26 /* TimerProgressBar.swift in Sources */,
+				59A409A154EF8B3BB9727535 /* UIColor+RGB.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3462E44B4A3A4B0DDE7F54D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD06E745AAC65137C6B3DD3C /* Samidare_iOSUITests.swift in Sources */,
+				2A7248C7CD65644A2A15EE0F /* Samidare_iOSUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		272DDFE5DFAC30385E54A128 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46B078B40F3AE90C265FE517 /* Samidare-iOS */;
+			targetProxy = ABD1A4058E24A7DE02071349 /* PBXContainerItemProxy */;
+		};
+		FAAEE2C05179ADA3A9BA9165 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46B078B40F3AE90C265FE517 /* Samidare-iOS */;
+			targetProxy = 4836F85756DCA781BD578524 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA76AC5F72ECF74FA9A55BCF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				409EDC1BDFA4D6DC2096A4BB /* en */,
+				51D3FF2118BA353799330113 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14093A1CA1FECBD099567DFC /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = StagingDebug;
+		};
+		21315F0D1C349E39C5C29074 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					RELEASE,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2E9F983043AABDC8EF4620C4 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Staging;
+		};
+		396934034A2A21CB09B9A823 /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Stub;
+		};
+		4A83F1AC6E3ECE5D25F28383 /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STAGING,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = StagingDebug;
+		};
+		4A880EF37C9606C5467DDDC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Release;
+		};
+		52D10C90957C6D6CC571B0EC /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = StubDebug;
+		};
+		5731F52017A57C1453CD6641 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STAGING,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Staging;
+		};
+		5995B60B279F16DB400EFF73 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					RELEASE,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = ReleaseDebug;
+		};
+		60E08E06B6AA3264D1321DBC /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = ReleaseDebug;
+		};
+		6DC5C6F81BF3659D455718B1 /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = StagingDebug;
+		};
+		6EC8907D5B57A869C1CA1714 /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = ReleaseDebug;
+		};
+		7320478801B3E2A4D02C64C4 /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = DevelopDebug;
+		};
+		793723537EFDF7B29C3506EA /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Develop;
+		};
+		87987D88AF20A4B21E7F32C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		8CE098AA2B2E8A8DB1D0E1CD /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = (
+					0,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STUB,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = (
+					"-Onone",
+				);
+				SWIFT_VERSION = 5.0;
+			};
+			name = Stub;
+		};
+		8E50995A85E40921DF885B6F /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Stub;
+		};
+		9BC86F7AB99772162634F31E /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = DevelopDebug;
+		};
+		A1B68C891391483547BD4DA3 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = StubDebug;
+		};
+		A5484F52D2F0A697943C9E92 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Release;
+		};
+		A83CB422748116579E3B1CA0 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					STUB,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = StubDebug;
+		};
+		A8E2E41EB0D065B24E0574F4 /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Develop;
+		};
+		A91E5B8C698CF2326DFB3408 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = Staging;
+		};
+		B5F845B8524F7F3D18AB95C6 /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = DevelopDebug;
+		};
+		B7C05E69D7F38D72FFE0528F /* DevelopDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					DEVELOP,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = DevelopDebug;
+		};
+		C18C41F8B7BE09EEAB7474AD /* StagingDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = StagingDebug;
+		};
+		C972A2B8373FD5FA65A42453 /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = (
+					0,
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = (
+					"-D",
+					DEVELOP,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = (
+					"-Onone",
+				);
+				SWIFT_VERSION = 5.0;
+			};
+			name = Develop;
+		};
+		E74E11CDA969E78A8DC455DE /* ReleaseDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Samidare-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.sugiokaseiya.Samidare-iOS";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = ReleaseDebug;
+		};
+		EEE1BE7ADF693B895D409C4F /* Develop */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Develop;
+		};
+		F2E07A9E64B22B75827B4443 /* StubDebug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Samidare-iOS.app/Samidare-iOS";
+			};
+			name = StubDebug;
+		};
+		F37B8D3443D0696AD72F7FDD /* Staging */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Staging;
+		};
+		FACADC4C60D6358D15B92F6C /* Stub */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Samidare-iOSUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Samidare-iOS";
+			};
+			name = Stub;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02118C1F2F7DC7BFD0CF8920 /* Build configuration list for PBXNativeTarget "Samidare-iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EEE1BE7ADF693B895D409C4F /* Develop */,
+				9BC86F7AB99772162634F31E /* DevelopDebug */,
+				4A880EF37C9606C5467DDDC4 /* Release */,
+				60E08E06B6AA3264D1321DBC /* ReleaseDebug */,
+				F37B8D3443D0696AD72F7FDD /* Staging */,
+				14093A1CA1FECBD099567DFC /* StagingDebug */,
+				FACADC4C60D6358D15B92F6C /* Stub */,
+				52D10C90957C6D6CC571B0EC /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
+		};
+		149BFC494651AEB281F742A8 /* Build configuration list for PBXNativeTarget "Samidare-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				793723537EFDF7B29C3506EA /* Develop */,
+				B5F845B8524F7F3D18AB95C6 /* DevelopDebug */,
+				A5484F52D2F0A697943C9E92 /* Release */,
+				6EC8907D5B57A869C1CA1714 /* ReleaseDebug */,
+				A91E5B8C698CF2326DFB3408 /* Staging */,
+				6DC5C6F81BF3659D455718B1 /* StagingDebug */,
+				396934034A2A21CB09B9A823 /* Stub */,
+				F2E07A9E64B22B75827B4443 /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
+		};
+		4360D8082B9BAA9C8A7F53B4 /* Build configuration list for PBXNativeTarget "Samidare-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8E2E41EB0D065B24E0574F4 /* Develop */,
+				7320478801B3E2A4D02C64C4 /* DevelopDebug */,
+				87987D88AF20A4B21E7F32C5 /* Release */,
+				E74E11CDA969E78A8DC455DE /* ReleaseDebug */,
+				2E9F983043AABDC8EF4620C4 /* Staging */,
+				C18C41F8B7BE09EEAB7474AD /* StagingDebug */,
+				8E50995A85E40921DF885B6F /* Stub */,
+				A1B68C891391483547BD4DA3 /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
+		};
+		EF47CAB4D803D5C2EE987444 /* Build configuration list for PBXProject "Samidare-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C972A2B8373FD5FA65A42453 /* Develop */,
+				B7C05E69D7F38D72FFE0528F /* DevelopDebug */,
+				21315F0D1C349E39C5C29074 /* Release */,
+				5995B60B279F16DB400EFF73 /* ReleaseDebug */,
+				5731F52017A57C1453CD6641 /* Staging */,
+				4A83F1AC6E3ECE5D25F28383 /* StagingDebug */,
+				8CE098AA2B2E8A8DB1D0E1CD /* Stub */,
+				A83CB422748116579E3B1CA0 /* StubDebug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Develop;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 8.9.1;
+			};
+		};
+		B7B9895E56908989D0CC8C3D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 10.22.0;
+			};
+		};
+		FE42201CBA61A8321B8A5EB9 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3C16A5B171070E95EB763C9E /* FirebaseFirestoreSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreSwift-Beta";
+		};
+		501D489E79799729E3FE58EB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		5D04D1C53DAC3752953DE512 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE42201CBA61A8321B8A5EB9 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		63BD7FCDBFFFD3AD9E778605 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7B9895E56908989D0CC8C3D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		DBD0E3E08BA60AFEE1B1E6D8 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EDED0CEEBE610BE091D7E7C2 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3394C275DDB9F577C0429EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		FCD43F215C36F5B201B2BF7F /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B7B9895E56908989D0CC8C3D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = DBB5B1BA455527110846BD8A /* Project object */;
+}

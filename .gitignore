@@ -126,7 +126,7 @@ fastlane/report.xml
 Samidare-iOS/Generated/*.swift
 
 # ignore project
-Samidare-iOS.xcodeproj
+# Samidare-iOS.xcodeproj
 
 Samidare-iOS/Info.plist
 Samidare-iOSTests/Info.plist
