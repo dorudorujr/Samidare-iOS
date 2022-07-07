@@ -14,8 +14,7 @@ class AppConfigSelectionPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(gameType: .init(name: "デフォルト"),
-                  questionGroup: .init(name: "デフォルト"),
+            .init(questionGroup: .init(name: "デフォルト"),
                   time: 10)
         }
         QuestionGroupRepositoryProtocolMock.getHandler = {
@@ -98,8 +97,7 @@ class AppConfigSelectionPresenterTests: XCTestCase {
         // initで取得したappConfigGameTimeか確認
         XCTAssertEqual(appConfigGameTime, 10)
         
-        let updateAppConfig = AppConfig(gameType: .init(name: "Update"),
-                                        questionGroup: .init(name: "Update"),
+        let updateAppConfig = AppConfig(questionGroup: .init(name: "Update"),
                                         time: 20)
         AppConfigRepositoryProtocolMock.getHandler = {
             updateAppConfig

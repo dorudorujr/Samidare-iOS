@@ -9,15 +9,13 @@ import Foundation
 
 struct AppConfig {
     let id: UUID
-    let gameType: GameType
     let questionGroup: QuestionGroup
     let time: Int
 }
 
 extension AppConfig {
-    init(gameType: GameType, questionGroup: QuestionGroup, time: Int) {
+    init(questionGroup: QuestionGroup, time: Int) {
         self.id = UUID()
-        self.gameType = gameType
         self.questionGroup = questionGroup
         self.time = time
     }

@@ -16,13 +16,15 @@ class AppConfigRepositoryTests: XCTestCase {
     }
     
     func testGetAndUpdate() {
-        let updateAppConfig = AppConfig(gameType: .init(name: "gameType"),
-                                        questionGroup: .init(name: "questionGroup"),
+        // ないグループだと何もしないのでグループを追加
+        let group = QuestionGroup(name: "questionGroup")
+        try! QuestionGroupRepositoryImpl.add(group)
+        
+        let updateAppConfig = AppConfig(questionGroup: group,
                                         time: 10)
         try! AppConfigRepositoryImpl.update(updateAppConfig)
         let getAppConfig = AppConfigRepositoryImpl.get()
         XCTAssertEqual(getAppConfig.id, updateAppConfig.id)
-        XCTAssertEqual(getAppConfig.gameType.name, updateAppConfig.gameType.name)
         XCTAssertEqual(getAppConfig.questionGroup.name, updateAppConfig.questionGroup.name)
         XCTAssertEqual(getAppConfig.time, updateAppConfig.time)
     }

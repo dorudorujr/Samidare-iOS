@@ -16,15 +16,13 @@ class ConfigInteractorTests: XCTestCase {
         super.setUp()
         appConfigRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(gameType: .init(name: "gameType"),
-                  questionGroup: .init(name: "questionGroup"),
+            .init(questionGroup: .init(name: "questionGroup"),
                   time: 10)
         }
         interactor = .init()
     }
     
     func testGetAppConfig() {
-        XCTAssertEqual(interactor.getAppConfig().gameType.name, "gameType")
         XCTAssertEqual(interactor.getAppConfig().questionGroup.name, "questionGroup")
         XCTAssertEqual(interactor.getAppConfig().time, 10)
     }

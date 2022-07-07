@@ -18,8 +18,7 @@ class QuestionInteractorTests: XCTestCase {
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(gameType: .init(name: "gameType"),
-                  questionGroup: .init(name: "questionGroup"),
+            .init(questionGroup: .init(name: "questionGroup"),
                   time: 10)
         }
         interactor = .init()
