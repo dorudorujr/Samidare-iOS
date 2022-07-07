@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1200"
+   LastUpgradeVersion = "1300"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
-      buildImplicitDependencies = "YES"
-      runPostActionsOnFailure = "NO">
+      buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -55,21 +54,9 @@
       buildConfiguration = "StubDebug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "NO"
       codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
-      shouldUseLaunchSchemeArgsEnv = "NO">
-      <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5E98910E5B9E46C749000343"
-               BuildableName = "Samidare-iOSTests.xctest"
-               BlueprintName = "Samidare-iOSTests"
-               ReferencedContainer = "container:Samidare-iOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -79,8 +66,6 @@
             ReferencedContainer = "container:Samidare-iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <CommandLineArguments>
-      </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "isUnitTest"
@@ -97,6 +82,18 @@
             ReferencedContainer = "container:Samidare-iOS.xcodeproj">
          </BuildableReference>
       </CodeCoverageTargets>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5E98910E5B9E46C749000343"
+               BuildableName = "Samidare-iOSTests.xctest"
+               BlueprintName = "Samidare-iOSTests"
+               ReferencedContainer = "container:Samidare-iOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "StubDebug"
@@ -118,8 +115,6 @@
             ReferencedContainer = "container:Samidare-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Stub"
@@ -137,8 +132,6 @@
             ReferencedContainer = "container:Samidare-iOS.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Stub">
