@@ -62,7 +62,7 @@ jobs:
       # 単体テスト
       - name: Xcode test
         run: xcodebuild
-          -sdk iphonesimulator15.0
+          -sdk iphonesimulator15.5
           -configuration DevelopDebug
           -scheme Samidare-Develop
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
