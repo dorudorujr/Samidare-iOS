@@ -10,31 +10,17 @@ packages:
     url: https://github.com/pointfreeco/swift-snapshot-testing.git
     minorVersion: 1.9.0
 options:
+  bundleIdPrefix: com.sugiokaseiya
   deploymentTarget:
     iOS: 15.0
 configs:
-  StubDebug: debug
-  Stub: release
+  Debug: debug
   DevelopDebug: debug
   Develop: release
-  StagingDebug: debug
-  Staging: release
   ReleaseDebug: debug
   Release: release
 settings:
   configs:
-    StubDebug:
-      OTHER_SWIFT_FLAGS:
-        - -D
-        - STUB
-    Stub:
-      OTHER_SWIFT_FLAGS:
-        - -D
-        - STUB
-      SWIFT_OPTIMIZATION_LEVEL:
-        - -Onone
-      GCC_OPTIMIZATION_LEVEL:
-        - 0
     DevelopDebug:
       OTHER_SWIFT_FLAGS:
         - -D
@@ -47,14 +33,6 @@ settings:
         - -Onone
       GCC_OPTIMIZATION_LEVEL:
         - 0
-    StagingDebug:
-      OTHER_SWIFT_FLAGS:
-        - -D
-        - STAGING
-    Staging:
-      OTHER_SWIFT_FLAGS:
-        - -D
-        - STAGING
     ReleaseDebug:
       OTHER_SWIFT_FLAGS:
         - -D
@@ -64,34 +42,10 @@ settings:
         - -D
         - RELEASE
 schemes:
-  Samidare-Stub:
-    build:
-      targets:
-        Samidare-iOS: all
-        Samidare-iOSTests: [test]
-        Samidare-iOSUITests: [test]
-    run:
-      config: StubDebug
-    test:
-      config: StubDebug
-      gatherCoverageData: true
-      coverageTargets:
-        - Samidare-iOS
-      targets: [Samidare-iOSTests]
-      environmentVariables:
-        - variable: isUnitTest
-          value: "true"
-          isEnabled: true
-    profile:
-      config: Stub
-    analyze:
-      config: Stub
-    archive:
-      config: Stub
   Samidare-Develop:
     build:
       targets:
-        Samidare-iOS: [analyze, run, archive]
+        Samidare-iOS: all
     run:
       config: DevelopDebug
     test:
@@ -99,39 +53,20 @@ schemes:
       gatherCoverageData: true
       coverageTargets:
         - Samidare-iOS
-      targets: [Samidare-iOSTests]
-      environmentVariables:
-        - variable: isUnitTest
-          value: "true"
-          isEnabled: true
-    profile:
-      config: Develop
-    analyze:
-      config: Develop
-    archive:
-      config: Develop
-  Samidare-Staging:
-    build:
       targets:
-        Samidare-iOS: [analyze, run, archive]
-    run:
-      config: StagingDebug
-    test:
-      config: StagingDebug
-      gatherCoverageData: true
-      coverageTargets:
-        - Samidare-iOS
-      targets: [Samidare-iOSTests]
+        - name: Samidare-iOSTests
+          parallelizable: true
+          randomExecutionOrder: true
       environmentVariables:
         - variable: isUnitTest
           value: "true"
           isEnabled: true
     profile:
-      config: Staging
+      config: Develop
     analyze:
-      config: Staging
+      config: Develop
     archive:
-      config: Staging
+      config: Develop
   Samidare-Release:
     build:
       targets:
@@ -192,23 +127,6 @@ targets:
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
-      configs:
-        StubDebug:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        Stub:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        DevelopDebug:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        Develop:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        StagingDebug:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        Staging:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        ReleaseDebug:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
-        Release:
-          PRODUCT_BUNDLE_IDENTIFIER: com.sugiokaseiya.Samidare-iOS
     preBuildScripts:
       - name: SwiftGen
         script: |
@@ -264,9 +182,9 @@ targets:
     platform: iOS
     sources:
       - path: Samidare-iOSTests
-        createIntermediateGroups: true
       - path: Samidare-iOSTests/MockResults.swift
         optional: true
+        type: file
     dependencies:
       - target: Samidare-iOS
       - package: swift-snapshot-testing
