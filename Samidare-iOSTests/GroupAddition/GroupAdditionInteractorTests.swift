@@ -29,12 +29,14 @@ class GroupAdditionInteractorTests: XCTestCase {
     }
     
     func testAdd() {
+        let beforeAddCallCount = QuestionGroupRepositoryProtocolMock.addCallCount
         try! interactor.add(.init(name: "test"))
-        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.addCallCount, 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.addCallCount, beforeAddCallCount + 1)
     }
     
     func testDelete() {
+        let beforeDeleteCallCount = QuestionGroupRepositoryProtocolMock.deleteCallCount
         try! interactor.delete(.init(name: "test"))
-        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, beforeDeleteCallCount + 1)
     }
 }

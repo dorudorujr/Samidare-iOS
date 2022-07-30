@@ -55,8 +55,6 @@ schemes:
         - Samidare-iOS
       targets:
         - name: Samidare-iOSTests
-          parallelizable: true
-          randomExecutionOrder: true
       environmentVariables:
         - variable: isUnitTest
           value: "true"

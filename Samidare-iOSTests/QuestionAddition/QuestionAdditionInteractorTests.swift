@@ -29,20 +29,20 @@ class QuestionAdditionInteractorTests: XCTestCase {
     }
     
     func testAdd() {
-        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, 0)
+        let beforeAddCallCount = QuestionRepositoryProtocolMock.addCallCount
         try! interactor.add(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.addCallCount, beforeAddCallCount + 1)
     }
     
     func testUpdate() {
-        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, 0)
+        let beforeUpdateCallCount = QuestionRepositoryProtocolMock.updateCallCount
         try! interactor.update(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.updateCallCount, beforeUpdateCallCount + 1)
     }
     
     func testDelete() {
-        XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, 0)
+        let beforeDeleteCallCount = QuestionRepositoryProtocolMock.deleteCallCount
         try! interactor.delete(.init(body: "テスト中？", group: .init(name: "default")))
-        XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, beforeDeleteCallCount + 1)
     }
 }
