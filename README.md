@@ -7,3 +7,4 @@
 - Mint
 
 ## セットアップ
+# XcodeGenInspection
