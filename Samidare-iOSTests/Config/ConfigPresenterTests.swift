@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import Samidare_iOS
 
 class ConfigPresenterTests: XCTestCase {
@@ -21,18 +22,23 @@ class ConfigPresenterTests: XCTestCase {
         }
     }
     
-    func testGetAppConfig() {
-        Task {
-            presenter = await .init(interactor: .init(), router: .init())
-            var questionGroup = await presenter.questionGroup
-            XCTAssertNil(questionGroup)
-            var playTime = await presenter.playTime
-            XCTAssertNil(playTime)
-            await presenter.getAppConfig()
-            questionGroup = await presenter.questionGroup
-            XCTAssertEqual(questionGroup, "questionGroup")
-            playTime = await presenter.playTime
-            XCTAssertEqual(playTime, "1")
-        }
+    func testGetAppConfig() async {
+        presenter = await .init(interactor: .init(), router: .init())
+        var questionGroup = await presenter.questionGroup
+        XCTAssertNil(questionGroup)
+        var playTime = await presenter.playTime
+        XCTAssertNil(playTime)
+        await presenter.getAppConfig()
+        questionGroup = await presenter.questionGroup
+        XCTAssertEqual(questionGroup, "questionGroup")
+        playTime = await presenter.playTime
+        XCTAssertEqual(playTime, "1")
+    }
+    
+    func testGroupAdditionLinkBuilder() async {
+        let router: ConfigRouter = await .init()
+        presenter = await .init(interactor: .init(), router: router)
+        let someView = await presenter.groupAdditionLinkBuilder {} as! NavigationLink<EmptyView, GroupAdditionView<QuestionGroupRepositoryImpl>>
+        XCTAssertNotNil(someView)
     }
 }
