@@ -9,12 +9,10 @@ import XCTest
 @testable import Samidare_iOS
 
 class GroupAdditionInteractorTests: XCTestCase {
-    private var questionGroupRepositoryMock: QuestionGroupRepositoryProtocolMock!
     private var interactor: GroupAdditionInteractor<QuestionGroupRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
-        questionGroupRepositoryMock = .init()
         QuestionGroupRepositoryProtocolMock.getHandler = {
             [
                 .init(name: "デフォルト（テスト）")

@@ -9,12 +9,10 @@ import XCTest
 @testable import Samidare_iOS
 
 class ConfigInteractorTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
     private var interactor: ConfigInteractor<AppConfigRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
-        appConfigRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
             .init(questionGroup: .init(name: "questionGroup"),
                   time: 10)
