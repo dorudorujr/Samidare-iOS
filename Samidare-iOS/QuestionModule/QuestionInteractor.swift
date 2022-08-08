@@ -12,11 +12,7 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConf
     func getQuestion(from index: Int) -> Question? {
         let group = AppConfigRepository.get().questionGroup.name
         let questions = QuestionRepository.getQuestions(of: group)
-        if questions.count <= index || index < 0 {
-            return nil
-        } else {
-            return questions[index]
-        }
+        return questions[safe: index]
     }
     
     func getTotalQuestionCount() -> Int {
