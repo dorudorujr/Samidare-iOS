@@ -53,9 +53,9 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
-    // ゲーム時間
-    private var playTime: Int = 0
-    // ゲーム中のカウントダウン
+    // トータルのゲーム時間
+    private var totalPlayTime: Int = 0
+    // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
     private var questionGroup: QuestionGroup
 
@@ -139,7 +139,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
 
     private func setPlayTime() {
-        playTime = interactor.getTime()
+        totalPlayTime = interactor.getTime()
     }
 
     private func setTotalQuestionCount() {
@@ -184,7 +184,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             // 最後の質問かどうか
             if self.totalQuestionCount > self.selectIndex {
                 self.nowPlayTime -= 0.1
-                self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
+                self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime < 0 {
                     self.selectIndex += 1
