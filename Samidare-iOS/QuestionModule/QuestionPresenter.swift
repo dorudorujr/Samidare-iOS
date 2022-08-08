@@ -10,7 +10,18 @@ import SwiftUI
 
 class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol>: ObservableObject {
     enum Status {
-        case standBy, ready, play, stopPlaying, stopReadying, done
+        // 待機状態(初期状態)
+        case standBy
+        // ゲーム開始前のカウントダウン表示状態
+        case ready
+        // ゲーム中状態
+        case play
+        // ゲーム中、一時停止
+        case stopPlaying
+        // ゲーム開始前、一時停止
+        case stopReadying
+        // ゲーム終了状態、質問一覧に遷移可能
+        case done
         
         var primaryText: String {
             switch self {
