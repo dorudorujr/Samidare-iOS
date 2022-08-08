@@ -38,14 +38,14 @@ class ConfigPresenterTests: XCTestCase {
     func testGroupAdditionLinkBuilder() async {
         let router: ConfigRouter = await .init()
         presenter = await .init(interactor: .init(), router: router)
-        let someView = await presenter.groupAdditionLinkBuilder {} as! NavigationLink<EmptyView, GroupAdditionView<QuestionGroupRepositoryImpl>>
+        let someView = await presenter.groupAdditionLinkBuilder {} as? NavigationLink<EmptyView, GroupAdditionView<QuestionGroupRepositoryImpl>>
         XCTAssertNotNil(someView)
     }
     
     func testAppConfigSelectionLinkBuilder() async {
         let router: ConfigRouter = await .init()
         presenter = await .init(interactor: .init(), router: router)
-        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as! NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>, _AppearanceActionModifier>>
+        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as? NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>, _AppearanceActionModifier>>
         XCTAssertNotNil(someView)
     }
 }
