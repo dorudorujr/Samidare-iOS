@@ -72,44 +72,34 @@ class AppConfigSelectionPresenterTests: XCTestCase {
     
     func testUpdateQuestionGroup() async {
         let presenter = await AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .questionGroup)
-        var questionGroup = await presenter.questionGroups![0]
+        let questionGroup = await presenter.questionGroups![0]
         // initで取得した値か確認
         XCTAssertEqual(questionGroup, self.questionGroup)
         AppConfigRepositoryProtocolMock.updateHandler = { appConfig in
             // Presenterのupdateの引数の値で更新されているか確認
             XCTAssertEqual(appConfig.questionGroup.name, "Update Test")
         }
-        let updateGroup = QuestionGroup(name: "Test")
-        QuestionGroupRepositoryProtocolMock.getHandler = {
-            [
-                updateGroup
-            ]
-        }
+        let beforequestionGroupsCount = QuestionGroupRepositoryProtocolMock.getCallCount
         await presenter.update(questionGroup: "Update Test")
-        questionGroup = await presenter.questionGroups![0]
-        // Repositoryのgetを呼び出してPresenterのquestionGroupsが更新されているか確認
-        XCTAssertEqual(questionGroup, updateGroup)
+        // fetchQuestionGroupsを呼んでいるか確認
+        XCTAssertEqual(beforequestionGroupsCount + 1, QuestionGroupRepositoryProtocolMock.getCallCount)
     }
     
     func testUpdateGameTime() async {
         let presenter = await AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .gameTime)
-        var appConfigGameTime = await presenter.appConfigGameTime
+        let appConfigGameTime = await presenter.appConfigGameTime
         // initで取得したappConfigGameTimeか確認
         XCTAssertEqual(appConfigGameTime, 10)
         
-        let updateAppConfig = AppConfig(questionGroup: .init(name: "Update"),
-                                        time: 20)
-        AppConfigRepositoryProtocolMock.getHandler = {
-            updateAppConfig
-        }
         AppConfigRepositoryProtocolMock.updateHandler = { appConfig in
             // Presenterのupdateの引数の値で更新されているか確認
             XCTAssertEqual(appConfig.time, 60)
         }
+        let beforeAppConfigRepositoryGetCount = AppConfigRepositoryProtocolMock.getCallCount
         await presenter.update(gameTime: 60)
-        appConfigGameTime = await presenter.appConfigGameTime
-        // Repositoryのgetを呼び出してPresenterのappConfigGameTimeが更新されているか確認
-        XCTAssertEqual(appConfigGameTime, 20)
+        // interactorのgameTimeを呼んでいるか
+        // interactor.updateとinteractor.gemeTimeで呼んでいるため+2
+        XCTAssertEqual(beforeAppConfigRepositoryGetCount + 2, AppConfigRepositoryProtocolMock.getCallCount)
     }
     
     func testIsSelectedQuestionGroup() async {

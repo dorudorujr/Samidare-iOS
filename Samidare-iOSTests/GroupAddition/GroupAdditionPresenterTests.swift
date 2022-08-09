@@ -6,17 +6,17 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import Samidare_iOS
 
 class GroupAdditionPresenterTests: XCTestCase {
-    private var questionGroupRepositoryMock: QuestionGroupRepositoryProtocolMock!
+    private let questionGroup = QuestionGroup(name: "デフォルト（テスト）")
     
     override func setUp() {
         super.setUp()
-        questionGroupRepositoryMock = .init()
         QuestionGroupRepositoryProtocolMock.getHandler = {
             [
-                .init(name: "デフォルト（テスト）")
+                self.questionGroup
             ]
         }
     }
@@ -24,7 +24,7 @@ class GroupAdditionPresenterTests: XCTestCase {
     func testInit() async {
         let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
         let group = await presenter.groups!.first!
-        XCTAssertEqual(group.name, "デフォルト（テスト）")
+        XCTAssertEqual(group, questionGroup)
     }
     
     func testAddQuestionGroup() async {
@@ -33,8 +33,10 @@ class GroupAdditionPresenterTests: XCTestCase {
             XCTAssertEqual(questionGroup.name, "")
         }
         let addCallCountBefore = QuestionGroupRepositoryProtocolMock.addCallCount
+        let getCallCountBefore = QuestionGroupRepositoryProtocolMock.getCallCount
         await presenter.addQuestionGroup()
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.addCallCount, addCallCountBefore + 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.getCallCount, getCallCountBefore + 1)
     }
     
     func testDidTapNavBarButton() async {
@@ -58,5 +60,12 @@ class GroupAdditionPresenterTests: XCTestCase {
         groups = await presenter.groups
         XCTAssertTrue(groups!.isEmpty)
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, deleteCallCountBefore + 1)
+    }
+    
+    func testQuestionAdditionLinkBuilder() async {
+        let router = await GroupAdditionRouter()
+        let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: router)
+        let someView = await presenter.questionAdditionLinkBuilder(group: .init(name: "デフォルト")) {} as? NavigationLink<EmptyView, QuestionAdditionView<QuestionRepositoryImpl>>
+        XCTAssertNotNil(someView)
     }
 }
