@@ -83,7 +83,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         questionGroup.name
     }
 
-    @Published var question: Question?
+    @Published private(set) var question: Question?
     @Published private(set) var questionCountText: String = ""
     @Published var shouldShowQuestionList = false
     // ゲームの状態
