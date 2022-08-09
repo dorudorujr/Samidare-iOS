@@ -58,6 +58,17 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
     private var questionGroup: QuestionGroup
+    private var selectIndex = 0 {
+        didSet {
+            setQuestion()
+            setQuestionCountText()
+        }
+    }
+    private var totalQuestionCount = 0 {
+        didSet {
+            setQuestionCountText()
+        }
+    }
 
     var shouldShowQuestionCount: Bool {
         status != .standBy && status != .ready && status != .stopReadying
@@ -73,11 +84,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
 
     @Published var question: Question?
-    @Published var selectIndex = 0 {
-        didSet {
-            setQuestion()
-        }
-    }
+    @Published private(set) var questionCountText: String = ""
     @Published var shouldShowQuestionList = false
     // ゲームの状態
     @Published var status: Status = .standBy
@@ -85,8 +92,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
     @Published var nowCountDownTime = readyCountDownTime
-    // 質問の総数
-    @Published var totalQuestionCount = 0
     
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
@@ -148,6 +153,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     private func setQuestionGroup() {
         questionGroup = interactor.questionGroup()
+    }
+    
+    private func setQuestionCountText() {
+        questionCountText = "\(selectIndex + 1)/\(totalQuestionCount)"
     }
 
     // MARK: - Status Function
