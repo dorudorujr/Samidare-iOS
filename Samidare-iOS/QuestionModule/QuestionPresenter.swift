@@ -44,7 +44,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         }
     }
     
-    private static var countDownTime: Int {
+    private static var readyCountDownTime: Int {
         return 3
     }
     
@@ -84,7 +84,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     // プログレスバーの位置
     @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
-    @Published var nowCountDownTime = countDownTime
+    @Published var nowCountDownTime = readyCountDownTime
     // 質問の総数
     @Published var totalQuestionCount = 0
     
@@ -162,7 +162,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         countDownTimer = timerProvider.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.nowCountDownTime -= 1
-            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.countDownTime)
+            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.readyCountDownTime)
             
             if self.nowCountDownTime == 0 {
                 self.resetStandByConfig()
@@ -259,7 +259,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     
     private func resetStandByConfig() {
-        self.nowCountDownTime = QuestionPresenter.countDownTime
+        self.nowCountDownTime = QuestionPresenter.readyCountDownTime
         self.countDownTimer?.invalidate()
         self.countDownTimer = nil
     }
