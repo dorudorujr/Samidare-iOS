@@ -15,9 +15,9 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     
     private var questionToUpdate: Question?
     
+    @Published private(set) var questions: [Question]?
     @Published var isShowingAddAlert = false
     @Published var isShowingUpdateAlert = false
-    @Published var questions: [Question]?
     @Published var addQuestionBody = ""
     @Published var updateQuestionBody = ""
     @Published var error: Error?
@@ -57,10 +57,9 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     
     func deleteQuestion(on index: IndexSet) {
         guard let index = index.first, let question = questions?[safe: index] else { return }
-        // TODO: これquestionsをDBから更新すれば良くない？
-        questions?.remove(at: index)
         do {
             try interactor.delete(question)
+            questions = interactor.getQuestions(of: group.name)
         } catch {
             self.error = error
         }

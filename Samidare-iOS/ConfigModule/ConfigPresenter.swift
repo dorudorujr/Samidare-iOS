@@ -13,14 +13,15 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
     private let interactor: ConfigInteractor<Repository>
     private let router: ConfigRouter
     
-    @Published var questionGroup: String?
-    @Published var playTime: String?
-    @Published var appVersion: String?
+    @Published private(set) var questionGroup: String?
+    @Published private(set) var playTime: String?
+    
+    let appVersion: String
     
     init(interactor: ConfigInteractor<Repository>, router: ConfigRouter) {
         self.interactor = interactor
         self.router = router
-        getAppVersion()
+        appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
     }
     
     func getAppConfig() {
@@ -40,12 +41,6 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
             self?.getAppConfig()
         }) {
             content()
-        }
-    }
-    
-    private func getAppVersion() {
-        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-            appVersion = version
         }
     }
 }

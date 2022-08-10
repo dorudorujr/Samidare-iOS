@@ -13,8 +13,8 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
     private let interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>
     private let type: AppConfigSelectionType
     
-    @Published var questionGroups: [QuestionGroup]?
-    @Published var appConfigGameTime: Int?
+    @Published private(set) var questionGroups: [QuestionGroup]?
+    @Published private(set) var appConfigGameTime: Int?
     @Published var error: Error?
     
     init(interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>,

@@ -13,9 +13,9 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     private let interactor: GroupAdditionInteractor<Repository>
     private let router: GroupAdditionRouter
     
+    @Published private(set) var groups: [QuestionGroup]?
     @Published var isShowingAddAlert = false
     @Published var alertText = ""
-    @Published var groups: [QuestionGroup]?
     @Published var error: Error?
     
     init(interactor: GroupAdditionInteractor<Repository>, router: GroupAdditionRouter) {
