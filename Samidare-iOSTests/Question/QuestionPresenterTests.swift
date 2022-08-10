@@ -30,12 +30,6 @@ class QuestionPresenterTests: XCTestCase {
         setPresenter()
     }
     
-    func testViewWillApper() {
-        XCTAssertEqual(presenter.totalQuestionCount, 0)
-        presenter.viewWillApper()
-        XCTAssertEqual(presenter.totalQuestionCount, 1)
-    }
-    
     // PrimaryButtonActionの一連の流れをテスト
     func testPrimaryButtonAction() {
         // 初期化
