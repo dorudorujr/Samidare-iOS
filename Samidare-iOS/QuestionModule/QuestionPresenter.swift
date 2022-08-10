@@ -103,7 +103,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     // MARK: - Life Cycle
     
     func viewWillApper() {
-        setNowPlayTime()
+        setDefaultNowPlayTime()
         setPlayTime()
         setTotalQuestionCount()
         setQuestionGroup()
@@ -139,7 +139,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         question = interactor.getQuestion(from: selectIndex)
     }
     
-    private func setNowPlayTime() {
+    private func setDefaultNowPlayTime() {
         nowPlayTime = Double(interactor.getTime())
     }
 
@@ -197,7 +197,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
                 // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime < 0 {
                     self.selectIndex += 1
-                    self.setNowPlayTime()
+                    self.setDefaultNowPlayTime()
                 }
             // 全ての質問を表示し終わった
             } else {
@@ -252,7 +252,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             return
         }
         selectIndex += 1
-        setNowPlayTime()
+        setDefaultNowPlayTime()
     }
     
     private func goToListView() {
@@ -264,7 +264,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         duration = 1.0
         playTimer?.invalidate()
         playTimer = nil
-        setNowPlayTime()
+        setDefaultNowPlayTime()
     }
     
     private func resetStandByConfig() {
