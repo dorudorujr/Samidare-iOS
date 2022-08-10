@@ -10,7 +10,18 @@ import SwiftUI
 
 class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol>: ObservableObject {
     enum Status {
-        case standBy, ready, play, stopPlaying, stopReadying, done
+        // 待機状態(初期状態)
+        case standBy
+        // ゲーム開始前のカウントダウン表示状態
+        case ready
+        // ゲーム中状態
+        case play
+        // ゲーム中、一時停止
+        case stopPlaying
+        // ゲーム開始前、一時停止
+        case stopReadying
+        // ゲーム終了状態、質問一覧に遷移可能
+        case done
         
         var primaryText: String {
             switch self {
@@ -33,7 +44,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         }
     }
     
-    private static var countDownTime: Int {
+    private static var readyCountDownTime: Int {
         return 3
     }
     
@@ -42,11 +53,22 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
 
     private var playTimer: Timer?
     private var countDownTimer: Timer?
-    // ゲーム時間
-    private var playTime: Int = 0
-    // ゲーム中のカウントダウン
+    // トータルのゲーム時間
+    private var totalPlayTime: Int = 0
+    // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
     private var questionGroup: QuestionGroup
+    private var selectIndex = 0 {
+        didSet {
+            setQuestion()
+            setQuestionCountText()
+        }
+    }
+    private var totalQuestionCount = 0 {
+        didSet {
+            setQuestionCountText()
+        }
+    }
 
     var shouldShowQuestionCount: Bool {
         status != .standBy && status != .ready && status != .stopReadying
@@ -61,21 +83,15 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         questionGroup.name
     }
 
-    @Published var question: Question?
-    @Published var selectIndex = 0 {
-        didSet {
-            setQuestion()
-        }
-    }
-    @Published var shouldShowQuestionList = false
+    @Published private(set) var question: Question?
+    @Published private(set) var questionCountText: String = ""
     // ゲームの状態
-    @Published var status: Status = .standBy
+    @Published private(set) var status: Status = .standBy
+    @Published var shouldShowQuestionList = false
     // プログレスバーの位置
     @Published var duration: CGFloat = 1.0
     // 開始前のカウントダウン
-    @Published var nowCountDownTime = countDownTime
-    // 質問の総数
-    @Published var totalQuestionCount = 0
+    @Published var nowCountDownTime = readyCountDownTime
     
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
@@ -87,8 +103,8 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     // MARK: - Life Cycle
     
     func viewWillApper() {
-        setNowPlayTime()
-        setPlayTime()
+        setDefaultNowPlayTime()
+        setTotalPlayTime()
         setTotalQuestionCount()
         setQuestionGroup()
     }
@@ -123,12 +139,12 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         question = interactor.getQuestion(from: selectIndex)
     }
     
-    private func setNowPlayTime() {
+    private func setDefaultNowPlayTime() {
         nowPlayTime = Double(interactor.getTime())
     }
 
-    private func setPlayTime() {
-        playTime = interactor.getTime()
+    private func setTotalPlayTime() {
+        totalPlayTime = interactor.getTime()
     }
 
     private func setTotalQuestionCount() {
@@ -137,6 +153,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     private func setQuestionGroup() {
         questionGroup = interactor.questionGroup()
+    }
+    
+    private func setQuestionCountText() {
+        questionCountText = "\(selectIndex + 1)/\(totalQuestionCount)"
     }
 
     // MARK: - Status Function
@@ -151,7 +171,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         countDownTimer = timerProvider.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
             self.nowCountDownTime -= 1
-            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.countDownTime)
+            self.duration = CGFloat(self.nowCountDownTime) / CGFloat(QuestionPresenter.readyCountDownTime)
             
             if self.nowCountDownTime == 0 {
                 self.resetStandByConfig()
@@ -170,14 +190,13 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         playTimer?.invalidate()
         playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            // 最後の質問かどうか
+            // 最後の質問ではないかどうか
             if self.totalQuestionCount > self.selectIndex {
                 self.nowPlayTime -= 0.1
-                self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.playTime)
+                self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime < 0 {
-                    self.selectIndex += 1
-                    self.setNowPlayTime()
+                    self.next()
                 }
             // 全ての質問を表示し終わった
             } else {
@@ -232,7 +251,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             return
         }
         selectIndex += 1
-        setNowPlayTime()
+        setDefaultNowPlayTime()
     }
     
     private func goToListView() {
@@ -244,11 +263,11 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         duration = 1.0
         playTimer?.invalidate()
         playTimer = nil
-        setNowPlayTime()
+        setDefaultNowPlayTime()
     }
     
     private func resetStandByConfig() {
-        self.nowCountDownTime = QuestionPresenter.countDownTime
+        self.nowCountDownTime = QuestionPresenter.readyCountDownTime
         self.countDownTimer?.invalidate()
         self.countDownTimer = nil
     }

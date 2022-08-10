@@ -19,7 +19,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
         GeometryReader { geometry in
             VStack(spacing: 40) {
                 if presenter.shouldShowQuestionCount {
-                    Text("\(presenter.selectIndex + 1)/\(presenter.totalQuestionCount)")
+                    Text(presenter.questionCountText)
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(Color.textBlack)

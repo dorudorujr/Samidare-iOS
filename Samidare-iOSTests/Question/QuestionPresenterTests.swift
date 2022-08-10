@@ -9,31 +9,20 @@ import XCTest
 @testable import Samidare_iOS
 
 class QuestionPresenterTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
-    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
     private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!
+    private let questions = [Question(body: "好きな色は", group: .init(name: "default"))]
     
     override func setUp() {
         super.setUp()
         MockTimer.clearData()
-        appConfigRepositoryMock = .init()
-        questionRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
             .init(questionGroup: .init(name: "questionGroup"),
                   time: 1)
         }
         QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
-            [
-                .init(body: "好きな色は", group: .init(name: "default"))
-            ]
+            self.questions
         }
         setPresenter()
-    }
-    
-    func testViewWillApper() {
-        XCTAssertEqual(presenter.totalQuestionCount, 0)
-        presenter.viewWillApper()
-        XCTAssertEqual(presenter.totalQuestionCount, 1)
     }
     
     // PrimaryButtonActionの一連の流れをテスト
@@ -41,7 +30,7 @@ class QuestionPresenterTests: XCTestCase {
         // 初期化
         presenter.viewWillApper()
         
-        // カウントダウン中
+        // 初期状態
         /// ステータス確認
         XCTAssertEqual(presenter.status, .standBy)
         /// 現在のカウントダウンタイムが初期表示であるか確認
@@ -49,6 +38,7 @@ class QuestionPresenterTests: XCTestCase {
         
         presenter.primaryButtonAction()
         
+        // カウントダウン中
         /// ステータス確認
         XCTAssertEqual(presenter.status, .ready)
         let expCountDown = expectation(description: "カウントダウン中")
@@ -75,7 +65,8 @@ class QuestionPresenterTests: XCTestCase {
         /// ステータス確認
         XCTAssertEqual(presenter.status, .play)
         /// 質問のインデックスが初期表示か確認
-        XCTAssertEqual(presenter.selectIndex, 0)
+        XCTAssertEqual(presenter.question!, questions[0])
+        XCTAssertEqual(presenter.questionCountText, "1/1")
         
         // ゲーム中(質問表示中)
         let expPlay = expectation(description: "質問表示中")
@@ -106,7 +97,8 @@ class QuestionPresenterTests: XCTestCase {
         }
         wait(for: [expOverTime], timeout: 0.1)
         /// 質問時間経過で次の質問に行っているか確認
-        XCTAssertEqual(presenter.selectIndex, 1)
+        XCTAssertNil(presenter.question)
+        XCTAssertEqual(presenter.questionCountText, "2/1")
         
         // ゲーム完了
         let expDone = expectation(description: "ゲーム完了")
@@ -120,15 +112,15 @@ class QuestionPresenterTests: XCTestCase {
         /// ステータス確認
         XCTAssertEqual(presenter.status, .done)
         /// ゲーム完了後は一番最後に表示した質問を表示
-        XCTAssertEqual(presenter.selectIndex, 0)
+        XCTAssertEqual(presenter.question!, questions[0])
+        XCTAssertEqual(presenter.questionCountText, "1/1")
     }
     
     func testNext() {
+        let questions: [Question] = [.init(body: "好きな色は", group: .init(name: "default")),
+                                     .init(body: "将来の夢は", group: .init(name: "default"))]
         QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
-            [
-                .init(body: "好きな色は", group: .init(name: "default")),
-                .init(body: "将来の夢は", group: .init(name: "default"))
-            ]
+            questions
         }
         setPresenter()
         
@@ -148,9 +140,9 @@ class QuestionPresenterTests: XCTestCase {
         wait(for: [expNextBefore], timeout: 0.1)
         
         /// 質問の総数確認
-        XCTAssertEqual(presenter.totalQuestionCount, 2)
+        XCTAssertEqual(presenter.questionCountText, "1/\(questions.count)")
         /// indexが初期値かどうか確認
-        XCTAssertEqual(presenter.selectIndex, 0)
+        XCTAssertEqual(presenter.question, questions[0])
         /// プログレスバーの範囲が進んでいるかどうか
         XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.2) / CGFloat(1.0))
         
@@ -164,7 +156,7 @@ class QuestionPresenterTests: XCTestCase {
         wait(for: [expNextAfter], timeout: 0.1)
         
         /// indexが次に進んでいるか確認
-        XCTAssertEqual(presenter.selectIndex, 1)
+        XCTAssertEqual(presenter.question, questions[1])
         /// プログレスバーの範囲が初回表示時の範囲かどうか
         XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.1) / CGFloat(1.0))
     }
@@ -270,7 +262,8 @@ class QuestionPresenterTests: XCTestCase {
         
         // TODO: 初期化確認
         /// 初期化確認
-        XCTAssertEqual(presenter.selectIndex, 0)
+        XCTAssertNotNil(presenter.question)
+        XCTAssertEqual(presenter.question, questions[0])
         XCTAssertEqual(presenter.duration, 1.0)
         XCTAssertEqual(presenter.nowCountDownTime, 3)
         XCTAssertEqual(MockTimer.callCountInvalidate, 6)
