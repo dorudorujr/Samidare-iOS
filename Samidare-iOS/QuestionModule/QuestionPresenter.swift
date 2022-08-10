@@ -104,7 +104,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     func viewWillApper() {
         setDefaultNowPlayTime()
-        setPlayTime()
+        setTotalPlayTime()
         setTotalQuestionCount()
         setQuestionGroup()
     }
@@ -143,7 +143,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         nowPlayTime = Double(interactor.getTime())
     }
 
-    private func setPlayTime() {
+    private func setTotalPlayTime() {
         totalPlayTime = interactor.getTime()
     }
 
