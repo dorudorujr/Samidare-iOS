@@ -57,10 +57,9 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     
     func deleteQuestion(on index: IndexSet) {
         guard let index = index.first, let question = questions?[safe: index] else { return }
-        // TODO: これquestionsをDBから更新すれば良くない？
-        questions?.remove(at: index)
         do {
             try interactor.delete(question)
+            questions = interactor.getQuestions(of: group.name)
         } catch {
             self.error = error
         }

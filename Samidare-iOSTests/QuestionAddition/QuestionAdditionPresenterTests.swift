@@ -56,8 +56,10 @@ class QuestionAdditionPresenterTests: XCTestCase {
             XCTAssertEqual(question, deleteQuestion)
         }
         let deleteCallCountBefore = QuestionRepositoryProtocolMock.deleteCallCount
+        let getCallCountBefore = QuestionRepositoryProtocolMock.getQuestionsCallCount
         await presenter.deleteQuestion(on: .init(integer: 0))
         XCTAssertEqual(QuestionRepositoryProtocolMock.deleteCallCount, deleteCallCountBefore + 1)
+        XCTAssertEqual(QuestionRepositoryProtocolMock.getQuestionsCallCount, getCallCountBefore + 1)
     }
     
     func testDidTapNavBarButton() async {
