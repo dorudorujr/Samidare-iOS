@@ -190,14 +190,13 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         playTimer?.invalidate()
         playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            // 最後の質問かどうか
+            // 最後の質問ではないかどうか
             if self.totalQuestionCount > self.selectIndex {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 // 1つの質問を表示する時間を過ぎたかどうか
                 if self.nowPlayTime < 0 {
-                    self.selectIndex += 1
-                    self.setDefaultNowPlayTime()
+                    self.next()
                 }
             // 全ての質問を表示し終わった
             } else {
