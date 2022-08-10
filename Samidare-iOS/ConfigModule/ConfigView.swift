@@ -22,10 +22,10 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                         ListRow(title: L10n.Config.Add.question)
                     }
                     presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {
-                        ListRow(title: L10n.Config.Display.group, description: $presenter.questionGroup)
+                        ListRow(title: L10n.Config.Display.group, description: presenter.questionGroup)
                     }
                     presenter.appConfigSelectionLinkBuilder(for: .gameTime) {
-                        ListRow(title: L10n.Config.Answer.seconds, description: $presenter.playTime)
+                        ListRow(title: L10n.Config.Answer.seconds, description: presenter.playTime)
                     }
                 }
                 Section {
@@ -35,7 +35,7 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                 Section {
                     ListRow(title: L10n.Config.privacyPolicy)
                     ListRow(title: L10n.Config.Terms.Of.service)
-                    ListRow(title: L10n.Config.version, description: $presenter.appVersion)
+                    ListRow(title: L10n.Config.version, description: presenter.appVersion)
                 }
             }
             .navigationTitle(L10n.Config.NavigationBar.title)

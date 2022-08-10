@@ -13,9 +13,9 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
     private let interactor: ConfigInteractor<Repository>
     private let router: ConfigRouter
     
-    @Published var questionGroup: String?
-    @Published var playTime: String?
-    @Published var appVersion: String?
+    @Published private(set) var questionGroup: String?
+    @Published private(set) var playTime: String?
+    @Published private(set) var appVersion: String?
     
     init(interactor: ConfigInteractor<Repository>, router: ConfigRouter) {
         self.interactor = interactor

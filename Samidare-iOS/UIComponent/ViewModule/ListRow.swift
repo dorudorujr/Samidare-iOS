@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ListRow: View {
     let title: String
-    let description: Binding<String?>?
+    let description: String?
     let isSelected: Bool?
     
     init(title: String,
-         description: Binding<String?>? = nil,
+         description: String? = nil,
          isSelected: Bool? = nil) {
         self.title = title
         self.description = description
@@ -26,8 +26,8 @@ struct ListRow: View {
                 .font(.system(size: 17))
                 .foregroundColor(Color.textBlack)
             Spacer()
-            if let description = description, let text = description.wrappedValue {
-                Text(text)
+            if let description = description {
+                Text(description)
                     .font(.system(size: 17))
                     .foregroundColor(Color.textGray)
             }
@@ -43,6 +43,6 @@ struct ListRow: View {
 
 struct ListRow_Previews: PreviewProvider {
     static var previews: some View {
-        ListRow(title: "title", description: .constant("description"))
+        ListRow(title: "title", description: "description")
     }
 }
