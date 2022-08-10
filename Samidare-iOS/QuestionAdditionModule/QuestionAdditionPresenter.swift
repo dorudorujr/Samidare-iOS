@@ -15,9 +15,9 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     
     private var questionToUpdate: Question?
     
+    @Published private(set) var questions: [Question]?
     @Published var isShowingAddAlert = false
     @Published var isShowingUpdateAlert = false
-    @Published var questions: [Question]?
     @Published var addQuestionBody = ""
     @Published var updateQuestionBody = ""
     @Published var error: Error?
