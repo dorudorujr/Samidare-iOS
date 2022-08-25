@@ -25,7 +25,9 @@ class QuestionGroupRepositoryImpl: QuestionGroupRepositoryProtocol {
     
     static func add(_ questionGroup: QuestionGroup) throws {
         let realm = try! Realm()
-        guard realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).isEmpty else { return }
+        guard realm.objects(QuestionGroupRealmObject.self).filter("name == %@", questionGroup.name).isEmpty else {
+            throw QuestionGroupUniqueError()
+        }
         let groupRealmObject = QuestionGroupRealmObject(value: ["id": questionGroup.id.uuidString, "name": questionGroup.name])
         
         try realm.write {

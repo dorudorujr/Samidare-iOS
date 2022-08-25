@@ -15,8 +15,8 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     
     @Published private(set) var groups: [QuestionGroup]?
     @Published var isShowingAddAlert = false
+    @Published var isShowingQuestionGroupUniqueErrorAlert = false
     @Published var alertText = ""
-    @Published var error: Error?
     
     init(interactor: GroupAdditionInteractor<Repository>, router: GroupAdditionRouter) {
         self.interactor = interactor
@@ -30,7 +30,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
             try interactor.add(questionGroup)
             groups = interactor.getQuestionGroup()
         } catch {
-            self.error = error
+            errorHandling(error: error)
         }
     }
     
@@ -44,7 +44,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
         do {
             try interactor.delete(group)
         } catch {
-            self.error = error
+            errorHandling(error: error)
         }
     }
     
@@ -52,6 +52,12 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
                                                     @ViewBuilder content: () -> Content) -> some View {
         NavigationLink(destination: router.makeQuestionAdditionView(group: group)) {
             content()
+        }
+    }
+    
+    private func errorHandling(error: Error) {
+        if error as? QuestionGroupUniqueError != nil {
+            isShowingQuestionGroupUniqueErrorAlert = true
         }
     }
 }

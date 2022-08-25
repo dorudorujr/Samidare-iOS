@@ -37,6 +37,16 @@ class GroupAdditionPresenterTests: XCTestCase {
         await presenter.addQuestionGroup()
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.addCallCount, addCallCountBefore + 1)
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.getCallCount, getCallCountBefore + 1)
+        
+        // 存在するグループ名の場合alertを表示するのでisShowingQuestionGroupUniqueErrorAlertがtrueになっているのか確認する
+        QuestionGroupRepositoryProtocolMock.addHandler = { _ in
+            throw QuestionGroupUniqueError()
+        }
+        var isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingQuestionGroupUniqueErrorAlert
+        XCTAssertFalse(isShowingQuestionGroupUniqueErrorAlert)
+        await presenter.addQuestionGroup()
+        isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingQuestionGroupUniqueErrorAlert
+        XCTAssertTrue(isShowingQuestionGroupUniqueErrorAlert)
     }
     
     func testDidTapNavBarButton() async {

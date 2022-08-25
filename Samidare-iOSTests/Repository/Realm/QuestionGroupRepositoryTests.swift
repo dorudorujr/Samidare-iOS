@@ -27,7 +27,10 @@ class QuestionGroupRepositoryTests: XCTestCase {
         
         // 同じグループ名のグループは登録できない
         let sameNameGroup = QuestionGroup(name: "テスト")
-        try! QuestionGroupRepositoryImpl.add(sameNameGroup)
+        do {
+            try QuestionGroupRepositoryImpl.add(sameNameGroup)
+        } catch {
+        }
         let sameNameGroups = QuestionGroupRepositoryImpl.get()
         XCTAssertEqual(sameNameGroups.count, 1)
         XCTAssertEqual(sameNameGroups.first!.id, group.id)
