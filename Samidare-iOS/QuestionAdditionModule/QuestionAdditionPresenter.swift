@@ -11,9 +11,10 @@ import Foundation
 @MainActor
 class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: ObservableObject {
     private let interactor: QuestionAdditionInteractor<Repository>
-    private let group: QuestionGroup
     
     private var questionToUpdate: Question?
+    
+    let group: QuestionGroup
     
     @Published private(set) var questions: [Question]?
     @Published var isShowingAddAlert = false
