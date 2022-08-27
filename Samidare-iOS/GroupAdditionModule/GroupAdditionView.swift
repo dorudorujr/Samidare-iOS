@@ -50,7 +50,7 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                                 Button {
                                     presenter.didTapEditSwipeAction(editQuestionGroup: group)
                                 } label: {
-                                    Image(systemName: "pencil")
+                                    Text(L10n.Common.edit)
                                 }
                                 .tint(.yellow)
                             }
@@ -58,7 +58,7 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                                 Button(role: .destructive) {
                                     presenter.delete(group)
                                 } label: {
-                                    Text("削除")
+                                    Text(L10n.Common.delete)
                                 }
                             }
                         }
