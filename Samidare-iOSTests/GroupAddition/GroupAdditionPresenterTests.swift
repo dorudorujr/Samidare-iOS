@@ -58,6 +58,16 @@ class GroupAdditionPresenterTests: XCTestCase {
         XCTAssertTrue(isShowingAddAlert)
     }
     
+    func testDidTapEditSwipeAction() async {
+        let questionGroup = QuestionGroup(name: "DidTapEditSwipeAction Test")
+        let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
+        await presenter.didTapEditSwipeAction(editQuestionGroup: questionGroup)
+        let editAlertText = await presenter.editAlertText
+        let isShowingEditAlert = await presenter.isShowingEditAlert
+        XCTAssertEqual(editAlertText, questionGroup.name)
+        XCTAssertTrue(isShowingEditAlert)
+    }
+    
     func testDeleteGroup() async {
         let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
         var groups = await presenter.groups
