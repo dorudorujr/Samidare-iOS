@@ -17,7 +17,7 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
     // swiftlint:disable closure_body_length
     var body: some View {
         ZStack {
-            TextFieldAlertView(text: $presenter.alertText,
+            TextFieldAlertView(text: $presenter.addAlertText,
                                isShowingAlert: $presenter.isShowingAddAlert,
                                placeholder: "",
                                isSecureTextEntry: false,
@@ -27,6 +27,16 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                                rightButtonTitle: L10n.Common.ok,
                                leftButtonAction: nil,
                                rightButtonAction: { presenter.addQuestionGroup() })
+            TextFieldAlertView(text: $presenter.editAlertText,
+                               isShowingAlert: $presenter.isShowingEditAlert,
+                               placeholder: "",
+                               isSecureTextEntry: false,
+                               title: L10n.Group.Addition.Update.Alert.title,
+                               message: L10n.Group.Addition.Update.Alert.message,
+                               leftButtonTitle: L10n.Common.cancel,
+                               rightButtonTitle: L10n.Common.ok,
+                               leftButtonAction: nil,
+                               rightButtonAction: { presenter.editQuestionGroupName() })
             List {
                 Section {
                     if let groups = self.presenter.groups {
@@ -36,10 +46,22 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                                     .font(.system(size: 17))
                                     .foregroundColor(Color.textBlack)
                             }
+                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                Button {
+                                    presenter.didTapEditSwipeAction(editQuestionGroup: group)
+                                } label: {
+                                    Image(systemName: "pencil")
+                                }
+                                .tint(.yellow)
+                            }
+                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button(role: .destructive) {
+                                    presenter.delete(group)
+                                } label: {
+                                    Text("削除")
+                                }
+                            }
                         }
-                        .onDelete(perform: { indexSet in
-                            Task { presenter.deleteGroup(on: indexSet) }
-                        })
                     }
                 }
             }
