@@ -60,16 +60,14 @@ class GroupAdditionPresenterTests: XCTestCase {
     
     func testDeleteGroup() async {
         let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
-        QuestionGroupRepositoryProtocolMock.deleteHandler = { questionGroup in
-            XCTAssertEqual(questionGroup.name, "デフォルト（テスト）")
-        }
         var groups = await presenter.groups
         XCTAssertFalse(groups!.isEmpty)
         let deleteCallCountBefore = QuestionGroupRepositoryProtocolMock.deleteCallCount
-        await presenter.deleteGroup(on: .init(integer: 0))
+        let getCallCountBefore = QuestionGroupRepositoryProtocolMock.getCallCount
+        await presenter.delete(.init(name: "テスト"))
         groups = await presenter.groups
-        XCTAssertTrue(groups!.isEmpty)
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, deleteCallCountBefore + 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.getCallCount, getCallCountBefore + 1)
     }
     
     func testQuestionAdditionLinkBuilder() async {
