@@ -11,6 +11,8 @@
 "Common.OK" = "OK";
 "Common.cancel" = "Cancel";
 "Common.Add" = "追加";
+"Common.delete" = "削除";
+"Common.edit" = "編集";
 
 // Tab画面
 "Tab.Question" = "質問";
