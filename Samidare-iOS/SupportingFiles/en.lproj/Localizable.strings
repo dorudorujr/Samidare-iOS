@@ -11,6 +11,8 @@
 "Common.OK" = "OK";
 "Common.cancel" = "Cancel";
 "Common.Add" = "Add ";
+"Common.delete" = "Delete";
+"Common.edit" = "Edit";
 
 // Tab画面
 "Tab.Question" = "Question";
@@ -45,6 +47,8 @@
 "Group.Addition.Title" = "質問グループ";
 "Group.Addition.Alert.Title" = "質問グループ名";
 "Group.Addition.Alert.Message" = "追加する質問グループ名を入力してください。";
+"Group.Addition.Update.Alert.Title" = "質問グループ名更新";
+"Group.Addition.Update.Alert.Message" = "更新する質問グループ名を入力してください。";
 
 // 質問追加画面
 "Question.Addition.Title" = "質問";

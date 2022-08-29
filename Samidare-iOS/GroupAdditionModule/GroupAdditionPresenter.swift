@@ -13,10 +13,14 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     private let interactor: GroupAdditionInteractor<Repository>
     private let router: GroupAdditionRouter
     
+    private var editQuestionGroup: QuestionGroup?
+    
     @Published private(set) var groups: [QuestionGroup]?
     @Published var isShowingAddAlert = false
+    @Published var isShowingEditAlert = false
     @Published var isShowingQuestionGroupUniqueErrorAlert = false
-    @Published var alertText = ""
+    @Published var addAlertText = ""
+    @Published var editAlertText = ""
     
     init(interactor: GroupAdditionInteractor<Repository>, router: GroupAdditionRouter) {
         self.interactor = interactor
@@ -26,8 +30,20 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     
     func addQuestionGroup() {
         do {
-            let questionGroup = QuestionGroup(name: alertText)
+            let questionGroup = QuestionGroup(name: addAlertText)
             try interactor.add(questionGroup)
+            groups = interactor.getQuestionGroup()
+        } catch {
+            errorHandling(error: error)
+        }
+    }
+    
+    func editQuestionGroupName() {
+        guard let editQuestionGroup = editQuestionGroup else {
+            return
+        }
+        do {
+            try interactor.add(.init(id: editQuestionGroup.id, name: editAlertText))
             groups = interactor.getQuestionGroup()
         } catch {
             errorHandling(error: error)
@@ -37,12 +53,17 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     func didTapNavBarButton() {
         isShowingAddAlert = true
     }
+    
+    func didTapEditSwipeAction(editQuestionGroup: QuestionGroup) {
+        self.editQuestionGroup = editQuestionGroup
+        editAlertText = self.editQuestionGroup?.name ?? ""
+        isShowingEditAlert = true
+    }
 
-    func deleteGroup(on index: IndexSet) {
-        guard let group = groups?[safe: index.first ?? 0] else { return }
-        groups?.remove(atOffsets: index)
+    func delete(_ group: QuestionGroup) {
         do {
             try interactor.delete(group)
+            groups = interactor.getQuestionGroup()
         } catch {
             errorHandling(error: error)
         }

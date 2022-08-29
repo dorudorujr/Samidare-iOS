@@ -50,7 +50,7 @@ struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
                     })
                 }
             }
-            .navigationTitle(L10n.Question.Addition.title)
+            .navigationTitle(presenter.group.name)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

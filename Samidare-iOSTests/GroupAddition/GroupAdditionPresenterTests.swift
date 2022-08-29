@@ -58,18 +58,26 @@ class GroupAdditionPresenterTests: XCTestCase {
         XCTAssertTrue(isShowingAddAlert)
     }
     
+    func testDidTapEditSwipeAction() async {
+        let questionGroup = QuestionGroup(name: "DidTapEditSwipeAction Test")
+        let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
+        await presenter.didTapEditSwipeAction(editQuestionGroup: questionGroup)
+        let editAlertText = await presenter.editAlertText
+        let isShowingEditAlert = await presenter.isShowingEditAlert
+        XCTAssertEqual(editAlertText, questionGroup.name)
+        XCTAssertTrue(isShowingEditAlert)
+    }
+    
     func testDeleteGroup() async {
         let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: .init())
-        QuestionGroupRepositoryProtocolMock.deleteHandler = { questionGroup in
-            XCTAssertEqual(questionGroup.name, "デフォルト（テスト）")
-        }
         var groups = await presenter.groups
         XCTAssertFalse(groups!.isEmpty)
         let deleteCallCountBefore = QuestionGroupRepositoryProtocolMock.deleteCallCount
-        await presenter.deleteGroup(on: .init(integer: 0))
+        let getCallCountBefore = QuestionGroupRepositoryProtocolMock.getCallCount
+        await presenter.delete(.init(name: "テスト"))
         groups = await presenter.groups
-        XCTAssertTrue(groups!.isEmpty)
         XCTAssertEqual(QuestionGroupRepositoryProtocolMock.deleteCallCount, deleteCallCountBefore + 1)
+        XCTAssertEqual(QuestionGroupRepositoryProtocolMock.getCallCount, getCallCountBefore + 1)
     }
     
     func testQuestionAdditionLinkBuilder() async {
