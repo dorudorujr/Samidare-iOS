@@ -45,15 +45,7 @@ extension Color {
         Color.rgba(245, 245, 245)
     }
     
-    static var questionRed: Color {
-        Color.rgba(245, 96, 96)
-    }
-    
     static var questionGray: Color {
         Color.rgba(146, 147, 147)
-    }
-
-    static var orangered: Color {
-        Color.rgba(255, 69, 0)
     }
 }
