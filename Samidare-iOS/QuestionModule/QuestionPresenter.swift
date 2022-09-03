@@ -105,9 +105,9 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     @Published private(set) var questionCountText: String = ""
     // ゲームの状態
     @Published private(set) var status: Status = .standBy
-    @Published var shouldShowQuestionList = false
     // プログレスバーの位置
-    @Published var duration: CGFloat = 1.0
+    @Published private(set) var duration: CGFloat = 1.0
+    @Published var shouldShowQuestionList = false
     // 開始前のカウントダウン
     @Published var nowCountDownTime = readyCountDownTime
     

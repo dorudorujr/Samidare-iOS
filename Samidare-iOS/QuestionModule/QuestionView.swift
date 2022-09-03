@@ -32,7 +32,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                             ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
                         }
                     }
-                    TimerProgressBar(duration: $presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
+                    TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
                 }
                 .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).width, alignment: .center)
                 HStack {

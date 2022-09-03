@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TimerProgressBar: View {
-    let duration: Binding<CGFloat>
+    let duration: CGFloat
     let gradationTop: Color
     let gradationBottom: Color
     var body: some View {
@@ -24,7 +24,7 @@ struct TimerProgressBar: View {
                             gradationBottom,
                         ], startPoint: .top, endPoint: .bottom)
                     )
-                    .frame(width: geometry.frame(in: .global).width * duration.wrappedValue, height: 15)
+                    .frame(width: geometry.frame(in: .global).width * duration, height: 15)
             }
         }
     }
@@ -32,6 +32,6 @@ struct TimerProgressBar: View {
 
 struct TimerProgressBar_Previews: PreviewProvider {
     static var previews: some View {
-        TimerProgressBar(duration: .constant(1.0), gradationTop: Color.gradationTopBlue, gradationBottom: Color.gradationBottomBlue)
+        TimerProgressBar(duration: 1.0, gradationTop: Color.gradationTopBlue, gradationBottom: Color.gradationBottomBlue)
     }
 }
