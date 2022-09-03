@@ -42,6 +42,24 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
                 return L10n.Question.Stop.text
             }
         }
+        
+        var gradationTop: Color {
+            switch self {
+            case .standBy, .stopPlaying, .play, .done:
+                return Color.gradationTopBlue
+            case .ready, .stopReadying:
+                return Color.gradationTopRed
+            }
+        }
+        
+        var gradationBottom: Color {
+            switch self {
+            case .standBy, .stopPlaying, .play, .done:
+                return Color.gradationBottomBlue
+            case .ready, .stopReadying:
+                return Color.gradationBottomRed
+            }
+        }
     }
     
     private static var readyCountDownTime: Int {
@@ -76,7 +94,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     var isReady: Bool {
         status == .ready || status == .stopReadying
     }
-    var shouldShowQuestionCardView: Bool {
+    var shouldShowQuestionBody: Bool {
         status == .play || status == .stopPlaying || status == .done
     }
     var questionGroupName: String? {
