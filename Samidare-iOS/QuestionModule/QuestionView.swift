@@ -41,14 +41,16 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                             presenter.secondaryButtonAction()
                         },
                         title: presenter.status.secondaryText,
-                        color: Color.questionGray)
+                        gradationTop: Color.questionGray,
+                        gradationBottom: Color.questionGray)
                     Spacer()
                     CircleButton(
                         action: {
                             presenter.primaryButtonAction()
                         },
                         title: presenter.status.primaryText,
-                        color: Color.bassBlue)
+                        gradationTop: Color.gradationTopBlue,
+                        gradationBottom: Color.gradationBottomBlue)
                 }
             }
             .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).height, alignment: .center)

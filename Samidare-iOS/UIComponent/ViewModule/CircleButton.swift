@@ -10,23 +10,27 @@ import SwiftUI
 struct CircleButton: View {
     let action: () -> Void
     let title: String
-    let color: Color
+    let gradationTop: Color
+    let gradationBottom: Color
     var body: some View {
         Button(action: {
             action()
         }, label: {
             Text(title)
-                .frame(width: 50, height: 50)
                 .font(.system(size: 16))
+                .fontWeight(.bold)
+                .frame(width: 50, height: 50)
                 .padding()
-                .background(color)
+                .background(
+                    .linearGradient(colors: [gradationTop, gradationBottom], startPoint: .top, endPoint: .bottom)
+                )
                 .clipShape(Circle())
                 .cornerRadius(40)
                 .foregroundColor(.white)
                 .padding(5)
                 .overlay(
                     Circle()
-                        .stroke(color, lineWidth: 3)
+                        .stroke(.linearGradient(colors: [gradationTop, gradationBottom], startPoint: .top, endPoint: .bottom), lineWidth: 3)
                 )
         })
     }
@@ -34,6 +38,6 @@ struct CircleButton: View {
 
 struct PrimaryButton_Previews: PreviewProvider {
     static var previews: some View {
-        CircleButton(action: {}, title: "Title", color: Color.bassBlue)
+        CircleButton(action: {}, title: "Title", gradationTop: Color.gradationTopBlue, gradationBottom: Color.gradationBottomBlue)
     }
 }
