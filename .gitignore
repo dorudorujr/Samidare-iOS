@@ -140,3 +140,7 @@ Samidare-iOS/Resource/Firebase/*
 # ignore auto generated fastlane readme
 Fastlane/README.md
 UIComponent/Generated/*.swift
+
+com.mono0926.LicensePlist/
+com.mono0926.LicensePlist.latest_result.txt
+com.mono0926.LicensePlist.plist

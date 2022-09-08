@@ -8,3 +8,6 @@
 
 ## セットアップ
 # XcodeGenInspection
+
+## ライセンス更新
+`mint run LicensePlist license-plist --output-path "./Samidare-iOS/SupportingFiles/Settings.bundle" --prefix Acknowledgements`
