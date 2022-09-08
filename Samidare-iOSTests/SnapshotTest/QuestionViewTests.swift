@@ -38,7 +38,7 @@ class QuestionViewTests: XCTestCase {
         let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
 
     func testReady() {
@@ -47,7 +47,7 @@ class QuestionViewTests: XCTestCase {
         presenter.primaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
     
     func testStopReadying() {
@@ -57,7 +57,7 @@ class QuestionViewTests: XCTestCase {
         presenter.secondaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
     
     func testPlay() {
@@ -75,7 +75,7 @@ class QuestionViewTests: XCTestCase {
         wait(for: [exp], timeout: 0.1)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
     
     func testStopPlaying() {
@@ -94,7 +94,7 @@ class QuestionViewTests: XCTestCase {
         presenter.secondaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
     
     func testDone() {
@@ -123,7 +123,7 @@ class QuestionViewTests: XCTestCase {
         wait(for: [exp], timeout: 0.1)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhoneXsMax))
+                       as: .image(on: .iPhoneXsMax, precision: 0.95))
     }
 
     // MARK: - Set Data
