@@ -35,30 +35,33 @@ class QuestionViewTests: XCTestCase {
     }
 
     func testStandBy() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
 
     func testReady() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
     
     func testStopReadying() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         presenter.secondaryButtonAction()
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
     
     func testPlay() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -70,12 +73,13 @@ class QuestionViewTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 0.1)
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
     
     func testStopPlaying() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -88,12 +92,13 @@ class QuestionViewTests: XCTestCase {
         }
         wait(for: [exp], timeout: 0.1)
         presenter.secondaryButtonAction()
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
     
     func testDone() {
-        let view = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "完了")
@@ -116,8 +121,9 @@ class QuestionViewTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 0.1)
-        assertSnapshot(matching: view.referenceFrame(),
-                       as: .image)
+        let vc = UIHostingController(rootView: questionView)
+        assertSnapshot(matching: vc,
+                       as: .image(on: .iPhoneXsMax))
     }
 
     // MARK: - Set Data
