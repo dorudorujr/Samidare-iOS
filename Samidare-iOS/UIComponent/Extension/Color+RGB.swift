@@ -25,19 +25,27 @@ extension Color {
         Color.rgba(1, 115, 213)
     }
     
+    static var gradationTopBlue: Color {
+        Color.rgba(94, 198, 245)
+    }
+    
+    static var gradationBottomBlue: Color {
+        Color.rgba(55, 110, 232)
+    }
+    
+    static var gradationTopRed: Color {
+        Color.rgba(245, 94, 106)
+    }
+    
+    static var gradationBottomRed: Color {
+        Color.rgba(232, 55, 178)
+    }
+    
     static var whitesmoke: Color {
         Color.rgba(245, 245, 245)
     }
     
-    static var questionRed: Color {
-        Color.rgba(245, 96, 96)
-    }
-    
     static var questionGray: Color {
         Color.rgba(146, 147, 147)
-    }
-
-    static var orangered: Color {
-        Color.rgba(255, 69, 0)
     }
 }

@@ -180,7 +180,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertFalse(presenter.shouldShowQuestionCount)
         XCTAssertTrue(presenter.isReady)
-        XCTAssertFalse(presenter.shouldShowQuestionCardView)
+        XCTAssertFalse(presenter.shouldShowQuestionBody)
         
         presenter.secondaryButtonAction()
         
@@ -191,7 +191,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertFalse(presenter.shouldShowQuestionCount)
         XCTAssertTrue(presenter.isReady)
-        XCTAssertFalse(presenter.shouldShowQuestionCardView)
+        XCTAssertFalse(presenter.shouldShowQuestionBody)
         
         presenter.primaryButtonAction()
         
@@ -211,7 +211,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertTrue(presenter.shouldShowQuestionCount)
         XCTAssertFalse(presenter.isReady)
-        XCTAssertTrue(presenter.shouldShowQuestionCardView)
+        XCTAssertTrue(presenter.shouldShowQuestionBody)
         
         presenter.secondaryButtonAction()
         
@@ -222,7 +222,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertTrue(presenter.shouldShowQuestionCount)
         XCTAssertFalse(presenter.isReady)
-        XCTAssertTrue(presenter.shouldShowQuestionCardView)
+        XCTAssertTrue(presenter.shouldShowQuestionBody)
         
         presenter.primaryButtonAction()
         
@@ -249,7 +249,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertTrue(presenter.shouldShowQuestionCount)
         XCTAssertFalse(presenter.isReady)
-        XCTAssertTrue(presenter.shouldShowQuestionCardView)
+        XCTAssertTrue(presenter.shouldShowQuestionBody)
         
         presenter.secondaryButtonAction()
         
@@ -258,7 +258,7 @@ class QuestionPresenterTests: XCTestCase {
         
         XCTAssertFalse(presenter.shouldShowQuestionCount)
         XCTAssertFalse(presenter.isReady)
-        XCTAssertFalse(presenter.shouldShowQuestionCardView)
+        XCTAssertFalse(presenter.shouldShowQuestionBody)
         
         // TODO: 初期化確認
         /// 初期化確認

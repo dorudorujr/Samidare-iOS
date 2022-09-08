@@ -42,6 +42,24 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
                 return L10n.Question.Stop.text
             }
         }
+        
+        var gradationTop: Color {
+            switch self {
+            case .standBy, .stopPlaying, .play, .done:
+                return Color.gradationTopBlue
+            case .ready, .stopReadying:
+                return Color.gradationTopRed
+            }
+        }
+        
+        var gradationBottom: Color {
+            switch self {
+            case .standBy, .stopPlaying, .play, .done:
+                return Color.gradationBottomBlue
+            case .ready, .stopReadying:
+                return Color.gradationBottomRed
+            }
+        }
     }
     
     private static var readyCountDownTime: Int {
@@ -76,7 +94,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     var isReady: Bool {
         status == .ready || status == .stopReadying
     }
-    var shouldShowQuestionCardView: Bool {
+    var shouldShowQuestionBody: Bool {
         status == .play || status == .stopPlaying || status == .done
     }
     var questionGroupName: String? {
@@ -87,9 +105,9 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     @Published private(set) var questionCountText: String = ""
     // ゲームの状態
     @Published private(set) var status: Status = .standBy
-    @Published var shouldShowQuestionList = false
     // プログレスバーの位置
-    @Published var duration: CGFloat = 1.0
+    @Published private(set) var duration: CGFloat = 1.0
+    @Published var shouldShowQuestionList = false
     // 開始前のカウントダウン
     @Published var nowCountDownTime = readyCountDownTime
     

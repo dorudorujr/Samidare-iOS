@@ -18,20 +18,21 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
         // swiftlint:disable closure_body_length
         GeometryReader { geometry in
             VStack(spacing: 40) {
-                if presenter.shouldShowQuestionCount {
-                    Text(presenter.questionCountText)
+                VStack(spacing: 20) {
+                    Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
                         .font(.system(size: 20))
                         .fontWeight(.bold)
                         .foregroundColor(Color.textBlack)
-                }
-                ZStack {
-                    TimerProgressBar(duration: $presenter.duration, color: presenter.isReady ? .orangered : .bassBlue)
-                    if presenter.isReady {
-                        ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+                        .frame(height: 10)
+                    ZStack {
+                        QuestionCardView(questionBody: presenter.shouldShowQuestionBody ? presenter.question?.body ?? "" : "",
+                                         gradationTop: presenter.status.gradationTop,
+                                         gradationBottom: presenter.status.gradationBottom)
+                        if presenter.isReady {
+                            ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+                        }
                     }
-                    if presenter.shouldShowQuestionCardView {
-                        QuestionCardView(questionBody: presenter.question?.body ?? "")
-                    }
+                    TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
                 }
                 .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).width, alignment: .center)
                 HStack {
@@ -40,14 +41,16 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                             presenter.secondaryButtonAction()
                         },
                         title: presenter.status.secondaryText,
-                        color: Color.questionGray)
+                        gradationTop: Color.questionGray,
+                        gradationBottom: Color.questionGray)
                     Spacer()
                     CircleButton(
                         action: {
                             presenter.primaryButtonAction()
                         },
                         title: presenter.status.primaryText,
-                        color: Color.bassBlue)
+                        gradationTop: Color.gradationTopBlue,
+                        gradationBottom: Color.gradationBottomBlue)
                 }
             }
             .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).height, alignment: .center)
@@ -69,12 +72,12 @@ private struct ReadyTexts: View {
             Text(String(countDownTimeText.wrappedValue))
                 .font(.system(size: 150))
                 .fontWeight(.bold)
-                .foregroundColor(Color.orangered)
+                .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
             Text(L10n.Question.Ready.text)
                 .font(.system(size: 30))
                 .fontWeight(.bold)
-                .foregroundColor(Color.orangered)
+                .foregroundColor(.white)
                 .minimumScaleFactor(0.1)
         }
     }
