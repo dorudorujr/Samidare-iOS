@@ -20,9 +20,9 @@ class AppConfigSelectionInteractor<AppConfigRepository: AppConfigRepositoryProto
         AppConfigRepository.get().questionGroup
     }
     
-    func update(questionGroup: String) throws {
+    func update(questionGroup: QuestionGroup) throws {
         let currentAppConfig = AppConfigRepository.get()
-        let updateAppConfig = AppConfig(id: currentAppConfig.id, questionGroup: .init(name: questionGroup), time: currentAppConfig.time)
+        let updateAppConfig = AppConfig(id: currentAppConfig.id, questionGroup: questionGroup, time: currentAppConfig.time)
         try AppConfigRepository.update(updateAppConfig)
     }
     
