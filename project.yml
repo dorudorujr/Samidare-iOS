@@ -140,12 +140,6 @@ targets:
         outputFiles:
           - $(SRCROOT)/Samidare-iOS/Generated/Localized.swift
           - $(SRCROOT)/Samidare-iOS/Generated/Images.swift
-      - name: FirebaseCrashlytics
-        script: |
-          ${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
-        inputFiles:
-          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
-          - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
     postCompileScripts:
       - name: Firebase
         script: |
@@ -179,6 +173,13 @@ targets:
           fi
         outputFiles:
           - ${PROJECT_DIR}/Samidare-iOSTests/MockResults.swift
+    postbuildScripts:
+      - name: FirebaseCrashlytics
+        script: |
+          ${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
+        inputFiles:
+          - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
+          - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
   Samidare-iOSTests:
     info:
       path: Samidare-iOSTests/Info.plist
