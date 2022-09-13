@@ -33,11 +33,11 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                     ListRow(title: L10n.Config.inquiry)
                 }
                 Section {
-                    ListRow(title: L10n.Config.privacyPolicy)
+                    ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
                         .onTapGesture {
                             presenter.didTapSafariViewList(of: .privacyPolicy)
                         }
-                    ListRow(title: L10n.Config.Terms.Of.service)
+                    ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
                         .onTapGesture {
                             presenter.didTapSafariViewList(of: .termsOfservice)
                         }

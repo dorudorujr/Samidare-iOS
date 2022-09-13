@@ -11,13 +11,16 @@ struct ListRow: View {
     let title: String
     let description: String?
     let isSelected: Bool?
+    let shouldShowArrow: Bool
     
     init(title: String,
          description: String? = nil,
-         isSelected: Bool? = nil) {
+         isSelected: Bool? = nil,
+         shouldShowArrow: Bool = false) {
         self.title = title
         self.description = description
         self.isSelected = isSelected
+        self.shouldShowArrow = shouldShowArrow
     }
     
     var body: some View {
@@ -35,6 +38,13 @@ struct ListRow: View {
                 Image(systemName: "checkmark")
                     .renderingMode(.template)
                     .foregroundColor(.blue)
+            }
+            if shouldShowArrow {
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 7)
+                    .foregroundColor(.gray)
             }
         }
         .contentShape(Rectangle())  // 文字列以外もTapできるようにする
