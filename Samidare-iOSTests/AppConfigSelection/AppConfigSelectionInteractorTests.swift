@@ -42,10 +42,10 @@ class AppConfigSelectionInteractorTests: XCTestCase {
     func testUpdateQuestionGroup() {
         AppConfigRepositoryProtocolMock.updateHandler = { updateAppConfig in
             XCTAssertEqual(self.appConfig.id, updateAppConfig.id)
-            XCTAssertNotEqual(self.appConfig.questionGroup.name, updateAppConfig.questionGroup.name)
+            XCTAssertNotEqual(self.appConfig.questionGroup, updateAppConfig.questionGroup)
             XCTAssertEqual(updateAppConfig.questionGroup.name, "更新Test")
         }
-        try! interactor.update(questionGroup: "更新Test")
+        try! interactor.update(questionGroup: .init(name: "更新Test"))
     }
     
     func testUpdateGameTime() {

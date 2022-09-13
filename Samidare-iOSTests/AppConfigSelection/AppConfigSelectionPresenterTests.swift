@@ -71,16 +71,17 @@ class AppConfigSelectionPresenterTests: XCTestCase {
     }
     
     func testUpdateQuestionGroup() async {
+        let updateQuestionGroup = QuestionGroup(name: "Update Test")
         let presenter = await AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .questionGroup)
         let questionGroup = await presenter.questionGroups![0]
         // initで取得した値か確認
         XCTAssertEqual(questionGroup, self.questionGroup)
         AppConfigRepositoryProtocolMock.updateHandler = { appConfig in
             // Presenterのupdateの引数の値で更新されているか確認
-            XCTAssertEqual(appConfig.questionGroup.name, "Update Test")
+            XCTAssertEqual(appConfig.questionGroup, updateQuestionGroup)
         }
         let beforequestionGroupsCount = QuestionGroupRepositoryProtocolMock.getCallCount
-        await presenter.update(questionGroup: "Update Test")
+        await presenter.update(questionGroup: updateQuestionGroup)
         // fetchQuestionGroupsを呼んでいるか確認
         XCTAssertEqual(beforequestionGroupsCount + 1, QuestionGroupRepositoryProtocolMock.getCallCount)
     }
