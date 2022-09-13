@@ -33,8 +33,14 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
                     ListRow(title: L10n.Config.inquiry)
                 }
                 Section {
-                    ListRow(title: L10n.Config.privacyPolicy)
-                    ListRow(title: L10n.Config.Terms.Of.service)
+                    ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
+                        .onTapGesture {
+                            presenter.didTapSafariViewList(of: .privacyPolicy)
+                        }
+                    ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
+                        .onTapGesture {
+                            presenter.didTapSafariViewList(of: .termsOfservice)
+                        }
                     ListRow(title: L10n.Config.version, description: presenter.appVersion)
                 }
             }
@@ -42,6 +48,12 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
         }
         .onAppear {
             presenter.getAppConfig()
+        }
+        .sheet(isPresented: $presenter.shouldShowSafariView) {
+            if let string = presenter.selectedExternalLinkType?.url,
+               let url = URL(string: string) {
+                SafariView(url: url)
+            }
         }
     }
 }

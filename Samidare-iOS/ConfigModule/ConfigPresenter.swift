@@ -10,11 +10,28 @@ import SwiftUI
 
 @MainActor
 class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject {
+    enum ExternalLinkType: CaseIterable {
+        case privacyPolicy
+        case termsOfservice
+        
+        var url: String {
+            switch self {
+            case .privacyPolicy:
+                return "https://samidare-develop.firebaseapp.com/PrivacyPolicy.html"
+            case .termsOfservice:
+                return "https://samidare-develop.firebaseapp.com/TermsOfService.html"
+            }
+        }
+    }
+    
     private let interactor: ConfigInteractor<Repository>
     private let router: ConfigRouter
     
+    private(set) var selectedExternalLinkType: ExternalLinkType?
+    
     @Published private(set) var questionGroup: String?
     @Published private(set) var playTime: String?
+    @Published var shouldShowSafariView = false
     
     let appVersion: String
     
@@ -42,5 +59,10 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
         }) {
             content()
         }
+    }
+    
+    func didTapSafariViewList(of externalLinkType: ExternalLinkType) {
+        self.selectedExternalLinkType = externalLinkType
+        shouldShowSafariView = true
     }
 }
