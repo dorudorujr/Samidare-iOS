@@ -33,7 +33,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
         questionGroups = interactor.questionGroups()
     }
     
-    func update(questionGroup: String) {
+    func update(questionGroup: QuestionGroup) {
         guard type == .questionGroup else { return }
         do {
             try interactor.update(questionGroup: questionGroup)
