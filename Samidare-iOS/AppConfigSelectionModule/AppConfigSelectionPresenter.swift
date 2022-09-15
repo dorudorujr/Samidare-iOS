@@ -34,6 +34,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
     }
     
     func update(questionGroup: String) {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .changeQuestionGroup)
         guard type == .questionGroup else { return }
         do {
             try interactor.update(questionGroup: questionGroup)
@@ -44,6 +45,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
     }
     
     func update(gameTime: Int) {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .changeQuestionTime)
         guard type == .gameTime else { return }
         do {
             try interactor.update(gameTime: gameTime)

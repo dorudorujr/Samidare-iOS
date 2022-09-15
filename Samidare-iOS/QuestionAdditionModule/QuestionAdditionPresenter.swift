@@ -30,6 +30,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     }
     
     func addQuestion() {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .addQuestion)
         do {
             let question = Question(body: addQuestionBody, group: group)
             try interactor.add(question)
@@ -40,6 +41,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     }
     
     func updateQuestion() {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .updateQuestion)
         do {
             guard let questionToUpdate = questionToUpdate else {
                 return
@@ -57,6 +59,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     }
     
     func deleteQuestion(on index: IndexSet) {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .deleteQuestion)
         guard let index = index.first, let question = questions?[safe: index] else { return }
         do {
             try interactor.delete(question)
