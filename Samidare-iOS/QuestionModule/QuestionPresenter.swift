@@ -131,7 +131,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     func primaryButtonAction() {
         switch status {
-        case .standBy, .stopReadying:
+        case .standBy:
+            FirebaseAnalyticsConfig.sendEventLog(eventType: .start)
+            start()
+        case .stopReadying:
             start()
         case .stopPlaying:
             play()
@@ -249,6 +252,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             playTimer?.invalidate()
         }
         status = status == .play ? .stopPlaying : .stopReadying
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .stop)
     }
     
     // MARK: - helper
@@ -270,10 +274,12 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         }
         selectIndex += 1
         setDefaultNowPlayTime()
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .next)
     }
     
     private func goToListView() {
         shouldShowQuestionList = true
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .list)
     }
     
     private func resetPlayConfig() {

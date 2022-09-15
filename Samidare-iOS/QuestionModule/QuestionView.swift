@@ -58,6 +58,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
         .padding(.horizontal, 16)
         .onAppear {
             presenter.viewWillApper()
+            FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionView.self)")
         }
         .sheet(isPresented: $presenter.shouldShowQuestionList) {
             QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: presenter.questionGroupName))

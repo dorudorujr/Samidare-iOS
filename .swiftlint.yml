@@ -54,7 +54,7 @@ type_name:
 
 trailing_comma:
   # リテラル表記を要素毎に改行している場合、最後の要素に必ずcommaを付ける
-  mandatory_comma: true
+  mandatory_comma: false
 
 identifier_name:
   min_length:

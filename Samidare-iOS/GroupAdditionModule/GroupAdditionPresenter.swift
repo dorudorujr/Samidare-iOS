@@ -29,6 +29,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     }
     
     func addQuestionGroup() {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .addQuestionGroup)
         do {
             let questionGroup = QuestionGroup(name: addAlertText)
             try interactor.add(questionGroup)
@@ -42,6 +43,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
         guard let editQuestionGroup = editQuestionGroup else {
             return
         }
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .editQuestionGroupName)
         do {
             try interactor.add(.init(id: editQuestionGroup.id, name: editAlertText))
             groups = interactor.getQuestionGroup()
@@ -61,6 +63,7 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     }
 
     func delete(_ group: QuestionGroup) {
+        FirebaseAnalyticsConfig.sendEventLog(eventType: .deleteQuestionGroup)
         do {
             try interactor.delete(group)
             groups = interactor.getQuestionGroup()

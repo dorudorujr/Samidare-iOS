@@ -46,6 +46,7 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
             }
             .onAppear {
                 presenter.fetchQuestionGroups()
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(AppConfigSelectionView.self)")
             }
         }
         .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
