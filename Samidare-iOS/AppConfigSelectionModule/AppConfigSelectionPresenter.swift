@@ -33,7 +33,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
         questionGroups = interactor.questionGroups()
     }
     
-    func update(questionGroup: String) {
+    func update(questionGroup: QuestionGroup) {
         FirebaseAnalyticsConfig.sendEventLog(eventType: .changeQuestionGroup)
         guard type == .questionGroup else { return }
         do {

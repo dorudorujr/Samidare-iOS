@@ -25,7 +25,7 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
                         ForEach(questionGroups) { group in
                             ListRow(title: group.name, isSelected: presenter.isSelectedQuestionGroup(questionGroup: group))
                                 .onTapGesture {
-                                    presenter.update(questionGroup: group.name)
+                                    presenter.update(questionGroup: group)
                                 }
                         }
                     }
