@@ -23,7 +23,8 @@ struct FirebaseAnalyticsConfig {
     }
     
     static func sendScreenViewLog(screenName: String) {
-        Analytics.logEvent(AnalyticsEventScreenView, parameters: [AnalyticsParameterScreenName: screenName,
-                                                                 AnalyticsParameterScreenClass: screenName])
+        Analytics.logEvent(AnalyticsEventScreenView, parameters: [
+            AnalyticsParameterScreenName: screenName,
+            AnalyticsParameterScreenClass: screenName])
     }
 }
