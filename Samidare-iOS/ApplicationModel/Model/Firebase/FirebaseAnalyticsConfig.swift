@@ -16,6 +16,11 @@ struct FirebaseAnalyticsConfig {
         case addQuestionGroup = "add_question_group"
         case addQuestion = "add_question"
         case deleteQuestionGroup = "delete_question_group"
+        case deleteQuestion = "delete_question"
+        case editQuestionGroupName = "edit_question_group_name"
+        case updateQuestion = "update_question"
+        case changeQuestionGroup = "change_question_group"
+        case changeQuestionTime = "change_question_time"
     }
     
     static func sendEventLog(eventType: EventType) {
