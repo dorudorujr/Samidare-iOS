@@ -131,7 +131,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     func primaryButtonAction() {
         switch status {
-        case .standBy, .stopReadying:
+        case .standBy:
+            FirebaseAnalyticsConfig.sendEventLog(eventType: .start)
+            start()
+        case .stopReadying:
             start()
         case .stopPlaying:
             play()

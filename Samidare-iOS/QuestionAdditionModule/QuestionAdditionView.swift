@@ -61,6 +61,9 @@ struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
                     })
                 }
             }
+            .onAppear {
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionAdditionView.self)")
+            }
         }
     }
 }

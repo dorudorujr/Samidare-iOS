@@ -35,6 +35,9 @@ struct QuestionListView<Repository: QuestionRepositoryProtocol>: View {
                     })
                 }
             }
+            .onAppear {
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionListView.self)")
+            }
         }
     }
 }

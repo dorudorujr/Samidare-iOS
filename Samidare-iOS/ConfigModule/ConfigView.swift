@@ -48,6 +48,7 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
         }
         .onAppear {
             presenter.getAppConfig()
+            FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(ConfigView.self)")
         }
         .sheet(isPresented: $presenter.shouldShowSafariView) {
             if let string = presenter.selectedExternalLinkType?.url,
