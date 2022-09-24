@@ -39,6 +39,7 @@ class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
     static func update(_ appConfig: AppConfig) throws {
         let realm = try! Realm()
         guard let questionGroup = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", appConfig.questionGroup.id.uuidString).first else {
+            //TODO: エラーを返した方が親切なのでは.....?
             return
         }
         let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "questionGroup": questionGroup, "time": appConfig.time])
