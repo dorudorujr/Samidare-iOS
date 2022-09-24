@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppConfig {
+struct AppConfig: Codable {
     let id: UUID
     let questionGroup: QuestionGroup
     let time: Int
