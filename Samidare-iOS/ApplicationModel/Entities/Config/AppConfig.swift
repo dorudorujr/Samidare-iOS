@@ -8,15 +8,6 @@
 import Foundation
 
 struct AppConfig: Codable {
-    let id: UUID
     let questionGroup: QuestionGroup
     let time: Int
-}
-
-extension AppConfig {
-    init(questionGroup: QuestionGroup, time: Int) {
-        self.id = UUID()
-        self.questionGroup = questionGroup
-        self.time = time
-    }
 }
