@@ -21,7 +21,7 @@ struct TimerProgressBar: View {
                     .fill(
                         .linearGradient(colors: [
                             gradationTop,
-                            gradationBottom,
+                            gradationBottom
                         ], startPoint: .top, endPoint: .bottom)
                     )
                     .frame(width: geometry.frame(in: .global).width * duration, height: 15)
