@@ -10,18 +10,16 @@ import RealmSwift
 
 /// @mockable
 protocol AppConfigRepositoryProtocol {
-    static func get() throws -> AppConfig
+    static func get() -> AppConfig
     static func update(_ appConfig: AppConfig) throws
 }
 
 class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
-    static func get() throws -> AppConfig {
+    static func get() -> AppConfig {
         let realm = try! Realm()
-        guard let result = realm.objects(AppConfigRealmObject.self).first,
-              let jsonData = result.json.data(using: .utf8) else {
-            throw DataBaseGetError()
-        }
-        return try JSONDecoder().decode(AppConfig.self, from: jsonData)
+        let result = realm.objects(AppConfigRealmObject.self).first!
+        let jsonData = result.json.data(using: .utf8)!
+        return try! JSONDecoder().decode(AppConfig.self, from: jsonData)
     }
     
     static func update(_ appConfig: AppConfig) throws {
