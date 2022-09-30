@@ -10,41 +10,31 @@ import RealmSwift
 
 /// @mockable
 protocol AppConfigRepositoryProtocol {
-    static func get() -> AppConfig
+    static func get() throws -> AppConfig
     static func update(_ appConfig: AppConfig) throws
 }
 
 class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
-    static func get() -> AppConfig {
+    static func get() throws -> AppConfig {
         let realm = try! Realm()
-        guard let results = realm.objects(AppConfigRealmObject.self).first,
-              let questionGroup = results.questionGroup else {
-            return AppConfig(questionGroup: .init(name: L10n.Common.AppConfig.questionGroup),
-                             time: 10)
+        guard let result = realm.objects(AppConfigRealmObject.self).first,
+              let jsonData = result.json.data(using: .utf8) else {
+            throw DataBaseGetError()
         }
-        
-        let questionGroupId: UUID
-        if let id = UUID(uuidString: questionGroup.id) {
-            questionGroupId = id
-        } else {
-            questionGroupId = UUID()
-        }
-        
-        return AppConfig(id: UUID(uuidString: results.id) ?? UUID(),
-                         questionGroup: .init(id: questionGroupId,
-                                              name: questionGroup.name),
-                         time: results.time)
+        return try JSONDecoder().decode(AppConfig.self, from: jsonData)
     }
     
     static func update(_ appConfig: AppConfig) throws {
         let realm = try! Realm()
-        guard let questionGroup = realm.objects(QuestionGroupRealmObject.self).filter("id == %@", appConfig.questionGroup.id.uuidString).first else {
-            //TODO: エラーを返した方が親切なのでは.....?
-            return
-        }
-        let appConfigObject = AppConfigRealmObject(value: ["id": appConfig.id.uuidString, "questionGroup": questionGroup, "time": appConfig.time])
+        let data = try JSONEncoder().encode(appConfig)
+        let jsonString = String(data: data, encoding: .utf8)
+        let appConfigObject = AppConfigRealmObject(value: ["json": jsonString])
         try realm.write {
-            realm.add(appConfigObject, update: .modified)
+            let cashAppConfigObjects = realm.objects(AppConfigRealmObject.self)
+            cashAppConfigObjects.forEach { appConfigObject in
+                realm.delete(appConfigObject)
+            }
+            realm.add(appConfigObject)
         }
     }
 }
