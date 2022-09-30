@@ -24,8 +24,6 @@ class AppConfigRepositoryTests: XCTestCase {
                                         time: 10)
         try! AppConfigRepositoryImpl.update(updateAppConfig)
         let getAppConfig = AppConfigRepositoryImpl.get()
-        XCTAssertEqual(getAppConfig.id, updateAppConfig.id)
-        XCTAssertEqual(getAppConfig.questionGroup.name, updateAppConfig.questionGroup.name)
-        XCTAssertEqual(getAppConfig.time, updateAppConfig.time)
+        XCTAssertEqual(getAppConfig, updateAppConfig)
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppConfig: Codable {
+struct AppConfig: Codable, Equatable {
     let questionGroup: QuestionGroup
     let time: Int
 }
