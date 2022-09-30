@@ -12,7 +12,7 @@ struct TabTopView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     private let questionView = QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
-    private let configView = ConfigView<AppConfigRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+    private let configView = ConfigView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray

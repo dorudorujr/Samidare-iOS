@@ -9,7 +9,7 @@ import Combine
 import SwiftUI
 
 @MainActor
-class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject {
+class ConfigPresenter<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGroupRepository: QuestionGroupRepositoryProtocol>: ObservableObject {
     enum ExternalLinkType: CaseIterable {
         case privacyPolicy
         case termsOfservice
@@ -24,8 +24,8 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
         }
     }
     
-    private let interactor: ConfigInteractor<Repository>
-    private let router: ConfigRouter
+    private let interactor: ConfigInteractor<AppConfigRepository>
+    private let router: ConfigRouter<AppConfigRepository, QuestionGroupRepository>
     
     private(set) var selectedExternalLinkType: ExternalLinkType?
     
@@ -35,7 +35,7 @@ class ConfigPresenter<Repository: AppConfigRepositoryProtocol>: ObservableObject
     
     let appVersion: String
     
-    init(interactor: ConfigInteractor<Repository>, router: ConfigRouter) {
+    init(interactor: ConfigInteractor<AppConfigRepository>, router: ConfigRouter<AppConfigRepository, QuestionGroupRepository>) {
         self.interactor = interactor
         self.router = router
         appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
