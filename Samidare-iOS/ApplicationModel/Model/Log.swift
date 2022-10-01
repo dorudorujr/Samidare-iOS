@@ -9,9 +9,10 @@ import Firebase
 import os
 
 struct Log {
-    static func fault(_ error: Error) {
+    static func fault(_ error: Error, className: String, functionName: String) {
         let logger = Logger(subsystem: "com.sugiokaseiya", category: "fault")
-        logger.fault("⚠️⚠️Error⚠️⚠️:\(error.localizedDescription)")
+        logger.fault("⚠️⚠️Error⚠️⚠️:\(error.localizedDescription),class: \(className), function: \(functionName)")
+        Crashlytics.crashlytics().log("class: \(className), function: \(functionName)")
         Crashlytics.crashlytics().record(error: error)
     }
 }
