@@ -40,7 +40,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
             try interactor.update(questionGroup: questionGroup)
             fetchQuestionGroups()
         } catch {
-            Log.fault(error)
+            Log.fault(error, className: String(describing: Swift.type(of: self)), functionName: #function)
             self.error = error
         }
     }
@@ -52,7 +52,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
             try interactor.update(gameTime: gameTime)
             appConfigGameTime = interactor.gameTime()
         } catch {
-            Log.fault(error)
+            Log.fault(error, className: String(describing: Swift.type(of: self)), functionName: #function)
             self.error = error
         }
     }
