@@ -66,3 +66,5 @@
 
 // error文言
 "Error.Question.Group.Unique" = "同一名のグループは追加できません。";
+"Error.Title" = "予期せぬエラーが発生しました";
+"Error.Message" = "申し訳ありませんが設定から開発者にエラーが発生したことを伝えてください。";
