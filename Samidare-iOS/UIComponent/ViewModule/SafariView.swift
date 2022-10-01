@@ -10,6 +10,7 @@ import SafariServices
 
 struct SafariView: UIViewControllerRepresentable {
     private let url: URL
+    
     typealias UIViewControllerType = SFSafariViewController
     
     init(url: URL) {

@@ -19,6 +19,7 @@ protocol QuestionRepositoryProtocol {
 class QuestionRepositoryImpl: QuestionRepositoryProtocol {
     static func getQuestions(of group: String) -> [Question] {
         let realm = try! Realm()
+        // TODO: nameで検索をかけているがidで検索をかけると狂うのでどうにかしてわかりやすく解消したい
         guard let group = realm.objects(QuestionGroupRealmObject.self).filter("name == %@", group).first else { return [] }
         return group.questions.map { Question(id: UUID(uuidString: $0.id) ?? UUID(), body: $0.body, group: .init(id: UUID(uuidString: group.id) ?? UUID(), name: group.name)) }
     }

@@ -10,7 +10,7 @@ import SwiftUI
 @testable import Samidare_iOS
 
 class ConfigPresenterTests: XCTestCase {
-    private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock>!
+    private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>!
     
     override func setUp() {
         super.setUp()
@@ -34,21 +34,21 @@ class ConfigPresenterTests: XCTestCase {
     }
     
     func testGroupAdditionLinkBuilder() async {
-        let router: ConfigRouter = await .init()
+        let router: ConfigRouter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock> = await .init()
         presenter = await .init(interactor: .init(), router: router)
         let someView = await presenter.groupAdditionLinkBuilder {} as? NavigationLink<EmptyView, GroupAdditionView<QuestionGroupRepositoryImpl>>
         XCTAssertNotNil(someView)
     }
     
     func testAppConfigSelectionLinkBuilder() async {
-        let router: ConfigRouter = await .init()
+        let router: ConfigRouter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock> = await .init()
         presenter = await .init(interactor: .init(), router: router)
-        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as? NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>, _AppearanceActionModifier>>
+        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as? NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>, _AppearanceActionModifier>>
         XCTAssertNotNil(someView)
     }
     
     func testDidTapSafariViewList() async {
-        let router: ConfigRouter = await .init()
+        let router: ConfigRouter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock> = await .init()
         presenter = await .init(interactor: .init(), router: router)
         var selectedExternalLinkType = await presenter.selectedExternalLinkType
         var shouldShowSafariView = await presenter.shouldShowSafariView

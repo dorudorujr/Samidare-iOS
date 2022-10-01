@@ -16,7 +16,7 @@ struct QuestionCardView: View {
             .fill(
                 .linearGradient(colors: [
                     gradationTop,
-                    gradationBottom,
+                    gradationBottom
                 ], startPoint: .top, endPoint: .bottom)
             )
             .frame(height: 220)

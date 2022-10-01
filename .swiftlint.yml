@@ -8,6 +8,7 @@ disabled_rules:
   - force_try
   - nesting
   - superfluous_disable_command
+  - generic_type_name
 
 opt_in_rules:
   - explicit_init

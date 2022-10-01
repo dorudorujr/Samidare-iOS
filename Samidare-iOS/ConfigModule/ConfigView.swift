@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
-    @ObservedObject private var presenter: ConfigPresenter<Repository>
+struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGroupRepository: QuestionGroupRepositoryProtocol>: View {
+    @ObservedObject private var presenter: ConfigPresenter<AppConfigRepository, QuestionGroupRepository>
     
-    init(presenter: ConfigPresenter<Repository>) {
+    init(presenter: ConfigPresenter<AppConfigRepository, QuestionGroupRepository>) {
         self.presenter = presenter
     }
     
@@ -61,6 +61,6 @@ struct ConfigView<Repository: AppConfigRepositoryProtocol>: View {
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView<AppConfigRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+        ConfigView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     }
 }
