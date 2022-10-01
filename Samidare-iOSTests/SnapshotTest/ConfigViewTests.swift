@@ -11,7 +11,7 @@ import SwiftUI
 @testable import Samidare_iOS
 
 class ConfigViewTests: XCTestCase {
-    private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock>!
+    private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>!
 
     override func setUp() async throws {
         try await super.setUp()
@@ -26,7 +26,7 @@ class ConfigViewTests: XCTestCase {
     }
 
     func testConfigViewTestStandard() {
-        let view = ConfigView<AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let view = ConfigView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
         assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.999))
