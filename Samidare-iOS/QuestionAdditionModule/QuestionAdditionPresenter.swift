@@ -21,7 +21,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
     @Published var isShowingUpdateAlert = false
     @Published var addQuestionBody = ""
     @Published var updateQuestionBody = ""
-    @Published var error: Error?
+    @Published var isShowingErrorAlert = false
     
     init(interactor: QuestionAdditionInteractor<Repository>, group: QuestionGroup) {
         self.interactor = interactor
@@ -37,7 +37,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
             questions = interactor.getQuestions(of: group.name)
         } catch {
             Log.fault(error, className: String(describing: type(of: self)), functionName: #function)
-            self.error = error
+            isShowingErrorAlert = true
         }
     }
     
@@ -55,7 +55,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
             // 不整合が起きないように更新が完了したら初期化しておく
             self.questionToUpdate = nil
         } catch {
-            self.error = error
+            isShowingErrorAlert = true
         }
     }
     
@@ -66,7 +66,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
             try interactor.delete(question)
             questions = interactor.getQuestions(of: group.name)
         } catch {
-            self.error = error
+            isShowingErrorAlert = true
         }
     }
     

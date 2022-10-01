@@ -61,6 +61,9 @@ struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
                     })
                 }
             }
+            .alert(isPresented: $presenter.isShowingErrorAlert) {
+                Alert(title: Text(L10n.Error.title), message: Text(L10n.Error.message))
+            }
             .onAppear {
                 FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionAdditionView.self)")
             }
