@@ -24,6 +24,7 @@ class TabTopPresenter: ObservableObject {
         do {
             shouldForcedUpdate = try await interactor.shouldForcedUpdate()
         } catch {
+            Log.fault(error)
             self.shouldForcedUpdate = true
         }
     }

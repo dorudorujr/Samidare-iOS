@@ -82,6 +82,8 @@ class GroupAdditionPresenter<Repository: QuestionGroupRepositoryProtocol>: Obser
     private func errorHandling(error: Error) {
         if error as? QuestionGroupUniqueError != nil {
             isShowingQuestionGroupUniqueErrorAlert = true
+        } else {
+            Log.fault(error)
         }
     }
 }

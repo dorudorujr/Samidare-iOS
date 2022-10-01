@@ -36,6 +36,7 @@ class QuestionAdditionPresenter<Repository: QuestionRepositoryProtocol>: Observa
             try interactor.add(question)
             questions = interactor.getQuestions(of: group.name)
         } catch {
+            Log.fault(error)
             self.error = error
         }
     }
