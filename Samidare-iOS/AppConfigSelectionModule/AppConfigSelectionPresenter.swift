@@ -15,7 +15,7 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
     
     @Published private(set) var questionGroups: [QuestionGroup]?
     @Published private(set) var appConfigGameTime: Int?
-    @Published var error: Error?
+    @Published var isShowingErrorAlert = false
     
     init(interactor: AppConfigSelectionInteractor<AppConfigRepository, GroupRepository>,
          type: AppConfigSelectionType) {
@@ -40,7 +40,8 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
             try interactor.update(questionGroup: questionGroup)
             fetchQuestionGroups()
         } catch {
-            self.error = error
+            Log.fault(error, className: String(describing: Swift.type(of: self)), functionName: #function)
+            isShowingErrorAlert = true
         }
     }
     
@@ -51,7 +52,8 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
             try interactor.update(gameTime: gameTime)
             appConfigGameTime = interactor.gameTime()
         } catch {
-            self.error = error
+            Log.fault(error, className: String(describing: Swift.type(of: self)), functionName: #function)
+            isShowingErrorAlert = true
         }
     }
     

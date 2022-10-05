@@ -42,10 +42,10 @@ class GroupAdditionPresenterTests: XCTestCase {
         QuestionGroupRepositoryProtocolMock.addHandler = { _ in
             throw QuestionGroupUniqueError()
         }
-        var isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingQuestionGroupUniqueErrorAlert
+        var isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingErrorAlert
         XCTAssertFalse(isShowingQuestionGroupUniqueErrorAlert)
         await presenter.addQuestionGroup()
-        isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingQuestionGroupUniqueErrorAlert
+        isShowingQuestionGroupUniqueErrorAlert = await presenter.isShowingErrorAlert
         XCTAssertTrue(isShowingQuestionGroupUniqueErrorAlert)
     }
     
