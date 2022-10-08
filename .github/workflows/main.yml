@@ -28,13 +28,13 @@ jobs:
       
       # GoogleService-info.plistを生成
       - name: make dir
-        run: mkdir Samidare-iOS/Resource/Firebase
+        run: mkdir Samidare/Resource/Firebase
       - name: Translate secrets of base64 into json
         env:
           GOOGLE_SERVICE: ${{ secrets.GOOGLE_SERVICE_PLIST }}
         run: echo $GOOGLE_SERVICE | base64 --decode > ./output.json
       - name: Translate json into plist and generate GoogleService-info.plist
-        run: plutil -convert xml1 ./output.json -o ./Samidare-iOS/Resource/Firebase/GoogleService-Info-Debug.plist
+        run: plutil -convert xml1 ./output.json -o ./Samidare/Resource/Firebase/GoogleService-Info-Debug.plist
       - name: Remove json file
         run: rm ./output.json
       
@@ -49,7 +49,7 @@ jobs:
       # Generatedディレクトリー作成
       # TODO: 少し強引な感じがするのでどうにかしたい
       - name: make Generated
-        run: mkdir Samidare-iOS/Generated
+        run: mkdir Samidare/Generated
       
       # SwiftGenを走らせる
       - name: Run SwiftGen
@@ -66,7 +66,7 @@ jobs:
           -configuration DevelopDebug
           -scheme Samidare-Develop
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
-          -skip-testing:Samidare-iOSUITests
+          -skip-testing:SamidareUITests
           -testLanguage ja
           -testRegion ja_JP
           clean test
