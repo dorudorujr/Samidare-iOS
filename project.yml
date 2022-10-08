@@ -169,7 +169,7 @@ targets:
 
           if which mint >/dev/null; then
             rm -f ${PROJECT_DIR}/SamidareTests/MockResults.swift
-            xcrun --sdk macosx mint run mockolo mockolo --testable-imports Samidare_iOS --sourcedirs ${PROJECT_DIR} --destination ${PROJECT_DIR}/SamidareTests/MockResults.swift
+            xcrun --sdk macosx mint run mockolo mockolo --testable-imports Samidare --sourcedirs ${PROJECT_DIR} --destination ${PROJECT_DIR}/SamidareTests/MockResults.swift
           else
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi

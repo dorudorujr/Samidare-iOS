@@ -7,7 +7,7 @@
 
 import XCTest
 import SwiftUI
-@testable import Samidare_iOS
+@testable import Samidare
 
 class ConfigPresenterTests: XCTestCase {
     private var presenter: ConfigPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>!

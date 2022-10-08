@@ -7,7 +7,7 @@
 
 import XCTest
 import RealmSwift
-@testable import Samidare_iOS
+@testable import Samidare
 
 class QuestionGroupRepositoryTests: XCTestCase {
     private let questionGroupRepository = QuestionGroupRepositoryImpl()

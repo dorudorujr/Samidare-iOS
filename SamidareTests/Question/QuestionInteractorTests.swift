@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Samidare_iOS
+@testable import Samidare
 
 class QuestionInteractorTests: XCTestCase {
     private var interactor: QuestionInteractor<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!

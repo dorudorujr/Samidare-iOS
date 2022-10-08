@@ -8,7 +8,7 @@
 import XCTest
 import SnapshotTesting
 import SwiftUI
-@testable import Samidare_iOS
+@testable import Samidare
 
 class QuestionViewTests: XCTestCase {
     private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!

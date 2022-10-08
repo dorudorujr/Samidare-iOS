@@ -7,7 +7,7 @@
 
 import XCTest
 import SnapshotTesting
-@testable import Samidare_iOS
+@testable import Samidare
 import SwiftUI
 
 class QuestionListViewTests: XCTestCase {

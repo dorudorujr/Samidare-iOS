@@ -7,7 +7,7 @@
 
 import XCTest
 import SwiftUI
-@testable import Samidare_iOS
+@testable import Samidare
 
 class GroupAdditionPresenterTests: XCTestCase {
     private let questionGroup = QuestionGroup(name: "デフォルト（テスト）")

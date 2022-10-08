@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Samidare_iOS
+@testable import Samidare
 
 class QuestionListPresenterTests: XCTestCase {
     private let question = Question(body: "好きな色は", group: .init(name: "default"))

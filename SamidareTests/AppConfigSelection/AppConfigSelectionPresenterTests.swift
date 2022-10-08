@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Samidare_iOS
+@testable import Samidare
 
 class AppConfigSelectionPresenterTests: XCTestCase {
     private let questionGroup: QuestionGroup = .init(name: "デフォルト")

@@ -6,7 +6,7 @@
 
 import Foundation
 import RealmSwift
-@testable import Samidare_iOS
+@testable import Samidare
 
 
 class QuestionRepositoryProtocolMock: QuestionRepositoryProtocol {

@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import Samidare_iOS
+@testable import Samidare
 
 class AppConfigSelectionInteractorTests: XCTestCase {
     private let appConfig: AppConfig = .init(questionGroup: .init(name: "デフォルト"),
