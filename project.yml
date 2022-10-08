@@ -132,6 +132,17 @@ targets:
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
+      configs:
+        Debug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+        DevelopDebug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+        Develop:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+        ReleaseDebug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+        Release:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-8080856618058856~5439596849
     preBuildScripts:
       - name: SwiftGen
         script: |
