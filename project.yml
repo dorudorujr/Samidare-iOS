@@ -105,6 +105,12 @@ targets:
           UILaunchScreen:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
+        GADApplicationIdentifier: $(GAD_APPLICATION_IDENTIFIER)
+        SKAdNetworkItems:
+          SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
+        AdUnitIDs:
+          banner: $(BANNER_ID)
+          interstitial: $(INTERSTITIAL_ID)
     type: application
     platform: iOS
     sources:
@@ -135,14 +141,24 @@ targets:
       configs:
         Debug:
           GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+          INTERSTITIAL_ID: ca-app-pub-3940256099942544/4411468910
         DevelopDebug:
           GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+          INTERSTITIAL_ID: ca-app-pub-3940256099942544/4411468910
         Develop:
           GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+          INTERSTITIAL_ID: ca-app-pub-3940256099942544/4411468910
         ReleaseDebug:
           GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+          INTERSTITIAL_ID: ca-app-pub-3940256099942544/4411468910
         Release:
           GAD_APPLICATION_IDENTIFIER: ca-app-pub-8080856618058856~5439596849
+          BANNER_ID: ca-app-pub-8080856618058856/1855575051
+          INTERSTITIAL_ID: ca-app-pub-8080856618058856/9159350001
     preBuildScripts:
       - name: SwiftGen
         script: |
