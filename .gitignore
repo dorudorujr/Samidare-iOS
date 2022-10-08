@@ -128,10 +128,6 @@ Samidare/Generated/*.swift
 # ignore project
 Samidare.xcodeproj
 
-Samidare/Info.plist
-SamidareTests/Info.plist
-SamidareUITests/Info.plist
-
 Samidare/GoogleService-Info.plist
 Samidare/Resource/Firebase/*
 
