@@ -51,6 +51,9 @@ struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, 
         }
         .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
         .navigationBarTitleDisplayMode(.inline)
+        .alert(isPresented: $presenter.isShowingErrorAlert) {
+            Alert(title: Text(L10n.Error.title), message: Text(L10n.Error.message))
+        }
     }
 }
 

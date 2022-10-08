@@ -76,8 +76,8 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
                     })
                 }
             }
-            .alert(isPresented: $presenter.isShowingQuestionGroupUniqueErrorAlert) {
-                Alert(title: Text(""), message: Text(L10n.Error.Question.Group.unique))
+            .alert(isPresented: $presenter.isShowingErrorAlert) {
+                Alert(title: Text(presenter.errorType.title), message: Text(presenter.errorType.message))
             }
             .onAppear {
                 FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(GroupAdditionView.self)")
