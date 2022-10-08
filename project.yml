@@ -20,6 +20,8 @@ configs:
   ReleaseDebug: debug
   Release: release
 settings:
+  base:
+    DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
   configs:
     DevelopDebug:
       OTHER_SWIFT_FLAGS:
