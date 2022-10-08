@@ -123,19 +123,19 @@ fastlane/report.xml
 !.bundle/config
 
 # ignore SwiftGen
-Samidare-iOS/Generated/*.swift
+Samidare/Generated/*.swift
 
 # ignore project
-Samidare-iOS.xcodeproj
+Samidare.xcodeproj
 
-Samidare-iOS/Info.plist
-Samidare-iOSTests/Info.plist
-Samidare-iOSUITests/Info.plist
+Samidare/Info.plist
+SamidareTests/Info.plist
+SamidareUITests/Info.plist
 
-Samidare-iOS/GoogleService-Info.plist
-Samidare-iOS/Resource/Firebase/*
+Samidare/GoogleService-Info.plist
+Samidare/Resource/Firebase/*
 
-#Samidare-iOS/Generated/*
+#Samidare/Generated/*
 
 # ignore auto generated fastlane readme
 Fastlane/README.md
