@@ -7,11 +7,13 @@
 
 import SwiftUI
 import Firebase
+import GoogleMobileAds
 
 @main
 struct Samidare_iOSApp: App {
     init() {
         FirebaseApp.configure()
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
         RealmConfig.configure()
     }
     
