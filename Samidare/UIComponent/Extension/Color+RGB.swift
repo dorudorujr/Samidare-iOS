@@ -48,4 +48,8 @@ extension Color {
     static var questionGray: Color {
         Color.rgba(146, 147, 147)
     }
+    
+    static var listBackground: Color {
+        Color(red: 0.95, green: 0.95, blue: 0.97, opacity: 1.0)
+    }
 }
