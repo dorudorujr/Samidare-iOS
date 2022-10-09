@@ -171,7 +171,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expCountDown.fulfill()
         }
-        wait(for: [expCountDown], timeout: 0.1)
+        wait(for: [expCountDown], timeout: 1.0)
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .ready)
@@ -202,7 +202,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expGoToPlay.fulfill()
         }
-        wait(for: [expGoToPlay], timeout: 0.1)
+        wait(for: [expGoToPlay], timeout: 1.0)
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .play)
