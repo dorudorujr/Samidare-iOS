@@ -17,6 +17,7 @@ struct TabTopView: View {
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray
         self.presenter = presenter
+        AdMobConfig.checkTrackingAuthorizationStatus()
     }
     
     var body: some View {
