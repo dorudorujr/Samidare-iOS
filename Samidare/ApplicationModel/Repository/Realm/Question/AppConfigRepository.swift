@@ -17,8 +17,12 @@ protocol AppConfigRepositoryProtocol {
 class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
     static func get() -> AppConfig {
         let realm = try! Realm()
-        let result = realm.objects(AppConfigRealmObject.self).first!
-        let jsonData = result.json.data(using: .utf8)!
+        guard let result = realm.objects(AppConfigRealmObject.self).first, let jsonData = result.json.data(using: .utf8) else {
+            assert(true)
+            // NOTE: questionGroupを新たに作成して設定しているため本来存在しないquestionGroupが登録されている
+            // アプリをクラッシュさせないようにこの対応をしている
+            return .init(questionGroup: .init(name: "デフォルト"), time: 10)
+        }
         return try! JSONDecoder().decode(AppConfig.self, from: jsonData)
     }
     
