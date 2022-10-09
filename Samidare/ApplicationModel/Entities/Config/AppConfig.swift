@@ -8,6 +8,6 @@
 import Foundation
 
 struct AppConfig: Codable, Equatable {
-    let questionGroup: QuestionGroup
+    let questionGroupName: String
     let time: Int
 }

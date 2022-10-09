@@ -58,6 +58,6 @@ class AppConfigSelectionPresenter<AppConfigRepository: AppConfigRepositoryProtoc
     }
     
     func isSelectedQuestionGroup(questionGroup: QuestionGroup) -> Bool {
-        interactor.selectQuestionGroup().name == questionGroup.name
+        interactor.selectQuestionGroup() == questionGroup.name
     }
 }
