@@ -14,14 +14,14 @@ class ConfigInteractorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "questionGroup"),
+            .init(questionGroupName: "questionGroup",
                   time: 10)
         }
         interactor = .init()
     }
     
     func testGetAppConfig() {
-        XCTAssertEqual(interactor.getAppConfig().questionGroup.name, "questionGroup")
+        XCTAssertEqual(interactor.getAppConfig().questionGroupName, "questionGroup")
         XCTAssertEqual(interactor.getAppConfig().time, 10)
     }
 }

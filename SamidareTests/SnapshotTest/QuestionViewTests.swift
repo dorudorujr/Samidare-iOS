@@ -23,7 +23,7 @@ class QuestionViewTests: XCTestCase {
         appConfigRepositoryMock = .init()
         questionRepositoryMock = .init()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "questionGroup"),
+            .init(questionGroupName: "questionGroup",
                   time: 1)
         }
         QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in

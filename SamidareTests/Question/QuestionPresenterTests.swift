@@ -16,7 +16,7 @@ class QuestionPresenterTests: XCTestCase {
         super.setUp()
         MockTimer.clearData()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "questionGroup"),
+            .init(questionGroupName: "questionGroup",
                   time: 1)
         }
         QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
@@ -46,7 +46,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expCountDown.fulfill()
         }
-        wait(for: [expCountDown], timeout: 0.1)
+        wait(for: [expCountDown], timeout: 1.0)
         /// 現在のカウントダウンタイムが1秒進んでいることの確認
         XCTAssertEqual(presenter.nowCountDownTime, 2)
         /// プログレスバーの範囲計算が正常に行われているか確認
