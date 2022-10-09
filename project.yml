@@ -110,6 +110,7 @@ targets:
           SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
         AdUnitIDs:
           banner: $(BANNER_ID)
+        NSUserTrackingUsageDescription: 「許可」するとお客様に最適化された広告が表示されます
     type: application
     platform: iOS
     sources:
