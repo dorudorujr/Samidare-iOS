@@ -59,7 +59,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expGoToPlay.fulfill()
         }
-        wait(for: [expGoToPlay], timeout: 0.1)
+        wait(for: [expGoToPlay], timeout: 1.0)
         /// 準備期間が終了したらカウントダウンタイムが初期化されているか確認
         XCTAssertEqual(presenter.nowCountDownTime, 3)
         /// ステータス確認
@@ -95,7 +95,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expOverTime.fulfill()
         }
-        wait(for: [expOverTime], timeout: 0.1)
+        wait(for: [expOverTime], timeout: 1.0)
         /// 質問時間経過で次の質問に行っているか確認
         XCTAssertNil(presenter.question)
         XCTAssertEqual(presenter.questionCountText, "2/1")
@@ -106,7 +106,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expDone.fulfill()
         }
-        wait(for: [expDone], timeout: 0.1)
+        wait(for: [expDone], timeout: 1.0)
         /// ゲーム完了後はプログレスバーを全表示に
         XCTAssertEqual(presenter.duration, 1.0)
         /// ステータス確認
@@ -137,7 +137,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expNextBefore.fulfill()
         }
-        wait(for: [expNextBefore], timeout: 0.1)
+        wait(for: [expNextBefore], timeout: 1.0)
         
         /// 質問の総数確認
         XCTAssertEqual(presenter.questionCountText, "1/\(questions.count)")
@@ -153,7 +153,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expNextAfter.fulfill()
         }
-        wait(for: [expNextAfter], timeout: 0.1)
+        wait(for: [expNextAfter], timeout: 1.0)
         
         /// indexが次に進んでいるか確認
         XCTAssertEqual(presenter.question, questions[1])
@@ -242,7 +242,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expDone.fulfill()
         }
-        wait(for: [expDone], timeout: 0.1)
+        wait(for: [expDone], timeout: 1.0)
         
         /// ステータス確認
         XCTAssertEqual(presenter.status, .done)
