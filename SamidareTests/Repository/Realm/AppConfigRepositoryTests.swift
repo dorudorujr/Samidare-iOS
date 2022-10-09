@@ -20,7 +20,7 @@ class AppConfigRepositoryTests: XCTestCase {
         let group = QuestionGroup(name: "questionGroup")
         try! QuestionGroupRepositoryImpl.add(group)
         
-        let updateAppConfig = AppConfig(questionGroup: group,
+        let updateAppConfig = AppConfig(questionGroupName: "questionGroup",
                                         time: 10)
         try! AppConfigRepositoryImpl.update(updateAppConfig)
         let getAppConfig = AppConfigRepositoryImpl.get()

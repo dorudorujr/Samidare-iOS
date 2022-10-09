@@ -15,7 +15,7 @@ class AppConfigSelectionViewTests: XCTestCase {
         super.setUp()
         isRecording = false
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "デフォルト"),
+            .init(questionGroupName: "デフォルト",
                   time: 10)
         }
         QuestionGroupRepositoryProtocolMock.getHandler = {

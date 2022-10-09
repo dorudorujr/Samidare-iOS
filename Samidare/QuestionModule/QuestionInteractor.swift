@@ -10,13 +10,13 @@ import Foundation
 class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol> {
 
     func getQuestion(from index: Int) -> Question? {
-        let group = AppConfigRepository.get().questionGroup.name
+        let group = AppConfigRepository.get().questionGroupName
         let questions = QuestionRepository.getQuestions(of: group)
         return questions[safe: index]
     }
     
     func getTotalQuestionCount() -> Int {
-        let group = AppConfigRepository.get().questionGroup.name
+        let group = AppConfigRepository.get().questionGroupName
         return QuestionRepository.getQuestions(of: group).count
     }
 
@@ -24,7 +24,7 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConf
         return AppConfigRepository.get().time
     }
     
-    func questionGroup() -> QuestionGroup {
-        AppConfigRepository.get().questionGroup
+    func questionGroup() -> String {
+        AppConfigRepository.get().questionGroupName
     }
 }

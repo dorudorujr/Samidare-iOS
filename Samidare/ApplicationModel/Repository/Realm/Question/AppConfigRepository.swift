@@ -17,8 +17,9 @@ protocol AppConfigRepositoryProtocol {
 class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
     static func get() -> AppConfig {
         let realm = try! Realm()
-        let result = realm.objects(AppConfigRealmObject.self).first!
-        let jsonData = result.json.data(using: .utf8)!
+        guard let result = realm.objects(AppConfigRealmObject.self).first, let jsonData = result.json.data(using: .utf8) else {
+            return .init(questionGroupName: "デフォルト", time: 10)
+        }
         return try! JSONDecoder().decode(AppConfig.self, from: jsonData)
     }
     

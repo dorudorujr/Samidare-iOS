@@ -43,7 +43,7 @@ class ConfigPresenter<AppConfigRepository: AppConfigRepositoryProtocol, Question
     
     func getAppConfig() {
         let appConfig = interactor.getAppConfig()
-        questionGroup = appConfig.questionGroup.name
+        questionGroup = appConfig.questionGroupName
         playTime = appConfig.time.description
     }
     

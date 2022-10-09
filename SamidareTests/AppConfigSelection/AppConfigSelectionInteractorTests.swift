@@ -9,7 +9,7 @@ import XCTest
 @testable import Samidare
 
 class AppConfigSelectionInteractorTests: XCTestCase {
-    private let appConfig: AppConfig = .init(questionGroup: .init(name: "デフォルト"),
+    private let appConfig: AppConfig = .init(questionGroupName: "デフォルト",
                                              time: 10)
     
     private var interactor: AppConfigSelectionInteractor<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>!
@@ -36,13 +36,13 @@ class AppConfigSelectionInteractorTests: XCTestCase {
     }
     
     func selectQuestionGroup() {
-        XCTAssertEqual(interactor.selectQuestionGroup().name, "デフォルト")
+        XCTAssertEqual(interactor.selectQuestionGroup(), "デフォルト")
     }
     
     func testUpdateQuestionGroup() {
         AppConfigRepositoryProtocolMock.updateHandler = { updateAppConfig in
-            XCTAssertNotEqual(self.appConfig.questionGroup, updateAppConfig.questionGroup)
-            XCTAssertEqual(updateAppConfig.questionGroup.name, "更新Test")
+            XCTAssertNotEqual(self.appConfig.questionGroupName, updateAppConfig.questionGroupName)
+            XCTAssertEqual(updateAppConfig.questionGroupName, "更新Test")
         }
         try! interactor.update(questionGroup: .init(name: "更新Test"))
     }

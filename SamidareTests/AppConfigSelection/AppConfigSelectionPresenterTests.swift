@@ -14,7 +14,7 @@ class AppConfigSelectionPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "デフォルト"),
+            .init(questionGroupName: "デフォルト",
                   time: 10)
         }
         QuestionGroupRepositoryProtocolMock.getHandler = {
@@ -78,7 +78,7 @@ class AppConfigSelectionPresenterTests: XCTestCase {
         XCTAssertEqual(questionGroup, self.questionGroup)
         AppConfigRepositoryProtocolMock.updateHandler = { appConfig in
             // Presenterのupdateの引数の値で更新されているか確認
-            XCTAssertEqual(appConfig.questionGroup, updateQuestionGroup)
+            XCTAssertEqual(appConfig.questionGroupName, updateQuestionGroup.name)
         }
         let beforequestionGroupsCount = QuestionGroupRepositoryProtocolMock.getCallCount
         await presenter.update(questionGroup: updateQuestionGroup)

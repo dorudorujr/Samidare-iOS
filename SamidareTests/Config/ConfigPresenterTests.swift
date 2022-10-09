@@ -15,7 +15,7 @@ class ConfigPresenterTests: XCTestCase {
     override func setUp() {
         super.setUp()
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "questionGroup"),
+            .init(questionGroupName: "questionGroup",
                   time: 1)
         }
     }

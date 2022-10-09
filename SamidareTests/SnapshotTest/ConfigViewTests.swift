@@ -18,7 +18,7 @@ class ConfigViewTests: XCTestCase {
         isRecording = false
 
         AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroup: .init(name: "questionGroup"),
+            .init(questionGroupName: "questionGroup",
                   time: 1)
         }
 

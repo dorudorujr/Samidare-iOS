@@ -75,7 +75,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     private var totalPlayTime: Int = 0
     // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
-    private var questionGroup: QuestionGroup
     private var selectIndex = 0 {
         didSet {
             setQuestion()
@@ -87,6 +86,8 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             setQuestionCountText()
         }
     }
+    
+    private(set) var questionGroupName: String
 
     var shouldShowQuestionCount: Bool {
         status != .standBy && status != .ready && status != .stopReadying
@@ -96,9 +97,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     var shouldShowQuestionBody: Bool {
         status == .play || status == .stopPlaying || status == .done
-    }
-    var questionGroupName: String? {
-        questionGroup.name
     }
 
     @Published private(set) var question: Question?
@@ -114,7 +112,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
         self.timerProvider = timerProvider
-        self.questionGroup = interactor.questionGroup()
+        self.questionGroupName = interactor.questionGroup()
         setQuestion()
     }
 
@@ -173,7 +171,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     
     private func setQuestionGroup() {
-        questionGroup = interactor.questionGroup()
+        questionGroupName = interactor.questionGroup()
     }
     
     private func setQuestionCountText() {
