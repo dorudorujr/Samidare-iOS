@@ -6,6 +6,9 @@ packages:
   Realm:
     url: https://github.com/realm/realm-cocoa.git
     minorVersion: 10.28.2
+  GoogleMobileAds:
+    url: https://github.com/googleads/swift-package-manager-google-mobile-ads.git
+    minorVersion: 9.11.0
   swift-snapshot-testing:
     url: https://github.com/pointfreeco/swift-snapshot-testing.git
     minorVersion: 1.9.0
@@ -102,6 +105,11 @@ targets:
           UILaunchScreen:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
+        GADApplicationIdentifier: $(GAD_APPLICATION_IDENTIFIER)
+        SKAdNetworkItems:
+          SKAdNetworkIdentifier: cstr6suwn9.skadnetwork
+        AdUnitIDs:
+          banner: $(BANNER_ID)
     type: application
     platform: iOS
     sources:
@@ -120,6 +128,8 @@ targets:
         product: FirebaseCrashlytics
       - package: Firebase
         product: FirebaseFirestoreSwift-Beta
+      - package: GoogleMobileAds
+        product: GoogleMobileAds
       - package: Realm
         product: Realm
       - package: Realm
@@ -127,6 +137,22 @@ targets:
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
+      configs:
+        Debug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+        DevelopDebug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+        Develop:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+        ReleaseDebug:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-3940256099942544~1458002511
+          BANNER_ID: ca-app-pub-3940256099942544/2934735716
+        Release:
+          GAD_APPLICATION_IDENTIFIER: ca-app-pub-8080856618058856~5439596849
+          BANNER_ID: ca-app-pub-8080856618058856/1855575051
     preBuildScripts:
       - name: SwiftGen
         script: |

@@ -27,7 +27,6 @@ opt_in_rules:
   - vertical_parameter_alignment_on_call
   - yoda_condition
   - attributes
-  - closure_body_length
   - collection_alignment
   - empty_string
   - legacy_random

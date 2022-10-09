@@ -72,7 +72,7 @@ class QuestionViewTests: XCTestCase {
             MockTimer.timer?.fire()
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 1.0)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhoneXsMax, precision: 0.95))
@@ -90,7 +90,7 @@ class QuestionViewTests: XCTestCase {
             MockTimer.timer?.fire()
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 1.0)
         presenter.secondaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
@@ -120,7 +120,7 @@ class QuestionViewTests: XCTestCase {
             MockTimer.timer?.fire()
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 0.1)
+        wait(for: [exp], timeout: 1.0)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhoneXsMax, precision: 0.95))

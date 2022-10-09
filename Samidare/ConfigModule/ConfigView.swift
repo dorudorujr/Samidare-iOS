@@ -16,35 +16,40 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
     
     var body: some View {
         NavigationView {
-            List {
-                Section {
-                    presenter.groupAdditionLinkBuilder {
-                        ListRow(title: L10n.Config.Add.question)
-                    }
-                    presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {
-                        ListRow(title: L10n.Config.Display.group, description: presenter.questionGroup)
-                    }
-                    presenter.appConfigSelectionLinkBuilder(for: .gameTime) {
-                        ListRow(title: L10n.Config.Answer.seconds, description: presenter.playTime)
-                    }
-                }
-                Section {
-                    ListRow(title: L10n.Config.Use.app)
-                    ListRow(title: L10n.Config.inquiry)
-                }
-                Section {
-                    ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
-                        .onTapGesture {
-                            presenter.didTapSafariViewList(of: .privacyPolicy)
+            VStack {
+                List {
+                    Section {
+                        presenter.groupAdditionLinkBuilder {
+                            ListRow(title: L10n.Config.Add.question)
                         }
-                    ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
-                        .onTapGesture {
-                            presenter.didTapSafariViewList(of: .termsOfservice)
+                        presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {
+                            ListRow(title: L10n.Config.Display.group, description: presenter.questionGroup)
                         }
-                    ListRow(title: L10n.Config.version, description: presenter.appVersion)
+                        presenter.appConfigSelectionLinkBuilder(for: .gameTime) {
+                            ListRow(title: L10n.Config.Answer.seconds, description: presenter.playTime)
+                        }
+                    }
+                    Section {
+                        ListRow(title: L10n.Config.Use.app)
+                        ListRow(title: L10n.Config.inquiry)
+                    }
+                    Section {
+                        ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
+                            .onTapGesture {
+                                presenter.didTapSafariViewList(of: .privacyPolicy)
+                            }
+                        ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
+                            .onTapGesture {
+                                presenter.didTapSafariViewList(of: .termsOfservice)
+                            }
+                        ListRow(title: L10n.Config.version, description: presenter.appVersion)
+                    }
                 }
+                Spacer()
+                AdmobBannerView().frame(width: 320, height: 50)
             }
             .navigationTitle(L10n.Config.NavigationBar.title)
+            .background(Color.listBackground)
         }
         .onAppear {
             presenter.getAppConfig()

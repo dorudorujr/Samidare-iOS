@@ -18,6 +18,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
         // swiftlint:disable closure_body_length
         GeometryReader { geometry in
             VStack(spacing: 40) {
+                Spacer()
                 VStack(spacing: 20) {
                     Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
                         .font(.system(size: 20))
@@ -52,6 +53,8 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                         gradationTop: Color.gradationTopBlue,
                         gradationBottom: Color.gradationBottomBlue)
                 }
+                Spacer()
+                AdmobBannerView().frame(width: 320, height: 50)
             }
             .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).height, alignment: .center)
         }
