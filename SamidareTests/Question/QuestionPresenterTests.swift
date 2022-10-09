@@ -74,7 +74,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expPlay.fulfill()
         }
-        wait(for: [expPlay], timeout: 0.1)
+        wait(for: [expPlay], timeout: 1.0)
         /// プログレスバーの範囲計算が正常に行われているか確認
         /// 0.1秒進んでいるか確認
         XCTAssertEqual(presenter.duration, CGFloat(1.0 - 0.1) / CGFloat(1.0))
