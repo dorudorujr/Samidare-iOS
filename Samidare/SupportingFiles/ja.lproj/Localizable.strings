@@ -68,3 +68,9 @@
 "Error.Question.Group.Unique" = "同一名のグループは追加できません。";
 "Error.Title" = "予期せぬエラーが発生しました";
 "Error.Message" = "申し訳ありませんが設定から開発者にエラーが発生したことを伝えてください。";
+
+// メール
+"Mail.Title" = "Samidare: ご意見・ご要望";
+"Mail.Body" = "\n\n\nAppVersion：%@\nOSVersion：%@\nPlatform：%@";
+"Mail.Error.Title" = "メーラーが開けませんでした。";
+"Mail.Error.Description" = "ご自身のご利用いただいているメーラーでiossamidare@gmail.comにメールを送信してください。";
