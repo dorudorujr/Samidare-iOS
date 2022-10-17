@@ -7,6 +7,7 @@
 
 import Combine
 import SwiftUI
+import MessageUI
 
 @MainActor
 class ConfigPresenter<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGroupRepository: QuestionGroupRepositoryProtocol>: ObservableObject {
@@ -24,14 +25,21 @@ class ConfigPresenter<AppConfigRepository: AppConfigRepositoryProtocol, Question
         }
     }
     
+    enum SheetType {
+        case safariView
+        case mailer
+    }
+    
     private let interactor: ConfigInteractor<AppConfigRepository>
     private let router: ConfigRouter<AppConfigRepository, QuestionGroupRepository>
     
     private(set) var selectedExternalLinkType: ExternalLinkType?
+    private(set) var sheetType: SheetType?
     
     @Published private(set) var questionGroup: String?
     @Published private(set) var playTime: String?
-    @Published var shouldShowSafariView = false
+    @Published var shouldShowSheet = false
+    @Published var shouldShowAlert = false
     
     let appVersion: String
     
@@ -63,6 +71,16 @@ class ConfigPresenter<AppConfigRepository: AppConfigRepositoryProtocol, Question
     
     func didTapSafariViewList(of externalLinkType: ExternalLinkType) {
         self.selectedExternalLinkType = externalLinkType
-        shouldShowSafariView = true
+        sheetType = .safariView
+        shouldShowSheet = true
+    }
+    
+    func didTapInquiry() {
+        guard MFMailComposeViewController.canSendMail() else {
+            shouldShowAlert = true
+            return
+        }
+        sheetType = .mailer
+        shouldShowSheet = true
     }
 }
