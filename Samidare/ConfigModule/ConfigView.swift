@@ -31,7 +31,7 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
                     }
                     Section {
                         ListRow(title: L10n.Config.Use.app)
-                        ListRow(title: L10n.Config.inquiry)
+                        ListRow(title: L10n.Config.inquiry, shouldShowArrow: true)
                             .onTapGesture {
                                 presenter.didTapInquiry()
                             }
