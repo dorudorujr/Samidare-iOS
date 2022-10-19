@@ -48,6 +48,7 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
                         ListRow(title: L10n.Config.version, description: presenter.appVersion)
                     }
                 }
+                .listStyle(.insetGrouped)
                 Spacer()
                 AdmobBannerView().frame(width: 320, height: 50)
             }
