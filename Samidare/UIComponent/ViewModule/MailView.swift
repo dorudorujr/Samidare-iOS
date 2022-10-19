@@ -20,7 +20,7 @@ struct MailView: UIViewControllerRepresentable {
         controller.mailComposeDelegate = context.coordinator
         controller.setSubject(L10n.Mail.title)
         controller.setToRecipients(["iossamidare@gmail.com"])
-        //controller.setMessageBody(L10n.Mail.body(appVersion, osVersion, deviceName), isHTML: false)
+        controller.setMessageBody(L10n.Mail.body(appVersion, osVersion, deviceName), isHTML: false)
         return controller
     }
     
