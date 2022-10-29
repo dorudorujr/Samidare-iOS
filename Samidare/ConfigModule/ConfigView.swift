@@ -31,7 +31,10 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
                     }
                     Section {
                         ListRow(title: L10n.Config.Use.app)
-                        ListRow(title: L10n.Config.inquiry)
+                        ListRow(title: L10n.Config.inquiry, shouldShowArrow: true)
+                            .onTapGesture {
+                                presenter.didTapInquiry()
+                            }
                     }
                     Section {
                         ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
@@ -45,6 +48,7 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
                         ListRow(title: L10n.Config.version, description: presenter.appVersion)
                     }
                 }
+                .listStyle(.insetGrouped)
                 Spacer()
                 AdmobBannerView().frame(width: 320, height: 50)
             }
@@ -55,11 +59,18 @@ struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGrou
             presenter.getAppConfig()
             FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(ConfigView.self)")
         }
-        .sheet(isPresented: $presenter.shouldShowSafariView) {
-            if let string = presenter.selectedExternalLinkType?.url,
-               let url = URL(string: string) {
-                SafariView(url: url)
+        .sheet(isPresented: $presenter.shouldShowSheet) {
+            if presenter.sheetType == .safariView {
+                if let string = presenter.selectedExternalLinkType?.url,
+                   let url = URL(string: string) {
+                    SafariView(url: url)
+                }
+            } else if presenter.sheetType == .mailer {
+                MailView(isShowing: $presenter.shouldShowSheet)
             }
+        }
+        .alert(isPresented: $presenter.shouldShowAlert) {
+            Alert(title: Text(L10n.Mail.Error.title), message: Text(L10n.Mail.Error.description))
         }
     }
 }
