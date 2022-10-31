@@ -97,6 +97,7 @@ targets:
     info:
       path: Samidare/Info.plist
       properties:
+        UIUserInterfaceStyle: Light # Appearance指定だと何故か効かない.....
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
         UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
         UIApplicationSupportsIndirectInputEvents: true
