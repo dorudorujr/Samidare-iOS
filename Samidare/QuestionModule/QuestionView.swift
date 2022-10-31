@@ -16,47 +16,44 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
     
     var body: some View {
         // swiftlint:disable closure_body_length
-        GeometryReader { geometry in
-            VStack(spacing: 40) {
-                Spacer()
-                VStack(spacing: 20) {
-                    Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.textBlack)
-                        .frame(height: 10)
-                    ZStack {
-                        QuestionCardView(questionBody: presenter.shouldShowQuestionBody ? presenter.question?.body ?? "" : "",
-                                         gradationTop: presenter.status.gradationTop,
-                                         gradationBottom: presenter.status.gradationBottom)
-                        if presenter.isReady {
-                            ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
-                        }
+        VStack(spacing: 40) {
+            Spacer()
+            VStack(spacing: 20) {
+                Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
+                    .font(.system(size: 20))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.textBlack)
+                    .frame(height: 10)
+                ZStack {
+                    QuestionCardView(questionBody: presenter.shouldShowQuestionBody ? presenter.question?.body ?? "" : "",
+                                     gradationTop: presenter.status.gradationTop,
+                                     gradationBottom: presenter.status.gradationBottom)
+                    if presenter.isReady {
+                        ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
                     }
-                    TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
                 }
-                .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).width, alignment: .center)
-                HStack {
-                    CircleButton(
-                        action: {
-                            presenter.secondaryButtonAction()
-                        },
-                        title: presenter.status.secondaryText,
-                        gradationTop: Color.questionGray,
-                        gradationBottom: Color.questionGray)
-                    Spacer()
-                    CircleButton(
-                        action: {
-                            presenter.primaryButtonAction()
-                        },
-                        title: presenter.status.primaryText,
-                        gradationTop: Color.gradationTopBlue,
-                        gradationBottom: Color.gradationBottomBlue)
-                }
-                Spacer()
-                AdmobBannerView().frame(width: 320, height: 50)
+                .frame(height: 220)
+                TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
             }
-            .frame(width: geometry.frame(in: .global).width, height: geometry.frame(in: .global).height, alignment: .center)
+            Spacer()
+            HStack {
+                CircleButton(
+                    action: {
+                        presenter.secondaryButtonAction()
+                    },
+                    title: presenter.status.secondaryText,
+                    gradationTop: Color.questionGray,
+                    gradationBottom: Color.questionGray)
+                Spacer()
+                CircleButton(
+                    action: {
+                        presenter.primaryButtonAction()
+                    },
+                    title: presenter.status.primaryText,
+                    gradationTop: Color.gradationTopBlue,
+                    gradationBottom: Color.gradationBottomBlue)
+            }
+            AdmobBannerView().frame(width: 320, height: 50)
         }
         .padding(.horizontal, 16)
         .onAppear {
