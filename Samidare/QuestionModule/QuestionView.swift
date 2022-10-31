@@ -16,8 +16,8 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
     
     var body: some View {
         // swiftlint:disable closure_body_length
-        VStack(spacing: 40) {
-            Spacer()
+        VStack(spacing: 20) {
+            Spacer(minLength: 0)
             VStack(spacing: 20) {
                 Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
                     .font(.system(size: 20))
@@ -35,7 +35,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                 .frame(height: 220)
                 TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
             }
-            Spacer()
+            Spacer(minLength: 0)
             HStack {
                 CircleButton(
                     action: {
