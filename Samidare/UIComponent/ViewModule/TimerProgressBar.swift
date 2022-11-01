@@ -27,6 +27,7 @@ struct TimerProgressBar: View {
                     .frame(width: geometry.frame(in: .global).width * duration, height: 15)
             }
         }
+        .frame(height: 15)
     }
 }
 

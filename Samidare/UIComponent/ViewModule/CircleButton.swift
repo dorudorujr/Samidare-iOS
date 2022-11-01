@@ -19,7 +19,8 @@ struct CircleButton: View {
             Text(title)
                 .font(.system(size: 16))
                 .fontWeight(.bold)
-                .frame(width: 50, height: 50)
+                .minimumScaleFactor(0.5)
+                .frame(minWidth: 30, maxWidth: 50, minHeight: 30, maxHeight: 50)
                 .padding()
                 .background(
                     .linearGradient(colors: [gradationTop, gradationBottom], startPoint: .top, endPoint: .bottom)

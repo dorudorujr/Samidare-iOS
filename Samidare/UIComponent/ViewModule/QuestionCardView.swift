@@ -19,7 +19,6 @@ struct QuestionCardView: View {
                     gradationBottom
                 ], startPoint: .top, endPoint: .bottom)
             )
-            .frame(height: 220)
             .padding(.top)
         
         VStack() {
