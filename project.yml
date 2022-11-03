@@ -188,7 +188,7 @@ targets:
     postCompileScripts:
       - name: Firebase
         script: |
-          if [ "${CONFIGURATION}" == "Release" ]; then
+          if [ "${CONFIGURATION}" = "Release" ]; then
             cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Release.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           else
             cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
