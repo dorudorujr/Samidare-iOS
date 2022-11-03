@@ -10,8 +10,7 @@ import SwiftUI
 @MainActor
 class TabTopPresenter: ObservableObject {
     private let interactor: TabTopInteractor
-    // TODO: IDを正しいものに変える
-    private let appStoreURL = "https://itunes.apple.com/jp/app/apple-store/id"
+    private let appStoreURL = "https://itunes.apple.com/jp/app/id6444154871?mt=8"
     
     @Published var shouldForcedUpdate = false
     @Environment(\.openURL) var openURL
