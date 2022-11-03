@@ -113,7 +113,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         self.interactor = interactor
         self.timerProvider = timerProvider
         self.questionGroupName = interactor.questionGroup()
-        setQuestion()
     }
 
     // MARK: - Life Cycle
@@ -123,6 +122,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         setTotalPlayTime()
         setTotalQuestionCount()
         setQuestionGroup()
+        setQuestion()
     }
     
     // MARK: - Button Action
