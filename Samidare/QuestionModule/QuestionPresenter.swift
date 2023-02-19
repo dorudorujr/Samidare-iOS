@@ -87,7 +87,9 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         }
     }
     
-    private(set) var questionGroupName: String
+    var questionGroupName: String {
+        interactor.questionGroup()
+    }
 
     var shouldShowQuestionCount: Bool {
         status != .standBy && status != .ready && status != .stopReadying
@@ -112,7 +114,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
         self.timerProvider = timerProvider
-        self.questionGroupName = interactor.questionGroup()
     }
 
     // MARK: - Life Cycle
@@ -121,7 +122,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         setDefaultNowPlayTime()
         setTotalPlayTime()
         setTotalQuestionCount()
-        setQuestionGroup()
         setQuestion()
     }
     
@@ -168,10 +168,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
 
     private func setTotalQuestionCount() {
         totalQuestionCount = interactor.getTotalQuestionCount()
-    }
-    
-    private func setQuestionGroup() {
-        questionGroupName = interactor.questionGroup()
     }
     
     private func setQuestionCountText() {
