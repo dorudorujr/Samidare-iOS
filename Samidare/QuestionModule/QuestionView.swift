@@ -29,7 +29,7 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
                                      gradationTop: presenter.status.gradationTop,
                                      gradationBottom: presenter.status.gradationBottom)
                     if presenter.isReady {
-                        ReadyTexts(countDownTimeText: $presenter.nowCountDownTime)
+                        ReadyTexts(countDownTimeText: presenter.nowCountDownTime.description)
                     }
                 }
                 .frame(height: 220)
@@ -67,10 +67,10 @@ struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRep
 }
 
 private struct ReadyTexts: View {
-    let countDownTimeText: Binding<Int>
+    let countDownTimeText: String
     var body: some View {
         VStack(alignment: .center) {
-            Text(String(countDownTimeText.wrappedValue))
+            Text(countDownTimeText)
                 .font(.system(size: 150))
                 .fontWeight(.bold)
                 .foregroundColor(.white)
