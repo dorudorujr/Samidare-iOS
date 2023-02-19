@@ -83,10 +83,8 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             setQuestionCountText()
         }
     }
-    private var totalQuestionCount = 0 {
-        didSet {
-            setQuestionCountText()
-        }
+    private var totalQuestionCount: Int {
+        interactor.getTotalQuestionCount()
     }
     
     var questionGroupName: String {
@@ -122,7 +120,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     func viewWillApper() {
         setDefaultNowPlayTime()
-        setTotalQuestionCount()
+        setQuestionCountText()
         setQuestion()
     }
     
@@ -161,10 +159,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     private func setDefaultNowPlayTime() {
         nowPlayTime = Double(interactor.getTime())
-    }
-
-    private func setTotalQuestionCount() {
-        totalQuestionCount = interactor.getTotalQuestionCount()
     }
     
     private func setQuestionCountText() {
