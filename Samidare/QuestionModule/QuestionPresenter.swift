@@ -72,7 +72,9 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     private var playTimer: Timer?
     private var countDownTimer: Timer?
     // トータルのゲーム時間
-    private var totalPlayTime: Int = 0
+    private var totalPlayTime: Int {
+        interactor.getTime()
+    }
     // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
     private var selectIndex = 0 {
@@ -120,7 +122,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     func viewWillApper() {
         setDefaultNowPlayTime()
-        setTotalPlayTime()
         setTotalQuestionCount()
         setQuestion()
     }
@@ -160,10 +161,6 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     
     private func setDefaultNowPlayTime() {
         nowPlayTime = Double(interactor.getTime())
-    }
-
-    private func setTotalPlayTime() {
-        totalPlayTime = interactor.getTime()
     }
 
     private func setTotalQuestionCount() {
