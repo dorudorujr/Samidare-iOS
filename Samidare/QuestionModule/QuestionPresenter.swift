@@ -91,6 +91,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         totalQuestionCount > selectIndex
     }
     
+    private var isQuestionTimeout: Bool {
+        nowPlayTime < 0
+    }
+    
     var questionGroupName: String {
         interactor.questionGroup()
     }
@@ -203,8 +207,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             if self.hasNextQuestion {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
-                // 1つの質問を表示する時間を過ぎたかどうか
-                if self.nowPlayTime < 0 {
+                if self.isQuestionTimeout {
                     self.next()
                 }
             // 全ての質問を表示し終わった
