@@ -87,6 +87,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         interactor.getTotalQuestionCount()
     }
     
+    private var hasNextQuestion: Bool {
+        totalQuestionCount > selectIndex
+    }
+    
     var questionGroupName: String {
         interactor.questionGroup()
     }
@@ -196,8 +200,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         playTimer?.invalidate()
         playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            // 最後の質問ではないかどうか
-            if self.totalQuestionCount > self.selectIndex {
+            if self.hasNextQuestion {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 // 1つの質問を表示する時間を過ぎたかどうか
