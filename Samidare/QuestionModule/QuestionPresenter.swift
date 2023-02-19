@@ -107,7 +107,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     @Published private(set) var duration: CGFloat = 1.0
     @Published var shouldShowQuestionList = false
     // 開始前のカウントダウン
-    @Published var nowCountDownTime = readyCountDownTime
+    @Published private(set) var nowCountDownTime = readyCountDownTime
     
     init(interactor: QuestionInteractor<QuestionRepository, AppConfigRepository>, timerProvider: Timer.Type = Timer.self) {
         self.interactor = interactor
