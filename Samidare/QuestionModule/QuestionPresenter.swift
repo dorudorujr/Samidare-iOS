@@ -85,6 +85,10 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         nowPlayTime < 0
     }
     
+    private var shouldShowQuestion: Bool {
+        question != nil
+    }
+    
     var questionGroupName: String {
         interactor.questionGroup()
     }
@@ -202,7 +206,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         playTimer?.invalidate()
         playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            if self.interactor.shouldShowQuestion(question: self.question) {
+            if self.shouldShowQuestion {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 if self.isQuestionTimeout {

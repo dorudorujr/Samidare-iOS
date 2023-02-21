@@ -34,10 +34,6 @@ class QuestionInteractor<QuestionRepository: QuestionRepositoryProtocol, AppConf
         questions().last
     }
     
-    func shouldShowQuestion(question: Question?) -> Bool {
-        question != nil
-    }
-    
     func getIndex(of question: Question) -> Int? {
         questions().firstIndex(of: question)
     }
