@@ -77,18 +77,8 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     // 経過時間(totalPlayTimeからデクリメントで計算)
     private var nowPlayTime = 0.0
-    private var selectIndex = 0 {
-        didSet {
-            setQuestion()
-            setQuestionCountText()
-        }
-    }
     private var totalQuestionCount: Int {
         interactor.getTotalQuestionCount()
-    }
-    
-    private var hasNextQuestion: Bool {
-        totalQuestionCount > selectIndex
     }
     
     private var isQuestionTimeout: Bool {
@@ -109,7 +99,11 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         status == .play || status == .stopPlaying || status == .done
     }
 
-    @Published private(set) var question: Question?
+    @Published private(set) var question: Question? {
+        didSet {
+            setQuestionCountText()
+        }
+    }
     @Published private(set) var questionCountText: String = ""
     // ゲームの状態
     @Published private(set) var status: Status = .standBy
@@ -162,7 +156,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     // MARK: - Set
     
     private func setQuestion() {
-        question = interactor.getQuestion(from: selectIndex)
+        question = interactor.firstQuestion()
     }
     
     private func setDefaultNowPlayTime() {
@@ -170,7 +164,11 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     
     private func setQuestionCountText() {
-        questionCountText = "\(selectIndex + 1)/\(totalQuestionCount)"
+        if let question = question, let currentIndex = interactor.getIndex(of: question) {
+            questionCountText = "\(currentIndex + 1)/\(totalQuestionCount)"
+        } else {
+            questionCountText = ""
+        }
     }
 
     // MARK: - Status Function
@@ -204,7 +202,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
         playTimer?.invalidate()
         playTimer = timerProvider.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            if self.hasNextQuestion {
+            if self.interactor.shouldShowQuestion(question: self.question) {
                 self.nowPlayTime -= 0.1
                 self.duration = CGFloat(self.nowPlayTime) / CGFloat(self.totalPlayTime)
                 if self.isQuestionTimeout {
@@ -227,7 +225,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             return
         }
         // 最後に表示していた質問を表示させる
-        selectIndex = totalQuestionCount - 1
+        question = interactor.lastQuestion()
         status = .done
     }
     
@@ -263,7 +261,11 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
             assert(true)
             return
         }
-        selectIndex += 1
+        guard let question = question else {
+            assert(true)
+            return
+        }
+        self.question = interactor.nextQuestion(for: question)
         setDefaultNowPlayTime()
         FirebaseAnalyticsConfig.sendEventLog(eventType: .next)
     }
@@ -274,7 +276,7 @@ class QuestionPresenter<QuestionRepository: QuestionRepositoryProtocol, AppConfi
     }
     
     private func resetPlayConfig() {
-        selectIndex = 0
+        question = interactor.firstQuestion()
         duration = 1.0
         playTimer?.invalidate()
         playTimer = nil
