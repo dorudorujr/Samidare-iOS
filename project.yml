@@ -193,6 +193,7 @@ targets:
           else
             cp -r "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           fi
+        basedOnDependencyAnalysis: false
       - name: SwiftLint
         script: |
           if test -d /opt/homebrew/bin; then
@@ -204,6 +205,7 @@ targets:
           else
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
+        basedOnDependencyAnalysis: false
       - name: Generate Mocks with Mockolo
         script: |
           if test -d /opt/homebrew/bin; then
@@ -225,6 +227,7 @@ targets:
         inputFiles:
           - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
           - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+        basedOnDependencyAnalysis: false
   SamidareTests:
     info:
       path: SamidareTests/Info.plist
