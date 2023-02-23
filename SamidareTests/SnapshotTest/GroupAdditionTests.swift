@@ -30,6 +30,6 @@ class GroupAdditionTests: XCTestCase {
         let view = GroupAdditionView<QuestionGroupRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
-        assertSnapshot(matching: vc, as: .image(on: .iPhoneXsMax, precision: 0.95))
+        assertSnapshot(matching: vc, as: .image(on: .iPhone13ProMax, precision: 0.95))
     }
 }
