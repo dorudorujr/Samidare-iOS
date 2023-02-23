@@ -98,7 +98,7 @@ class QuestionPresenterTests: XCTestCase {
         wait(for: [expOverTime], timeout: 1.0)
         /// 質問時間経過で次の質問に行っているか確認
         XCTAssertNil(presenter.question)
-        XCTAssertEqual(presenter.questionCountText, "2/1")
+        XCTAssertEqual(presenter.questionCountText, "")
         
         // ゲーム完了
         let expDone = expectation(description: "ゲーム完了")
