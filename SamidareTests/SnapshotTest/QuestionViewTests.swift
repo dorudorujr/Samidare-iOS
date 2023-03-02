@@ -26,10 +26,11 @@ class QuestionViewTests: XCTestCase {
             .init(questionGroupName: "questionGroup",
                   time: 1)
         }
+        let questions: [Question] = [
+            .init(body: "好きな色は", group: .init(name: "default"))
+        ]
         QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
-            [
-                .init(body: "好きな色は", group: .init(name: "default"))
-            ]
+            questions
         }
         setPresenter()
     }
@@ -123,7 +124,7 @@ class QuestionViewTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.95))
+                       as: .image(on: .iPhone13ProMax))
     }
 
     // MARK: - Set Data
