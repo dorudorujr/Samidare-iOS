@@ -77,9 +77,16 @@ jobs:
           -sdk iphonesimulator16.2
           -configuration DevelopDebug
           -scheme Samidare-Develop
+          -resultBundlePath TestResults
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
           -skip-testing:SamidareUITests
           -testLanguage ja
           -testRegion ja_JP
           clean test
+      
+      # Test結果をGitHub Checksに送信
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
 
