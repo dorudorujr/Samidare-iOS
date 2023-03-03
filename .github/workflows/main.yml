@@ -45,13 +45,18 @@ jobs:
       - name: Install Mint
         run: brew install mint
       
-      # Mintで管理しているライブラリをインストール
-      - uses: actions/cache@v3
+      # Mintで管理しているライブラリのキャッシュ
+      - name: Cache Mint
+        uses: actions/cache@v3
         with:
           path: .mint
           key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
           restore-keys: |
             ${{ runner.os }}-mint-
+      
+      # Mintで管理しているライブラリをインストール
+      - name: Install Mint library
+        run: mint bootstrap
       
       # Generatedディレクトリー作成
       # TODO: 少し強引な感じがするのでどうにかしたい
