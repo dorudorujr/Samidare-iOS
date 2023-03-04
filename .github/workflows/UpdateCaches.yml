@@ -1,0 +1,49 @@
+name: update_caches
+
+on:
+  schedule:
+    - cron: '0 22 * * *'
+
+  workflow_dispatch:
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
+
+jobs:
+  build:
+    runs-on: macos-12
+    env:
+      MINT_PATH: .mint/lib
+      MINT_LINK_PATH: .mint/bin
+
+    steps:
+      # チェックアウト
+      - uses: actions/checkout@v2
+
+      # Actionsで使用できるXcodeの一覧出力
+      - name: Show Xcode list
+        run: ls /Applications | grep 'Xcode'
+      
+      # 現在使われているXcodeのバージョン出力
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      # Mintのインストール
+      - name: Install Mint
+        run: brew install mint
+      
+      # Mintで管理しているライブラリのキャッシュ
+      - name: Cache Mint
+        uses: actions/cache@v3
+        with:
+          path: .mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: |
+            ${{ runner.os }}-mint-
+      
+      # Mintで管理しているライブラリをインストール
+      - name: Install Mint library
+        if: steps.mint-cache.outputs.cache-hit != 'true'
+        run: mint bootstrap
+      
+
