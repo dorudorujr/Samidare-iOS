@@ -56,6 +56,8 @@ schemes:
     test:
       config: DevelopDebug
       gatherCoverageData: true
+      language: ja
+      region: JP
       coverageTargets:
         - Samidare
       targets:

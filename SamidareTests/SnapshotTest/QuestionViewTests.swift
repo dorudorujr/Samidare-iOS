@@ -39,7 +39,7 @@ class QuestionViewTests: XCTestCase {
         let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.999))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
 
     func testReady() {
@@ -48,7 +48,7 @@ class QuestionViewTests: XCTestCase {
         presenter.primaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.999))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testStopReadying() {
@@ -58,7 +58,7 @@ class QuestionViewTests: XCTestCase {
         presenter.secondaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.95))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testPlay() {
@@ -76,7 +76,7 @@ class QuestionViewTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.95))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testStopPlaying() {
@@ -95,7 +95,7 @@ class QuestionViewTests: XCTestCase {
         presenter.secondaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.95))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testDone() {
@@ -124,7 +124,7 @@ class QuestionViewTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
-                       as: .image(on: .iPhone13ProMax, precision: 0.95))
+                       as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
 
     // MARK: - Set Data
