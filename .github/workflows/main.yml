@@ -8,11 +8,14 @@ on:
   workflow_dispatch:
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.4.1.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_14.2.app/Contents/Developer
 
 jobs:
   build:
     runs-on: macos-12
+    env:
+      MINT_PATH: .mint/lib
+      MINT_LINK_PATH: .mint/bin
 
     steps:
       # チェックアウト
@@ -42,8 +45,18 @@ jobs:
       - name: Install Mint
         run: brew install mint
       
+      # Mintで管理しているライブラリのキャッシュ
+      - name: Cache Mint
+        uses: actions/cache@v3
+        with:
+          path: .mint
+          key: ${{ runner.os }}-mint-${{ hashFiles('**/Mintfile') }}
+          restore-keys: |
+            ${{ runner.os }}-mint-
+      
       # Mintで管理しているライブラリをインストール
       - name: Install Mint library
+        if: steps.mint-cache.outputs.cache-hit != 'true'
         run: mint bootstrap
       
       # Generatedディレクトリー作成
@@ -62,12 +75,19 @@ jobs:
       # 単体テスト
       - name: Xcode test
         run: xcodebuild
-          -sdk iphonesimulator15.5
+          -sdk iphonesimulator16.2
           -configuration DevelopDebug
           -scheme Samidare-Develop
+          -resultBundlePath TestResults
           -destination 'platform=iOS Simulator,name=iPhone 13 Pro Max'
           -skip-testing:SamidareUITests
           -testLanguage ja
           -testRegion ja_JP
           clean test
+      
+      # Test結果をGitHub Checksに送信
+      - uses: kishikawakatsumi/xcresulttool@v1
+        with:
+          path: TestResults.xcresult
+        if: success() || failure()
 

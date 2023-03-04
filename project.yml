@@ -2,16 +2,16 @@ name: Samidare
 packages:
   Firebase:
     url: https://github.com/firebase/firebase-ios-sdk.git
-    minorVersion: 8.9.1
+    minorVersion: 10.5.0
   Realm:
     url: https://github.com/realm/realm-cocoa.git
-    minorVersion: 10.28.2
+    minorVersion: 10.36.0
   GoogleMobileAds:
     url: https://github.com/googleads/swift-package-manager-google-mobile-ads.git
-    minorVersion: 9.11.0
+    minorVersion: 10.1.0
   swift-snapshot-testing:
     url: https://github.com/pointfreeco/swift-snapshot-testing.git
-    minorVersion: 1.9.0
+    minorVersion: 1.11.0
 options:
   bundleIdPrefix: com.sugiokaseiya
   deploymentTarget:
@@ -56,6 +56,8 @@ schemes:
     test:
       config: DevelopDebug
       gatherCoverageData: true
+      language: ja
+      region: JP
       coverageTargets:
         - Samidare
       targets:
@@ -129,7 +131,7 @@ targets:
       - package: Firebase
         product: FirebaseCrashlytics
       - package: Firebase
-        product: FirebaseFirestoreSwift-Beta
+        product: FirebaseFirestoreSwift
       - package: GoogleMobileAds
         product: GoogleMobileAds
       - package: Realm
@@ -193,6 +195,7 @@ targets:
           else
             cp -r "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info-Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           fi
+        basedOnDependencyAnalysis: false
       - name: SwiftLint
         script: |
           if test -d /opt/homebrew/bin; then
@@ -204,6 +207,7 @@ targets:
           else
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
+        basedOnDependencyAnalysis: false
       - name: Generate Mocks with Mockolo
         script: |
           if test -d /opt/homebrew/bin; then
@@ -225,6 +229,7 @@ targets:
         inputFiles:
           - ${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}
           - $(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)
+        basedOnDependencyAnalysis: false
   SamidareTests:
     info:
       path: SamidareTests/Info.plist
