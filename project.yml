@@ -12,6 +12,9 @@ packages:
   swift-snapshot-testing:
     url: https://github.com/pointfreeco/swift-snapshot-testing.git
     minorVersion: 1.11.0
+  ComposableArchitecture:
+    url: https://github.com/pointfreeco/swift-composable-architecture
+    minorVersion: 0.51.0
 options:
   bundleIdPrefix: com.sugiokaseiya
   deploymentTarget:
@@ -138,6 +141,8 @@ targets:
         product: Realm
       - package: Realm
         product: RealmSwift
+      - package: ComposableArchitecture
+        product: ComposableArchitecture
     settings:
       base:
         TARGETED_DEVICE_FAMILY: 1
