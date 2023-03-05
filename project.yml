@@ -213,6 +213,14 @@ targets:
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
         basedOnDependencyAnalysis: false
+      - name: LicensePlist
+        script: |
+          if [ $CONFIGURATION != "Release" ]; then
+            xcrun --sdk macosx mint run LicensePlist license-plist --output-path $PROJECT_NAME/SupportingFiles/Settings.bundle --prefix Acknowledgements
+          else
+            echo "is release"
+          fi
+        basedOnDependencyAnalysis: false
       - name: Generate Mocks with Mockolo
         script: |
           if test -d /opt/homebrew/bin; then
