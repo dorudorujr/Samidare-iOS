@@ -18,7 +18,7 @@ packages:
 options:
   bundleIdPrefix: com.sugiokaseiya
   deploymentTarget:
-    iOS: 15.0
+    iOS: 16.0
 configs:
   Debug: debug
   DevelopDebug: debug
