@@ -6,62 +6,63 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct QuestionView<QuestionRepository: QuestionRepositoryProtocol, AppConfigRepository: AppConfigRepositoryProtocol>: View {
-    @ObservedObject private var presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>
-    
-    init(presenter: QuestionPresenter<QuestionRepository, AppConfigRepository>) {
-        self.presenter = presenter
-    }
+struct QuestionView: View {
+    let store: StoreOf<QuestionReducer>
     
     var body: some View {
         // swiftlint:disable closure_body_length
-        VStack(spacing: 20) {
-            Spacer(minLength: 0)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack(spacing: 20) {
-                Text(presenter.shouldShowQuestionCount ? presenter.questionCountText : "")
-                    .font(.system(size: 20))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.textBlack)
-                    .frame(height: 10)
-                ZStack {
-                    QuestionCardView(questionBody: presenter.shouldShowQuestionBody ? presenter.question?.body ?? "" : "",
-                                     gradationTop: presenter.status.gradationTop,
-                                     gradationBottom: presenter.status.gradationBottom)
-                    if presenter.isReady {
-                        ReadyTexts(countDownTimeText: presenter.nowCountDownTime.description)
+                Spacer(minLength: 0)
+                VStack(spacing: 20) {
+                    Text(viewStore.shouldShowQuestionCount ? viewStore.questionCountText : "")
+                        .font(.system(size: 20))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.textBlack)
+                        .frame(height: 10)
+                    ZStack {
+                        QuestionCardView(questionBody: viewStore.shouldShowQuestionBody ? viewStore.question?.body ?? "" : "",
+                                         gradationTop: viewStore.status.gradationTop,
+                                         gradationBottom: viewStore.status.gradationBottom)
+                        if viewStore.isReady {
+                            ReadyTexts(countDownTimeText: viewStore.nowCountDownTime.description)
+                        }
                     }
+                    .frame(height: 220)
+                    TimerProgressBar(duration: viewStore.duration, gradationTop: viewStore.status.gradationTop, gradationBottom: viewStore.status.gradationBottom)
                 }
-                .frame(height: 220)
-                TimerProgressBar(duration: presenter.duration, gradationTop: presenter.status.gradationTop, gradationBottom: presenter.status.gradationBottom)
+                Spacer(minLength: 0)
+                HStack {
+                    CircleButton(
+                        action: {
+                            viewStore.send(.secondaryButtonTapped)
+                        },
+                        title: viewStore.status.secondaryText,
+                        gradationTop: Color.questionGray,
+                        gradationBottom: Color.questionGray)
+                    Spacer()
+                    CircleButton(
+                        action: {
+                            viewStore.send(.primaryButtonTapped)
+                        },
+                        title: viewStore.status.primaryText,
+                        gradationTop: Color.gradationTopBlue,
+                        gradationBottom: Color.gradationBottomBlue)
+                }
+                AdmobBannerView().frame(width: 320, height: 50)
             }
-            Spacer(minLength: 0)
-            HStack {
-                CircleButton(
-                    action: {
-                        presenter.secondaryButtonAction()
-                    },
-                    title: presenter.status.secondaryText,
-                    gradationTop: Color.questionGray,
-                    gradationBottom: Color.questionGray)
-                Spacer()
-                CircleButton(
-                    action: {
-                        presenter.primaryButtonAction()
-                    },
-                    title: presenter.status.primaryText,
-                    gradationTop: Color.gradationTopBlue,
-                    gradationBottom: Color.gradationBottomBlue)
+            .padding(.horizontal, 16)
+            .onAppear {
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionView.self)")
             }
-            AdmobBannerView().frame(width: 320, height: 50)
-        }
-        .padding(.horizontal, 16)
-        .onAppear {
-            presenter.viewWillApper()
-            FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionView.self)")
-        }
-        .sheet(isPresented: $presenter.shouldShowQuestionList) {
-            QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: presenter.questionGroupName))
+            .sheet(isPresented: viewStore.binding(
+                get: \.shouldShowQuestionList,
+                send: QuestionReducer.Action.setSheet(isPresented:)
+            )) {
+                QuestionListView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: viewStore.question?.group.name))
+            }
         }
     }
 }
@@ -86,6 +87,11 @@ private struct ReadyTexts: View {
 
 struct QuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
+        QuestionView(
+            store: Store(
+                initialState: QuestionReducer.State(),
+                reducer: QuestionReducer()
+            )
+        )
     }
 }
