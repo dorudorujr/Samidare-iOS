@@ -24,6 +24,15 @@ struct QuestionReducer: ReducerProtocol {
                 return CGFloat(nowTime) / CGFloat(totalPlayTime)
             }
         }
+        var shouldShowQuestionCount: Bool {
+            status != .standBy && status != .ready && status != .stopReadying
+        }
+        var shouldShowQuestionBody: Bool {
+            status == .play || status == .stopPlaying || status == .done
+        }
+        var isReady: Bool {
+            status == .ready || status == .stopReadying
+        }
         var shouldShowQuestionList = false
         var nowCountDownTime: String {
             Int(nowTime).description
