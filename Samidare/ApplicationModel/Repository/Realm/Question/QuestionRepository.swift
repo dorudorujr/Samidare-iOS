@@ -18,6 +18,8 @@ protocol QuestionRepositoryProtocol {
     func getQuestions(of group: String) -> [Question]
     func getIndex(of question: Question) -> Int?
     func nextQuestion(for question: Question) -> Question?
+    func firstQuestion(of group: String) -> Question?
+    func lastQuestion(of group: String) -> Question?
     func add(_ question: Question) throws
     func update(_ question: Question) throws
     func delete(_ question: Question) throws
@@ -41,6 +43,14 @@ class QuestionRepositoryImpl: QuestionRepositoryProtocol {
             return questions.first
         }
         return questions[safe: questionOfIndex + 1]
+    }
+    
+    func firstQuestion(of group: String) -> Question? {
+        getQuestions(of: group).first
+    }
+    
+    func lastQuestion(of group: String) -> Question? {
+        getQuestions(of: group).last
     }
     
     func add(_ question: Question) throws {
