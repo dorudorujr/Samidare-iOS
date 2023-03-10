@@ -9,6 +9,8 @@ disabled_rules:
   - nesting
   - superfluous_disable_command
   - generic_type_name
+  - multiple_closures_with_trailing_closure
+  - closure_body_length
 
 opt_in_rules:
   - explicit_init
