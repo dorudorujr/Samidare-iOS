@@ -64,6 +64,7 @@ struct QuestionReducer: ReducerProtocol {
             case .standBy:
                 state.status = .ready
                 state.question = questionRepository.firstQuestion(of: appConfigRepository.get().questionGroupName)
+                state.questionCountText = questionCountText(question: state.question)
                 state.nowTime = Double(state.readyCountDownTime)
                 state.totalPlayTime = appConfigRepository.get().time
             case .ready:
@@ -73,6 +74,7 @@ struct QuestionReducer: ReducerProtocol {
                     return .none
                 }
                 state.question = questionRepository.nextQuestion(for: question)
+                state.questionCountText = questionCountText(question: state.question)
                 state.nowTime = Double(state.totalPlayTime)
                 FirebaseAnalyticsConfig.sendEventLog(eventType: .next)
             case .stopReadying:
@@ -103,6 +105,7 @@ struct QuestionReducer: ReducerProtocol {
                 state.status = .done
                 state.nowTime = Double(state.readyCountDownTime)
                 state.question = questionRepository.lastQuestion(of: appConfigRepository.get().questionGroupName)
+                state.questionCountText = questionCountText(question: state.question)
                 return .cancel(id: TimerID.self)
             }
             
@@ -112,6 +115,7 @@ struct QuestionReducer: ReducerProtocol {
                     state.nowTime = Double(state.totalPlayTime)
                 } else {
                     state.question = questionRepository.nextQuestion(for: question)
+                    state.questionCountText = questionCountText(question: state.question)
                     state.nowTime = Double(state.totalPlayTime)
                 }
                 return .none
@@ -144,6 +148,15 @@ struct QuestionReducer: ReducerProtocol {
     @Dependency(\.questionRepository) private var questionRepository
     
     private enum TimerID {}
+    
+    private func questionCountText(question: Question?) -> String {
+        let totalQuestionCount = questionRepository.getQuestions(of: appConfigRepository.get().questionGroupName).count
+        if let question, let currentIndex = questionRepository.getIndex(of: question) {
+            return "\(currentIndex + 1)/\(totalQuestionCount)"
+        } else {
+            return ""
+        }
+    }
 }
 
 extension QuestionReducer {
