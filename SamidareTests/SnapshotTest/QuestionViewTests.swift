@@ -36,14 +36,18 @@ class QuestionViewTests: XCTestCase {
     }
 
     func testStandBy() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .standBy)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
 
     func testReady() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .ready)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let vc = UIHostingController(rootView: questionView)
@@ -52,7 +56,9 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testStopReadying() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .stopReadying)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         presenter.secondaryButtonAction()
@@ -62,7 +68,9 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testPlay() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .play)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -80,7 +88,9 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testStopPlaying() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .stopPlaying)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "ゲーム中")
@@ -99,7 +109,9 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testDone() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .done)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         presenter.viewWillApper()
         presenter.primaryButtonAction()
         let exp = expectation(description: "完了")
