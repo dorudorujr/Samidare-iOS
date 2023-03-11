@@ -44,11 +44,7 @@ struct QuestionReducer: ReducerProtocol {
     enum Action: Equatable {
         case primaryButtonTapped
         case secondaryButtonTapped
-        case nextQuestion
-        case doneGame
-        case playGame
-        case timerTickedForPlaying
-        case timerTickedForReadying
+        case playing
         case setSheet(isPresented: Bool)
     }
     
@@ -60,6 +56,7 @@ struct QuestionReducer: ReducerProtocol {
                 state.status = .ready
                 state.question = questionRepository.firstQuestion(of: appConfigRepository.get().questionGroupName)
                 state.nowTime = Double(state.readyCountDownTime)
+                state.totalPlayTime = appConfigRepository.get().time
             case .ready:
                 break
             case .play:
@@ -77,25 +74,42 @@ struct QuestionReducer: ReducerProtocol {
                 state.shouldShowQuestionList = true
                 FirebaseAnalyticsConfig.sendEventLog(eventType: .list)
             }
-            return .run { [status = state.status, question = state.question, nowTime = state.nowTime] send in
+            return .run { [status = state.status] send in
                 guard status == .ready || status == .play else {
                     return
                 }
-                for await _ in self.clock.timer(interval: status == .play ? .milliseconds(1) : .seconds(1)) {
-                    guard question != nil else {
-                        await send(.doneGame)
-                        return
-                    }
-                    
-                    guard nowTime > 0 else {
-                        await send(status == .ready ? .playGame : .nextQuestion)
-                        return
-                    }
-                    
-                    await send(status == .ready ? .timerTickedForReadying : .timerTickedForPlaying)
+                for await _ in self.clock.timer(interval: .seconds(0.1)) {
+                    await send(.playing)
                 }
             }
             .cancellable(id: TimerID.self, cancelInFlight: true)
+        
+        case .playing:
+            guard state.status == .ready || state.status == .play else {
+                return .cancel(id: TimerID.self)
+            }
+            
+            guard let question = state.question else {
+                // ゲーム終了
+                state.status = .done
+                state.nowTime = Double(state.readyCountDownTime)
+                state.question = questionRepository.lastQuestion(of: appConfigRepository.get().questionGroupName)
+                return .cancel(id: TimerID.self)
+            }
+            
+            guard state.nowTime > 0 else {
+                if state.status == .ready {
+                    state.status = .play
+                    state.nowTime = Double(appConfigRepository.get().time)
+                } else {
+                    state.question = questionRepository.nextQuestion(for: question)
+                    state.nowTime = Double(appConfigRepository.get().time)
+                }
+                return .none
+            }
+            
+            state.nowTime -= 0.1
+            return .none
             
         case .secondaryButtonTapped:
             if state.status == .ready || state.status == .play {
@@ -105,33 +119,6 @@ struct QuestionReducer: ReducerProtocol {
                 state.status = .standBy
             }
             return .cancel(id: TimerID.self)
-            
-        case .timerTickedForPlaying:
-            state.nowTime -= 0.1
-            return .none
-            
-        case .timerTickedForReadying:
-            state.nowTime -= 1.0
-            return .none
-            
-        case .nextQuestion:
-            guard let question = state.question else {
-                return .none
-            }
-            state.question = questionRepository.nextQuestion(for: question)
-            state.nowTime = Double(appConfigRepository.get().time)
-            return .none
-            
-        case .doneGame:
-            state.status = .done
-            state.nowTime = Double(state.readyCountDownTime)
-            state.question = questionRepository.lastQuestion(of: appConfigRepository.get().questionGroupName)
-            return .cancel(id: TimerID.self)
-            
-        case .playGame:
-            state.status = .play
-            state.nowTime = Double(appConfigRepository.get().time)
-            return .none
             
         case .setSheet(isPresented: true):
             state.shouldShowQuestionList = true
