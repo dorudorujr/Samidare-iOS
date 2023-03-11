@@ -10,11 +10,39 @@ import RealmSwift
 
 /// @mockable
 protocol AppConfigRepositoryProtocol {
+    //TODO: staticメソッドを削除する
     static func get() -> AppConfig
     static func update(_ appConfig: AppConfig) throws
+    func get() -> AppConfig
+    func update(_ appConfig: AppConfig) throws
 }
 
 class AppConfigRepositoryImpl: AppConfigRepositoryProtocol {
+    func get() -> AppConfig {
+        let realm = try! Realm()
+        guard let result = realm.objects(AppConfigRealmObject.self).first, let jsonData = result.json.data(using: .utf8) else {
+            return .init(questionGroupName: "デフォルト", time: 10)
+        }
+        return try! JSONDecoder().decode(AppConfig.self, from: jsonData)
+    }
+    
+    func update(_ appConfig: AppConfig) throws {
+        let realm = try! Realm()
+        let data = try JSONEncoder().encode(appConfig)
+        let jsonString = String(data: data, encoding: .utf8)
+        let appConfigObject = AppConfigRealmObject(value: ["json": jsonString])
+        try realm.write {
+            let cashAppConfigObjects = realm.objects(AppConfigRealmObject.self)
+            cashAppConfigObjects.forEach { appConfigObject in
+                realm.delete(appConfigObject)
+            }
+            realm.add(appConfigObject)
+        }
+    }
+}
+
+//TODO: staticメソッドを削除する
+extension AppConfigRepositoryImpl {
     static func get() -> AppConfig {
         let realm = try! Realm()
         guard let result = realm.objects(AppConfigRealmObject.self).first, let jsonData = result.json.data(using: .utf8) else {
