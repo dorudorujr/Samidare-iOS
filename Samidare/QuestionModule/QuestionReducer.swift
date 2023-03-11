@@ -111,9 +111,11 @@ struct QuestionReducer: ReducerProtocol {
             
             guard state.nowTime > 0 else {
                 if state.status == .ready {
+                    // ゲーム開始
                     state.status = .play
                     state.nowTime = Double(state.totalPlayTime)
                 } else {
+                    // 次の質問へ
                     state.question = questionRepository.nextQuestion(for: question)
                     state.questionCountText = questionCountText(question: state.question)
                     state.nowTime = Double(state.totalPlayTime)
