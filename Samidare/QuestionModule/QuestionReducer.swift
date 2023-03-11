@@ -39,7 +39,7 @@ struct QuestionReducer: ReducerProtocol {
         }
         var nowTime: Double = 0 {
             didSet {
-                /// 途中で回答秒数を変更したときに整合性が取れるようにnowTimeを更新する
+                // 途中で回答秒数を変更したときに整合性が取れるようにnowTimeを更新する
                 guard status == .play else {
                     return
                 }
@@ -56,6 +56,7 @@ struct QuestionReducer: ReducerProtocol {
         case setSheet(isPresented: Bool)
     }
     
+    // swiftlint:disable function_body_length
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
         case .primaryButtonTapped:
