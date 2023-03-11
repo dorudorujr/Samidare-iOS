@@ -37,7 +37,15 @@ struct QuestionReducer: ReducerProtocol {
         var nowCountDownTime: String {
             Int(nowTime).description
         }
-        var nowTime: Double = 0
+        var nowTime: Double = 0 {
+            didSet {
+                /// 途中で回答秒数を変更したときに整合性が取れるようにnowTimeを更新する
+                guard status == .play else {
+                    return
+                }
+                nowTime = nowTime <= Double(totalPlayTime) ? nowTime : Double(totalPlayTime)
+            }
+        }
         var totalPlayTime: Int = 1
     }
     
@@ -64,7 +72,7 @@ struct QuestionReducer: ReducerProtocol {
                     return .none
                 }
                 state.question = questionRepository.nextQuestion(for: question)
-                state.nowTime = Double(appConfigRepository.get().time)
+                state.nowTime = Double(state.totalPlayTime)
                 FirebaseAnalyticsConfig.sendEventLog(eventType: .next)
             case .stopReadying:
                 state.status = .ready
@@ -100,10 +108,10 @@ struct QuestionReducer: ReducerProtocol {
             guard state.nowTime > 0 else {
                 if state.status == .ready {
                     state.status = .play
-                    state.nowTime = Double(appConfigRepository.get().time)
+                    state.nowTime = Double(state.totalPlayTime)
                 } else {
                     state.question = questionRepository.nextQuestion(for: question)
-                    state.nowTime = Double(appConfigRepository.get().time)
+                    state.nowTime = Double(state.totalPlayTime)
                 }
                 return .none
             }
