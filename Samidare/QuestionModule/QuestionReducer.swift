@@ -19,9 +19,9 @@ struct QuestionReducer: ReducerProtocol {
             case .standBy, .done:
                 return 1.0
             case .ready, .stopReadying:
-                return CGFloat(nowTime) / CGFloat(readyCountDownTime)
+                return abs(CGFloat(nowTime) / CGFloat(readyCountDownTime))
             case .play, .stopPlaying:
-                return CGFloat(nowTime) / CGFloat(totalPlayTime)
+                return abs(CGFloat(nowTime) / CGFloat(totalPlayTime))
             }
         }
         var shouldShowQuestionCount: Bool {
@@ -40,7 +40,7 @@ struct QuestionReducer: ReducerProtocol {
         var nowTime: Double = 0 {
             didSet {
                 // 途中で回答秒数を変更したときに整合性が取れるようにnowTimeを更新する
-                guard status == .play else {
+                guard status == .play, nowTime != Double(totalPlayTime) else {
                     return
                 }
                 nowTime = nowTime <= Double(totalPlayTime) ? nowTime : Double(totalPlayTime)
