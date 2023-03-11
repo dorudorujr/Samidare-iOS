@@ -98,13 +98,13 @@ struct QuestionReducer: ReducerProtocol {
             .cancellable(id: TimerID.self, cancelInFlight: true)
             
         case .secondaryButtonTapped:
-            guard state.status == .ready || state.status == .play else {
+            if state.status == .ready || state.status == .play {
+                state.status = state.status == .play ? .stopPlaying : .stopReadying
+                FirebaseAnalyticsConfig.sendEventLog(eventType: .stop)
+            } else {
                 state.status = .standBy
-                return .cancel(id: TimerID.self)
             }
-            state.status = state.status == .play ? .stopPlaying : .stopReadying
-            FirebaseAnalyticsConfig.sendEventLog(eventType: .stop)
-            return .none
+            return .cancel(id: TimerID.self)
             
         case .timerTickedForPlaying:
             state.nowTime -= 0.1
