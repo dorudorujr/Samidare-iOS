@@ -52,6 +52,86 @@ class QuestionRepositoryProtocolMock: QuestionRepositoryProtocol {
         }
         
     }
+
+    private(set) var getQuestionsOfCallCount = 0
+    var getQuestionsOfHandler: ((String) -> ([Question]))?
+    func getQuestions(of group: String) -> [Question] {
+        getQuestionsOfCallCount += 1
+        if let getQuestionsOfHandler = getQuestionsOfHandler {
+            return getQuestionsOfHandler(group)
+        }
+        return [Question]()
+    }
+
+    private(set) var getIndexCallCount = 0
+    var getIndexHandler: ((Question) -> (Int?))?
+    func getIndex(of question: Question) -> Int? {
+        getIndexCallCount += 1
+        if let getIndexHandler = getIndexHandler {
+            return getIndexHandler(question)
+        }
+        return nil
+    }
+
+    private(set) var nextQuestionCallCount = 0
+    var nextQuestionHandler: ((Question) -> (Question?))?
+    func nextQuestion(for question: Question) -> Question? {
+        nextQuestionCallCount += 1
+        if let nextQuestionHandler = nextQuestionHandler {
+            return nextQuestionHandler(question)
+        }
+        return nil
+    }
+
+    private(set) var firstQuestionCallCount = 0
+    var firstQuestionHandler: ((String) -> (Question?))?
+    func firstQuestion(of group: String) -> Question? {
+        firstQuestionCallCount += 1
+        if let firstQuestionHandler = firstQuestionHandler {
+            return firstQuestionHandler(group)
+        }
+        return nil
+    }
+
+    private(set) var lastQuestionCallCount = 0
+    var lastQuestionHandler: ((String) -> (Question?))?
+    func lastQuestion(of group: String) -> Question? {
+        lastQuestionCallCount += 1
+        if let lastQuestionHandler = lastQuestionHandler {
+            return lastQuestionHandler(group)
+        }
+        return nil
+    }
+
+    private(set) var addQuestionCallCount = 0
+    var addQuestionHandler: ((Question) throws -> ())?
+    func add(_ question: Question) throws  {
+        addQuestionCallCount += 1
+        if let addQuestionHandler = addQuestionHandler {
+            try addQuestionHandler(question)
+        }
+        
+    }
+
+    private(set) var updateQuestionCallCount = 0
+    var updateQuestionHandler: ((Question) throws -> ())?
+    func update(_ question: Question) throws  {
+        updateQuestionCallCount += 1
+        if let updateQuestionHandler = updateQuestionHandler {
+            try updateQuestionHandler(question)
+        }
+        
+    }
+
+    private(set) var deleteQuestionCallCount = 0
+    var deleteQuestionHandler: ((Question) throws -> ())?
+    func delete(_ question: Question) throws  {
+        deleteQuestionCallCount += 1
+        if let deleteQuestionHandler = deleteQuestionHandler {
+            try deleteQuestionHandler(question)
+        }
+        
+    }
 }
 
 class AppConfigRepositoryProtocolMock: AppConfigRepositoryProtocol {
@@ -74,6 +154,26 @@ class AppConfigRepositoryProtocolMock: AppConfigRepositoryProtocol {
         updateCallCount += 1
         if let updateHandler = updateHandler {
             try updateHandler(appConfig)
+        }
+        
+    }
+
+    private(set) var getAppConfigCallCount = 0
+    var getAppConfigHandler: (() -> (AppConfig))?
+    func get() -> AppConfig {
+        getAppConfigCallCount += 1
+        if let getAppConfigHandler = getAppConfigHandler {
+            return getAppConfigHandler()
+        }
+        fatalError("getAppConfigHandler returns can't have a default value thus its handler must be set")
+    }
+
+    private(set) var updateAppConfigCallCount = 0
+    var updateAppConfigHandler: ((AppConfig) throws -> ())?
+    func update(_ appConfig: AppConfig) throws  {
+        updateAppConfigCallCount += 1
+        if let updateAppConfigHandler = updateAppConfigHandler {
+            try updateAppConfigHandler(appConfig)
         }
         
     }

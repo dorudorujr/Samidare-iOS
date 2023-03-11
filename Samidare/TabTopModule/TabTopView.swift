@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct TabTopView: View {
     @ObservedObject private var presenter: TabTopPresenter
     @Environment(\.scenePhase) private var scenePhase
 
-    private let questionView = QuestionView<QuestionRepositoryImpl, AppConfigRepositoryImpl>(presenter: .init(interactor: .init()))
+    private let questionView = QuestionView(
+        store: Store(
+            initialState: QuestionReducer.State(),
+            reducer: QuestionReducer()
+        )
+    )
     private let configView = ConfigView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
     
     init(presenter: TabTopPresenter) {
