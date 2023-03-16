@@ -40,6 +40,10 @@ jobs:
         run: plutil -convert xml1 ./output.json -o ./Samidare/Resource/Firebase/GoogleService-Info-Debug.plist
       - name: Remove json file
         run: rm ./output.json
+
+      # brewのアップデート
+      - name: brew update
+        run: brew update
       
       # Mintのインストール
       - name: Install Mint
