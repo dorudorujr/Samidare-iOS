@@ -6,66 +6,63 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
-    @ObservedObject private var presenter: QuestionAdditionPresenter<Repository>
-    
-    init(presenter: QuestionAdditionPresenter<Repository>) {
-        self.presenter = presenter
-    }
+struct QuestionAdditionView: View {
+    let store: StoreOf<QuestionAdditionReducer>
     
     // swiftlint:disable closure_body_length
     var body: some View {
-        ZStack {
-            TextFieldAlertView(text: $presenter.addQuestionBody,
-                               isShowingAlert: $presenter.isShowingAddAlert,
-                               placeholder: "",
-                               isSecureTextEntry: false,
-                               title: L10n.Question.Addition.Alert.title,
-                               message: L10n.Question.Addition.Alert.message,
-                               leftButtonTitle: L10n.Common.cancel,
-                               rightButtonTitle: L10n.Common.add,
-                               leftButtonAction: nil,
-                               rightButtonAction: { presenter.addQuestion() })
-            TextFieldAlertView(text: $presenter.updateQuestionBody,
-                               isShowingAlert: $presenter.isShowingUpdateAlert,
-                               placeholder: "",
-                               isSecureTextEntry: false,
-                               title: L10n.Question.Addition.Alert.title,
-                               message: L10n.Question.Addition.Alert.message,
-                               leftButtonTitle: L10n.Common.cancel,
-                               rightButtonTitle: L10n.Common.add,
-                               leftButtonAction: nil,
-                               rightButtonAction: { presenter.updateQuestion() })
-            List {
-                if let questions = self.presenter.questions {
-                    ForEach(questions) { question in
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            ZStack {
+                TextFieldAlertView(text: viewStore.binding(\.$addQuestionBody),
+                                   isShowingAlert: viewStore.binding(\.$isShowingAddAlert),
+                                   placeholder: "",
+                                   isSecureTextEntry: false,
+                                   title: L10n.Question.Addition.Alert.title,
+                                   message: L10n.Question.Addition.Alert.message,
+                                   leftButtonTitle: L10n.Common.cancel,
+                                   rightButtonTitle: L10n.Common.add,
+                                   leftButtonAction: nil,
+                                   rightButtonAction: { viewStore.send(.addQuestion) })
+                TextFieldAlertView(text: viewStore.binding(\.$updateQuestionBody),
+                                   isShowingAlert: viewStore.binding(\.$isShowingUpdateAlert),
+                                   placeholder: "",
+                                   isSecureTextEntry: false,
+                                   title: L10n.Question.Addition.Alert.title,
+                                   message: L10n.Question.Addition.Alert.message,
+                                   leftButtonTitle: L10n.Common.cancel,
+                                   rightButtonTitle: L10n.Common.add,
+                                   leftButtonAction: nil,
+                                   rightButtonAction: { viewStore.send(.update) })
+                List {
+                    ForEach(viewStore.questions) { question in
                         QuestionListCardView(questionBody: question.body)
                             .onTapGesture {
-                                presenter.didTapList(question: question)
+                                viewStore.send(.didTapList(question: question))
                             }
                     }
                     .onDelete(perform: { indexSet in
-                        presenter.deleteQuestion(on: indexSet)
+                        viewStore.send(.delete(index: indexSet))
                     })
                 }
-            }
-            .navigationTitle(presenter.group.name)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { presenter.didTapNavBarButton() }, label: {
-                        Image(systemName: "plus")
-                            .renderingMode(.template)
-                            .foregroundColor(.blue)
-                    })
+                .navigationTitle(viewStore.questionGroup.name)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
+                            Image(systemName: "plus")
+                                .renderingMode(.template)
+                                .foregroundColor(.blue)
+                        })
+                    }
                 }
-            }
-            .alert(isPresented: $presenter.isShowingErrorAlert) {
-                Alert(title: Text(L10n.Error.title), message: Text(L10n.Error.message))
-            }
-            .onAppear {
-                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionAdditionView.self)")
+                .alert(self.store.scope(state: \.errorAlert),
+                       dismiss: .alertDismissed)
+                .onAppear {
+                    FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionAdditionView.self)")
+                    viewStore.send(.onAppear)
+                }
             }
         }
     }
@@ -73,6 +70,6 @@ struct QuestionAdditionView<Repository: QuestionRepositoryProtocol>: View {
 
 struct QuestionAdditionView_Previews: PreviewProvider {
     static var previews: some View {
-        QuestionAdditionView<QuestionRepositoryImpl>(presenter: .init(interactor: .init(), group: .init(name: "デフォルト")))
+        QuestionAdditionView(store: .init(initialState: QuestionAdditionReducer.State(questionGroup: .init(name: "デフォルト")), reducer: QuestionAdditionReducer()))
     }
 }
