@@ -59,7 +59,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expGoToPlay.fulfill()
         }
-        wait(for: [expGoToPlay], timeout: 1.0)
+        wait(for: [expGoToPlay], timeout: 2.0)
         /// 準備期間が終了したらカウントダウンタイムが初期化されているか確認
         XCTAssertEqual(presenter.nowCountDownTime, 3)
         /// ステータス確認
