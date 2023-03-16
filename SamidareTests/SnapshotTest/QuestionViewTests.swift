@@ -65,7 +65,7 @@ class QuestionViewTests: XCTestCase {
     }
     
     func testDone() {
-        let state = QuestionReducer.State(status: .done)
+        let state = QuestionReducer.State(questionCountText: "1/1",question: question, status: .done, nowTime: 7.0, totalPlayTime: 10)
         let questionView = QuestionView(store: .init(initialState: state,
                                                      reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
