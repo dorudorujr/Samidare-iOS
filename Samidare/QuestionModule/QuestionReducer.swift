@@ -37,15 +37,7 @@ struct QuestionReducer: ReducerProtocol {
         var nowCountDownTime: String {
             Int(nowTime).description
         }
-        var nowTime: Double = 0 {
-            didSet {
-                // 途中で回答秒数を変更したときに整合性が取れるようにnowTimeを更新する
-                guard status == .play, nowTime != Double(totalPlayTime) else {
-                    return
-                }
-                nowTime = nowTime <= Double(totalPlayTime) ? nowTime : Double(totalPlayTime)
-            }
-        }
+        var nowTime: Double = 0
         var totalPlayTime: Int = 1
     }
     

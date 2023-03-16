@@ -11,129 +11,65 @@ import SwiftUI
 @testable import Samidare
 
 class QuestionViewTests: XCTestCase {
-    private var appConfigRepositoryMock: AppConfigRepositoryProtocolMock!
-    private var questionRepositoryMock: QuestionRepositoryProtocolMock!
-    private var presenter: QuestionPresenter<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>!
+    private let question = Question(body: "好きな色は", group: .init(name: "default"))
+    private let readyCountDownTime: Double = 3.0
 
     override func setUp() {
         super.setUp()
         isRecording = false
-
-        MockTimer.clearData()
-        appConfigRepositoryMock = .init()
-        questionRepositoryMock = .init()
-        AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroupName: "questionGroup",
-                  time: 1)
-        }
-        let questions: [Question] = [
-            .init(body: "好きな色は", group: .init(name: "default"))
-        ]
-        QuestionRepositoryProtocolMock.getQuestionsHandler = { _ in
-            questions
-        }
-        setPresenter()
     }
 
     func testStandBy() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
+        let state = QuestionReducer.State(status: .standBy)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
 
     func testReady() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        presenter.viewWillApper()
-        presenter.primaryButtonAction()
+        let state = QuestionReducer.State(question: question, status: .ready, nowTime: readyCountDownTime)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testStopReadying() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        presenter.viewWillApper()
-        presenter.primaryButtonAction()
-        presenter.secondaryButtonAction()
+        let state = QuestionReducer.State(question: question, status: .stopReadying, nowTime: readyCountDownTime)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testPlay() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        presenter.viewWillApper()
-        presenter.primaryButtonAction()
-        let exp = expectation(description: "ゲーム中")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        let state = QuestionReducer.State(questionCountText: "1/1",question: question, status: .play, nowTime: 7.0, totalPlayTime: 10)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testStopPlaying() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        presenter.viewWillApper()
-        presenter.primaryButtonAction()
-        let exp = expectation(description: "ゲーム中")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
-        presenter.secondaryButtonAction()
+        let state = QuestionReducer.State(questionCountText: "1/1",question: question, status: .stopPlaying, nowTime: 7.0, totalPlayTime: 10)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
     }
     
     func testDone() {
-        let questionView = QuestionView<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock>(presenter: presenter)
-        presenter.viewWillApper()
-        presenter.primaryButtonAction()
-        let exp = expectation(description: "完了")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            MockTimer.timer?.fire()
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1.0)
+        let state = QuestionReducer.State(questionCountText: "1/1",question: question, status: .done, nowTime: 7.0, totalPlayTime: 10)
+        let questionView = QuestionView(store: .init(initialState: state,
+                                                     reducer: QuestionReducer()))
         let vc = UIHostingController(rootView: questionView)
         assertSnapshot(matching: vc,
                        as: .image(on: .iPhone13ProMax, precision: 0.996))
-    }
-
-    // MARK: - Set Data
-
-    private func makeInteractory() -> QuestionInteractor<QuestionRepositoryProtocolMock, AppConfigRepositoryProtocolMock> {
-        .init()
-    }
-
-    private func setPresenter() {
-        presenter = .init(interactor: makeInteractory(), timerProvider: MockTimer.self)
     }
 }
