@@ -10,9 +10,20 @@ import RealmSwift
 @testable import Samidare
 
 class QuestionRepositoryTests: XCTestCase {
+    let questionRepositoryImpl = QuestionRepositoryImpl()
+    
     override func setUp() {
         super.setUp()
         Realm.Configuration.defaultConfiguration.inMemoryIdentifier = self.name
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        let realm = try! Realm()
+        
+        try! realm.write {
+            realm.deleteAll()
+        }
     }
     
     func testAddAndGetQuestions() {
@@ -30,6 +41,70 @@ class QuestionRepositoryTests: XCTestCase {
         XCTAssertEqual(defaultQuestions.count, 1)
         XCTAssertEqual(defaultQuestions.last!.body, "テスト中だよ")
         XCTAssertEqual(defaultQuestions.last!.group.name, "デフォルト")
+    }
+    
+    func testGetIndex() {
+        var defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
+        XCTAssertTrue(defaultQuestions.isEmpty)
+        let group = QuestionGroup(name: "デフォルト")
+        try! QuestionGroupRepositoryImpl.add(group)
+        let firstQuestion = Question(body: "最初の質問", group: group)
+        let nextQuestion = Question(body: "2番目の質問", group: group)
+        try! questionRepositoryImpl.add(firstQuestion)
+        try! questionRepositoryImpl.add(nextQuestion)
+        
+        XCTAssertEqual(questionRepositoryImpl.getIndex(of: firstQuestion)!, 0)
+        XCTAssertEqual(questionRepositoryImpl.getIndex(of: nextQuestion)!, 1)
+    }
+    
+    func testNextQuestion() {
+        var defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
+        XCTAssertTrue(defaultQuestions.isEmpty)
+        let group = QuestionGroup(name: "デフォルト")
+        try! QuestionGroupRepositoryImpl.add(group)
+        let firstQuestion = Question(body: "最初の質問", group: group)
+        let nextQuestion = Question(body: "2番目の質問", group: group)
+        let lastQuestion = Question(body: "最後の質問", group: group)
+        let otherQuestion = Question(body: "登録されていない質問", group: group)
+        try! questionRepositoryImpl.add(firstQuestion)
+        try! questionRepositoryImpl.add(nextQuestion)
+        try! questionRepositoryImpl.add(lastQuestion)
+        
+        XCTAssertEqual(questionRepositoryImpl.nextQuestion(for: firstQuestion), nextQuestion)
+        XCTAssertEqual(questionRepositoryImpl.nextQuestion(for: nextQuestion), lastQuestion)
+        XCTAssertEqual(questionRepositoryImpl.nextQuestion(for: otherQuestion), firstQuestion)
+    }
+    
+    func testFirstQuestion() {
+        var defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
+        XCTAssertTrue(defaultQuestions.isEmpty)
+        let group = QuestionGroup(name: "デフォルト")
+        try! QuestionGroupRepositoryImpl.add(group)
+        let firstQuestion = Question(body: "最初の質問", group: group)
+        let nextQuestion = Question(body: "2番目の質問", group: group)
+        let lastQuestion = Question(body: "最後の質問", group: group)
+        
+        try! questionRepositoryImpl.add(firstQuestion)
+        try! questionRepositoryImpl.add(nextQuestion)
+        try! questionRepositoryImpl.add(lastQuestion)
+        
+        XCTAssertEqual(questionRepositoryImpl.firstQuestion(of: group.name), questionRepositoryImpl.getQuestions(of: group.name).first)
+    }
+    
+    func testLastQuestion() {
+        var defaultQuestions = QuestionRepositoryImpl.getQuestions(of: "デフォルト")
+        XCTAssertTrue(defaultQuestions.isEmpty)
+        let group = QuestionGroup(name: "デフォルト")
+        try! QuestionGroupRepositoryImpl.add(group)
+        let firstQuestion = Question(body: "最初の質問", group: group)
+        let nextQuestion = Question(body: "2番目の質問", group: group)
+        let lastQuestion = Question(body: "最後の質問", group: group)
+        
+        try! questionRepositoryImpl.add(firstQuestion)
+        try! questionRepositoryImpl.add(nextQuestion)
+        try! questionRepositoryImpl.add(lastQuestion)
+        
+        XCTAssertEqual(questionRepositoryImpl.lastQuestion(of: group.name), questionRepositoryImpl.getQuestions(of: group.name).last)
     }
     
     func testUpdate() {
