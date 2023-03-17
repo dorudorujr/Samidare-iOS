@@ -83,7 +83,7 @@ class GroupAdditionPresenterTests: XCTestCase {
     func testQuestionAdditionLinkBuilder() async {
         let router = await GroupAdditionRouter()
         let presenter = await GroupAdditionPresenter<QuestionGroupRepositoryProtocolMock>(interactor: .init(), router: router)
-        let someView = await presenter.questionAdditionLinkBuilder(group: .init(name: "デフォルト")) {} as? NavigationLink<EmptyView, QuestionAdditionView<QuestionRepositoryImpl>>
+        let someView = await presenter.questionAdditionLinkBuilder(group: .init(name: "デフォルト")) {} as? NavigationLink<EmptyView, QuestionAdditionView>
         XCTAssertNotNil(someView)
     }
 }
