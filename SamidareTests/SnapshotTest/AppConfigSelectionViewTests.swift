@@ -14,21 +14,13 @@ class AppConfigSelectionViewTests: XCTestCase {
     override func setUp() {
         super.setUp()
         isRecording = false
-        AppConfigRepositoryProtocolMock.getHandler = {
-            .init(questionGroupName: "デフォルト",
-                  time: 10)
-        }
-        QuestionGroupRepositoryProtocolMock.getHandler = {
-            [
-                .init(name: "デフォルト")
-            ]
-        }
     }
     
     @MainActor
     func testQuestionGroupType() {
-        let presenter = AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .questionGroup)
-        let view = AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(presenter: presenter, description: AppConfigSelectionType.questionGroup.description)
+        let view = AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: .questionGroup),
+                                                       reducer: AppConfigSelectionReducer()),
+                                          description: AppConfigSelectionType.questionGroup.description)
         let vc = UIHostingController(rootView: view)
         // 謎にリストが表示されないので一旦コメントアウト(ForEachが原因っぽい....)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
@@ -37,8 +29,9 @@ class AppConfigSelectionViewTests: XCTestCase {
     
     @MainActor
     func testGameTimeType() {
-        let presenter = AppConfigSelectionPresenter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(interactor: .init(), type: .gameTime)
-        let view = AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>(presenter: presenter, description: AppConfigSelectionType.gameTime.description)
+        let view = AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: .gameTime),
+                                                       reducer: AppConfigSelectionReducer()),
+                                          description: AppConfigSelectionType.questionGroup.description)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
         assertSnapshot(matching: vc, as: .image(on: .iPhone13ProMax, precision: 0.999))

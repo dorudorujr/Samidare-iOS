@@ -43,7 +43,7 @@ class ConfigPresenterTests: XCTestCase {
     func testAppConfigSelectionLinkBuilder() async {
         let router: ConfigRouter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock> = await .init()
         presenter = await .init(interactor: .init(), router: router)
-        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as? NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock>, _AppearanceActionModifier>>
+        let someView = await presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {} as? NavigationLink<EmptyView, ModifiedContent<AppConfigSelectionView, _AppearanceActionModifier>>
         XCTAssertNotNil(someView)
     }
     
