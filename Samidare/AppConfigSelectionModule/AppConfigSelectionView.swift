@@ -6,59 +6,61 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct AppConfigSelectionView<AppConfigRepository: AppConfigRepositoryProtocol, GroupRepository: QuestionGroupRepositoryProtocol>: View {
-    @ObservedObject private var presenter: AppConfigSelectionPresenter<AppConfigRepository, GroupRepository>
+struct AppConfigSelectionView: View {
+    let store: StoreOf<AppConfigSelectionReducer>
     private let description: String
     
-    init(presenter: AppConfigSelectionPresenter<AppConfigRepository, GroupRepository>,
-         description: String) {
-        self.presenter = presenter
+    init(store: StoreOf<AppConfigSelectionReducer>, description: String) {
+        self.store = store
         self.description = description
     }
     
     var body: some View {
-        VStack {
-            List {
-                Section {
-                    if let questionGroups = self.presenter.questionGroups {
-                        ForEach(questionGroups) { group in
-                            ListRow(title: group.name, isSelected: presenter.isSelectedQuestionGroup(questionGroup: group))
-                                .onTapGesture {
-                                    presenter.update(questionGroup: group)
-                                }
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            VStack {
+                List {
+                    Section {
+                        if let questionGroups = viewStore.state.questionGroups {
+                            ForEach(questionGroups) { group in
+                                ListRow(title: group.name, isSelected: viewStore.state.selectQuestionGroupName == group.name)
+                                    .onTapGesture {
+                                        viewStore.send(.updateQuestionGroup(questionGroup: group))
+                                    }
+                            }
                         }
-                    }
-                    if let appConfigGameTime = presenter.appConfigGameTime {
-                        ForEach(GameTime.allCases) { gameTime in
-                            ListRow(title: gameTime.rawValue.description, isSelected: appConfigGameTime == gameTime.rawValue)
-                                .onTapGesture {
-                                    presenter.update(gameTime: gameTime.rawValue)
-                                }
+                        if let appConfigGameTime = viewStore.state.appConfigGameTime {
+                            ForEach(GameTime.allCases) { gameTime in
+                                ListRow(title: gameTime.rawValue.description, isSelected: appConfigGameTime == gameTime.rawValue)
+                                    .onTapGesture {
+                                        viewStore.send(.updateGameTime(gameTime: gameTime.rawValue))
+                                    }
+                            }
                         }
+                    } header: {
+                        Text(description)
+                            .foregroundColor(.textBlack)
+                            .font(.system(size: 15))
+                            .padding(.bottom, 10)
                     }
-                } header: {
-                    Text(description)
-                        .foregroundColor(.textBlack)
-                        .font(.system(size: 15))
-                        .padding(.bottom, 10)
+                }
+                .onAppear {
+                    viewStore.send(.onAppear)
                 }
             }
-            .onAppear {
-                presenter.fetchQuestionGroups()
-                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(AppConfigSelectionView.self)")
-            }
-        }
-        .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
-        .navigationBarTitleDisplayMode(.inline)
-        .alert(isPresented: $presenter.isShowingErrorAlert) {
-            Alert(title: Text(L10n.Error.title), message: Text(L10n.Error.message))
+            .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .alert(self.store.scope(state: \.errorAlert),
+                   dismiss: .alertDismissed)
         }
     }
 }
 
 struct AppConfigSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        AppConfigSelectionView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), type: .questionGroup), description: "AppConfigSelectionView")
+        AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: .questionGroup),
+                                            reducer: AppConfigSelectionReducer()),
+                               description: "AppConfigSelectionView")
     }
 }
