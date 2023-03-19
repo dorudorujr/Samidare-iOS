@@ -8,6 +8,8 @@ final class ConfigRouter<AppConfigRepository: AppConfigRepositoryProtocol, Quest
     
     func makeAppConfigSelectionView(for type: AppConfigSelectionType,
                                     onDisappeare: @escaping () -> Void) -> some View {
-        AppConfigSelectionView<AppConfigRepository, QuestionGroupRepository>(presenter: .init(interactor: .init(), type: type), description: type.description).onDisappear(perform: onDisappeare)
+        AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: type),
+                                            reducer: AppConfigSelectionReducer()),
+                               description: type.description).onDisappear(perform: onDisappeare)
     }
 }
