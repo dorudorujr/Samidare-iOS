@@ -18,6 +18,11 @@ extension QuestionRepositoryImpl: DependencyKey {
     static let testValue: QuestionRepositoryProtocol = unimplemented("Do not call QuestionRepositoryImpl in test!!")
 }
 
+extension QuestionGroupRepositoryImpl: DependencyKey {
+    static let liveValue: QuestionGroupRepositoryProtocol = QuestionGroupRepositoryImpl()
+    static let testValue: QuestionGroupRepositoryProtocol = unimplemented("Do not call QuestionRepositoryImpl in test!!")
+}
+
 extension DependencyValues {
     var appConfigRepository: AppConfigRepositoryProtocol {
         get { self[AppConfigRepositoryImpl.self] }
@@ -26,5 +31,9 @@ extension DependencyValues {
     var questionRepository: QuestionRepositoryProtocol {
         get { self[QuestionRepositoryImpl.self] }
         set { self[QuestionRepositoryImpl.self] = newValue }
+    }
+    var questionGroupRepository: QuestionGroupRepositoryProtocol {
+        get { self[QuestionGroupRepositoryImpl.self] }
+        set { self[QuestionGroupRepositoryImpl.self] = newValue }
     }
 }
