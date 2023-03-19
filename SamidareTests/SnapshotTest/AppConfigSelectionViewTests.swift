@@ -7,19 +7,40 @@
 
 import XCTest
 import SnapshotTesting
+import ComposableArchitecture
 @testable import Samidare
 import SwiftUI
 
 class AppConfigSelectionViewTests: XCTestCase {
+    private let appConfigRepositoryMock = AppConfigRepositoryProtocolMock()
+    private let questionGroupRepositoryMock = QuestionGroupRepositoryProtocolMock()
+    
+    private let selectGroup = QuestionGroup(name: "デフォルト")
+    
     override func setUp() {
         super.setUp()
-        isRecording = false
+        isRecording = true
+        appConfigRepositoryMock.getAppConfigHandler = {
+            .init(questionGroupName: self.selectGroup.name, time: 10)
+        }
+        questionGroupRepositoryMock.getQuestionGroupHandler = {
+            [
+                self.selectGroup
+            ]
+        }
+        
     }
     
     @MainActor
     func testQuestionGroupType() {
-        let view = AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: .questionGroup),
-                                                       reducer: AppConfigSelectionReducer()),
+        let store = withDependencies {
+            $0.appConfigRepository = appConfigRepositoryMock
+            $0.questionGroupRepository = questionGroupRepositoryMock
+        } operation: {
+            StoreOf<AppConfigSelectionReducer>(initialState: AppConfigSelectionReducer.State(type: .questionGroup),
+                    reducer: AppConfigSelectionReducer())
+        }
+        let view = AppConfigSelectionView(store: store,
                                           description: AppConfigSelectionType.questionGroup.description)
         let vc = UIHostingController(rootView: view)
         // 謎にリストが表示されないので一旦コメントアウト(ForEachが原因っぽい....)
@@ -29,8 +50,14 @@ class AppConfigSelectionViewTests: XCTestCase {
     
     @MainActor
     func testGameTimeType() {
-        let view = AppConfigSelectionView(store: .init(initialState: AppConfigSelectionReducer.State(type: .gameTime),
-                                                       reducer: AppConfigSelectionReducer()),
+        let store = withDependencies {
+            $0.appConfigRepository = appConfigRepositoryMock
+            $0.questionGroupRepository = questionGroupRepositoryMock
+        } operation: {
+            StoreOf<AppConfigSelectionReducer>(initialState: AppConfigSelectionReducer.State(type: .gameTime),
+                    reducer: AppConfigSelectionReducer())
+        }
+        let view = AppConfigSelectionView(store: store,
                                           description: AppConfigSelectionType.questionGroup.description)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
