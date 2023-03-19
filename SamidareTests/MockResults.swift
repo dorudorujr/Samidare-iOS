@@ -212,5 +212,35 @@ class QuestionGroupRepositoryProtocolMock: QuestionGroupRepositoryProtocol {
         }
         
     }
+
+    private(set) var getQuestionGroupCallCount = 0
+    var getQuestionGroupHandler: (() -> ([QuestionGroup]))?
+    func get() -> [QuestionGroup] {
+        getQuestionGroupCallCount += 1
+        if let getQuestionGroupHandler = getQuestionGroupHandler {
+            return getQuestionGroupHandler()
+        }
+        return [QuestionGroup]()
+    }
+
+    private(set) var addQuestionGroupCallCount = 0
+    var addQuestionGroupHandler: ((QuestionGroup) throws -> ())?
+    func add(_ questionGroup: QuestionGroup) throws  {
+        addQuestionGroupCallCount += 1
+        if let addQuestionGroupHandler = addQuestionGroupHandler {
+            try addQuestionGroupHandler(questionGroup)
+        }
+        
+    }
+
+    private(set) var deleteQuestionGroupCallCount = 0
+    var deleteQuestionGroupHandler: ((QuestionGroup) throws -> ())?
+    func delete(_ questionGroup: QuestionGroup) throws  {
+        deleteQuestionGroupCallCount += 1
+        if let deleteQuestionGroupHandler = deleteQuestionGroupHandler {
+            try deleteQuestionGroupHandler(questionGroup)
+        }
+        
+    }
 }
 
