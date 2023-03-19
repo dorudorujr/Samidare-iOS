@@ -13,6 +13,7 @@ struct AppConfigSelectionReducer: ReducerProtocol {
         let type: AppConfigSelectionType
         var questionGroups: [QuestionGroup]?
         var appConfigGameTime: Int?
+        var selectQuestionGroupName = ""
         var errorAlert: AlertState<Action>?
     }
     
@@ -20,6 +21,7 @@ struct AppConfigSelectionReducer: ReducerProtocol {
         case onAppear
         case updateQuestionGroup(questionGroup: QuestionGroup)
         case updateGameTime(gameTime: Int)
+        case alertDismissed
     }
     
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
@@ -27,9 +29,11 @@ struct AppConfigSelectionReducer: ReducerProtocol {
         case .onAppear:
             if state.type == .questionGroup {
                 state.questionGroups = questionGroupRepository.get()
+                state.selectQuestionGroupName = appConfigRepository.get().questionGroupName
             } else {
                 state.appConfigGameTime = appConfigRepository.get().time
             }
+            FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(AppConfigSelectionView.self)")
             return .none
         case let .updateQuestionGroup(questionGroup: questionGroup):
             FirebaseAnalyticsConfig.sendEventLog(eventType: .changeQuestionGroup)
@@ -38,6 +42,8 @@ struct AppConfigSelectionReducer: ReducerProtocol {
                 let currentAppConfig = appConfigRepository.get()
                 let updateAppConfig = AppConfig(questionGroupName: questionGroup.name, time: currentAppConfig.time)
                 try appConfigRepository.update(updateAppConfig)
+                state.questionGroups = questionGroupRepository.get()
+                state.selectQuestionGroupName = appConfigRepository.get().questionGroupName
             } catch {
                 state.errorAlert = .init {
                     TextState(L10n.Error.title)
@@ -53,6 +59,7 @@ struct AppConfigSelectionReducer: ReducerProtocol {
                 let currentAppConfig = appConfigRepository.get()
                 let updateAppConfig = AppConfig(questionGroupName: currentAppConfig.questionGroupName, time: gameTime)
                 try appConfigRepository.update(updateAppConfig)
+                state.appConfigGameTime = appConfigRepository.get().time
             } catch {
                 Log.fault(error, className: String(describing: Swift.type(of: self)), functionName: #function)
                 state.errorAlert = .init {
@@ -61,6 +68,9 @@ struct AppConfigSelectionReducer: ReducerProtocol {
                     TextState(L10n.Error.message)
                 }
             }
+            return .none
+        case .alertDismissed:
+            state.errorAlert = nil
             return .none
         }
     }
