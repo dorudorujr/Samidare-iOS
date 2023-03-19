@@ -19,7 +19,7 @@ class AppConfigSelectionViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        isRecording = true
+        isRecording = false
         appConfigRepositoryMock.getAppConfigHandler = {
             .init(questionGroupName: self.selectGroup.name, time: 10)
         }
@@ -50,15 +50,16 @@ class AppConfigSelectionViewTests: XCTestCase {
     
     @MainActor
     func testGameTimeType() {
+        let state = AppConfigSelectionReducer.State(type: .gameTime, appConfigGameTime: 10)
         let store = withDependencies {
             $0.appConfigRepository = appConfigRepositoryMock
             $0.questionGroupRepository = questionGroupRepositoryMock
         } operation: {
-            StoreOf<AppConfigSelectionReducer>(initialState: AppConfigSelectionReducer.State(type: .gameTime),
+            StoreOf<AppConfigSelectionReducer>(initialState: state,
                     reducer: AppConfigSelectionReducer())
         }
         let view = AppConfigSelectionView(store: store,
-                                          description: AppConfigSelectionType.questionGroup.description)
+                                          description: AppConfigSelectionType.gameTime.description)
         let vc = UIHostingController(rootView: view)
         // M1とCIとでSnapshotの画像に差異が発生するので閾値設定
         assertSnapshot(matching: vc, as: .image(on: .iPhone13ProMax, precision: 0.999))
