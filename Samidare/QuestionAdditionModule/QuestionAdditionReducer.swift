@@ -30,7 +30,6 @@ struct QuestionAdditionReducer: ReducerProtocol {
         case alertDismissed
         case didTapNavBarButton
         case didTapListRow
-        case onDisappear
     }
     
     var body: some ReducerProtocol<State, Action> {
@@ -38,7 +37,6 @@ struct QuestionAdditionReducer: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(GroupAdditionView.self)")
                 state.questions = questionRepository.getQuestions(of: state.questionGroup.name)
                 return .none
             case .addQuestion:
@@ -101,8 +99,6 @@ struct QuestionAdditionReducer: ReducerProtocol {
                 state.isShowingUpdateAlert = true
                 return .none
             case .binding:
-                return .none
-            case .onDisappear:
                 return .none
             }
         }
