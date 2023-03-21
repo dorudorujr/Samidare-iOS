@@ -30,6 +30,7 @@ struct QuestionAdditionReducer: ReducerProtocol {
         case alertDismissed
         case didTapNavBarButton
         case didTapListRow
+        case dismissed
     }
     
     var body: some ReducerProtocol<State, Action> {
@@ -99,6 +100,8 @@ struct QuestionAdditionReducer: ReducerProtocol {
                 state.isShowingUpdateAlert = true
                 return .none
             case .binding:
+                return .none
+            case .dismissed:
                 return .none
             }
         }
