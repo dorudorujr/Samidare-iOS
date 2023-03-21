@@ -38,6 +38,7 @@ struct QuestionAdditionReducer: ReducerProtocol {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(GroupAdditionView.self)")
                 state.questions = questionRepository.getQuestions(of: state.questionGroup.name)
                 return .none
             case .addQuestion:
