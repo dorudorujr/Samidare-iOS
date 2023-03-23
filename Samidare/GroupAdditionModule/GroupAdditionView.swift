@@ -39,6 +39,7 @@ struct GroupAdditionView: View {
                     Section {
                         if let groups = viewStore.groups {
                             ForEach(groups) { group in
+                                // TODO: TCAのブランチにbeta版があるのでmainにマージされたら対応する
                                 NavigationLink(
                                     destination: IfLetStore(self.store.scope(state: \.questionAddition, action: GroupAdditionReducer.Action.questionAddition)) {
                                     QuestionAdditionView(store: $0)
