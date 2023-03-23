@@ -36,7 +36,7 @@ class ConfigPresenterTests: XCTestCase {
     func testGroupAdditionLinkBuilder() async {
         let router: ConfigRouter<AppConfigRepositoryProtocolMock, QuestionGroupRepositoryProtocolMock> = await .init()
         presenter = await .init(interactor: .init(), router: router)
-        let someView = await presenter.groupAdditionLinkBuilder {} as? NavigationLink<EmptyView, GroupAdditionView<QuestionGroupRepositoryImpl>>
+        let someView = await presenter.groupAdditionLinkBuilder {} as? NavigationLink<EmptyView, GroupAdditionView>
         XCTAssertNotNil(someView)
     }
     

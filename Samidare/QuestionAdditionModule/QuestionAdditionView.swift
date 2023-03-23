@@ -60,11 +60,7 @@ struct QuestionAdditionView: View {
                 .alert(self.store.scope(state: \.errorAlert),
                        dismiss: .alertDismissed)
                 .onAppear {
-                    FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(QuestionAdditionView.self)")
                     viewStore.send(.onAppear)
-                }
-                .onDisappear {
-                    viewStore.send(.onDisappear)
                 }
             }
         }

@@ -6,81 +6,89 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
-    @ObservedObject private var presenter: GroupAdditionPresenter<Repository>
-    
-    init(presenter: GroupAdditionPresenter<Repository>) {
-        self.presenter = presenter
-    }
+struct GroupAdditionView: View {
+    let store: StoreOf<GroupAdditionReducer>
     
     // swiftlint:disable closure_body_length
     var body: some View {
-        ZStack {
-            TextFieldAlertView(text: $presenter.addAlertText,
-                               isShowingAlert: $presenter.isShowingAddAlert,
-                               placeholder: "",
-                               isSecureTextEntry: false,
-                               title: L10n.Group.Addition.Alert.title,
-                               message: L10n.Group.Addition.Alert.message,
-                               leftButtonTitle: L10n.Common.cancel,
-                               rightButtonTitle: L10n.Common.ok,
-                               leftButtonAction: nil,
-                               rightButtonAction: { presenter.addQuestionGroup() })
-            TextFieldAlertView(text: $presenter.editAlertText,
-                               isShowingAlert: $presenter.isShowingEditAlert,
-                               placeholder: "",
-                               isSecureTextEntry: false,
-                               title: L10n.Group.Addition.Update.Alert.title,
-                               message: L10n.Group.Addition.Update.Alert.message,
-                               leftButtonTitle: L10n.Common.cancel,
-                               rightButtonTitle: L10n.Common.ok,
-                               leftButtonAction: nil,
-                               rightButtonAction: { presenter.editQuestionGroupName() })
-            List {
-                Section {
-                    if let groups = self.presenter.groups {
-                        ForEach(groups) { group in
-                            presenter.questionAdditionLinkBuilder(group: group) {
-                                Text(group.name)
-                                    .font(.system(size: 17))
-                                    .foregroundColor(Color.textBlack)
-                            }
-                            .swipeActions(edge: .leading, allowsFullSwipe: false) {
-                                Button {
-                                    presenter.didTapEditSwipeAction(editQuestionGroup: group)
-                                } label: {
-                                    Text(L10n.Common.edit)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            ZStack {
+                TextFieldAlertView(text: viewStore.binding(\.$addGroupBody),
+                                   isShowingAlert: viewStore.binding(\.$isShowingAddAlert),
+                                   placeholder: "",
+                                   isSecureTextEntry: false,
+                                   title: L10n.Group.Addition.Alert.title,
+                                   message: L10n.Group.Addition.Alert.message,
+                                   leftButtonTitle: L10n.Common.cancel,
+                                   rightButtonTitle: L10n.Common.ok,
+                                   leftButtonAction: nil,
+                                   rightButtonAction: { viewStore.send(.addQuestionGroup) })
+                TextFieldAlertView(text: viewStore.binding(\.$updateGroupBody),
+                                   isShowingAlert: viewStore.binding(\.$isShowingUpdateAlert),
+                                   placeholder: "",
+                                   isSecureTextEntry: false,
+                                   title: L10n.Group.Addition.Update.Alert.title,
+                                   message: L10n.Group.Addition.Update.Alert.message,
+                                   leftButtonTitle: L10n.Common.cancel,
+                                   rightButtonTitle: L10n.Common.ok,
+                                   leftButtonAction: nil,
+                                   rightButtonAction: { viewStore.send(.update) })
+                List {
+                    Section {
+                        if let groups = viewStore.groups {
+                            ForEach(groups) { group in
+                                // TODO: TCAのブランチにbeta版があるのでmainにマージされたら対応する
+                                NavigationLink(
+                                    destination: IfLetStore(self.store.scope(state: \.questionAddition, action: GroupAdditionReducer.Action.questionAddition)) {
+                                    QuestionAdditionView(store: $0)
+                                    },
+                                    isActive: viewStore.binding(
+                                        get: \.isQuestionAdditionActive,
+                                        send: { $0 ? .didTapRow(group) : .questionAdditionDismissed }
+                                    )
+                                ) {
+                                    Text(group.name)
+                                        .font(.system(size: 17))
+                                        .foregroundColor(Color.textBlack)
                                 }
-                                .tint(.yellow)
-                            }
-                            .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                Button(role: .destructive) {
-                                    presenter.delete(group)
-                                } label: {
-                                    Text(L10n.Common.delete)
+                                .swipeActions(edge: .leading, allowsFullSwipe: false) {
+                                    Button {
+                                        viewStore.send(.didTapEditSwipeAction(group))
+                                    } label: {
+                                        Text(L10n.Common.edit)
+                                    }
+                                    .tint(.yellow)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    Button(role: .destructive) {
+                                        viewStore.send(.delete(group))
+                                    } label: {
+                                        Text(L10n.Common.delete)
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-            .navigationTitle(L10n.Group.Addition.title)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: { presenter.didTapNavBarButton() }, label: {
-                        Image(systemName: "plus")
-                            .renderingMode(.template)
-                            .foregroundColor(.blue)
-                    })
+                .navigationTitle(L10n.Group.Addition.title)
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
+                            Image(systemName: "plus")
+                                .renderingMode(.template)
+                                .foregroundColor(.blue)
+                        })
+                    }
                 }
-            }
-            .alert(isPresented: $presenter.isShowingErrorAlert) {
-                Alert(title: Text(presenter.errorType.title), message: Text(presenter.errorType.message))
-            }
-            .onAppear {
-                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(GroupAdditionView.self)")
+                .alert(self.store.scope(state: \.errorAlert),
+                       dismiss: .alertDismissed
+                )
+                .onAppear {
+                    viewStore.send(.onAppear)
+                }
             }
         }
     }
@@ -88,6 +96,7 @@ struct GroupAdditionView<Repository: QuestionGroupRepositoryProtocol>: View {
 
 struct GroupAdditionView_Previews: PreviewProvider {
     static var previews: some View {
-        GroupAdditionView<QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+        GroupAdditionView(store: .init(initialState: GroupAdditionReducer.State(),
+                                       reducer: GroupAdditionReducer()))
     }
 }

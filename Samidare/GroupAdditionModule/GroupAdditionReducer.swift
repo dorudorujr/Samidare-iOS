@@ -20,6 +20,9 @@ struct GroupAdditionReducer: ReducerProtocol {
         @BindingState var addGroupBody = ""
         @BindingState var updateGroupBody = ""
         var errorAlert: AlertState<Action>?
+        var isQuestionAdditionActive: Bool {
+            questionAddition != nil
+        }
     }
     
     enum Action: BindableAction, Equatable {
@@ -29,8 +32,10 @@ struct GroupAdditionReducer: ReducerProtocol {
         case addQuestionGroup
         case update
         case delete(QuestionGroup)
+        case questionAdditionDismissed
         case didTapNavBarButton
         case didTapEditSwipeAction(QuestionGroup)
+        case didTapRow(QuestionGroup)
         case alertDismissed
     }
     
@@ -38,14 +43,12 @@ struct GroupAdditionReducer: ReducerProtocol {
         BindingReducer()
         Reduce { state, action in
             switch action {
-            case .questionAddition(.onDisappear):
-                state.questionAddition = nil
-                return .none
             case .questionAddition:
                 return .none
             case .binding:
                 return .none
             case .onAppear:
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(GroupAdditionView.self)")
                 state.groups = questionGroupRepository.get()
                 return .none
             case .addQuestionGroup:
@@ -97,6 +100,9 @@ struct GroupAdditionReducer: ReducerProtocol {
                     }
                     return .none
                 }
+            case .questionAdditionDismissed:
+                state.questionAddition = nil
+                return .none
             case .didTapNavBarButton:
                 state.isShowingAddAlert = true
                 return .none
@@ -104,6 +110,9 @@ struct GroupAdditionReducer: ReducerProtocol {
                 state.groupToUpdate = group
                 state.updateGroupBody = group.name
                 state.isShowingUpdateAlert = true
+                return .none
+            case let .didTapRow(group: group):
+                state.questionAddition = .init(questionGroup: group)
                 return .none
             case .alertDismissed:
                 state.errorAlert = nil

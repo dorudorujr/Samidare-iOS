@@ -3,7 +3,8 @@ import SwiftUI
 @MainActor
 final class ConfigRouter<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGroupRepository: QuestionGroupRepositoryProtocol> {
     func makeGroupAdditionView() -> some View {
-        GroupAdditionView<QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+        GroupAdditionView(store: .init(initialState: GroupAdditionReducer.State(),
+                                       reducer: GroupAdditionReducer()))
     }
     
     func makeAppConfigSelectionView(for type: AppConfigSelectionType,
