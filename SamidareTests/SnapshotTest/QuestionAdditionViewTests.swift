@@ -17,7 +17,7 @@ class QuestionAdditionViewTests: XCTestCase {
     
     override func setUp() async throws {
         try await super.setUp()
-        isRecording = true
+        isRecording = false
         questionRepositoryMock.getQuestionsOfHandler = { _ in
             [
                 .init(body: "八岐大蛇輪廻転生起承転結", group: self.questionGroup)
