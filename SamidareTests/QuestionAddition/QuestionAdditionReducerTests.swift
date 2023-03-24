@@ -28,7 +28,7 @@ final class QuestionAdditionReducerTests: XCTestCase {
     }
     
     func testOnAppear() async {
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         
         await store.send(.onAppear) {
             $0.questions = self.questions
@@ -38,7 +38,7 @@ final class QuestionAdditionReducerTests: XCTestCase {
     func testAddQuestionSuccess() async {
         let state = QuestionAdditionReducer.State(questionGroup: group, addQuestionBody: "testAddQuestionSuccess")
         store = makeStore(state: state)
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         
         questionRepositoryMock.addQuestionHandler = { question in
             XCTAssertEqual(question.body, "testAddQuestionSuccess")
@@ -52,7 +52,7 @@ final class QuestionAdditionReducerTests: XCTestCase {
     }
     
     func testAddQuestionFailure() async {
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         XCTAssertNil(store.state.errorAlert)
         
         questionRepositoryMock.addQuestionHandler = { _ in
@@ -66,15 +66,15 @@ final class QuestionAdditionReducerTests: XCTestCase {
             }
         }
         XCTAssertEqual(questionRepositoryMock.addQuestionCallCount, 1)
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
     }
     
     func testUpdateSuccess() async {
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         let questionToUpdate = Question(body: "questionToUpdate", group: group)
         let state = QuestionAdditionReducer.State(questionGroup: group, updateQuestionBody: "testUpdateSuccess", questionToUpdate: questionToUpdate)
         store = makeStore(state: state)
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         
         questionRepositoryMock.updateQuestionHandler = { question in
             XCTAssertEqual(question.id, questionToUpdate.id)
@@ -91,7 +91,7 @@ final class QuestionAdditionReducerTests: XCTestCase {
         let questionToUpdate = Question(body: "questionToUpdate", group: group)
         let state = QuestionAdditionReducer.State(questionGroup: group, updateQuestionBody: "testUpdateSuccess", questionToUpdate: questionToUpdate)
         store = makeStore(state: state)
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
         XCTAssertNil(store.state.errorAlert)
         
         questionRepositoryMock.updateQuestionHandler = { _ in
@@ -105,7 +105,7 @@ final class QuestionAdditionReducerTests: XCTestCase {
             }
         }
         XCTAssertEqual(questionRepositoryMock.updateQuestionCallCount, 1)
-        XCTAssertTrue(store.state.questions.isEmpty)
+        XCTAssertNil(store.state.questions)
     }
     
     func testDeleteSuccess() async {
