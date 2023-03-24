@@ -35,34 +35,38 @@ struct QuestionAdditionView: View {
                                    rightButtonTitle: L10n.Common.add,
                                    leftButtonAction: nil,
                                    rightButtonAction: { viewStore.send(.update) })
-                List {
-                    ForEach(viewStore.questions) { question in
-                        QuestionListCardView(questionBody: question.body)
-                            .onTapGesture {
-                                viewStore.send(.didTapList(question: question))
+                if let questions = viewStore.questions {
+                    List {
+                        Section {
+                            ForEach(questions) { question in
+                                QuestionListCardView(questionBody: question.body)
+                                    .onTapGesture {
+                                        viewStore.send(.didTapList(question: question))
+                                    }
                             }
+                            .onDelete(perform: { indexSet in
+                                viewStore.send(.delete(index: indexSet))
+                            })
+                        }
                     }
-                    .onDelete(perform: { indexSet in
-                        viewStore.send(.delete(index: indexSet))
-                    })
-                }
-                .navigationTitle(viewStore.questionGroup.name)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
-                            Image(systemName: "plus")
-                                .renderingMode(.template)
-                                .foregroundColor(.blue)
-                        })
-                    }
-                }
-                .alert(self.store.scope(state: \.errorAlert),
-                       dismiss: .alertDismissed)
-                .onAppear {
-                    viewStore.send(.onAppear)
                 }
             }
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
+            .navigationTitle(viewStore.questionGroup.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
+                        Image(systemName: "plus")
+                            .renderingMode(.template)
+                            .foregroundColor(.blue)
+                    })
+                }
+            }
+            .alert(self.store.scope(state: \.errorAlert),
+                   dismiss: .alertDismissed)
         }
     }
 }
