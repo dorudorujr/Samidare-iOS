@@ -36,7 +36,7 @@ name: realm-cocoa, nameSpecified: realm-cocoa, owner: realm, version: 10.36.0, s
 
 name: realm-core, nameSpecified: realm-core, owner: realm, version: 13.4.1, source: https://github.com/realm/realm-core
 
-name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.13.0, source: https://github.com/pointfreeco/swift-case-paths
+name: swift-case-paths, nameSpecified: swift-case-paths, owner: pointfreeco, version: 0.14.0, source: https://github.com/pointfreeco/swift-case-paths
 
 name: swift-clocks, nameSpecified: swift-clocks, owner: pointfreeco, version: 0.2.0, source: https://github.com/pointfreeco/swift-clocks
 
@@ -44,9 +44,9 @@ name: swift-collections, nameSpecified: swift-collections, owner: apple, version
 
 name: swift-composable-architecture, nameSpecified: swift-composable-architecture, owner: pointfreeco, version: 0.51.0, source: https://github.com/pointfreeco/swift-composable-architecture
 
-name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.8.0, source: https://github.com/pointfreeco/swift-custom-dump
+name: swift-custom-dump, nameSpecified: swift-custom-dump, owner: pointfreeco, version: 0.9.1, source: https://github.com/pointfreeco/swift-custom-dump
 
-name: swift-dependencies, nameSpecified: swift-dependencies, owner: pointfreeco, version: 0.1.4, source: https://github.com/pointfreeco/swift-dependencies
+name: swift-dependencies, nameSpecified: swift-dependencies, owner: pointfreeco, version: 0.2.0, source: https://github.com/pointfreeco/swift-dependencies
 
 name: swift-identified-collections, nameSpecified: swift-identified-collections, owner: pointfreeco, version: 0.7.0, source: https://github.com/pointfreeco/swift-identified-collections
 
@@ -58,9 +58,9 @@ name: swift-protobuf, nameSpecified: SwiftProtobuf, owner: apple, version: 1.20.
 
 name: swift-snapshot-testing, nameSpecified: swift-snapshot-testing, owner: pointfreeco, version: 1.11.0, source: https://github.com/pointfreeco/swift-snapshot-testing
 
-name: swiftui-navigation, nameSpecified: swiftui-navigation, owner: pointfreeco, version: 0.6.1, source: https://github.com/pointfreeco/swiftui-navigation
+name: swiftui-navigation, nameSpecified: swiftui-navigation, owner: pointfreeco, version: 0.7.1, source: https://github.com/pointfreeco/swiftui-navigation
 
-name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.8.3, source: https://github.com/pointfreeco/xctest-dynamic-overlay
+name: xctest-dynamic-overlay, nameSpecified: xctest-dynamic-overlay, owner: pointfreeco, version: 0.8.4, source: https://github.com/pointfreeco/xctest-dynamic-overlay
 
 add-version-numbers: false
 
