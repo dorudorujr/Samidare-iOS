@@ -35,9 +35,9 @@ struct GroupAdditionView: View {
                                    rightButtonTitle: L10n.Common.ok,
                                    leftButtonAction: nil,
                                    rightButtonAction: { viewStore.send(.update) })
-                List {
-                    Section {
-                        if let groups = viewStore.groups {
+                if let groups = viewStore.groups {
+                    List {
+                        Section {
                             ForEach(groups) { group in
                                 // TODO: TCAのブランチにbeta版があるのでmainにマージされたら対応する
                                 NavigationLink(
@@ -72,24 +72,24 @@ struct GroupAdditionView: View {
                         }
                     }
                 }
-                .navigationTitle(L10n.Group.Addition.title)
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
-                            Image(systemName: "plus")
-                                .renderingMode(.template)
-                                .foregroundColor(.blue)
-                        })
-                    }
-                }
-                .alert(self.store.scope(state: \.errorAlert),
-                       dismiss: .alertDismissed
-                )
-                .onAppear {
-                    viewStore.send(.onAppear)
+            }
+            .onAppear {
+                viewStore.send(.onAppear)
+            }
+            .navigationTitle(L10n.Group.Addition.title)
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: { viewStore.send(.didTapNavBarButton) }, label: {
+                        Image(systemName: "plus")
+                            .renderingMode(.template)
+                            .foregroundColor(.blue)
+                    })
                 }
             }
+            .alert(self.store.scope(state: \.errorAlert),
+                   dismiss: .alertDismissed
+            )
         }
     }
 }

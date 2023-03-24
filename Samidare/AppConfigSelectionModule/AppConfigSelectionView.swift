@@ -20,34 +20,20 @@ struct AppConfigSelectionView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             VStack {
-                List {
-                    Section {
-                        if let questionGroups = viewStore.state.questionGroups {
-                            ForEach(questionGroups) { group in
-                                ListRow(title: group.name, isSelected: viewStore.state.selectQuestionGroupName == group.name)
-                                    .onTapGesture {
-                                        viewStore.send(.updateQuestionGroup(questionGroup: group))
-                                    }
-                            }
-                        }
-                        if let appConfigGameTime = viewStore.state.appConfigGameTime {
-                            ForEach(GameTime.allCases) { gameTime in
-                                ListRow(title: gameTime.rawValue.description, isSelected: appConfigGameTime == gameTime.rawValue)
-                                    .onTapGesture {
-                                        viewStore.send(.updateGameTime(gameTime: gameTime.rawValue))
-                                    }
-                            }
-                        }
-                    } header: {
-                        Text(description)
-                            .foregroundColor(.textBlack)
-                            .font(.system(size: 15))
-                            .padding(.bottom, 10)
-                    }
+                if let questionGroups = viewStore.state.questionGroups {
+                    QuestionGroupSelectionList(questionGroups: questionGroups,
+                                               description: description,
+                                               selectQuestionGroupName: viewStore.state.selectQuestionGroupName,
+                                               tapGesture: { group in viewStore.send(.updateQuestionGroup(questionGroup: group)) })
                 }
-                .onAppear {
-                    viewStore.send(.onAppear)
+                if let appConfigGameTime = viewStore.state.appConfigGameTime {
+                    GameTimeList(appConfigGameTime: appConfigGameTime,
+                                 description: description,
+                                 tapGesture: { gameTime in viewStore.send(.updateGameTime(gameTime: gameTime)) })
                 }
+            }
+            .onAppear {
+                viewStore.send(.onAppear)
             }
             .navigationTitle(L10n.App.Config.Selection.Question.Group.title)
             .navigationBarTitleDisplayMode(.inline)
