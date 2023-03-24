@@ -11,8 +11,6 @@ import SwiftUI
 struct GroupAdditionReducer: ReducerProtocol {
     struct State: Equatable {
         var questionAddition: QuestionAdditionReducer.State?
-        // TODO: Test検証
-        // optionalでも表示されないなら空配列を初期値に入れる
         var groups: [QuestionGroup]?
         var groupToUpdate: QuestionGroup?
         @BindingState var isShowingAddAlert = false
