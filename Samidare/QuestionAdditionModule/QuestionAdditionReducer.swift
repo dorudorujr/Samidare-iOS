@@ -11,7 +11,7 @@ import SwiftUI
 struct QuestionAdditionReducer: ReducerProtocol {
     struct State: Equatable {
         let questionGroup: QuestionGroup
-        var questions: [Question] = []
+        var questions: [Question]?
         @BindingState var isShowingAddAlert = false
         @BindingState var isShowingUpdateAlert = false
         @BindingState var addQuestionBody = ""
@@ -70,7 +70,7 @@ struct QuestionAdditionReducer: ReducerProtocol {
                 return .none
             case let .delete(index: index):
                 FirebaseAnalyticsConfig.sendEventLog(eventType: .deleteQuestion)
-                guard let index = index.first, let question = state.questions[safe: index] else {
+                guard let index = index.first, let question = state.questions?[safe: index] else {
                     return .none
                 }
                 do {
