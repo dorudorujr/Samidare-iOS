@@ -67,11 +67,11 @@ struct GroupAdditionReducer: ReducerProtocol {
                 }
             case .update:
                 FirebaseAnalyticsConfig.sendEventLog(eventType: .editQuestionGroupName)
-                guard let questionToUpdate = state.groupToUpdate else {
+                guard let groupToUpdate = state.groupToUpdate else {
                     return .none
                 }
                 do {
-                    try questionGroupRepository.add(.init(id: questionToUpdate.id, name: state.updateGroupBody))
+                    try questionGroupRepository.add(.init(id: groupToUpdate.id, name: state.updateGroupBody))
                     state.groups = questionGroupRepository.get()
                     return .none
                 } catch {
