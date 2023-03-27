@@ -21,6 +21,15 @@ struct ConfigReducer: ReducerProtocol {
         var shouldShowSheet = false
         var errorAlert: AlertState<Action>?
         let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? ""
+        var isGroupAdditionActive: Bool {
+            groupAddition != nil
+        }
+        var isQuestionGroupSelectionActive: Bool {
+            questionGroupSelection != nil
+        }
+        var isGameTimeSelectionActive: Bool {
+            gameTimeSelection != nil
+        }
     }
     
     enum Action: Equatable {
@@ -34,6 +43,7 @@ struct ConfigReducer: ReducerProtocol {
         case groupAdditionDismissed
         case questionGroupSelectionDismissed
         case gameTimeSelectionDismissed
+        case appConfigSelectionDisappear
         case didTapSafariViewRow(externalLinkType: ExternalLinkType)
         case didTapInquiry
         case setSheet(shouldShowSheet: Bool)
@@ -66,6 +76,10 @@ struct ConfigReducer: ReducerProtocol {
                 return .none
             case .gameTimeSelectionDismissed:
                 state.gameTimeSelection = nil
+                return .none
+            case .appConfigSelectionDisappear:
+                state.questionGroupName = appConfigRepository.get().questionGroupName
+                state.playTime = appConfigRepository.get().time.description
                 return .none
             case let .didTapSafariViewRow(externalLinkType: externalLinkType):
                 state.selectedExternalLinkType = externalLinkType
