@@ -13,7 +13,7 @@ struct ConfigView: View {
     
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            NavigationStack {
+            NavigationView {
                 VStack {
                     List {
                         Section {
