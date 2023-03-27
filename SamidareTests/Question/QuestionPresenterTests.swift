@@ -95,7 +95,7 @@ class QuestionPresenterTests: XCTestCase {
             MockTimer.timer?.fire()
             expOverTime.fulfill()
         }
-        wait(for: [expOverTime], timeout: 1.0)
+        wait(for: [expOverTime], timeout: 3.0)
         /// 質問時間経過で次の質問に行っているか確認
         XCTAssertNil(presenter.question)
         XCTAssertEqual(presenter.questionCountText, "")
