@@ -18,7 +18,12 @@ struct TabTopView: View {
             reducer: QuestionReducer()
         )
     )
-    private let configView = ConfigView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+    private let configView = ConfigView(
+        store: .init(
+            initialState: ConfigReducer.State(),
+            reducer: ConfigReducer()
+        )
+    )
     
     init(presenter: TabTopPresenter) {
         UITabBar.appearance().backgroundColor = .tabGray

@@ -6,77 +6,112 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
-struct ConfigView<AppConfigRepository: AppConfigRepositoryProtocol, QuestionGroupRepository: QuestionGroupRepositoryProtocol>: View {
-    @ObservedObject private var presenter: ConfigPresenter<AppConfigRepository, QuestionGroupRepository>
-    
-    init(presenter: ConfigPresenter<AppConfigRepository, QuestionGroupRepository>) {
-        self.presenter = presenter
-    }
+struct ConfigView: View {
+    let store: StoreOf<ConfigReducer>
     
     var body: some View {
-        NavigationView {
-            VStack {
-                List {
-                    Section {
-                        presenter.groupAdditionLinkBuilder {
-                            ListRow(title: L10n.Config.Add.question)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            NavigationView {
+                VStack {
+                    List {
+                        Section {
+                            // TODO: TCAのブランチにbeta版があるのでmainにマージされたら対応する
+                            NavigationLink(
+                                destination: IfLetStore(self.store.scope(state: \.groupAddition, action: ConfigReducer.Action.groupAddition)) {
+                                    GroupAdditionView(store: $0)
+                                },
+                                isActive: viewStore.binding(
+                                    get: \.isGroupAdditionActive,
+                                    send: { $0 ? .didTapGroupAddition : .groupAdditionDismissed }
+                                )
+                            ) {
+                                ListRow(title: L10n.Config.Add.question)
+                            }
+                            NavigationLink(
+                                destination: IfLetStore(self.store.scope(state: \.questionGroupSelection, action: ConfigReducer.Action.questionGroupSelection)) {
+                                    AppConfigSelectionView(store: $0, description: L10n.App.Config.Selection.Question.Group.description).onDisappear {
+                                        viewStore.send(.appConfigSelectionDisappear)
+                                    }
+                                },
+                                isActive: viewStore.binding(
+                                    get: \.isQuestionGroupSelectionActive,
+                                    send: { $0 ? .didTapQuestionGroupSelection : .questionGroupSelectionDismissed }
+                                )
+                            ) {
+                                ListRow(title: L10n.Config.Display.group, description: viewStore.state.questionGroupName)
+                            }
+                            NavigationLink(
+                                destination: IfLetStore(self.store.scope(state: \.gameTimeSelection, action: ConfigReducer.Action.gameTimeSelection)) {
+                                    AppConfigSelectionView(store: $0, description: L10n.App.Config.Selection.Game.Time.description).onDisappear {
+                                        viewStore.send(.appConfigSelectionDisappear)
+                                    }
+                                },
+                                isActive: viewStore.binding(
+                                    get: \.isGameTimeSelectionActive,
+                                    send: { $0 ? .didTapGameTimeSelection : .gameTimeSelectionDismissed }
+                                )
+                            ) {
+                                ListRow(title: L10n.Config.Answer.seconds, description: viewStore.state.playTime)
+                            }
                         }
-                        presenter.appConfigSelectionLinkBuilder(for: .questionGroup) {
-                            ListRow(title: L10n.Config.Display.group, description: presenter.questionGroup)
+                        Section {
+                            ListRow(title: L10n.Config.Use.app)
+                            ListRow(title: L10n.Config.inquiry, shouldShowArrow: true)
+                                .onTapGesture {
+                                    viewStore.send(.didTapInquiry)
+                                }
                         }
-                        presenter.appConfigSelectionLinkBuilder(for: .gameTime) {
-                            ListRow(title: L10n.Config.Answer.seconds, description: presenter.playTime)
+                        Section {
+                            ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
+                                .onTapGesture {
+                                    viewStore.send(.didTapSafariViewRow(externalLinkType: .privacyPolicy))
+                                }
+                            ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
+                                .onTapGesture {
+                                    viewStore.send(.didTapSafariViewRow(externalLinkType: .termsOfservice))
+                                }
+                            ListRow(title: L10n.Config.version, description: viewStore.state.appVersion)
                         }
                     }
-                    Section {
-                        ListRow(title: L10n.Config.Use.app)
-                        ListRow(title: L10n.Config.inquiry, shouldShowArrow: true)
-                            .onTapGesture {
-                                presenter.didTapInquiry()
-                            }
-                    }
-                    Section {
-                        ListRow(title: L10n.Config.privacyPolicy, shouldShowArrow: true)
-                            .onTapGesture {
-                                presenter.didTapSafariViewList(of: .privacyPolicy)
-                            }
-                        ListRow(title: L10n.Config.Terms.Of.service, shouldShowArrow: true)
-                            .onTapGesture {
-                                presenter.didTapSafariViewList(of: .termsOfservice)
-                            }
-                        ListRow(title: L10n.Config.version, description: presenter.appVersion)
-                    }
+                    .listStyle(.insetGrouped)
+                    Spacer()
+                    AdmobBannerView().frame(width: 320, height: 50)
                 }
-                .listStyle(.insetGrouped)
-                Spacer()
-                AdmobBannerView().frame(width: 320, height: 50)
+                .navigationTitle(L10n.Config.NavigationBar.title)
+                .background(Color.listBackground)
             }
-            .navigationTitle(L10n.Config.NavigationBar.title)
-            .background(Color.listBackground)
-        }
-        .onAppear {
-            presenter.getAppConfig()
-            FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(ConfigView.self)")
-        }
-        .sheet(isPresented: $presenter.shouldShowSheet) {
-            if presenter.sheetType == .safariView {
-                if let string = presenter.selectedExternalLinkType?.url,
-                   let url = URL(string: string) {
-                    SafariView(url: url)
+            .onAppear {
+                FirebaseAnalyticsConfig.sendScreenViewLog(screenName: "\(ConfigView.self)")
+                viewStore.send(.onAppear)
+            }
+            .sheet(isPresented: viewStore.binding(
+                get: \.shouldShowSheet,
+                send: ConfigReducer.Action.setSheet(shouldShowSheet:)
+            )) {
+                if viewStore.state.sheetType == .safariView {
+                    if let string = viewStore.state.selectedExternalLinkType?.url,
+                       let url = URL(string: string) {
+                        SafariView(url: url)
+                    }
+                } else if viewStore.sheetType == .mailer {
+                    MailView(isShowing: viewStore.binding(
+                        get: \.shouldShowSheet,
+                        send: ConfigReducer.Action.setSheet(shouldShowSheet:)
+                    ))
                 }
-            } else if presenter.sheetType == .mailer {
-                MailView(isShowing: $presenter.shouldShowSheet)
             }
-        }
-        .alert(isPresented: $presenter.shouldShowAlert) {
-            Alert(title: Text(L10n.Mail.Error.title), message: Text(L10n.Mail.Error.description))
+            .alert(self.store.scope(state: \.errorAlert),
+                   dismiss: .alertDismissed
+            )
         }
     }
 }
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView<AppConfigRepositoryImpl, QuestionGroupRepositoryImpl>(presenter: .init(interactor: .init(), router: .init()))
+        ConfigView(store: .init(initialState: ConfigReducer.State(),
+                                reducer: ConfigReducer()))
     }
 }
